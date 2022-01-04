@@ -1,8 +1,10 @@
 {
 	"name": "@fantaskticedtechlimited/fui-complib",
-	"version": "0.0.2",
+	"version": "0.0.3",
 	"description": "Fantasktic UI Component library",
-	"main": "index.js",
+	"main": "./lib/cjs/index.js",
+	"module": "./lib/esm/index.js",
+	"types": "./lib/esm/index.d.ts",
 	"repository": "https://github.com/FantaskticEdTechLimited/FUI-CompLib.git",
 	"author": "pakmatthew",
 	"license": "MIT",
