@@ -11,6 +11,8 @@ import { FCheckBox } from "./FCheckBox";
 import { FRadioButton } from "./FRadioButton";
 import { FSearchBar } from "./FSearchBar";
 import { FSVGButton } from "./FSVGButton";
+import { FScrollBarStyle } from "./FScrollBar";
+import { FSideNavBar, HandleForceCloseSideNavBar } from "./FSideBavBar";
 
 export {
 	FText,
@@ -25,5 +27,8 @@ export {
 	FCheckBox,
 	FRadioButton,
 	FSearchBar,
-	FSVGButton
+	FSVGButton,
+	FScrollBarStyle,
+	FSideNavBar,
+	HandleForceCloseSideNavBar,
 };

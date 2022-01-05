@@ -12,6 +12,14 @@
   resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/0.0.3/9da828716fd18681ea4bc8abee18b4af3e05bece9ec4bc31d6453fca75a87c35#e52dc09883503e2cb14eb947eb7f713d793cf0c2"
   integrity sha512-t+O/9CnKjzKX05gUF7vGxMu0TbsPvfYhXleMvahFdTSflu5eAhiV/icHZM/pXT0ySJaOihfMOWdRPmTyOanQxA==
 
+"@fantaskticedtechlimited/fui-iconlib@^0.0.5":
+  version "0.0.5"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/0.0.5/d9b4f9068da49fd2eb3559da40a2b48b993528b847bfdb9ebbd67bcda2248b49#fb3bec9e98bdda5be17792034f993c7dcf6bc1c2"
+  integrity sha512-daCXBg2IhuIsWMPJg3grc8MrGJzneVnVejyjYfqoiBccYslgbf8PSt7Yx8Wcq5WlIfGMU+8At5ywR8dWYsinAg==
+  dependencies:
+    "@fantaskticedtechlimited/fui-colorlib" "^0.0.2"
+    typestyle "^2.2.0"
+
 "@types/prop-types@*":
   version "15.7.4"
   resolved "https://registry.npmjs.org/@types/prop-types/-/prop-types-15.7.4.tgz#fcf7205c25dff795ee79af1e30da2c9790808f11"
