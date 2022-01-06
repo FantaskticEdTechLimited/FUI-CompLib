@@ -1,12 +1,12 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useState, useEffect, useRef } from "react";
-import { FScrollBarStyle } from "..";
+import { FScreenSizeHandler, FScrollBarStyle } from "..";
 import * as styles from "./style";
 import { FSideNavBarProps } from "./type";
 
 export const FSideNavBar = (props: FSideNavBarProps) => {
-	const [screenWidth] = ScreenSizeHandler();
+	const [screenWidth] = FScreenSizeHandler();
 	const [openSideBar, setOpenSideBar] = useState<boolean>(false);
 	const OpenedSideNavBarRef = useRef<HTMLDivElement>(null);
 
@@ -107,6 +107,3 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 		</>
 	);
 };
-function ScreenSizeHandler(): [any] {
-	throw new Error("Function not implemented.");
-}
