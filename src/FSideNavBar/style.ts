@@ -4,21 +4,22 @@ import { FSideNavBarProps } from "./type";
 
 export const FSideNarBarOverlayContainer = (
 	props: FSideNavBarProps,
-	isOpen: boolean
+	isOpen: boolean,
+	screenWidth: number
 ) =>
 	style({
 		backgroundColor:
-			props.screenWidth >= 1280 ? "transparent" : FColorTypes.DARK_GREY + "66",
+			screenWidth >= 1280 ? "transparent" : FColorTypes.DARK_GREY + "66",
 		display: props.visible ? "flex" : "none",
 		flexDirection: "row",
 		height: "100%",
-		justifyContent: props.screenWidth >= 1280 ? "flex-start" : "flex-end",
-		left: props.screenWidth >= 1280 ? 0 : undefined,
+		justifyContent: screenWidth >= 1280 ? "flex-start" : "flex-end",
+		left: screenWidth >= 1280 ? 0 : undefined,
 		position: "fixed",
-		right: props.screenWidth >= 1280 ? undefined : isOpen ? 0 : "-100vw",
+		right: screenWidth >= 1280 ? undefined : isOpen ? 0 : "-100vw",
 		top: 0,
 		transition: "all 0.2s ease-in-out",
-		visibility: props.screenWidth >= 1280 || isOpen ? "visible" : "hidden",
+		visibility: screenWidth >= 1280 || isOpen ? "visible" : "hidden",
 		width: "100vw",
 		zIndex: isOpen ? 20 : 10,
 	});

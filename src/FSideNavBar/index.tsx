@@ -5,23 +5,8 @@ import { FScrollBarStyle } from "..";
 import * as styles from "./style";
 import { FSideNavBarProps } from "./type";
 
-export const HandleForceCloseSideNavBar = () => {
-	const [close, setClose] = useState<boolean>(false);
-
-	useEffect(() => {
-		if (close) {
-			setTimeout(() => {
-				setClose(false);
-			}, 100);
-		}
-	}, [close]);
-
-	return { close, setClose };
-};
-
-// Function Usage: `const { close, setClose } = HandleForceCloseSideNavBar()`
-
 export const FSideNavBar = (props: FSideNavBarProps) => {
+	const [screenWidth] = ScreenSizeHandler();
 	const [openSideBar, setOpenSideBar] = useState<boolean>(false);
 	const OpenedSideNavBarRef = useRef<HTMLDivElement>(null);
 
@@ -47,7 +32,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 	return (
 		<>
 			{/* Top NavBar when tablet mode */}
-			{props.screenWidth < 1280 && (
+			{screenWidth < 1280 && (
 				<div
 					style={props.topBarStyle}
 					className={
@@ -76,7 +61,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 				className={
 					props.overlayClassName +
 					" " +
-					styles.FSideNarBarOverlayContainer(props, openSideBar)
+					styles.FSideNarBarOverlayContainer(props, openSideBar, screenWidth)
 				}
 			>
 				<div
@@ -88,7 +73,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 						" " +
 						FScrollBarStyle({ visible: true })
 					}
-					ref={props.screenWidth >= 1280 ? undefined : OpenedSideNavBarRef}
+					ref={screenWidth >= 1280 ? undefined : OpenedSideNavBarRef}
 				>
 					<div
 						style={props.contentDivStyle}
@@ -98,7 +83,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 							styles.FSideNavBarContentDiv(props)
 						}
 					>
-						{props.screenWidth >= 1280 ? (
+						{screenWidth >= 1280 ? (
 							props.logo
 						) : (
 							<FIcon
@@ -122,3 +107,6 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 		</>
 	);
 };
+function ScreenSizeHandler(): [any] {
+	throw new Error("Function not implemented.");
+}

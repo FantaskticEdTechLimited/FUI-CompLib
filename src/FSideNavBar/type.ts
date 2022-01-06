@@ -1,14 +1,13 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib/lib/esm/FIcon/types";
 import { CSSProperties, ReactNode } from "react";
+import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 
 export interface FSideNavBarProps {
 	children: ReactNode;
-	screenWidth: number;
 	// control visibility of sideBar/topBar
 	visible: boolean;
-	// close menu icon attributes
+	// change close menu icon attributes
 	closeIconProps?: FIconProps
-	// open menu icon attributes
+	// change open menu icon attributes
 	menuIconProps?: FIconProps
 
 	// css style of side bar container

@@ -1,7 +1,7 @@
 import { style } from "typestyle";     
-import { FSVGButtonProps } from "./types";
+import { FSVGIconProps } from "./types";
 
-export const FSVGButtonDiv = (props: FSVGButtonProps) => style({
+export const FSVGIconDiv = (props: FSVGIconProps) => style({
     alignItems: "center",    
     cursor: props.disabled ? "not-allowed" : "pointer",
     display: "flex",

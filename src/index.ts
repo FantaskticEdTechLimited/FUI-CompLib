@@ -10,9 +10,11 @@ import { FSwitchButton } from "./FSwitchButton";
 import { FCheckBox } from "./FCheckBox";
 import { FRadioButton } from "./FRadioButton";
 import { FSearchBar } from "./FSearchBar";
-import { FSVGButton } from "./FSVGButton";
+import { FSVGIcon } from "./FSVGIcon";
 import { FScrollBarStyle } from "./FScrollBar";
-import { FSideNavBar, HandleForceCloseSideNavBar } from "./FSideBavBar";
+import { FSideNavBar } from "./FSideNavBar";
+import { FSelector } from "./FSelector";
+import { FDropdown } from "./FDropdown";
 
 export {
 	FText,
@@ -27,8 +29,9 @@ export {
 	FCheckBox,
 	FRadioButton,
 	FSearchBar,
-	FSVGButton,
+	FSVGIcon,
 	FScrollBarStyle,
 	FSideNavBar,
-	HandleForceCloseSideNavBar,
+	FSelector,
+	FDropdown
 };

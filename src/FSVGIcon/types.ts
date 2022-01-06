@@ -1,10 +1,10 @@
 import { CSSProperties, FunctionComponentElement } from "react";
 import { OnClickFunction } from "../global.types";
 
-export interface FSVGButtonProps {
+export interface FSVGIconProps {
 	children: FunctionComponentElement<"svg">;
-	onClick: OnClickFunction<void>;
 	disabled?: boolean;
 	className?: string;
+	onClick?: OnClickFunction<void>;
 	style?: CSSProperties;
 }
