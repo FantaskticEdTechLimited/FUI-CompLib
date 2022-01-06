@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const SideBarHandler = () => {
+export const FSideBarHandler = () => {
 	const [close, setClose] = useState<boolean>(false);
 
 	useEffect(() => {
@@ -12,6 +12,6 @@ export const SideBarHandler = () => {
 	}, [close]);
 
 	return { close, setClose };
-};  // Function Usage: `const { close, setClose } = HandleForceCloseSideNavBar()`
+};  // Function Usage: `const { close, setClose } = FSideBarHandler()`
 
 

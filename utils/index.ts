@@ -1,4 +1,4 @@
-import { ScreenSizeHandler } from "./ScreenSizeHandler";
-import { SideBarHandler } from "./SideBarHandler";
+import { FScreenSizeHandler } from "./FScreenSizeHandler";
+import { FSideBarHandler } from "./FSideBarHandler";
 
-export { ScreenSizeHandler, SideBarHandler };
+export { FScreenSizeHandler, FSideBarHandler };

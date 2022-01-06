@@ -1,7 +1,7 @@
 import { useLayoutEffect, useState } from "react";
 
 // Responsive device screen size (width, height)
-export const ScreenSizeHandler = () => {
+export const FScreenSizeHandler = () => {
 	const [size, setSize] = useState([0, 0]);
 	useLayoutEffect(() => {
 		function updateSize() {

@@ -15,6 +15,7 @@ import { FScrollBarStyle } from "./FScrollBar";
 import { FSideNavBar } from "./FSideNavBar";
 import { FSelector } from "./FSelector";
 import { FDropdown } from "./FDropdown";
+import { FSideBarHandler, FScreenSizeHandler} from "../utils/index"
 
 export {
 	FText,
@@ -33,5 +34,7 @@ export {
 	FScrollBarStyle,
 	FSideNavBar,
 	FSelector,
-	FDropdown
+	FDropdown,
+	FScreenSizeHandler,
+	FSideBarHandler
 };
