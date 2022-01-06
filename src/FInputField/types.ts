@@ -2,14 +2,18 @@ import { CSSProperties } from "react";
 import { Nullable } from "../global.types";
 
 export interface FInputFieldProps {
-	value: Nullable<string>;
-	label: string;
-	renderValue: (value: string) => void;
+	defaultValue?: string;
+	disabled?: boolean;
+	label?: string;
+	multiline?: boolean;
+	renderValue?: (value: Nullable<string>) => void;
+	value?: Nullable<string>;
+	wordcount?: number;
+	
 	// css style of InputField container with wordcount container
 	containerClassName?: string;
 	containerStyle?: CSSProperties;
 
-	disabled?: boolean;
 	// css style of InputField div with label
 	inputDivClassName?: string;
 	inputDivStyle?: CSSProperties;
@@ -17,7 +21,5 @@ export interface FInputFieldProps {
 	// css style of InputField input area only
 	inputAreaClassName?: string;
 	inputAreaStyle?: CSSProperties;
-	
-	multiline?: boolean;
-	wordcount?: number;
+
 }

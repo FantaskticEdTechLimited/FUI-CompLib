@@ -1,8 +1,8 @@
 import { style } from "typestyle";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { FTextButtonProps } from "./types";
+import { FButtonProps } from "../global.types";
 
-export const FTextButtonContainer = (props: FTextButtonProps) =>
+export const FTextButtonContainer = (props: FButtonProps) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.PURE_WHITE,

@@ -1,8 +1,8 @@
 import { style } from "typestyle";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { FSecondaryButtonProps } from "./types";
+import { FButtonProps } from "../global.types";
 
-export const FSecondaryButtonContainer = (props: FSecondaryButtonProps) =>
+export const FSecondaryButtonContainer = (props: FButtonProps) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.PURPLE_BG,

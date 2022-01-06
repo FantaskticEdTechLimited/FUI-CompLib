@@ -14,9 +14,9 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 				<>
 				<FTextButton
 					disabled={props.disableLeadingButton}
-					label={props.leadingButtonLabel}
+					label={props.leadingButtonLabel ?? "Cancel"}
 					onClick={() =>
-						props.disableLeadingButton ? () => {} : props.onLeadingButtonClick()
+						props.disableLeadingButton ? () => {} : props.onLeadingButtonClick!()
 					}
 					style={props.leadingButtonStyle}
 					className={
@@ -25,9 +25,9 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 				/>
 				<FPrimaryButton
 					disabled={props.disableActionButton}
-					label={props.actionButtonLabel}
+					label={props.actionButtonLabel ?? "Next"}
 					onClick={() =>
-						props.disableActionButton ? () => {} : props.onActionButtonClick()
+						props.disableActionButton ? () => {} : props.onActionButtonClick!()
 					}
 					style={props.actionButtonStyle}
 					className={props.actionButtonClassName + " " + styles.FActionButtonDiv}

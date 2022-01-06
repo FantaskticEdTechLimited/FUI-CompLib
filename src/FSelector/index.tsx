@@ -71,15 +71,13 @@ export const FSelector = (props: FSelectorProps<any>) => {
 						props.renderCustomizedSelectedOption(props.selectedOption)
 					) : (
 						<>
-							{props.label && (
-								<FText
-									font={FFontTypes.Text}
-									color={FColorTypes.BRAND}
-									children={props.label}
-									style={props.labelStyle}
-									className={props.labelClassName}
-								/>
-							)}
+							<FText
+								font={FFontTypes.Text}
+								color={FColorTypes.BRAND}
+								children={props.label ?? "Title"}
+								style={props.labelStyle}
+								className={props.labelClassName}
+							/>
 							<FText
 								font={FFontTypes.Large_Text}
 								color={

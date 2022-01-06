@@ -3,12 +3,13 @@ import { CSSProperties } from "react";
 import { OnClickFunction } from "../global.types";
 
 export interface FSwitchButtonProps {
-	checked: boolean;
-	onClick: OnClickFunction<void>;
+	checked?: boolean;
+	disabled?: boolean;
+	onClick?: OnClickFunction<void>;
+
 	// css style of FSwitchButton container
 	containerClassName?: string;
 	containerStyle?: CSSProperties;
-	disabled?: boolean;
 
 	// css style of FSwitchButton svg
 	svgClassName?: string;

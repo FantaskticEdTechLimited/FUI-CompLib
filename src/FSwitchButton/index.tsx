@@ -4,11 +4,15 @@ import * as styles from "./styles";
 import { FSwitchButtonProps } from "./types";
 
 export const FSwitchButton = (props: FSwitchButtonProps) => {
+	const checked = props.checked ?? true; // default checked
+
 	return (
 		<div
 			style={props.containerStyle}
-			className={props.containerClassName + " " + styles.FSwitchButtonDiv(props)}
-			onClick={() => (props.disabled ? undefined : props.onClick())}
+			className={
+				props.containerClassName + " " + styles.FSwitchButtonDiv(props, checked)
+			}
+			onClick={() => (props.disabled ? undefined : props.onClick!())}
 		>
 			<svg
 				style={props.svgStyle}
@@ -26,7 +30,7 @@ export const FSwitchButton = (props: FSwitchButtonProps) => {
 					r={props.circleR ?? "9"}
 					fill={props.circleColor ?? FColorTypes.PURE_WHITE}
 					stroke={
-						props.circleBorderColor ?? props.checked
+						props.circleBorderColor ?? checked
 							? FColorTypes.BLACK
 							: FColorTypes.LIGHT_GREY
 					}

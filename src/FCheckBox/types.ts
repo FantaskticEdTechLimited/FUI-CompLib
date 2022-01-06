@@ -6,11 +6,11 @@ export interface FCheckBoxProps {
 	checked: boolean;
 	onClick: OnClickFunction<void>;
 	variant: "round" | "square";
+	disabled?: boolean;
 
 	// css style of FCheckBox container
 	containerClassName?: string;
 	containerStyle?: CSSProperties;
-	disabled?: boolean;
 
 	// css style of FCheckBox svg path
 	borderColor?: FColorTypes;

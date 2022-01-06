@@ -3,8 +3,8 @@ import { CSSProperties } from "react";
 import { OnClickFunction } from "../global.types";
 
 export interface FRadioButtonProps {
-	checked: boolean;
-	onClick: OnClickFunction<void>;
+	checked?: boolean;
+	onClick?: OnClickFunction<void>;
 
 	// css style of FRadioButton container
 	containerClassName?: string;

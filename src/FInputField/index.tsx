@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FText } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import * as styles from "./styles";
 import { FInputFieldProps } from "./types";
 
@@ -13,10 +13,10 @@ export const FInputField = (props: FInputFieldProps) => {
 
 	useEffect(() => {
 		if (textareaRef && textareaRef.current) {
-            textareaRef.current.style.height = "auto"
-            const scrollHeight = textareaRef.current.scrollHeight;
-            if(scrollHeight !== 0) 
-                textareaRef.current.style.height = scrollHeight + "px";
+			textareaRef.current.style.height = "auto";
+			const scrollHeight = textareaRef.current.scrollHeight;
+			if (scrollHeight !== 0)
+				textareaRef.current.style.height = scrollHeight + "px";
 		}
 		if (props.value) setIsFilled(true);
 		else setIsFilled(false);
@@ -50,20 +50,22 @@ export const FInputField = (props: FInputFieldProps) => {
 					else setIsFilled(true);
 				}}
 			>
-				<FText
-					font={
-						isTriggered || isFilled ? FFontTypes.Text : FFontTypes.Large_Text
-					}
-					color={
-						isTriggered
-							? FColorTypes.BRAND
-							: isFilled
-							? FColorTypes.BLACK
-							: FColorTypes.GREY
-					}
-				>
-					{props.label}
-				</FText>
+				{props.label && (
+					<FText
+						font={
+							isTriggered || isFilled ? FFontTypes.Text : FFontTypes.Large_Text
+						}
+						color={
+							isTriggered
+								? FColorTypes.BRAND
+								: isFilled
+								? FColorTypes.BLACK
+								: FColorTypes.GREY
+						}
+					>
+						{props.label}
+					</FText>
+				)}
 				{props.multiline ? (
 					<textarea
 						style={props.inputAreaStyle}
@@ -74,10 +76,11 @@ export const FInputField = (props: FInputFieldProps) => {
 						}
 						ref={textareaRef}
 						maxLength={props.wordcount ? props.wordcount : undefined}
+						defaultValue={props.defaultValue ?? "Title"}
 						value={props.value!}
-						onChange={(event: any) => {
-							props.renderValue(event.target.value);
-						}}
+						onChange={(event: any) =>
+							props.renderValue && props.renderValue(event.target.value)
+						}
 					/>
 				) : (
 					<input
@@ -90,8 +93,11 @@ export const FInputField = (props: FInputFieldProps) => {
 						type="text"
 						ref={inputRef}
 						maxLength={props.wordcount ? props.wordcount : undefined}
+						defaultValue={props.defaultValue ?? "Title"}
 						value={props.value!}
-						onChange={(event: any) => props.renderValue(event.target.value)}
+						onChange={(event: any) =>
+							props.renderValue && props.renderValue(event.target.value)
+						}
 					/>
 				)}
 			</div>

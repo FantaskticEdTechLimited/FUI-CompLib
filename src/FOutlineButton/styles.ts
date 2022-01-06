@@ -1,8 +1,8 @@
 import { style } from "typestyle";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { FOutlineButtonProps } from "./types";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
+import { FButtonProps } from "../global.types";
 
-export const FOutlineButtonContainer = (props: FOutlineButtonProps) =>
+export const FOutlineButtonContainer = (props: FButtonProps) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.PURE_WHITE,
