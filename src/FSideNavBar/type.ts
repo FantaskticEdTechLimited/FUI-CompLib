@@ -6,9 +6,9 @@ export interface FSideNavBarProps {
 	// control visibility of sideBar/topBar
 	visible: boolean;
 	// change close menu icon attributes
-	closeIconProps?: FIconProps
+	closeIconProps?: FIconProps;
 	// change open menu icon attributes
-	menuIconProps?: FIconProps
+	menuIconProps?: FIconProps;
 
 	// css style of side bar container
 	containerClassName?: string;
@@ -22,7 +22,7 @@ export interface FSideNavBarProps {
 	forcedToClose?: boolean;
 	// whether there is a logo on the nav bar
 	logo?: ReactNode;
-	
+
 	// css style of overlay container
 	overlayClassName?: string;
 	overlayStyle?: CSSProperties;
@@ -30,6 +30,6 @@ export interface FSideNavBarProps {
 	// css style and components of top nav bar
 	topBarStyle?: CSSProperties;
 	topBarClassName?: string;
-	topBarLeadingComponents?: ReactNode[];
-	topBarActionComponents?: ReactNode[];
+	topBarLeadingComponents?: ReactNode;
+	topBarActionComponents?: ReactNode;
 }

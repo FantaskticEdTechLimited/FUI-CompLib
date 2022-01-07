@@ -9,6 +9,7 @@ export const FTextContainer = (props: FTextProps) =>
 		font: props.font ?? FFontTypes.Small_Title,
 		overflow: "hidden",
 		textOverflow: "ellipsis",
+		whiteSpace: "pre-wrap",
 		display: props.maxRows && props.maxRows > 0 ? "-webkit-box" : "block",
 		"-webkit-line-clamp":
 			props.maxRows && props.maxRows > 0 ? props.maxRows : undefined,

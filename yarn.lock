@@ -12,13 +12,18 @@
   resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/0.0.3/9da828716fd18681ea4bc8abee18b4af3e05bece9ec4bc31d6453fca75a87c35#e52dc09883503e2cb14eb947eb7f713d793cf0c2"
   integrity sha512-t+O/9CnKjzKX05gUF7vGxMu0TbsPvfYhXleMvahFdTSflu5eAhiV/icHZM/pXT0ySJaOihfMOWdRPmTyOanQxA==
 
-"@fantaskticedtechlimited/fui-iconlib@^0.0.6":
-  version "0.0.6"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/0.0.6/26c11a47d083ca368a3921759de46a400d5a5a2774c7ef5f4e3c6c42bc4ec615#ec40375c265c12bf57ac757de8135312b2f02f06"
-  integrity sha512-BU84nQ9e4fe79PPaQva1G3oT5uI0LNsi0iLHmaZBja3zvyNFmqNkFVHKG+UL6iKD/VnS2AnIp7n6+qmmd4ynmA==
+"@fantaskticedtechlimited/fui-iconlib@^0.0.9":
+  version "0.0.9"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/0.0.9/def0df905faba43462f32da13d56a346e7c62ddc8551e39f9f4fda9bd6e624ca#47ffb9c5657c2e20420d32c67c67712bb62340f7"
+  integrity sha512-2tYZvrX3eCffG0OZVej3MhmEYpi6lAKbyJTJaPfnGeeiDEIdL5cBRYY7BZLfYu/FMN2NC3W3LjNAjo9HuZG5Ag==
   dependencies:
     "@fantaskticedtechlimited/fui-colorlib" "^0.0.2"
     typestyle "^2.2.0"
+
+"@types/history@*":
+  version "4.7.9"
+  resolved "https://registry.npmjs.org/@types/history/-/history-4.7.9.tgz#1cfb6d60ef3822c589f18e70f8b12f9a28ce8724"
+  integrity sha512-MUc6zSmU3tEVnkQ78q0peeEjKWPUADMlC/t++2bI8WnAG2tvYRPIgHG8lWkXwqc8MsUF6Z2MOf+Mh5sazOmhiQ==
 
 "@types/prop-types@*":
   version "15.7.4"
@@ -30,6 +35,23 @@
   resolved "https://registry.npmjs.org/@types/react-dom/-/react-dom-17.0.11.tgz#e1eadc3c5e86bdb5f7684e00274ae228e7bcc466"
   integrity sha512-f96K3k+24RaLGVu/Y2Ng3e1EbZ8/cVJvypZWd7cy0ofCBaf2lcM46xNhycMZ2xGwbBjRql7hOlZ+e2WlJ5MH3Q==
   dependencies:
+    "@types/react" "*"
+
+"@types/react-router-dom@^5.3.2":
+  version "5.3.2"
+  resolved "https://registry.npmjs.org/@types/react-router-dom/-/react-router-dom-5.3.2.tgz#ebd8e145cf056db5c66eb1dac63c72f52e8542ee"
+  integrity sha512-ELEYRUie2czuJzaZ5+ziIp9Hhw+juEw8b7C11YNA4QdLCVbQ3qLi2l4aq8XnlqM7V31LZX8dxUuFUCrzHm6sqQ==
+  dependencies:
+    "@types/history" "*"
+    "@types/react" "*"
+    "@types/react-router" "*"
+
+"@types/react-router@*":
+  version "5.1.17"
+  resolved "https://registry.npmjs.org/@types/react-router/-/react-router-5.1.17.tgz#087091006213b11042f39570e5cd414863693968"
+  integrity sha512-RNSXOyb3VyRs/EOGmjBhhGKTbnN6fHWvy5FNLzWfOWOGjgVUKqJZXfpKzLmgoU8h6Hj8mpALj/mbXQASOb92wQ==
+  dependencies:
+    "@types/history" "*"
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^17.0.38":

@@ -36,7 +36,9 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 				<div
 					style={props.topBarStyle}
 					className={
-						props.topBarClassName + " " + styles.FTopNavBarContainer(props)
+						props.topBarClassName +
+						" " +
+						styles.FTopNavBarContainer(props, screenWidth)
 					}
 				>
 					{props.logo ?? props.topBarLeadingComponents}
@@ -80,7 +82,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 						className={
 							props.contentDivClassName +
 							" " +
-							styles.FSideNavBarContentDiv(props)
+							styles.FSideNavBarContentDiv(props, screenWidth)
 						}
 					>
 						{screenWidth >= 1280 ? (

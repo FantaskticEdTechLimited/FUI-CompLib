@@ -37,16 +37,27 @@ export const FSideNavBarContainer = style({
 	zIndex: 20,
 });
 
-export const FSideNavBarContentDiv = (props: FSideNavBarProps) =>
+export const FSideNavBarContentDiv = (
+	props: FSideNavBarProps,
+	screenWidth: number
+) =>
 	style({
 		display: props.visible ? "flex" : "none",
 		flexDirection: "column",
 		overflowX: "hidden",
 		overflowY: "auto",
-		padding: "0.75rem 1.5rem",
+		padding:
+			screenWidth < 720
+				? "0.5rem 1rem"
+				: screenWidth < 1200
+				? "0.75rem 1.5rem"
+				: "1.5rem 1.5rem",
 	});
 
-export const FTopNavBarContainer = (props: FSideNavBarProps) =>
+export const FTopNavBarContainer = (
+	props: FSideNavBarProps,
+	screenWidth: number
+) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.BRAND,
@@ -56,7 +67,7 @@ export const FTopNavBarContainer = (props: FSideNavBarProps) =>
 		display: props.visible ? "flex" : "none",
 		flexDirection: "row",
 		justifyContent: "space-between",
-		padding: "0.75rem 1.5rem",
+		padding: screenWidth < 720 ? "0.5rem 1rem" : "0.75rem 1.5rem",
 		position: "fixed",
 		top: 0,
 		width: "100%",
