@@ -2,11 +2,10 @@ import { CSSProperties } from "react";
 import { Nullable } from "../global.types";
 
 export interface FInputFieldProps {
-	defaultValue?: string;
 	disabled?: boolean;
 	label?: string;
 	multiline?: boolean;
-	renderValue?: (value: Nullable<string>) => void;
+	renderValue?: (value: string) => void;
 	value?: Nullable<string>;
 	wordcount?: number;
 	

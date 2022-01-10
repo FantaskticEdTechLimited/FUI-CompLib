@@ -20,7 +20,7 @@ export const FSideNarBarOverlayContainer = (
 		top: 0,
 		transition: "all 0.2s ease-in-out",
 		visibility: screenWidth >= 1280 || isOpen ? "visible" : "hidden",
-		width: "100vw",
+		width: isOpen ? "100vw" : undefined,
 		zIndex: isOpen ? 20 : 10,
 	});
 
@@ -46,6 +46,8 @@ export const FSideNavBarContentDiv = (
 		flexDirection: "column",
 		overflowX: "hidden",
 		overflowY: "auto",
+		height: "100%",
+		boxSizing: "border-box",
 		padding:
 			screenWidth < 720
 				? "0.5rem 1rem"

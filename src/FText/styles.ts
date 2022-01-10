@@ -10,6 +10,7 @@ export const FTextContainer = (props: FTextProps) =>
 		overflow: "hidden",
 		textOverflow: "ellipsis",
 		whiteSpace: "pre-wrap",
+		wordBreak: "break-all",
 		display: props.maxRows && props.maxRows > 0 ? "-webkit-box" : "block",
 		"-webkit-line-clamp":
 			props.maxRows && props.maxRows > 0 ? props.maxRows : undefined,

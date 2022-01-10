@@ -33,7 +33,7 @@ export const FInputFieldDiv = (
 		flexDirection: "column",
 		justifyContent: props.multiline ? undefined : "center",
 		minHeight: props.multiline ? "7rem" : "3.5rem",
-		padding: isTriggered || isFilled ? "0.25rem 0.75rem" : "0.75rem",
+		padding: isTriggered || isFilled ? "0.25rem 0.25rem 0.25rem 0.75rem" : "0.75rem",
 		transition: "all 0.2s ease-in-out",
 	});
 
@@ -45,8 +45,10 @@ export const FInputFieldInputAreaDiv = (props: FInputFieldProps, state: boolean)
 		display: state ? "block" : "none",
 		font: props.multiline ? FFontTypes.Small_Title : FFontTypes.Large_Text,
 		outline: "none",
-		overflow: "hidden",
+		overflowX: "hidden",
+		overflowY: "auto",
 		padding: 0,
 		resize: "none",
 		width: "100%",
+		wordBreak: "break-all"
 	});
