@@ -19,7 +19,6 @@ import { FLinkButton } from "./FLinkButton";
 import {
 	FSideBarHandler,
 	FScreenSizeHandler,
-	FLinkButtonHandler,
 } from "./utils";
 
 export {
@@ -42,6 +41,5 @@ export {
 	FDropdown,
 	FScreenSizeHandler,
 	FSideBarHandler,
-	FLinkButtonHandler,
 	FLinkButton
 };

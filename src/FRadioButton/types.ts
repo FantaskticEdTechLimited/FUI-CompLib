@@ -12,7 +12,7 @@ export interface FRadioButtonProps {
 	disabled?: boolean;
 
 	// css style of FRadioButton svg path
-	fillColor?: FColorTypes;
-	strokeColor?: FColorTypes;
+	fillColor?: FColorTypes | string;
+	strokeColor?: FColorTypes | string;
 	strokeWidth?: number | string;
 }

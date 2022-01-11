@@ -16,8 +16,8 @@ export interface FSwitchButtonProps {
 	svgStyle?: CSSProperties;
 
 	// css style of FSwitchButton circle
-	circleColor?: FColorTypes;
-	circleBorderColor?: FColorTypes;
+	circleColor?: FColorTypes | string;
+	circleBorderColor?: FColorTypes | string;
 	circleStrokeWidth?: number | string;
 	circleCx?: number | string;
 	circleCy?: number | string;

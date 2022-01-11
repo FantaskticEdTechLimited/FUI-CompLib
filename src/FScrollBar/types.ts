@@ -7,9 +7,9 @@ export interface FScrollBarProps {
 	thumbBorder?: string;
 	thumbHoveredBorder?: string;
 	thumbBorderRadius?: number | string;
-	thumbFillColor?: FColorTypes;
-	thumbHoveredFillColor?: FColorTypes;
+	thumbFillColor?: FColorTypes | string;
+	thumbHoveredFillColor?: FColorTypes | string;
 	trackBorder?: string;
 	trackBorderRadius?: number | string;
-	trackFillColor?: FColorTypes;
+	trackFillColor?: FColorTypes | string;
 }

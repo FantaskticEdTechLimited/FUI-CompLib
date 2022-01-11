@@ -4,7 +4,7 @@ import { CSSProperties, ReactNode } from "react";
 
 export interface FTextProps {
 	children: ReactNode;
-	color?: FColorTypes;
+	color?: FColorTypes | string;
 	font?: FFontTypes;
 	className?: string;
 	maxRows?: number;

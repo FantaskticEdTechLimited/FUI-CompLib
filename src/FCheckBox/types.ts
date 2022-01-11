@@ -13,8 +13,8 @@ export interface FCheckBoxProps {
 	containerStyle?: CSSProperties;
 
 	// css style of FCheckBox svg path
-	borderColor?: FColorTypes;
-	fillColor?: FColorTypes;
-	iconColor?: FColorTypes;
+	borderColor?: FColorTypes | string;
+	fillColor?: FColorTypes | string;
+	iconColor?: FColorTypes | string;
 	strokeWidth?: number | string;
 }
