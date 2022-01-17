@@ -7,6 +7,7 @@ To install:
 To update:
 
 `yarn remove @fantaskticedtechlimited/fui-complib`
+
 `yarn add @fantaskticedtechlimited/fui-complib`
 
 or 
