@@ -4,6 +4,8 @@ import { ClearIcon } from "./svg/ClearIcon";
 import { SearchIcon } from "./svg/SearchIcon";
 import { FSearchBarProps } from "./types";
 
+// **** temp, may need change ****
+
 export const FSearchBar = (props: FSearchBarProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);

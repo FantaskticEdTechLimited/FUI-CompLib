@@ -1,5 +1,6 @@
 import { CSSProperties, ReactNode } from "react";
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib"; 
+import { FScrollBarProps } from "../FScrollBar/types";
 
 export interface FSideNavBarProps {
 	children: ReactNode;
@@ -32,4 +33,6 @@ export interface FSideNavBarProps {
 	topBarClassName?: string;
 	topBarLeadingComponents?: ReactNode;
 	topBarActionComponents?: ReactNode;
+	 
+	scrollBarProps?: FScrollBarProps;
 }

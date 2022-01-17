@@ -5,10 +5,9 @@ export const FSelectorWrapper = style({
 	position: "relative",
 	display: "flex",
 	flexDirection: "column",
-	zIndex: 25,
 });
 
-export const FSelectorContainer = (isClicked: boolean) =>
+export const FSelectorContainer = (isClicked: boolean, disabled: boolean) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.PURE_WHITE,
@@ -18,10 +17,11 @@ export const FSelectorContainer = (isClicked: boolean) =>
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		columnGap: "0.5rem",
-		cursor: "pointer",
+		cursor: disabled ? "not-allowed" : "pointer",
 		display: "flex",
 		flexDirection: "row",
-        justifyContent: "space-between",
+		justifyContent: "space-between",
+		opacity: disabled ? 0.4 : 1,
 		padding: "0.5rem",
 		$nest: {
 			"&:hover": {
@@ -38,18 +38,18 @@ export const FSelectorContainer = (isClicked: boolean) =>
 export const FSelectorContentDiv = style({
 	display: "flex",
 	flexDirection: "column",
+	flex: 1
 });
 
 export const FSelectorSelectedOptionDiv = style({
-	whiteSpace: "pre-wrap"
-})
+	whiteSpace: "pre-wrap",
+});
 
 export const FSelectorDropdownContainer = (
 	ref: React.RefObject<HTMLDivElement>,
 	isClicked: boolean
 ) =>
 	style({
-		zIndex: 1,
 		position: "absolute",
 		width: ref.current ? ref.current.offsetWidth : 0,
 		maxHeight: "20rem",

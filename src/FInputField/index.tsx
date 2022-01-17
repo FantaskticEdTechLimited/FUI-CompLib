@@ -23,7 +23,7 @@ export const FInputField = (props: FInputFieldProps) => {
 	useLayoutEffect(() => {
 		handleTextareaHeight();
 		setIsTriggered(true);
-	}, [props.value]);
+	}, [props.inputValue]);
 
 	useEffect(() => {
 		if (isTriggered && inputRef.current) inputRef.current.focus();
@@ -50,7 +50,7 @@ export const FInputField = (props: FInputFieldProps) => {
 				}}
 				onBlur={() => {
 					setIsTriggered(false);
-					if (props.value === "") setIsFilled(false);
+					if (props.inputValue === "") setIsFilled(false);
 					else setIsFilled(true);
 				}}
 			>
@@ -66,6 +66,9 @@ export const FInputField = (props: FInputFieldProps) => {
 								? FColorTypes.BLACK
 								: FColorTypes.GREY
 						}
+						style={props.labelStyle}
+						className={props.labelClassName}
+						{...props.labelProps}
 					>
 						{props.label}
 					</FText>
@@ -78,13 +81,18 @@ export const FInputField = (props: FInputFieldProps) => {
 							" " +
 							styles.FInputFieldInputAreaDiv(props, isTriggered || isFilled) +
 							" " +
-							FScrollBarStyle({ visible: true })
+							FScrollBarStyle({
+								visible: true,
+								...props.scrollBarProps,
+							})
 						}
 						ref={textareaRef}
-						maxLength={props.wordcount ? props.wordcount : undefined}
-						value={props.value ?? "Title"}
+						maxLength={props.wordCount ? props.wordCount : undefined}
+						value={props.inputValue ?? ""}
+						placeholder={props.label ? undefined : props.placeholder ?? "Input"}
 						onChange={(event: any) => {
-							props.renderValue && props.renderValue(event.target.value);
+							props.renderInputValue &&
+								props.renderInputValue(event.target.inputValue);
 							event.preventDefault();
 						}}
 					/>
@@ -98,10 +106,12 @@ export const FInputField = (props: FInputFieldProps) => {
 						}
 						type="text"
 						ref={inputRef}
-						maxLength={props.wordcount ? props.wordcount : undefined}
-						value={props.value ?? "Title"}
+						maxLength={props.wordCount ? props.wordCount : undefined}
+						value={props.inputValue ?? ""}
+						placeholder={props.label ? undefined : props.placeholder ?? "Input"}
 						onChange={(event: any) =>
-							props.renderValue && props.renderValue(event.target.value)
+							props.renderInputValue &&
+							props.renderInputValue(event.target.inputValue)
 						}
 					/>
 				)}
@@ -115,9 +125,15 @@ export const FInputField = (props: FInputFieldProps) => {
 						? FColorTypes.BLACK
 						: FColorTypes.GREY
 				}
-				style={{ textAlign: "right" }}
+				style={props.wordCountStyle}
+				className={
+					props.wordCountClassName + " " + styles.FInputFieldWordCountDiv
+				}
+				{...props.wordCountProps}
 			>
-				{props.wordcount ? `${props.value!.length}/${props.wordcount}` : ""}
+				{props.wordCount && props.wordCount > 0 && props.inputValue
+					? `${props.inputValue.length}/${props.wordCount}`
+					: ""}
 			</FText>
 		</div>
 	);

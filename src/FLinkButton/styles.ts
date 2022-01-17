@@ -20,5 +20,4 @@ export const FLinkButtonContainer = (isSelected: boolean, disabled: boolean) =>
 
 export const FLinkButtonLabel = style({
 	flexGrow: 1,
-	whiteSpace: "pre-wrap",
 });

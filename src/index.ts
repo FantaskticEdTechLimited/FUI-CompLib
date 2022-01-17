@@ -1,3 +1,4 @@
+import { FSideBarHandler, FScreenSizeHandler } from "./utils";
 import { FText } from "./FText";
 import { FInputField } from "./FInputField";
 import { FPrimaryButton } from "./FPrimaryButton";
@@ -16,10 +17,8 @@ import { FSideNavBar } from "./FSideNavBar";
 import { FSelector } from "./FSelector";
 import { FDropdown } from "./FDropdown";
 import { FLinkButton } from "./FLinkButton";
-import {
-	FSideBarHandler,
-	FScreenSizeHandler,
-} from "./utils";
+import { FTag } from "./FTag";
+import { FTagInputField } from "./FTagInputField";
 
 export {
 	FText,
@@ -41,5 +40,7 @@ export {
 	FDropdown,
 	FScreenSizeHandler,
 	FSideBarHandler,
-	FLinkButton
+	FLinkButton,
+	FTag,
+	FTagInputField
 };

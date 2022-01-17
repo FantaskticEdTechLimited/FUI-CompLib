@@ -15,14 +15,20 @@ export const FDropdownContainer = style({
 	backgroundColor: FColorTypes.PURE_WHITE,
 });
 
-export const FDropdownOptionDiv = (isSelected: boolean) =>
+export const FDropdownOptionDiv = (
+	pressCount: number,
+	index: number,
+	isSelected: boolean
+) =>
 	style({
+		backgroundColor:	
+			pressCount - index === 1 ? FColorTypes.PURPLE_BG : "inherit",
+		cursor: isSelected ? "not-allowed" : "pointer",
 		$nest: {
 			"&:hover": {
 				$nest: {
 					"&> div": {
-						color: isSelected ? FColorTypes.GREY : FColorTypes.BRAND,
-						cursor: isSelected ? "not-allowed" : "pointer",
+						color: FColorTypes.BRAND,
 					},
 				},
 			},

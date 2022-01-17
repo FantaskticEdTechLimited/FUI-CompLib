@@ -1,14 +1,16 @@
 import { CSSProperties } from "react";
-import { Nullable } from "../global.types";
+import { FScrollBarProps } from "../FScrollBar/types";
+import { FTextProps } from "../global.types";
 
 export interface FInputFieldProps {
 	disabled?: boolean;
 	label?: string;
+	placeholder?: string;
 	multiline?: boolean;
-	renderValue?: (value: string) => void;
-	value?: Nullable<string>;
-	wordcount?: number;
-	
+	renderInputValue?: (data: string) => void;
+	inputValue?: string;
+	wordCount?: number;
+
 	// css style of InputField container with wordcount container
 	containerClassName?: string;
 	containerStyle?: CSSProperties;
@@ -21,4 +23,15 @@ export interface FInputFieldProps {
 	inputAreaClassName?: string;
 	inputAreaStyle?: CSSProperties;
 
+	// css style of label
+	labelClassName?: string;
+	labelStyle?: CSSProperties; 
+	labelProps?: FTextProps;
+
+	// css style of wordCount
+	wordCountClassName?: string;
+	wordCountStyle?: CSSProperties; 
+	wordCountProps?: FTextProps;
+ 
+	scrollBarProps?: FScrollBarProps;
 }

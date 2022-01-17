@@ -12,7 +12,9 @@ export const FSwitchButton = (props: FSwitchButtonProps) => {
 			className={
 				props.containerClassName + " " + styles.FSwitchButtonDiv(props, checked)
 			}
-			onClick={() => (props.disabled ? undefined : props.onClick!())}
+			onClick={() =>
+				props.disabled ? undefined : props.onClick && props.onClick()
+			}
 		>
 			<svg
 				style={props.svgStyle}

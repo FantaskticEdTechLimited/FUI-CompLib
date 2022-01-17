@@ -14,18 +14,25 @@ export const FScrollBarStyle = (props: FScrollBarProps) =>
 			"&::-webkit-scrollbar-track": {
 				borderRadius: props.trackBorderRadius ?? "0.625rem",
 				backgroundColor: props.trackFillColor ?? "transparent",
-				border: props.trackBorder ?? "0.0625rem solid transparent",
+				borderWidth: props.trackBorderWidth ?? "0.0625rem",
+				borderStyle: "solid",
+				borderColor: props.trackBorderColor ?? "transparent",
+				border: props.trackBorder,
 			},
 			"&::-webkit-scrollbar-thumb": {
 				borderRadius: props.thumbBorderRadius ?? "0.625rem",
 				backgroundColor: props.thumbFillColor ?? FColorTypes.GREY,
-				border: props.thumbBorder ?? "0.0625rem solid " + FColorTypes.GREY,
+				borderWidth: props.thumbBorderWidth ?? "0.0625rem",
+				borderStyle: "solid",
+				borderColor: props.thumbBorderColor ?? FColorTypes.GREY,
+				border: props.thumbBorder,
 			},
 			"&::-webkit-scrollbar-thumb:hover": {
 				backgroundColor: props.thumbHoveredFillColor ?? FColorTypes.DARK_GREY,
-				border:
-					props.thumbHoveredBorder ??
-					"0.0625rem solid " + FColorTypes.DARK_GREY,
+				borderWidth: props.thumbHoveredBorderWidth ?? "0.0625rem",
+				borderStyle: "solid",
+				borderColor: props.thumbHoveredBorderColor ?? FColorTypes.DARK_GREY,
+				border: props.thumbHoveredBorder,
 			},
 		},
 	});

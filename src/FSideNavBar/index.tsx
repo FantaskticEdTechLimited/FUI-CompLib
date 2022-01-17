@@ -1,9 +1,9 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useState, useEffect, useRef } from "react";
 import { FScreenSizeHandler, FScrollBarStyle } from "..";
-import * as styles from "./style";
-import { FSideNavBarProps } from "./type";
+import * as styles from "./styles";
+import { FSideNavBarProps } from "./types";
 
 export const FSideNavBar = (props: FSideNavBarProps) => {
 	const [screenWidth] = FScreenSizeHandler();
@@ -71,9 +71,12 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 					className={
 						props.containerClassName +
 						" " +
-						styles.FSideNavBarContainer +
+						styles.FSideNavBarContainer(openSideBar, screenWidth) +
 						" " +
-						FScrollBarStyle({ visible: true })
+						FScrollBarStyle({
+							visible: true,
+							...props.scrollBarProps,
+						})
 					}
 					ref={screenWidth >= 1280 ? undefined : OpenedSideNavBarRef}
 				>

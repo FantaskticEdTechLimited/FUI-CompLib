@@ -1,13 +1,13 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
-import { Link } from "react-router-dom"; 
+import { Link } from "react-router-dom";
 import { FText } from "..";
 import * as styles from "./styles";
 import { FLinkButtonProps } from "./types";
 
-export const FLinkButton = (props: FLinkButtonProps) => { 
-	const isSelected = props.pathIsSelected
+export const FLinkButton = (props: FLinkButtonProps) => {
+	const isSelected = props.pathIsSelected;
 
 	return (
 		<Link
@@ -18,17 +18,15 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 				styles.FLinkButtonContainer(isSelected!, props.disabled!)
 			}
 			to={props.pathLink!}
-			onClick={() => (props.disabled ? () => {} : props.onClick!())}
+			onClick={() =>
+				props.disabled ? () => {} : props.onClick && props.onClick()
+			}
 		>
 			{props.children ?? (
 				<>
 					{props.leadingComponent ?? (
 						<FIcon
-							strokeColor={
-								isSelected
-									? FColorTypes.BRAND
-									: FColorTypes.BLACK
-							}
+							strokeColor={isSelected ? FColorTypes.BRAND : FColorTypes.BLACK}
 							{...props.leadingIcon}
 						/>
 					)}
@@ -37,6 +35,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 						className={props.labelClassName + " " + styles.FLinkButtonLabel}
 						color={isSelected ? FColorTypes.BRAND : FColorTypes.BLACK}
 						children={props.label}
+						{...props.labelProps}
 					/>
 					{props.actionComponent
 						? props.actionComponent
@@ -45,9 +44,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 									name={FIconTypes.ARROW_DOWN}
 									size="small"
 									strokeColor={
-										isSelected
-											? FColorTypes.BRAND
-											: FColorTypes.BLACK
+										isSelected ? FColorTypes.BRAND : FColorTypes.BLACK
 									}
 									{...props.actionIcon}
 								/>

@@ -12,7 +12,9 @@ export const FSecondaryButton = (props: FButtonProps) => {
 			className={
 				props.className + " " + styles.FSecondaryButtonContainer(props)
 			}
-			onClick={() => (props.disabled ? undefined : props.onClick!())}
+			onClick={() =>
+				props.disabled ? undefined : props.onClick && props.onClick()
+			}
 		>
 			{props.children ?? (
 				<FText
@@ -21,6 +23,7 @@ export const FSecondaryButton = (props: FButtonProps) => {
 					style={props.labelStyle}
 					className={props.labelClassName}
 					children={props.label ?? "Button_Text"}
+					{...props.labelProps}
 				/>
 			)}
 		</div>

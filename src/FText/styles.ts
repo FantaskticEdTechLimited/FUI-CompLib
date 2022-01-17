@@ -1,7 +1,7 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { style } from "typestyle";
-import { FTextProps } from "./types";
+import { style } from "typestyle"; 
+import { FTextProps } from "../global.types";
 
 export const FTextContainer = (props: FTextProps) =>
 	style({

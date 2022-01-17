@@ -10,7 +10,9 @@ export const FRadioButton = (props: FRadioButtonProps) => {
 		<svg
 			style={props.containerStyle}
 			className={props.containerClassName + " " + styles.FRadioButtonDiv(props)}
-			onClick={() => (props.disabled ? undefined : props.onClick!())}
+			onClick={() =>
+				props.disabled ? undefined : props.onClick && props.onClick()
+			}
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"

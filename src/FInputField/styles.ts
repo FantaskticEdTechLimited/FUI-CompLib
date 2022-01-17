@@ -8,7 +8,7 @@ export const FInputFieldContainer = (props: FInputFieldProps) =>
 		backgroundColor: FColorTypes.PURE_WHITE,
 		display: "flex",
 		flexDirection: "column",
-		rowGap: props.wordcount ? "0.25rem" : 0,
+		rowGap: props.wordCount ? "0.25rem" : 0,
 		width: "100%",
 	});
 
@@ -52,3 +52,7 @@ export const FInputFieldInputAreaDiv = (props: FInputFieldProps, state: boolean)
 		width: "100%",
 		wordBreak: "break-all"
 	});
+
+export const FInputFieldWordCountDiv = style({
+	textAlign: "right"
+})

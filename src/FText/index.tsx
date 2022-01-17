@@ -1,14 +1,13 @@
 import React from "react";
+import { FTextProps } from "../global.types";
 import * as styles from "./styles";
-import { FTextProps } from "./types";
 
 export const FText = (props: FTextProps) => {
 	return (
 		<div
 			className={props.className + " " + styles.FTextContainer(props)}
 			style={props.style}
-		>
-			{props.children}
-		</div>
+			children={props.children ?? "Text"}
+		/>
 	);
 };

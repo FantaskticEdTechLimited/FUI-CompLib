@@ -6,6 +6,14 @@ import React from "react";
 import { FScrollBarStyle, FText } from "..";
 
 export const FDropdown = (props: FDropdownProps<any>) => {
+	const compareSelectedOption =
+		props.compareSelectedOption ?? props.customizedCompareSelectedOption
+			? false
+			: true; //default true
+
+	const hideSelectedOptions = props.hideSelectedOptions ?? true;
+	const pressCount = props.arrowKeyPressCount ?? 0;
+
 	return (
 		<div
 			style={props.dropdownContainerStyle}
@@ -14,14 +22,47 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 				" " +
 				styles.FDropdownContainer +
 				" " +
-				FScrollBarStyle({ visible: true })
+				FScrollBarStyle({
+					visible: true,
+					...props.scrollBarProps,
+				})
 			}
 		>
 			{props.options.map((option: any, index: number) => {
-				const isSelected = props.compareSelectedOption
-					? option === props.selectedOption
-					: props.customizedCompareSelectedOption &&
-					  props.customizedCompareSelectedOption(option, props.selectedOption);
+				let isSelected = false;
+				if (props.selectedOptions) {
+					if (compareSelectedOption) {
+						if (
+							Array.isArray(props.selectedOptions) &&
+							props.selectedOptions.length > 1
+						) {
+							props.selectedOptions.map((selectedoption: any) => {
+								if (option === selectedoption) {
+									isSelected = true;
+									return;
+								}
+							});
+						}
+						// if selectedOptions is not an array, or only one
+						else {
+							if (option === props.selectedOptions) {
+								isSelected = true;
+								return;
+							}
+						}
+					} else {
+						isSelected =
+							props.customizedCompareSelectedOption !== undefined &&
+							props.customizedCompareSelectedOption(
+								option,
+								props.selectedOptions
+							);
+					}
+				}
+				if (hideSelectedOptions && isSelected) return;
+
+				if (props.renderArrowKeySelectedOption && pressCount - index === 1)
+					props.renderArrowKeySelectedOption(option);
 
 				return (
 					<div
@@ -30,10 +71,14 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 						className={
 							props.optionDivClassName +
 							" " +
-							styles.FDropdownOptionDiv(isSelected!)
+							styles.FDropdownOptionDiv(
+								pressCount,
+								index,
+								hideSelectedOptions ? false : isSelected
+							)
 						}
 						onClick={() => {
-							props.onSelect(option);
+							props.onSelect && props.onSelect(option, isSelected);
 						}}
 					>
 						{props.renderCustomizedOption ? (
@@ -41,13 +86,32 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 						) : (
 							<FText
 								font={FFontTypes.Large_Text}
-								color={isSelected ? FColorTypes.GREY : FColorTypes.BLACK}
-								style={props.optionTextStyle}
-								className={props.optionTextClassName}
+								color={
+									isSelected ||
+									option === null ||
+									(option !== null && option.length === 0)
+										? FColorTypes.GREY
+										: FColorTypes.BLACK
+								}
+								style={
+									option !== null && option.length > 0
+										? props.optionTextStyle
+										: props.emptyOptionTextStyle
+								}
+								className={
+									option !== null && option.length > 0
+										? props.optionTextClassName
+										: props.emptyOptionTextClassName
+								}
+								{...(option !== null && option.length > 0
+									? props.optionTextProps
+									: props.emptyOptionTextProps)}
 							>
-								{props.renderOptionNameOnly
-									? props.renderOptionNameOnly(option)
-									: option}
+								{option !== null && option.length > 0
+									? props.renderOptionNameOnly
+										? props.renderOptionNameOnly(option)
+										: option
+									: props.emptyOptionHintLabel ?? "No option data"}
 							</FText>
 						)}
 					</div>

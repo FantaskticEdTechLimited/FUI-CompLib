@@ -1,41 +1,35 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
 import { FText } from "..";
 import { FDropdown } from "../FDropdown";
 import * as styles from "./styles";
-import { FSelectorProps } from "./type";
+import { FSelectorProps } from "./types";
 
 export const FSelector = (props: FSelectorProps<any>) => {
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
 	const FSelectorWithDropdownRef = useRef<HTMLDivElement>(null);
 
-	const handleDropdownClose = () => {
+	const handleSelectedOption = async (
+		_selectedOption: any,
+		selected: boolean
+	) => {
+		await props.onSelect(_selectedOption, selected);
 		setOpenDropdown(false);
 	};
 
-	const handleSelectedOption = async (_selectedOption: any) => {
-		await props.onSelect(_selectedOption);
-		handleDropdownClose();
-	};
-
 	const handleClearSelectedOption = () => {
-		if (props.onClear) {
-			props.onClear();
-		} else {
-			props.onSelect(null);
-		}
-		handleDropdownClose();
+		if (props.onClear) props.onClear();
+		setOpenDropdown(false);
 	};
 
 	const handleClickOutside = (event: any) => {
 		if (
 			FSelectorWithDropdownRef.current &&
 			!FSelectorWithDropdownRef.current.contains(event.target)
-		) {
-			handleDropdownClose();
-		}
+		)
+			setOpenDropdown(false);
 	};
 
 	useEffect(() => {
@@ -56,19 +50,21 @@ export const FSelector = (props: FSelectorProps<any>) => {
 				className={
 					props.selectorContainerClassName +
 					" " +
-					styles.FSelectorContainer(openDropdown)
+					styles.FSelectorContainer(openDropdown, props.disabled!)
 				}
-				onClick={() => setOpenDropdown(!openDropdown)}
 			>
 				<div
 					style={props.contentDivStyle}
 					className={
 						props.contentDivClassName + " " + styles.FSelectorContentDiv
 					}
+					onClick={() =>
+						props.disabled ? undefined : setOpenDropdown(!openDropdown)
+					}
 				>
-					{props.selectedOption !== null &&
+					{props.selectedOptions !== null &&
 					props.renderCustomizedSelectedOption ? (
-						props.renderCustomizedSelectedOption(props.selectedOption)
+						props.renderCustomizedSelectedOption(props.selectedOptions)
 					) : (
 						<>
 							<FText
@@ -77,11 +73,13 @@ export const FSelector = (props: FSelectorProps<any>) => {
 								children={props.label ?? "Title"}
 								style={props.labelStyle}
 								className={props.labelClassName}
+								{...props.labelProps}
 							/>
 							<FText
 								font={FFontTypes.Large_Text}
 								color={
-									props.selectedOption === null
+									props.selectedOptions === null ||
+									props.selectedOptions.length === 0
 										? FColorTypes.GREY
 										: FColorTypes.BLACK
 								}
@@ -91,32 +89,36 @@ export const FSelector = (props: FSelectorProps<any>) => {
 									" " +
 									styles.FSelectorSelectedOptionDiv
 								}
+								{...props.selectedOptionProps}
 							>
-								{props.selectedOption === null
-									? props.placeholder
+								{props.selectedOptions === null
+									? props.placeholder ?? "Select an option"
 									: props.renderSelectedOptionNameOnly
-									? props.renderSelectedOptionNameOnly(props.selectedOption)
-									: props.renderOptionNameOnly
-									? props.renderOptionNameOnly(props.selectedOption)
-									: props.selectedOption}
+									? props.renderSelectedOptionNameOnly(props.selectedOptions)
+									: props.selectedOptions && props.selectedOptions.length > 0
+									? props.selectedOptions
+									: props.placeholder ?? "Select an option"}
 							</FText>
 						</>
 					)}
 				</div>
 				{props.iconComponent ? (
 					props.iconComponent
-				) : !props.selectedOption ? (
+				) : !props.selectedOptions ? (
 					<FIcon
 						name={FIconTypes.RANKING}
 						strokeColor={
 							openDropdown ? FColorTypes.BLACK : FColorTypes.LIGHT_GREY
 						}
 						size="small"
+						onClick={() =>
+							props.disabled ? undefined : setOpenDropdown(!openDropdown)
+						}
 						{...props.dropdownArrowIconProps}
 					/>
 				) : (
-					props.canClear &&
-					props.selectedOption && (
+					props.onClear &&
+					props.selectedOptions && (
 						<FIcon
 							name={FIconTypes.CLOSE}
 							strokeColor={
@@ -141,41 +143,14 @@ export const FSelector = (props: FSelectorProps<any>) => {
 						)
 					}
 				>
-					{props.dropdownComponent ? (
-						<props.dropdownComponent
-							options={props.options}
-							selectedOption={props.selectedOption}
-							onSelect={handleSelectedOption}
-							compareSelectedOption={props.compareSelectedOption}
-							customizedCompareSelectedOption={
-								props.customizedCompareSelectedOption
-							}
-							renderOptionNameOnly={props.renderOptionNameOnly}
-							renderCustomizedOption={props.renderCustomizedOption}
-							dropdownContainerClassName={props.dropdownContainerClassName}
-							dropdownContainerStyle={props.dropdownContainerStyle}
-							optionDivClassName={props.optionDivClassName}
-							optionDivStyle={props.optionDivStyle}
-							optionTextClassName={props.optionTextClassName}
-							optionTextStyle={props.optionTextStyle}
-						/>
-					) : (
+					{props.dropdownComponent ?? (
 						<FDropdown
 							options={props.options}
-							selectedOption={props.selectedOption}
+							selectedOptions={props.selectedOptions}
 							onSelect={handleSelectedOption}
-							compareSelectedOption={props.compareSelectedOption}
-							customizedCompareSelectedOption={
-								props.customizedCompareSelectedOption
-							}
-							renderOptionNameOnly={props.renderOptionNameOnly}
-							renderCustomizedOption={props.renderCustomizedOption}
 							dropdownContainerClassName={props.dropdownContainerClassName}
 							dropdownContainerStyle={props.dropdownContainerStyle}
-							optionDivClassName={props.optionDivClassName}
-							optionDivStyle={props.optionDivStyle}
-							optionTextClassName={props.optionTextClassName}
-							optionTextStyle={props.optionTextStyle}
+							{...props.dropdownProps} 
 						/>
 					)}
 				</div>

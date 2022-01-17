@@ -9,31 +9,38 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 			style={props.navBarStyle}
 			className={props.navBarClassName + " " + styles.FBottomNavBarContainer}
 		>
-			{
-				props.children ??
+			{props.children ?? (
 				<>
-				<FTextButton
-					disabled={props.disableLeadingButton}
-					label={props.leadingButtonLabel ?? "Cancel"}
-					onClick={() =>
-						props.disableLeadingButton ? () => {} : props.onLeadingButtonClick!()
-					}
-					style={props.leadingButtonStyle}
-					className={
-						props.leadingButtonClassName + " " + styles.FLeadingButtonDiv
-					}
-				/>
-				<FPrimaryButton
-					disabled={props.disableActionButton}
-					label={props.actionButtonLabel ?? "Next"}
-					onClick={() =>
-						props.disableActionButton ? () => {} : props.onActionButtonClick!()
-					}
-					style={props.actionButtonStyle}
-					className={props.actionButtonClassName + " " + styles.FActionButtonDiv}
-				/>
+					<FTextButton
+						disabled={props.disableLeadingButton}
+						label={props.leadingButtonLabel ?? "Cancel"}
+						onClick={() =>
+							props.disableLeadingButton
+								? () => {}
+								: props.onLeadingButtonClick!()
+						}
+						style={props.leadingButtonStyle}
+						className={
+							props.leadingButtonClassName + " " + styles.FLeadingButtonDiv
+						}
+						{...props.leadingButtonProps}
+					/>
+					<FPrimaryButton
+						disabled={props.disableActionButton}
+						label={props.actionButtonLabel ?? "Next"}
+						onClick={() =>
+							props.disableActionButton
+								? () => {}
+								: props.onActionButtonClick!()
+						}
+						style={props.actionButtonStyle}
+						className={
+							props.actionButtonClassName + " " + styles.FActionButtonDiv
+						}
+						{...props.actionButtonProps}
+					/>
 				</>
-			}
+			)}
 		</div>
 	);
 };
