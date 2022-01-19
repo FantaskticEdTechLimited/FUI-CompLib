@@ -23,9 +23,10 @@ export const FButton = (props: FButtonProps) => {
 					color={
 						props.type === FButtonTypes.PRIMARY
 							? FColorTypes.PURE_WHITE
-							: props.type === FButtonTypes.TEXT
-							? FColorTypes.BLACK
-							: FColorTypes.BRAND
+							: props.type === FButtonTypes.OUTLINE ||
+							  props.type === FButtonTypes.SECONDARY
+							? FColorTypes.BRAND
+							: FColorTypes.BLACK
 					}
 					style={props.labelStyle}
 					className={props.labelClassName}
