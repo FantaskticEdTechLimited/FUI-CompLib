@@ -8,6 +8,7 @@ export interface FInputFieldProps {
 	placeholder?: string;
 	multiline?: boolean;
 	renderInputValue?: (data: string) => void;
+	// input value cannot be null
 	inputValue?: string;
 	wordCount?: number;
 
@@ -25,13 +26,13 @@ export interface FInputFieldProps {
 
 	// css style of label
 	labelClassName?: string;
-	labelStyle?: CSSProperties; 
+	labelStyle?: CSSProperties;
 	labelProps?: FTextProps;
 
 	// css style of wordCount
 	wordCountClassName?: string;
-	wordCountStyle?: CSSProperties; 
+	wordCountStyle?: CSSProperties;
 	wordCountProps?: FTextProps;
- 
+
 	scrollBarProps?: FScrollBarProps;
 }

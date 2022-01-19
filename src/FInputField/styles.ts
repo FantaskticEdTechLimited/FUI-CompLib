@@ -50,7 +50,12 @@ export const FInputFieldInputAreaDiv = (props: FInputFieldProps, state: boolean)
 		padding: 0,
 		resize: "none",
 		width: "100%",
-		wordBreak: "break-all"
+		wordBreak: "break-all",
+		$nest:{
+			"&::placeholder":{
+				color: FColorTypes.LIGHT_GREY
+			}
+		}
 	});
 
 export const FInputFieldWordCountDiv = style({

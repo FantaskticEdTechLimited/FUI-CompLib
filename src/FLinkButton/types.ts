@@ -1,7 +1,7 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { ReactElement } from "react";
-import { FSVGIconProps } from "../FSVGIcon/types";
-import { FButtonProps } from "../global.types";
+import { FButtonProps } from "../FButton/types";
+import { FSVGIconProps } from "../FSVGIcon/types"; 
 
 
 export interface FLinkButtonProps extends FButtonProps {

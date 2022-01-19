@@ -1,7 +1,8 @@
 import { FBottomNavBarProps } from "./types";
 import * as styles from "./styles";
 import React from "react";
-import { FPrimaryButton, FTextButton } from "..";
+import { FButton } from "..";
+import { FButtonTypes } from "../FButton/types";
 
 export const FBottomNavBar = (props: FBottomNavBarProps) => {
 	return (
@@ -11,7 +12,8 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 		>
 			{props.children ?? (
 				<>
-					<FTextButton
+					<FButton
+						type={FButtonTypes.TEXT}
 						disabled={props.disableLeadingButton}
 						label={props.leadingButtonLabel ?? "Cancel"}
 						onClick={() =>
@@ -25,7 +27,8 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						}
 						{...props.leadingButtonProps}
 					/>
-					<FPrimaryButton
+					<FButton
+						type={FButtonTypes.PRIMARY}
 						disabled={props.disableActionButton}
 						label={props.actionButtonLabel ?? "Next"}
 						onClick={() =>

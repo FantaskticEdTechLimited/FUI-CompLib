@@ -9,20 +9,9 @@ export type OnClickFunction<T> = (data?: T) => void;
 export interface FTextProps {
 	children?: ReactNode;
 	color?: FColorTypes | string;
-	font?: FFontTypes;
+	font?: FFontTypes | string;
 	className?: string;
 	maxRows?: number;
 	style?: CSSProperties;
 }
 
-export interface FButtonProps {
-	children?: ReactNode;
-	className?: string;
-	disabled?: boolean;
-	label?: string;
-	onClick?: OnClickFunction<void>;
-	style?: CSSProperties;
-	labelClassName?: string;
-	labelStyle?: CSSProperties;
-	labelProps?: FTextProps
-}

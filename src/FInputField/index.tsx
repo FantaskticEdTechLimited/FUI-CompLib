@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import * as styles from "./styles";
-import { FInputFieldProps } from "./types";
+import { FInputFieldProps } from "./types"; 
 import { FScrollBarStyle, FText } from "..";
 
 export const FInputField = (props: FInputFieldProps) => {
@@ -21,8 +21,10 @@ export const FInputField = (props: FInputFieldProps) => {
 	};
 
 	useLayoutEffect(() => {
-		handleTextareaHeight();
-		setIsTriggered(true);
+		if (props.inputValue && props.inputValue.length > 0) {
+			handleTextareaHeight();
+			setIsTriggered(true);
+		}
 	}, [props.inputValue]);
 
 	useEffect(() => {
@@ -79,7 +81,10 @@ export const FInputField = (props: FInputFieldProps) => {
 						className={
 							props.inputAreaClassName +
 							" " +
-							styles.FInputFieldInputAreaDiv(props, isTriggered || isFilled) +
+							styles.FInputFieldInputAreaDiv(
+								props,
+								isTriggered || isFilled || props.label === undefined
+							) +
 							" " +
 							FScrollBarStyle({
 								visible: true,
@@ -88,11 +93,11 @@ export const FInputField = (props: FInputFieldProps) => {
 						}
 						ref={textareaRef}
 						maxLength={props.wordCount ? props.wordCount : undefined}
-						value={props.inputValue ?? ""}
-						placeholder={props.label ? undefined : props.placeholder ?? "Input"}
+						value={props.inputValue}
+						placeholder={props.placeholder ?? "Input"}
 						onChange={(event: any) => {
 							props.renderInputValue &&
-								props.renderInputValue(event.target.inputValue);
+								props.renderInputValue(event.target.value);
 							event.preventDefault();
 						}}
 					/>
@@ -102,16 +107,19 @@ export const FInputField = (props: FInputFieldProps) => {
 						className={
 							props.inputAreaClassName +
 							" " +
-							styles.FInputFieldInputAreaDiv(props, isTriggered || isFilled)
+							styles.FInputFieldInputAreaDiv(
+								props,
+								isTriggered || isFilled || props.label === undefined
+							)
 						}
 						type="text"
 						ref={inputRef}
 						maxLength={props.wordCount ? props.wordCount : undefined}
-						value={props.inputValue ?? ""}
-						placeholder={props.label ? undefined : props.placeholder ?? "Input"}
+						value={props.inputValue}
+						placeholder={props.placeholder ?? "Input"}
 						onChange={(event: any) =>
 							props.renderInputValue &&
-							props.renderInputValue(event.target.inputValue)
+							props.renderInputValue(event.target.value)
 						}
 					/>
 				)}

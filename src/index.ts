@@ -1,10 +1,7 @@
 import { FSideBarHandler, FScreenSizeHandler } from "./utils";
 import { FText } from "./FText";
 import { FInputField } from "./FInputField";
-import { FPrimaryButton } from "./FPrimaryButton";
-import { FSecondaryButton } from "./FSecondaryButton";
-import { FOutlineButton } from "./FOutlineButton";
-import { FTextButton } from "./FTextButton";
+import { FButton } from "./FButton";
 import { FBottomNavBar } from "./FBottomNavBar";
 import { FPopUp } from "./FPopUp";
 import { FSwitchButton } from "./FSwitchButton";
@@ -23,10 +20,7 @@ import { FTagInputField } from "./FTagInputField";
 export {
 	FText,
 	FInputField,
-	FPrimaryButton,
-	FSecondaryButton,
-	FOutlineButton,
-	FTextButton,
+	FButton,
 	FBottomNavBar,
 	FPopUp,
 	FSwitchButton,
