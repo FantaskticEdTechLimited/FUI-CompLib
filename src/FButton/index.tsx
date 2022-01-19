@@ -14,22 +14,26 @@ export const FButton = (props: FButtonProps) => {
 				props.disabled ? undefined : props.onClick && props.onClick()
 			}
 		>
-			{props.children}
-			{props.leadingComponents} 
-			<FText
-				font={FFontTypes.Large_Text}
-				color={
-					props.type === FButtonTypes.PRIMARY
-						? FColorTypes.PURE_WHITE
-						: props.type === FButtonTypes.TEXT
-						? FColorTypes.BLACK
-						: FColorTypes.BRAND
-				}
-				style={props.labelStyle}
-				className={props.labelClassName}
-				children={props.label ?? "Button_Text"}
-				{...props.labelProps}
-			/>
+			{props.leadingComponents}
+			{props.children ? (
+				props.children
+			) : (
+				<FText
+					font={FFontTypes.Large_Text}
+					color={
+						props.type === FButtonTypes.PRIMARY
+							? FColorTypes.PURE_WHITE
+							: props.type === FButtonTypes.TEXT
+							? FColorTypes.BLACK
+							: FColorTypes.BRAND
+					}
+					style={props.labelStyle}
+					className={props.labelClassName}
+					children={props.label ?? "Button_Text"}
+					{...props.labelProps}
+				/>
+			)}
+
 			{props.actionComponents}
 		</div>
 	);
