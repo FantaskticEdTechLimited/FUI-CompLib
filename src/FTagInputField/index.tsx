@@ -16,7 +16,6 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 	const [arrowKeySelectedOption, setArrowKeySelectedOption] =
 		useState<string>("");
 
-	console.log("arrowKeySelectedOption = ", arrowKeySelectedOption);
 	// Ref
 	const inputRef = useRef<HTMLInputElement>(null);
 	const inputContainerRef = useRef<HTMLDivElement>(null);
@@ -132,7 +131,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 									labelStyle={{
 										whiteSpace: "nowrap",
 									}}
-									onDelete={(tagId: any) =>
+									onDelete={() =>
 										props.onTagDelete && props.onTagDelete(tagId)
 									}
 									{...props.tagProps}

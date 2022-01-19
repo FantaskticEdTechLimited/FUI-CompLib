@@ -2,13 +2,13 @@ import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactNode } from "react";
 import { FTextProps, OnClickFunction } from "../global.types";
 
-export interface FTagProps<T> {
+export interface FTagProps {
 	tagId: string;
 	children?: ReactNode;
 	disabled?: boolean;
 	label?: string;
-	onClick?: OnClickFunction<T>;
-	onDelete?: OnClickFunction<T>;
+	onClick?: OnClickFunction;
+	onDelete?: OnClickFunction;
 
 	// user can design own action icon or comp, e.g. tick icon
 	actionComponents?: ReactNode;

@@ -4,15 +4,13 @@ import { ClearIcon } from "./svg/ClearIcon";
 import { SearchIcon } from "./svg/SearchIcon";
 import { FSearchBarProps } from "./types";
 
-// **** temp, may need change ****
-
 export const FSearchBar = (props: FSearchBarProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
 		if (isTriggered && inputRef.current) inputRef.current.focus();
-	}, [isTriggered]);
+	}, [isTriggered]); 
 
 	return (
 		<div
@@ -25,7 +23,7 @@ export const FSearchBar = (props: FSearchBarProps) => {
 		>
 			<SearchIcon
 				isTriggered={isTriggered}
-				value={props.value}
+				inputValue={props.inputValue!}
 				className={props.searchIconClassName}
 				style={props.searchIconStyle}
 			/>
@@ -36,15 +34,17 @@ export const FSearchBar = (props: FSearchBarProps) => {
 				}
 				type="text"
 				ref={inputRef}
-				value={props.value!}
-				placeholder={props.placeholder}
-				onChange={(event: any) => props.renderValue(event.target.value)}
+				value={props.inputValue}
+				placeholder={props.placeholder ?? "Search"}
+				onChange={(event: any) =>
+					props.renderInputValue && props.renderInputValue(event.target.value)
+				}
 			/>
-			{props.value !== "" && (
+			{props.inputValue && props.inputValue.length > 0 && (
 				<ClearIcon
 					className={props.clearIconClassName}
 					style={props.clearIconStyle}
-					onClick={() => props.renderValue("")}
+					onClick={() => props.renderInputValue && props.renderInputValue("")}
 				/>
 			)}
 		</div>

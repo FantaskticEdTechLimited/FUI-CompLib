@@ -8,33 +8,33 @@ export const SearchIcon = (props: SearchIconProps) => {
 		<svg
 			style={props.style}
 			className={props.className + " " + styles.SearchIconDiv}
-			viewBox="0 0 24 24"
+			viewBox="0 0 18 18"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path
-				d="M11 19C15.4183 19 19 15.4183 19 11C19 6.58172 15.4183 3 11 3C6.58172 3 3 6.58172 3 11C3 15.4183 6.58172 19 11 19Z"
+				d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
 				stroke={
 					props.isTriggered
 						? FColorTypes.BRAND
-						: props.value !== ""
+						: props.inputValue && props.inputValue.length > 0
 						? FColorTypes.BLACK
 						: FColorTypes.GREY
 				}
-				strokeWidth="1.6"
+				strokeWidth="1.2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
 			<path
-				d="M21 21L16.65 16.65"
+				d="M15.75 15.75L12.4875 12.4875"
 				stroke={
 					props.isTriggered
 						? FColorTypes.BRAND
-						: props.value !== ""
+						: props.inputValue && props.inputValue.length > 0
 						? FColorTypes.BLACK
 						: FColorTypes.GREY
 				}
-				strokeWidth="1.6"
+				strokeWidth="1.2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>

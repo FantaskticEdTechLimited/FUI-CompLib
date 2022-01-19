@@ -14,7 +14,7 @@ export interface FButtonProps {
 	className?: string;
 	disabled?: boolean;
 	label?: string;
-	onClick?: OnClickFunction<void>;
+	onClick?: OnClickFunction;
 	style?: CSSProperties;
 	labelClassName?: string;
 	labelStyle?: CSSProperties;

@@ -1,9 +1,9 @@
 import { CSSProperties } from "react";
 
 export interface FSearchBarProps {
-	placeholder: string;
-	renderValue: (v: string) => void;
-	value: string;
+	placeholder?: string;
+	renderInputValue?: (data: string) => void;
+	inputValue?: string;
 	clearIconClassName?: string
 	clearIconStyle?: CSSProperties
 	containerClassName?: string;

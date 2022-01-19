@@ -3,13 +3,13 @@ import { OnClickFunction } from "../../global.types";
 
 export interface SearchIconProps {
 	isTriggered: boolean;
-	value: string;
+	inputValue: string;
 	className?: string;
 	style?: CSSProperties;
 }
 
 export interface ClearIconProps {
-	onClick: OnClickFunction<void>;
+	onClick: OnClickFunction;
 	className?: string;
 	style?: CSSProperties;
 }

@@ -1,7 +1,7 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { CSSProperties, ReactElement, ReactNode } from "react"; 
+import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FDropdownProps } from "../FDropdown/types";
-import { FTextProps, OnClickFunction } from "../global.types"; 
+import { FTextProps, OnClickFunction } from "../global.types";
 
 export interface FSelectorProps<T> {
 	options: T[];
@@ -10,7 +10,7 @@ export interface FSelectorProps<T> {
 	disabled?: boolean;
 	label?: string;
 	placeholder?: string;
-	onClear?: OnClickFunction<void>;
+	onClear?: OnClickFunction;
 	// display the selected option with user own method
 	renderCustomizedSelectedOption?: (data: T) => ReactNode;
 	// display the selected option with selected option name only

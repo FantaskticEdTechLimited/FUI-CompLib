@@ -4,7 +4,18 @@ import { CSSProperties, ReactNode } from "react";
 
 export type Nullable<T> = T | null;
 
-export type OnClickFunction<T> = (data?: T) => void;
+export type OnClickFunction = () => void;
+
+export type OnSubmitFuncion<T> =
+	| ((data: T) => void)
+	| ((data: T) => Promise<void>);
+
+export type OnDataCallbackFunction<T, C> = (
+	data: T,
+	callbackFunction: C
+) => Promise<void>;
+
+export type OnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 
 export interface FTextProps {
 	children?: ReactNode;
@@ -14,4 +25,3 @@ export interface FTextProps {
 	maxRows?: number;
 	style?: CSSProperties;
 }
-

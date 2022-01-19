@@ -2,7 +2,7 @@ import { style } from "typestyle";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FTagProps } from "./types";
 
-export const FTagContainer = (props: FTagProps<any>) =>
+export const FTagContainer = (props: FTagProps) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.PURPLE_BG,

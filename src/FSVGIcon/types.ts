@@ -5,6 +5,6 @@ export interface FSVGIconProps {
 	children: SVGProps<SVGSVGElement>;
 	disabled?: boolean;
 	className?: string;
-	onClick?: OnClickFunction<void>;
+	onClick?: OnClickFunction;
 	style?: CSSProperties;
 }

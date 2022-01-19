@@ -4,7 +4,7 @@ import { OnClickFunction } from "../global.types";
 
 export interface FCheckBoxProps {
 	checked: boolean;
-	onClick: OnClickFunction<void>;
+	onClick: OnClickFunction;
 	variant: "round" | "square";
 	disabled?: boolean;
 

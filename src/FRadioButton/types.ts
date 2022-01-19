@@ -4,7 +4,7 @@ import { OnClickFunction } from "../global.types";
 
 export interface FRadioButtonProps {
 	checked?: boolean;
-	onClick?: OnClickFunction<void>;
+	onClick?: OnClickFunction;
 
 	// css style of FRadioButton container
 	containerClassName?: string;

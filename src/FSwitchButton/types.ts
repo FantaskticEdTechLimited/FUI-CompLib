@@ -5,7 +5,7 @@ import { OnClickFunction } from "../global.types";
 export interface FSwitchButtonProps {
 	checked?: boolean;
 	disabled?: boolean;
-	onClick?: OnClickFunction<void>;
+	onClick?: OnClickFunction;
 
 	// css style of FSwitchButton container
 	containerClassName?: string;

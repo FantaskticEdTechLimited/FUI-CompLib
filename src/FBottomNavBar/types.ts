@@ -8,18 +8,18 @@ export interface FBottomNavBarProps {
 	disableActionButton?: boolean;
 	disableLeadingButton?: boolean;
 	leadingButtonLabel?: string;
-	onActionButtonClick?: OnClickFunction<void>;
-	onLeadingButtonClick?: OnClickFunction<void>;
+	onActionButtonClick?: OnClickFunction;
+	onLeadingButtonClick?: OnClickFunction;
 
 	// css style of action button
 	actionButtonClassName?: string;
-	actionButtonStyle?: CSSProperties; 
-	actionButtonProps?: FButtonProps
+	actionButtonStyle?: CSSProperties;
+	actionButtonProps?: FButtonProps;
 
 	// css style of leading button
 	leadingButtonClassName?: string;
-	leadingButtonStyle?: CSSProperties; 
-	leadingButtonProps?: FButtonProps
+	leadingButtonStyle?: CSSProperties;
+	leadingButtonProps?: FButtonProps;
 
 	// css style of FBottomNavBar
 	navBarClassName?: string;

@@ -6,7 +6,7 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib"; 
 
-export const FTag = (props: FTagProps<any>) => {
+export const FTag = (props: FTagProps) => {
 	return (
 		<div
 			style={props.style}
@@ -34,7 +34,7 @@ export const FTag = (props: FTagProps<any>) => {
 							onClick={() =>
 								props.disabled
 									? undefined
-									: props.onDelete && props.onDelete(props.tagId)
+									: props.onDelete && props.onDelete()
 							}
 							{...props.deleteIconProps}
 						/>

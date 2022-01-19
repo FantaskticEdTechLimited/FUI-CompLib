@@ -1,14 +1,14 @@
 import { style } from "typestyle";
 
 export const SearchIconDiv = style({
-	height: "1.5rem",
+	height: "1.125rem",
 	overflow: "visible",
-	width: "1.5rem",
+	width: "1.125rem",
 });
 
 export const ClearIconDiv = style({
 	cursor: "pointer",
-	height: "1rem",
+	height: "1.25rem",
 	overflow: "visible",
-	width: "1rem",
+	width: "1.25rem",
 });

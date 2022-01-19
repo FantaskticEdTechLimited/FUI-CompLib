@@ -5,11 +5,11 @@ import { style } from "typestyle";
 export const FSearchBarContainer = (isTriggered: boolean) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FColorTypes.PURE_WHITE,
+		backgroundColor: FColorTypes.PURPLE_BG,
 		border:
-			"0.1rem solid " +
-			(isTriggered ? FColorTypes.BRAND : FColorTypes.HARD_STROKE),
-		borderRadius: "0.5rem",
+			"0.125rem solid " +
+			(isTriggered ? FColorTypes.BRAND : "none"),
+		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		caretColor: FColorTypes.BRAND,
 		columnGap: "0.5rem",
@@ -21,7 +21,7 @@ export const FSearchBarContainer = (isTriggered: boolean) =>
 	});
 
 export const FSearchBarInputAreaDiv = style({
-	backgroundColor: FColorTypes.PURE_WHITE,
+	backgroundColor: "inherit",
 	border: "none",
 	color: FColorTypes.BLACK,
 	font: FFontTypes.Large_Text,
