@@ -53,7 +53,8 @@ export const FInputField = (props: FInputFieldProps) => {
 				}}
 				onBlur={() => {
 					setIsTriggered(false);
-					if (props.inputValue === "") setIsFilled(false);
+					if (props.inputValue === undefined || props.inputValue === "")
+						setIsFilled(false);
 					else setIsFilled(true);
 				}}
 			>
@@ -94,7 +95,7 @@ export const FInputField = (props: FInputFieldProps) => {
 						}
 						ref={textareaRef}
 						maxLength={props.wordCount ? props.wordCount : undefined}
-						value={props.inputValue}
+						value={props.inputValue ?? ""}
 						placeholder={props.placeholder ?? "Input"}
 						onChange={(event: any) => {
 							props.renderInputValue &&
@@ -116,7 +117,7 @@ export const FInputField = (props: FInputFieldProps) => {
 						type="text"
 						ref={inputRef}
 						maxLength={props.wordCount ? props.wordCount : undefined}
-						value={props.inputValue}
+						value={props.inputValue ?? ""}
 						placeholder={props.placeholder ?? "Input"}
 						onChange={(event: any) =>
 							props.renderInputValue &&

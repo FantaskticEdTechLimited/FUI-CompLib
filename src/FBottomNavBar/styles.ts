@@ -1,3 +1,4 @@
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
 
 export const FBottomNavBarContainer = style({
@@ -12,7 +13,8 @@ export const FLeadingButtonDiv = style({
 	padding: "0.5rem 0.75rem",
 });
 
-export const FActionButtonDiv = style({
+export const FActionButtonDiv = (disabled: boolean) => style({
 	alignSelf: "flex-end",
 	padding: "0.5rem 0.75rem",
+	backgroundColor: disabled ? FColorTypes.PRIMARY_GREY : FColorTypes.BRAND
 });

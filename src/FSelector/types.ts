@@ -1,5 +1,5 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { CSSProperties, ReactElement, ReactNode } from "react";
+import { CSSProperties, ReactElement, ReactNode } from "react"; 
 import { FDropdownProps } from "../FDropdown/types";
 import { FTextProps } from "../FText/types";
 import { OnClickFunction } from "../global.types";
@@ -10,6 +10,8 @@ export interface FSelectorProps<T> {
 	selectedOptions: T | T[] | null;
 	disabled?: boolean;
 	label?: string;
+	// show label only when no selectedOption or no placeholder
+	showLabelOnly?: boolean;
 	placeholder?: string;
 	onClear?: OnClickFunction;
 	// display the selected option with user own method

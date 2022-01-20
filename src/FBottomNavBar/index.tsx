@@ -38,7 +38,9 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						}
 						style={props.actionButtonStyle}
 						className={
-							props.actionButtonClassName + " " + styles.FActionButtonDiv
+							props.actionButtonClassName +
+							" " +
+							styles.FActionButtonDiv(props.disableActionButton!)
 						}
 						{...props.actionButtonProps}
 					/>

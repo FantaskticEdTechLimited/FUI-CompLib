@@ -1,4 +1,4 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
@@ -50,13 +50,13 @@ export const FSelector = (props: FSelectorProps<any>) => {
 				className={
 					props.selectorContainerClassName +
 					" " +
-					styles.FSelectorContainer(openDropdown, props.disabled!)
+					styles.FSelectorContainer(openDropdown, props)
 				}
 			>
 				<div
 					style={props.contentDivStyle}
 					className={
-						props.contentDivClassName + " " + styles.FSelectorContentDiv
+						props.contentDivClassName + " " + styles.FSelectorContentDiv(props)
 					}
 					onClick={() =>
 						props.disabled ? undefined : setOpenDropdown(!openDropdown)
@@ -69,7 +69,13 @@ export const FSelector = (props: FSelectorProps<any>) => {
 						<>
 							<FText
 								font={FFontTypes.Text}
-								color={FColorTypes.BRAND}
+								color={
+									openDropdown
+										? FColorTypes.BRAND
+										: props.selectedOptions && props.selectedOptions.length > 0
+										? FColorTypes.PRIMARY_BLACK
+										: FColorTypes.PRIMARY_GREY
+								}
 								children={props.label ?? "Title"}
 								style={props.labelStyle}
 								className={props.labelClassName}
@@ -92,11 +98,15 @@ export const FSelector = (props: FSelectorProps<any>) => {
 								{...props.selectedOptionProps}
 							>
 								{props.selectedOptions === null
-									? props.placeholder ?? "Select an option"
+									? props.showLabelOnly
+										? ""
+										: props.placeholder ?? "Select an option"
 									: props.renderSelectedOptionNameOnly
 									? props.renderSelectedOptionNameOnly(props.selectedOptions)
 									: props.selectedOptions && props.selectedOptions.length > 0
 									? props.selectedOptions
+									: props.showLabelOnly
+									? ""
 									: props.placeholder ?? "Select an option"}
 							</FText>
 						</>

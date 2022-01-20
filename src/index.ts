@@ -17,26 +17,31 @@ import { FLinkButton } from "./FLinkButton";
 import { FTag } from "./FTag";
 import { FTagInputField } from "./FTagInputField";
 import { FHeaderButton } from "./FHeaderButton";
+import { FEmailInputField } from "./FEmailInputField";
+import { FPasswordInputField } from "./FPasswordInputField";
 
 export {
-	FText,
-	FInputField,
-	FButton,
 	FBottomNavBar,
-	FPopUp,
-	FSwitchButton,
+	FButton,
 	FCheckBox,
-	FRadioButton,
-	FSearchBar,
-	FSVGIcon,
-	FScrollBarStyle,
-	FSideNavBar,
-	FSelector,
 	FDropdown,
-	FScreenSizeHandler,
-	FSideBarHandler,
+	FEmailInputField,
+	FHeaderButton,
+	FInputField,
 	FLinkButton,
+	FPasswordInputField,
+	FPopUp,
+	FRadioButton,
+	FScrollBarStyle,
+	FSearchBar,
+	FSelector,
+	FSideNavBar,
+	FSVGIcon,
+	FSwitchButton,
 	FTag,
 	FTagInputField,
-	FHeaderButton,
+	FText,
+	// utils functions
+	FScreenSizeHandler,
+	FSideBarHandler,
 };
