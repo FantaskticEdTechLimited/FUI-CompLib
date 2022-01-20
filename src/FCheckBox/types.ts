@@ -1,4 +1,3 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { CSSProperties } from "react";
 import { OnClickFunction } from "../global.types";
 
@@ -13,8 +12,8 @@ export interface FCheckBoxProps {
 	containerStyle?: CSSProperties;
 
 	// css style of FCheckBox svg path
-	borderColor?: FColorTypes | string;
-	fillColor?: FColorTypes | string;
-	iconColor?: FColorTypes | string;
+	borderColor?: string;
+	fillColor?: string;
+	iconColor?: string;
 	strokeWidth?: number | string;
 }

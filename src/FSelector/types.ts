@@ -1,7 +1,8 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FDropdownProps } from "../FDropdown/types";
-import { FTextProps, OnClickFunction } from "../global.types";
+import { FTextProps } from "../FText/types";
+import { OnClickFunction } from "../global.types";
 
 export interface FSelectorProps<T> {
 	options: T[];

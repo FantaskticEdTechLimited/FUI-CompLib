@@ -1,5 +1,6 @@
 import { CSSProperties, ReactNode } from "react";
-import { FTextProps, OnClickFunction } from "../global.types";
+import { FTextProps } from "../FText/types";
+import { OnClickFunction } from "../global.types";
 
 export enum FButtonTypes {
 	PRIMARY = "Primary",

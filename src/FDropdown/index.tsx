@@ -1,9 +1,10 @@
 import { FDropdownProps } from "./types";
 import * as styles from "./styles";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+
 import React from "react";
 import { FScrollBarStyle, FText } from "..";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FDropdown = (props: FDropdownProps<any>) => {
 	const compareSelectedOption =
@@ -90,8 +91,8 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 									isSelected ||
 									option === null ||
 									(option !== null && option.length === 0)
-										? FColorTypes.GREY
-										: FColorTypes.BLACK
+										? FColorTypes.PRIMARY_GREY
+										: FColorTypes.PRIMARY_BLACK
 								}
 								style={
 									option !== null && option.length > 0

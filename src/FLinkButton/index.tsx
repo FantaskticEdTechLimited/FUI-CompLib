@@ -26,14 +26,16 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 				<>
 					{props.leadingComponent ?? (
 						<FIcon
-							strokeColor={isSelected ? FColorTypes.BRAND : FColorTypes.BLACK}
+							strokeColor={
+								isSelected ? FColorTypes.BRAND : FColorTypes.PRIMARY_BLACK
+							}
 							{...props.leadingIcon}
 						/>
 					)}
 					<FText
 						style={props.labelStyle}
 						className={props.labelClassName + " " + styles.FLinkButtonLabel}
-						color={isSelected ? FColorTypes.BRAND : FColorTypes.BLACK}
+						color={isSelected ? FColorTypes.BRAND : FColorTypes.PRIMARY_BLACK}
 						children={props.label}
 						{...props.labelProps}
 					/>
@@ -44,7 +46,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 									name={FIconTypes.ARROW_DOWN}
 									size="small"
 									strokeColor={
-										isSelected ? FColorTypes.BRAND : FColorTypes.BLACK
+										isSelected ? FColorTypes.BRAND : FColorTypes.PRIMARY_BLACK
 									}
 									{...props.actionIcon}
 								/>

@@ -1,4 +1,3 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { CSSProperties } from "react";
 import { OnClickFunction } from "../global.types";
 
@@ -16,8 +15,8 @@ export interface FSwitchButtonProps {
 	svgStyle?: CSSProperties;
 
 	// css style of FSwitchButton circle
-	circleColor?: FColorTypes | string;
-	circleBorderColor?: FColorTypes | string;
+	circleColor?: string;
+	circleBorderColor?: string;
 	circleStrokeWidth?: number | string;
 	circleCx?: number | string;
 	circleCy?: number | string;

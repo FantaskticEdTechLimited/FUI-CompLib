@@ -1,6 +1,6 @@
-import React from "react";
-import { FTextProps } from "../global.types";
+import React from "react"; 
 import * as styles from "./styles";
+import { FTextProps } from "./types";
 
 export const FText = (props: FTextProps) => {
 	return (

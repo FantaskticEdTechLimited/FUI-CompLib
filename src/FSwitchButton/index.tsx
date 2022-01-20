@@ -30,12 +30,8 @@ export const FSwitchButton = (props: FSwitchButtonProps) => {
 					cx={props.circleCx ?? "9"}
 					cy={props.circleCy ?? "9"}
 					r={props.circleR ?? "9"}
-					fill={props.circleColor ?? FColorTypes.PURE_WHITE}
-					stroke={
-						props.circleBorderColor ?? checked
-							? FColorTypes.BLACK
-							: FColorTypes.LIGHT_GREY
-					}
+					fill={props.circleColor ?? FColorTypes.PRIMARY_WHITE}
+					stroke={props.circleBorderColor ?? FColorTypes.PRIMARY_LIGHT}
 					strokeWidth={props.circleStrokeWidth ?? "1.2"}
 				/>
 			</svg>

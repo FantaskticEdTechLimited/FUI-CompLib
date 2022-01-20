@@ -10,10 +10,10 @@ export const FSelectorWrapper = style({
 export const FSelectorContainer = (isClicked: boolean, disabled: boolean) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FColorTypes.PURE_WHITE,
+		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		border:
 			"0.075rem solid " +
-			(isClicked ? FColorTypes.BRAND : FColorTypes.HARD_STROKE),
+			(isClicked ? FColorTypes.BRAND : FColorTypes.PRIMARY_DARK),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		columnGap: "0.5rem",
@@ -25,10 +25,10 @@ export const FSelectorContainer = (isClicked: boolean, disabled: boolean) =>
 		padding: "0.5rem",
 		$nest: {
 			"&:hover": {
-				borderColor: FColorTypes.BLACK,
+				borderColor: FColorTypes.PRIMARY_BLACK,
 				$nest: {
 					"svg path": {
-						stroke: FColorTypes.BLACK,
+						stroke: FColorTypes.PRIMARY_BLACK,
 					},
 				},
 			},
@@ -38,7 +38,7 @@ export const FSelectorContainer = (isClicked: boolean, disabled: boolean) =>
 export const FSelectorContentDiv = style({
 	display: "flex",
 	flexDirection: "column",
-	flex: 1
+	flex: 1,
 });
 
 export const FSelectorSelectedOptionDiv = style({

@@ -5,8 +5,8 @@ export const FLinkButtonContainer = (isSelected: boolean, disabled: boolean) =>
 	style({
 		alignItems: "center",
 		backgroundColor: isSelected
-			? FColorTypes.PURPLE_BG
-			: FColorTypes.PURE_WHITE,
+			? FColorTypes.BRAND_BG
+			: FColorTypes.PRIMARY_WHITE,
 		border: "none",
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",

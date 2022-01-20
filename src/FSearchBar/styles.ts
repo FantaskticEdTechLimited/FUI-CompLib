@@ -5,10 +5,8 @@ import { style } from "typestyle";
 export const FSearchBarContainer = (isTriggered: boolean) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FColorTypes.PURPLE_BG,
-		border:
-			"0.125rem solid " +
-			(isTriggered ? FColorTypes.BRAND : "none"),
+		backgroundColor: FColorTypes.BRAND_BG,
+		border: "0.125rem solid " + (isTriggered ? FColorTypes.BRAND : "none"),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		caretColor: FColorTypes.BRAND,
@@ -23,7 +21,7 @@ export const FSearchBarContainer = (isTriggered: boolean) =>
 export const FSearchBarInputAreaDiv = style({
 	backgroundColor: "inherit",
 	border: "none",
-	color: FColorTypes.BLACK,
+	color: FColorTypes.PRIMARY_BLACK,
 	font: FFontTypes.Large_Text,
 	outline: "none",
 	overflow: "hidden",
@@ -32,7 +30,7 @@ export const FSearchBarInputAreaDiv = style({
 	width: "100%",
 	$nest: {
 		"&::placeholder": {
-			color: FColorTypes.GREY,
+			color: FColorTypes.PRIMARY_GREY,
 		},
 	},
 });

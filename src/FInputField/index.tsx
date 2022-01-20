@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+
 import * as styles from "./styles";
-import { FInputFieldProps } from "./types"; 
+import { FInputFieldProps } from "./types";
 import { FScrollBarStyle, FText } from "..";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FInputField = (props: FInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
@@ -65,8 +66,8 @@ export const FInputField = (props: FInputFieldProps) => {
 							isTriggered
 								? FColorTypes.BRAND
 								: isFilled
-								? FColorTypes.BLACK
-								: FColorTypes.GREY
+								? FColorTypes.PRIMARY_BLACK
+								: FColorTypes.PRIMARY_GREY
 						}
 						style={props.labelStyle}
 						className={props.labelClassName}
@@ -130,8 +131,8 @@ export const FInputField = (props: FInputFieldProps) => {
 					isTriggered
 						? FColorTypes.BRAND
 						: isFilled
-						? FColorTypes.BLACK
-						: FColorTypes.GREY
+						? FColorTypes.PRIMARY_BLACK
+						: FColorTypes.PRIMARY_GREY
 				}
 				style={props.wordCountStyle}
 				className={

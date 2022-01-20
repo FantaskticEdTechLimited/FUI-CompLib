@@ -16,6 +16,7 @@ import { FDropdown } from "./FDropdown";
 import { FLinkButton } from "./FLinkButton";
 import { FTag } from "./FTag";
 import { FTagInputField } from "./FTagInputField";
+import { FHeaderButton } from "./FHeaderButton";
 
 export {
 	FText,
@@ -36,5 +37,6 @@ export {
 	FSideBarHandler,
 	FLinkButton,
 	FTag,
-	FTagInputField
+	FTagInputField,
+	FHeaderButton,
 };

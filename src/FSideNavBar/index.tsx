@@ -1,4 +1,4 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useState, useEffect, useRef } from "react";
 import { FScreenSizeHandler, FScrollBarStyle } from "..";
@@ -50,7 +50,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 							strokeColor={FColorTypes.BRAND}
 							containerStyle={{
 								borderRadius: "0.25rem",
-								backgroundColor: FColorTypes.PURPLE_BG,
+								backgroundColor: FColorTypes.BRAND_BG,
 								padding: "0.25rem",
 							}}
 							{...props.menuIconProps}
@@ -98,7 +98,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 								strokeColor={FColorTypes.BRAND}
 								containerStyle={{
 									borderRadius: "0.25rem",
-									backgroundColor: FColorTypes.PURPLE_BG,
+									backgroundColor: FColorTypes.BRAND_BG,
 									padding: "0.25rem",
 									alignSelf: "flex-end",
 								}}

@@ -1,6 +1,7 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactNode } from "react";
-import { FTextProps, OnClickFunction } from "../global.types";
+import { FTextProps } from "../FText/types";
+import { OnClickFunction } from "../global.types";
 
 export interface FTagProps {
 	tagId: string;

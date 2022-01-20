@@ -3,8 +3,9 @@ import * as styles from "./styles";
 import React from "react";
 import { FText } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+
+import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib"; 
 
 export const FTag = (props: FTagProps) => {
 	return (
@@ -32,9 +33,7 @@ export const FTag = (props: FTagProps) => {
 							name={FIconTypes.CLOSE}
 							strokeColor={FColorTypes.BRAND}
 							onClick={() =>
-								props.disabled
-									? undefined
-									: props.onDelete && props.onDelete()
+								props.disabled ? undefined : props.onDelete && props.onDelete()
 							}
 							{...props.deleteIconProps}
 						/>

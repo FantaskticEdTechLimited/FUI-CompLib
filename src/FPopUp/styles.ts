@@ -1,17 +1,17 @@
-import { style } from "typestyle";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { style } from "typestyle";
 
 export const FPopUpOverlay = style({
-		backgroundColor: FColorTypes.DARK_GREY + "AB",
-		height: "fit-content",
-		minHeight: "100vh",
-		width: "100%",
-		top: 0,
-		left: 0,
-		position: "absolute",
-		zIndex: 20,
-		display: "flex",
-	});
+	backgroundColor: FColorTypes.PRIMARY_DARK + "AB",
+	height: "fit-content",
+	minHeight: "100vh",
+	width: "100%",
+	top: 0,
+	left: 0,
+	position: "absolute",
+	zIndex: 20,
+	display: "flex",
+});
 
 export const FPopUpDiv = style({
 	display: "flex",
@@ -24,7 +24,7 @@ export const FPopUpDiv = style({
 	marginTop: "10vh",
 	marginBottom: "10vh",
 	padding: "1.5rem",
-	backgroundColor: FColorTypes.PURE_WHITE,
-	border: "0.063rem solid " + FColorTypes.SOFT_STROKE,
-	borderRadius: "0.5rem"
+	backgroundColor: FColorTypes.PRIMARY_WHITE,
+	border: "0.063rem solid " + FColorTypes.PRIMARY_LIGHT,
+	borderRadius: "0.5rem",
 });

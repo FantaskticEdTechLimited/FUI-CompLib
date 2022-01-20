@@ -2,8 +2,9 @@ import * as styles from "./styles";
 import React from "react";
 import { FText } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+
 import { FButtonProps, FButtonTypes } from "./types";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FButton = (props: FButtonProps) => {
 	return (
@@ -22,11 +23,11 @@ export const FButton = (props: FButtonProps) => {
 					font={FFontTypes.Large_Text}
 					color={
 						props.type === FButtonTypes.PRIMARY
-							? FColorTypes.PURE_WHITE
+							? FColorTypes.PRIMARY_WHITE
 							: props.type === FButtonTypes.OUTLINE ||
 							  props.type === FButtonTypes.SECONDARY
 							? FColorTypes.BRAND
-							: FColorTypes.BLACK
+							: FColorTypes.PRIMARY_BLACK
 					}
 					style={props.labelStyle}
 					className={props.labelClassName}

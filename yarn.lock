@@ -2,22 +2,22 @@
 # yarn lockfile v1
 
 
-"@fantaskticedtechlimited/fui-colorlib@^0.0.2":
-  version "0.0.2"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-colorlib/0.0.2/2cc1d11fb28774801facf971aeb0b573155b2eeb5355e468166d42bc8e42d921#1f7d4fa4374145a233c8b5849689a5097629e06b"
-  integrity sha512-eSFtQU3cVj/zEKmo0Jn+6a3H3zsjHrN6DuD8nAmEqcBvhN6MQu1Yamk/ViRKLcqnahAV559Aa4xQJZrRVVlWeA==
+"@fantaskticedtechlimited/fui-colorlib@^0.0.5":
+  version "0.0.5"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-colorlib/0.0.5/3c48537bb46875c70516bf73b4359b881cba64c28750260c114e69d40c9dc97d#4235663b5bc59be2b8a4668fb9fe020d7ef47697"
+  integrity sha512-IDRdciWrFO7s0ONjR3BfQAOfB1pcgDsm0OOK1hxhRI5z+F5cC/1MtkXCmcC+gbrP0xUR48Fnse41xcD+dgvMOQ==
 
 "@fantaskticedtechlimited/fui-fontlib@^0.0.3":
   version "0.0.3"
   resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/0.0.3/9da828716fd18681ea4bc8abee18b4af3e05bece9ec4bc31d6453fca75a87c35#e52dc09883503e2cb14eb947eb7f713d793cf0c2"
   integrity sha512-t+O/9CnKjzKX05gUF7vGxMu0TbsPvfYhXleMvahFdTSflu5eAhiV/icHZM/pXT0ySJaOihfMOWdRPmTyOanQxA==
 
-"@fantaskticedtechlimited/fui-iconlib@^0.0.10":
-  version "0.0.10"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/0.0.10/3ea90e265862393e8f23c7a5952d7b45c90aa7978ceff52bd1cfeb2e0e233482#40abe260bb558ddf63383f4aa703bc5ee181ac7c"
-  integrity sha512-x1II1IUAwwp3vYDkmZvwU3styPFCloYw2DCUEToyhhU09UVUvm73VRcZqWcpWf5YgtoXXkn8aPIByykICbNdPA==
+"@fantaskticedtechlimited/fui-iconlib@^0.0.12":
+  version "0.0.12"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/0.0.12/b357937e08b57d57d5f13f71b5954072dbd57168f0d24a7b55c304042be2cf2e#538a68d1085b70a3bb22fca197a0e2bfae976682"
+  integrity sha512-D4HqS1Vh+l+mFVzhqDK+ShssQsZWWvqd3LVFdTAgr1S8PfbNArAaOkpj0Lv1VyT8iw8Phlbd0c/TUkSNLT2u8w==
   dependencies:
-    "@fantaskticedtechlimited/fui-colorlib" "^0.0.2"
+    "@fantaskticedtechlimited/fui-colorlib" "^0.0.5"
     typestyle "^2.2.0"
 
 "@types/history@*":

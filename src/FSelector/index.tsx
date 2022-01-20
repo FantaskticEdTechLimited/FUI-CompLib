@@ -1,4 +1,4 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
@@ -80,8 +80,8 @@ export const FSelector = (props: FSelectorProps<any>) => {
 								color={
 									props.selectedOptions === null ||
 									props.selectedOptions.length === 0
-										? FColorTypes.GREY
-										: FColorTypes.BLACK
+										? FColorTypes.PRIMARY_GREY
+										: FColorTypes.PRIMARY_BLACK
 								}
 								style={props.selectedOptionStyle}
 								className={
@@ -108,7 +108,9 @@ export const FSelector = (props: FSelectorProps<any>) => {
 					<FIcon
 						name={FIconTypes.RANKING}
 						strokeColor={
-							openDropdown ? FColorTypes.BLACK : FColorTypes.LIGHT_GREY
+							openDropdown
+								? FColorTypes.PRIMARY_BLACK
+								: FColorTypes.PRIMARY_LIGHT
 						}
 						size="small"
 						onClick={() =>
@@ -122,7 +124,9 @@ export const FSelector = (props: FSelectorProps<any>) => {
 						<FIcon
 							name={FIconTypes.CLOSE}
 							strokeColor={
-								openDropdown ? FColorTypes.BLACK : FColorTypes.LIGHT_GREY
+								openDropdown
+									? FColorTypes.PRIMARY_BLACK
+									: FColorTypes.PRIMARY_LIGHT
 							}
 							size="small"
 							onClick={handleClearSelectedOption}
@@ -150,7 +154,7 @@ export const FSelector = (props: FSelectorProps<any>) => {
 							onSelect={handleSelectedOption}
 							dropdownContainerClassName={props.dropdownContainerClassName}
 							dropdownContainerStyle={props.dropdownContainerStyle}
-							{...props.dropdownProps} 
+							{...props.dropdownProps}
 						/>
 					)}
 				</div>

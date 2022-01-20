@@ -1,5 +1,6 @@
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
+
 import { FButtonProps, FButtonTypes } from "./types";
 
 export const FButtonContainer = (props: FButtonProps) =>
@@ -9,8 +10,8 @@ export const FButtonContainer = (props: FButtonProps) =>
 			props.type === FButtonTypes.PRIMARY
 				? FColorTypes.BRAND
 				: props.type === FButtonTypes.SECONDARY
-				? FColorTypes.PURPLE_BG
-				: FColorTypes.PURE_WHITE,
+				? FColorTypes.BRAND_BG
+				: FColorTypes.PRIMARY_WHITE,
 		borderRadius: "0.25rem",
 		border:
 			props.type === FButtonTypes.PRIMARY || props.type === FButtonTypes.OUTLINE

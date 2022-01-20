@@ -1,5 +1,3 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-
 export interface FScrollBarProps {
 	visible: boolean;
 	width?: number | string;
@@ -8,20 +6,20 @@ export interface FScrollBarProps {
 	// thumb
 	thumbBorder?: string;
 	thumbBorderWidth?: string | number;
-	thumbBorderColor?: FColorTypes | string;
+	thumbBorderColor?: string;
 	thumbBorderRadius?: number | string;
-	thumbFillColor?: FColorTypes | string;
+	thumbFillColor?: string;
 
 	// track hover style
 	thumbHoveredBorder?: string;
 	thumbHoveredBorderWidth?: string;
 	thumbHoveredBorderColor?: string;
-	thumbHoveredFillColor?: FColorTypes | string;
+	thumbHoveredFillColor?: string;
 
 	// track
 	trackBorder?: string;
 	trackBorderWidth?: string | number;
-	trackBorderColor?: FColorTypes | string;
+	trackBorderColor?: string;
 	trackBorderRadius?: number | string;
-	trackFillColor?: FColorTypes | string;
+	trackFillColor?: string;
 }

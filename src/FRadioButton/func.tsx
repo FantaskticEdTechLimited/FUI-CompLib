@@ -10,7 +10,7 @@ export const handleFRadioButton = (
 		<>
 			<path
 				d="M23.2 12C23.2 18.1856 18.1856 23.2 12 23.2C5.81441 23.2 0.8 18.1856 0.8 12C0.8 5.81441 5.81441 0.8 12 0.8C18.1856 0.8 23.2 5.81441 23.2 12Z"
-				fill={props.fillColor ?? FColorTypes.PURE_WHITE}
+				fill={props.fillColor ?? FColorTypes.PRIMARY_WHITE}
 				stroke={props.strokeColor ?? FColorTypes.BRAND}
 				strokeWidth={props.strokeWidth ?? "1.6"}
 				strokeLinecap="round"
@@ -24,8 +24,8 @@ export const handleFRadioButton = (
 	) : (
 		<path
 			d="M23.4 12C23.4 18.296 18.296 23.4 12 23.4C5.70395 23.4 0.6 18.296 0.6 12C0.6 5.70395 5.70395 0.6 12 0.6C18.296 0.6 23.4 5.70395 23.4 12Z"
-			fill={props.fillColor ?? FColorTypes.PURE_WHITE}
-			stroke={props.strokeColor ?? FColorTypes.LIGHT_GREY}
+			fill={props.fillColor ?? FColorTypes.PRIMARY_WHITE}
+			stroke={props.strokeColor ?? FColorTypes.PRIMARY_LIGHT}
 			strokeWidth={props.strokeWidth ?? "1.2"}
 			strokeLinecap="round"
 			strokeLinejoin="round"

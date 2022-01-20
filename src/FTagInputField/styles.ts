@@ -7,7 +7,7 @@ import { FTagInputFieldProps } from "./types";
 export const FTagInputFieldContainer = (props: FTagInputFieldProps<any>) =>
 	style({
 		alignItems: props.flexColumn ? "normal" : "center",
-		backgroundColor: FColorTypes.PURE_WHITE,
+		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		columnGap:
 			props.renderCustomizedTagComponents ||
 			(props.selectedTags && props.selectedTags.length > 0)
@@ -37,7 +37,7 @@ export const FTagInputFieldWrapper = style({
 
 export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
 	style({
-		backgroundColor: FColorTypes.PURE_WHITE,
+		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		display: "flex",
 		columnGap: "0.5rem",
 		justifyContent: "space-between",
@@ -49,10 +49,10 @@ export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
 
 export const FTagInputFieldInputAreaDiv = (value: string) =>
 	style({
-		backgroundColor: FColorTypes.PURE_WHITE,
+		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		border: "none",
 		caretColor: FColorTypes.BRAND,
-		color: value ? FColorTypes.BLACK : FColorTypes.GREY,
+		color: value ? FColorTypes.PRIMARY_BLACK : FColorTypes.PRIMARY_GREY,
 		font: FFontTypes.Large_Text,
 		outline: "none",
 		overflow: "hidden",
@@ -60,7 +60,7 @@ export const FTagInputFieldInputAreaDiv = (value: string) =>
 		resize: "none",
 		$nest: {
 			"&::placeholder": {
-				color: FColorTypes.GREY,
+				color: FColorTypes.PRIMARY_GREY,
 			},
 		},
 	});
@@ -82,11 +82,12 @@ export const FTagInputFieldDropdownOptionDiv = (
 ) =>
 	style({
 		font: FFontTypes.Large_Text,
-		color: isNew || isSelected
-			? FColorTypes.GREY
-			: isExisted
-			? FColorTypes.RED
-			: FColorTypes.BLACK,
+		color:
+			isNew || isSelected
+				? FColorTypes.PRIMARY_GREY
+				: isExisted
+				? FColorTypes.SECONDARY_RED
+				: FColorTypes.PRIMARY_BLACK,
 		backgroundColor: "inherit",
 		border: "none",
 		width: "100%",
@@ -95,12 +96,13 @@ export const FTagInputFieldDropdownOptionDiv = (
 		textAlign: "left",
 		$nest: {
 			"&:hover": {
-				backgroundColor: FColorTypes.PURPLE_BG,
-				color: isNew || isSelected
-					? FColorTypes.GREY + " !important"
-					: isExisted
-					? FColorTypes.RED + " !important"
-					: FColorTypes.BRAND,
+				backgroundColor: FColorTypes.BRAND_BG,
+				color:
+					isNew || isSelected
+						? FColorTypes.PRIMARY_GREY + " !important"
+						: isExisted
+						? FColorTypes.SECONDARY_RED + " !important"
+						: FColorTypes.BRAND,
 			},
 		},
 	});

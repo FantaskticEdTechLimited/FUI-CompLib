@@ -4,10 +4,11 @@ import { FTag } from "../FTag";
 import { useEffect, useRef, useState } from "react";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import { FDropdown } from "../FDropdown";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
 import { FScrollBarStyle, FText } from "..";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
@@ -131,9 +132,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 									labelStyle={{
 										whiteSpace: "nowrap",
 									}}
-									onDelete={() =>
-										props.onTagDelete && props.onTagDelete(tagId)
-									}
+									onDelete={() => props.onTagDelete && props.onTagDelete(tagId)}
 									{...props.tagProps}
 								/>
 							);
@@ -341,10 +340,10 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 											font={FFontTypes.Large_Text}
 											color={
 												option === NewTagHintLabel
-													? FColorTypes.GREY
+													? FColorTypes.PRIMARY_GREY
 													: option === ExitsedTagHintLabel
-													? FColorTypes.RED
-													: FColorTypes.BLACK
+													? FColorTypes.SECONDARY_RED
+													: FColorTypes.PRIMARY_BLACK
 											}
 											className={styles.FTagInputFieldDropdownOptionDiv(
 												selected,

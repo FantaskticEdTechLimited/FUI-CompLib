@@ -9,7 +9,7 @@ export const FSideNarBarOverlayContainer = (
 ) =>
 	style({
 		backgroundColor:
-			screenWidth >= 1280 ? "transparent" : FColorTypes.DARK_GREY + "66",
+			screenWidth >= 1280 ? "transparent" : FColorTypes.PRIMARY_DARK + "66",
 		display: props.visible ? "flex" : "none",
 		flexDirection: "row",
 		height: "100%",
@@ -17,9 +17,7 @@ export const FSideNarBarOverlayContainer = (
 		left: screenWidth >= 1280 ? 0 : undefined,
 		position: "fixed",
 		right: screenWidth >= 1280 ? undefined : isOpen ? 0 : "-100vw",
-		top: 0,
-		// transition: "all 0.2s ease-in-out",
-		// visibility: screenWidth >= 1280 || isOpen ? "visible" : "hidden",
+		top: 0, 
 		width: isOpen ? "100vw" : undefined,
 		zIndex: isOpen ? 20 : 10,
 	});
@@ -36,7 +34,7 @@ export const FSideNavBarContainer = (isOpen: boolean, screenWidth: number) =>
 		top: 0,
 		width: "15rem",
 		zIndex: 20,
-		left: screenWidth >= 1280 ? 0 : undefined, 
+		left: screenWidth >= 1280 ? 0 : undefined,
 		right: screenWidth >= 1280 ? undefined : isOpen ? 0 : "-100vw",
 		transition: "all 0.2s ease-in-out",
 		visibility: screenWidth >= 1280 || isOpen ? "visible" : "hidden",
@@ -68,8 +66,8 @@ export const FTopNavBarContainer = (
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.BRAND,
-		border: "0.063rem solid " + FColorTypes.SOFT_STROKE,
-		boxShadow: "0rem 0rem 0.5rem " + FColorTypes.PURPLE_BG,
+		border: "0.063rem solid " + FColorTypes.PRIMARY_LIGHT,
+		boxShadow: "0rem 0rem 0.5rem " + FColorTypes.BRAND_BG,
 		boxSizing: "border-box",
 		display: props.visible ? "flex" : "none",
 		flexDirection: "row",

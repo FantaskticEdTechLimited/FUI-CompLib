@@ -1,11 +1,11 @@
 import { style } from "typestyle";
-import { FInputFieldProps } from "./types"; 
+import { FInputFieldProps } from "./types";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FInputFieldContainer = (props: FInputFieldProps) =>
 	style({
-		backgroundColor: FColorTypes.PURE_WHITE,
+		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		display: "flex",
 		flexDirection: "column",
 		rowGap: props.wordCount ? "0.25rem" : 0,
@@ -24,8 +24,8 @@ export const FInputFieldDiv = (
 			(isTriggered
 				? FColorTypes.BRAND
 				: isFilled
-				? FColorTypes.BLACK
-				: FColorTypes.LIGHT_GREY),
+				? FColorTypes.PRIMARY_BLACK
+				: FColorTypes.PRIMARY_LIGHT),
 		boxSizing: "border-box",
 		caretColor: FColorTypes.BRAND,
 		cursor: props.disabled ? "not-allowed" : "text",
@@ -33,15 +33,19 @@ export const FInputFieldDiv = (
 		flexDirection: "column",
 		justifyContent: props.multiline ? undefined : "center",
 		minHeight: props.multiline ? "7rem" : "3.5rem",
-		padding: isTriggered || isFilled ? "0.25rem 0.25rem 0.25rem 0.75rem" : "0.75rem",
+		padding:
+			isTriggered || isFilled ? "0.25rem 0.25rem 0.25rem 0.75rem" : "0.75rem",
 		transition: "all 0.2s ease-in-out",
 	});
 
-export const FInputFieldInputAreaDiv = (props: FInputFieldProps, state: boolean) =>
+export const FInputFieldInputAreaDiv = (
+	props: FInputFieldProps,
+	state: boolean
+) =>
 	style({
-		backgroundColor: FColorTypes.PURE_WHITE,
+		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		border: "none",
-		color: FColorTypes.BLACK,
+		color: FColorTypes.PRIMARY_BLACK,
 		display: state ? "block" : "none",
 		font: props.multiline ? FFontTypes.Small_Title : FFontTypes.Large_Text,
 		outline: "none",
@@ -51,13 +55,13 @@ export const FInputFieldInputAreaDiv = (props: FInputFieldProps, state: boolean)
 		resize: "none",
 		width: "100%",
 		wordBreak: "break-all",
-		$nest:{
-			"&::placeholder":{
-				color: FColorTypes.LIGHT_GREY
-			}
-		}
+		$nest: {
+			"&::placeholder": {
+				color: FColorTypes.PRIMARY_LIGHT,
+			},
+		},
 	});
 
 export const FInputFieldWordCountDiv = style({
-	textAlign: "right"
-})
+	textAlign: "right",
+});

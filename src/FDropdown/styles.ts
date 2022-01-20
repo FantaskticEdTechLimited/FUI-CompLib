@@ -10,9 +10,9 @@ export const FDropdownContainer = style({
 	rowGap: "0.75rem",
 	overflowY: "auto",
 	overflowX: "hidden",
-	border: "0.063rem solid " + FColorTypes.LIGHT_GREY,
+	border: "0.063rem solid " + FColorTypes.PRIMARY_LIGHT,
 	borderRadius: "0.5rem",
-	backgroundColor: FColorTypes.PURE_WHITE,
+	backgroundColor: FColorTypes.PRIMARY_WHITE,
 });
 
 export const FDropdownOptionDiv = (
@@ -21,8 +21,8 @@ export const FDropdownOptionDiv = (
 	isSelected: boolean
 ) =>
 	style({
-		backgroundColor:	
-			pressCount - index === 1 ? FColorTypes.PURPLE_BG : "inherit",
+		backgroundColor:
+			pressCount - index === 1 ? FColorTypes.BRAND_BG : "inherit",
 		cursor: isSelected ? "not-allowed" : "pointer",
 		$nest: {
 			"&:hover": {
