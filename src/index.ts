@@ -1,4 +1,4 @@
-import { FSideBarHandler, FScreenSizeHandler } from "./utils";
+import { FSideBarHandler, FScreenSizeHandler, FRouteService } from "./utils";
 import { FText } from "./FText";
 import { FInputField } from "./FInputField";
 import { FButton } from "./FButton";
@@ -20,6 +20,7 @@ import { FHeaderButton } from "./FHeaderButton";
 import { FEmailInputField } from "./FEmailInputField";
 import { FPasswordInputField } from "./FPasswordInputField";
 import { FTabs } from "./FTabs";
+import { FSideNavBarButtonList } from "./FSideNavBarButtonList";
 
 export {
 	FBottomNavBar,
@@ -37,6 +38,7 @@ export {
 	FSearchBar,
 	FSelector,
 	FSideNavBar,
+	FSideNavBarButtonList,
 	FSVGIcon,
 	FSwitchButton,
 	FTabs,
@@ -47,4 +49,5 @@ export {
 	// utils functions
 	FScreenSizeHandler,
 	FSideBarHandler,
+	FRouteService,
 };
