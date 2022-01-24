@@ -14,7 +14,7 @@ export const FButtonContainer = (props: FButtonProps) =>
 				: FColorTypes.PRIMARY_WHITE,
 		borderRadius: "0.25rem",
 		border:
-			props.type === FButtonTypes.PRIMARY || props.type === FButtonTypes.OUTLINE
+			props.type === FButtonTypes.OUTLINE
 				? "0.125rem solid" + FColorTypes.BRAND
 				: "none",
 		cursor: props.disabled ? "not-allowed" : "pointer",

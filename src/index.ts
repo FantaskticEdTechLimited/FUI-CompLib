@@ -19,6 +19,7 @@ import { FTagInputField } from "./FTagInputField";
 import { FHeaderButton } from "./FHeaderButton";
 import { FEmailInputField } from "./FEmailInputField";
 import { FPasswordInputField } from "./FPasswordInputField";
+import { FTabs } from "./FTabs";
 
 export {
 	FBottomNavBar,
@@ -38,9 +39,11 @@ export {
 	FSideNavBar,
 	FSVGIcon,
 	FSwitchButton,
+	FTabs,
 	FTag,
 	FTagInputField,
 	FText,
+	//
 	// utils functions
 	FScreenSizeHandler,
 	FSideBarHandler,
