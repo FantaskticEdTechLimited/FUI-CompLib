@@ -1,4 +1,4 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
@@ -68,7 +68,7 @@ export const FSelector = (props: FSelectorProps<any>) => {
 					) : (
 						<>
 							<FText
-								font={FFontTypes.Text}
+								font={FFontTypes.Text()}
 								color={
 									openDropdown
 										? FColorTypes.BRAND
@@ -82,7 +82,7 @@ export const FSelector = (props: FSelectorProps<any>) => {
 								{...props.labelProps}
 							/>
 							<FText
-								font={FFontTypes.Large_Text}
+								font={FFontTypes.Large_Text()}
 								color={
 									props.selectedOptions === null ||
 									props.selectedOptions.length === 0

@@ -24,14 +24,14 @@ export const FPasswordInputFieldContainer = (
 				: FColorTypes.PRIMARY_LIGHT),
 		opacity: disabled ? 0.4 : 1,
 		cursor: disabled ? "not-allowed" : "text",
-	}); 
+	});
 
 export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>
 	style({
 		backgroundColor: "inherit",
 		border: "none",
 		color: FColorTypes.PRIMARY_BLACK,
-		font: FFontTypes.Large_Text,
+		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
 		padding: 0,
@@ -41,7 +41,7 @@ export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>
 		$nest: {
 			"&::placeholder": {
 				color: FColorTypes.PRIMARY_GREY,
-				font: FFontTypes.Large_Text,
+				font: FFontTypes.Large_Text(),
 			},
 		},
 	});

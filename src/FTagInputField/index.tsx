@@ -337,7 +337,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 									}}
 									renderCustomizedOption={(option: any, selected: boolean) => (
 										<FText
-											font={FFontTypes.Large_Text}
+											font={FFontTypes.Large_Text()}
 											color={
 												option === NewTagHintLabel
 													? FColorTypes.PRIMARY_GREY

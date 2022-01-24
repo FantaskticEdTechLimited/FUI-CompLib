@@ -47,7 +47,7 @@ export const FInputFieldInputAreaDiv = (
 		border: "none",
 		color: FColorTypes.PRIMARY_BLACK,
 		display: state ? "block" : "none",
-		font: props.multiline ? FFontTypes.Small_Title : FFontTypes.Large_Text,
+		font: props.multiline ? FFontTypes.Small_Title() : FFontTypes.Large_Text(),
 		outline: "none",
 		overflowX: "hidden",
 		overflowY: "auto",

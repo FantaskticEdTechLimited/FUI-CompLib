@@ -94,7 +94,7 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 			</div>
 			{isError && (
 				<FText
-					font={FFontTypes.Text}
+					font={FFontTypes.Text()}
 					color={FColorTypes.SECONDARY_RED}
 					children={props.warningLabel ?? "Error: Input is missing an '@'."}
 					style={props.warningLabelStyle}

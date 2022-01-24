@@ -86,7 +86,7 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 							props.renderCustomizedOption(option, isSelected!)
 						) : (
 							<FText
-								font={FFontTypes.Large_Text}
+								font={FFontTypes.Large_Text()}
 								color={
 									isSelected ||
 									option === null ||

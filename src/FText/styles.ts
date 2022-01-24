@@ -6,7 +6,7 @@ import { FTextProps } from "./types";
 export const FTextContainer = (props: FTextProps) =>
 	style({
 		color: props.color ?? FColorTypes.PRIMARY_BLACK,
-		font: props.font ?? FFontTypes.Small_Title,
+		font: props.font ?? FFontTypes.Small_Title(),
 		overflow: "hidden",
 		textOverflow: "ellipsis",
 		whiteSpace: "pre-wrap",

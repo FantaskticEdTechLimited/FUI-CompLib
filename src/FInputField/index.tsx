@@ -61,7 +61,9 @@ export const FInputField = (props: FInputFieldProps) => {
 				{props.label && (
 					<FText
 						font={
-							isTriggered || isFilled ? FFontTypes.Text : FFontTypes.Large_Text
+							isTriggered || isFilled
+								? FFontTypes.Text()
+								: FFontTypes.Large_Text()
 						}
 						color={
 							isTriggered
@@ -127,7 +129,7 @@ export const FInputField = (props: FInputFieldProps) => {
 				)}
 			</div>
 			<FText
-				font={FFontTypes.Text}
+				font={FFontTypes.Text()}
 				color={
 					isTriggered
 						? FColorTypes.BRAND

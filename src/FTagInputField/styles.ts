@@ -53,7 +53,7 @@ export const FTagInputFieldInputAreaDiv = (value: string) =>
 		border: "none",
 		caretColor: FColorTypes.BRAND,
 		color: value ? FColorTypes.PRIMARY_BLACK : FColorTypes.PRIMARY_GREY,
-		font: FFontTypes.Large_Text,
+		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
 		padding: 0,
@@ -81,7 +81,7 @@ export const FTagInputFieldDropdownOptionDiv = (
 	isExisted: boolean
 ) =>
 	style({
-		font: FFontTypes.Large_Text,
+		font: FFontTypes.Large_Text(),
 		color:
 			isNew || isSelected
 				? FColorTypes.PRIMARY_GREY

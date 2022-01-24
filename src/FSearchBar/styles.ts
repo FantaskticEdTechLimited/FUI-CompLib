@@ -22,7 +22,7 @@ export const FSearchBarInputAreaDiv = style({
 	backgroundColor: "inherit",
 	border: "none",
 	color: FColorTypes.PRIMARY_BLACK,
-	font: FFontTypes.Large_Text,
+	font: FFontTypes.Large_Text(),
 	outline: "none",
 	overflow: "hidden",
 	padding: 0,

@@ -38,7 +38,7 @@ export const FEmailInputFieldInputAreaDiv = style({
 	backgroundColor: FColorTypes.PRIMARY_WHITE,
 	border: "none",
 	color: FColorTypes.PRIMARY_BLACK,
-	font: FFontTypes.Large_Text,
+	font: FFontTypes.Large_Text(),
 	outline: "none",
 	overflow: "hidden",
 	padding: 0,
@@ -47,7 +47,7 @@ export const FEmailInputFieldInputAreaDiv = style({
 	$nest: {
 		"&::placeholder": {
 			color: FColorTypes.PRIMARY_GREY,
-			font: FFontTypes.Large_Text,
+			font: FFontTypes.Large_Text(),
 		},
 	},
 });

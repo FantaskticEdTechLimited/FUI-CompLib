@@ -18,7 +18,7 @@ export const FTag = (props: FTagProps) => {
 		>
 			{props.leadingComponents}
 			<FText
-				font={FFontTypes.Text}
+				font={FFontTypes.Text()}
 				color={FColorTypes.BRAND}
 				style={props.labelStyle}
 				className={props.labelClassName + " " + styles.FTagLabel}
