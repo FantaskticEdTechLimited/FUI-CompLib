@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties, Key, ReactNode } from "react";
 import { FTextProps } from "../FText/types";
 import { OnClickFunction } from "../global.types";
 
@@ -10,6 +10,7 @@ export enum FButtonTypes {
 }
 
 export interface FButtonProps {
+	key?: Key;
 	type?: FButtonTypes;
 	children?: ReactNode;
 	className?: string;

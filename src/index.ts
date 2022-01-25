@@ -19,7 +19,7 @@ import { FTagInputField } from "./FTagInputField";
 import { FHeaderButton } from "./FHeaderButton";
 import { FEmailInputField } from "./FEmailInputField";
 import { FPasswordInputField } from "./FPasswordInputField";
-import { FTabs } from "./FTabs";
+import { FTabs, FTabsPanel } from "./FTabs";
 
 export {
 	FBottomNavBar,
@@ -40,6 +40,7 @@ export {
 	FSVGIcon,
 	FSwitchButton,
 	FTabs,
+	FTabsPanel,
 	FTag,
 	FTagInputField,
 	FText,

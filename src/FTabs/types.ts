@@ -12,6 +12,7 @@ export interface FTabPanelProps {
 		isSelected: boolean,
 		buttonProps: FButtonProps
 	) => ReactNode;
+	tabButtonProps?: FButtonProps;
 }
 
 export interface FTabsProps {

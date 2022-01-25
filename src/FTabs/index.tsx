@@ -11,7 +11,14 @@ export const FTabsPanel = (props: FTabPanelProps) => {
 
 export const FTabs = (props: FTabsProps) => {
 	const [tabIndex, setTabIndex] = useState<number>(0);
-
+	let defaultButtonProps: FButtonProps = {
+		type: FButtonTypes.PRIMARY,
+		label: "",
+		disabled: props.disabled ?? false,
+		onClick: () => setTabIndex(0),
+		style: props.tabButtonStyle,
+		className: props.tabButtonClassName,
+	};
 	return (
 		<div
 			style={props.wrapperStyle}
@@ -31,42 +38,57 @@ export const FTabs = (props: FTabsProps) => {
 						props.tabContainerClassName + " " + styles.FTabsTabContainer
 					}
 				>
-					{props.children && Array.isArray(props.children)
-						? props.children.map((tab, index) => { 
-								let isSelect = tabIndex === index ? true : false;
-								let buttonProps: FButtonProps = {
-									type: isSelect
-										? FButtonTypes.PRIMARY
-										: FButtonTypes.SECONDARY,
-									label: tab.props.label,
-									disabled: props.disabled ?? tab.props.disabled,
-									onClick: () => setTabIndex(index),
-									style: props.tabButtonStyle,
-									className: props.tabButtonClassName,
-								};
+					{
+						props.children && Array.isArray(props.children)
+							? props.children.map((tab, index) => {
+									let isSelect = tabIndex === index ? true : false;
+									let buttonProps: FButtonProps = {
+										key: index,
+										...defaultButtonProps,
+										type: isSelect
+											? FButtonTypes.PRIMARY
+											: FButtonTypes.SECONDARY,
+										label: tab.props.label,
+										disabled: props.disabled ?? tab.props.disabled,
+										onClick: () => setTabIndex(index),
+									};
 
-								return tab.props.renderCustomizedTabButton ? (
-									tab.props.renderCustomizedTabButton(isSelect, buttonProps)
-								) : props.renderCustomizedTabButton ? (
-									props.renderCustomizedTabButton(isSelect, buttonProps)
-								) : (
+									return tab.props.renderCustomizedTabButton ? (
+										tab.props.renderCustomizedTabButton(isSelect, buttonProps)
+									) : props.renderCustomizedTabButton ? (
+										props.renderCustomizedTabButton(isSelect, buttonProps)
+									) : (
+										<FButton
+											key={index}
+											{...buttonProps}
+											{...props.tabButtonProps}
+											{...tab.props.tabButtonProps}
+										/>
+									);
+							  })
+							: props.children &&
+							  (props.children.props.renderCustomizedTabButton ? (
+									props.children.props.renderCustomizedTabButton(true, {
+										...defaultButtonProps,
+										label: props.children.props.label,
+										disabled: props.disabled ?? props.children.props.disabled,
+									})
+							  ) : props.renderCustomizedTabButton ? (
+									props.renderCustomizedTabButton(true, {
+										...defaultButtonProps,
+										label: props.children.props.label,
+										disabled: props.disabled ?? props.children.props.disabled,
+									})
+							  ) : (
 									<FButton
-										key={index}
-										{...buttonProps}
+										{...defaultButtonProps}
+										label={props.children.props.label}
+										disabled={props.disabled ?? props.children.props.disabled}
 										{...props.tabButtonProps}
+										{...props.children.props.tabButtonProps}
 									/>
-								);
-						  })
-						: props.children && (
-								<FButton
-									type={FButtonTypes.PRIMARY}
-									disabled={props.disabled ?? props.children.props.disabled}
-									label={props.children.props.label}
-									style={props.tabButtonStyle}
-									className={props.tabButtonClassName}
-									{...props.tabButtonProps}
-								/>
-						  )}
+							  )) 
+					}
 				</div>
 				{props.actionComponents}
 			</div>
