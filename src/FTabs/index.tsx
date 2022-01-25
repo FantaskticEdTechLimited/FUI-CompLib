@@ -14,6 +14,8 @@ export const FTabs = (props: FTabsProps) => {
 	let defaultButtonProps: FButtonProps = {
 		type: FButtonTypes.PRIMARY,
 		label: "",
+		leadingComponents: [],
+		actionComponents: [],
 		disabled: props.disabled ?? false,
 		onClick: () => setTabIndex(0),
 		style: props.tabButtonStyle,
@@ -48,6 +50,12 @@ export const FTabs = (props: FTabsProps) => {
 										? FButtonTypes.PRIMARY
 										: FButtonTypes.SECONDARY,
 									label: tab.props.label,
+									leadingComponents:
+										tab.props.leadingComponents &&
+										tab.props.leadingComponents(isSelect),
+									actionComponents:
+										tab.props.actionConmponents &&
+										tab.props.actionConmponents(isSelect),
 									disabled: props.disabled ?? tab.props.disabled,
 									onClick: () => setTabIndex(index),
 									...tab.props.tabButtonProps,
@@ -71,6 +79,12 @@ export const FTabs = (props: FTabsProps) => {
 								props.children.props.renderCustomizedTabButton(true, {
 									...defaultButtonProps,
 									label: props.children.props.label,
+									leadingComponents:
+										props.children.props.leadingComponents &&
+										props.children.props.leadingComponents(true),
+									actionComponents:
+										props.children.props.actionConmponents &&
+										props.children.props.actionConmponents(true),
 									disabled: props.disabled ?? props.children.props.disabled,
 									...props.children.props.tabButtonProps,
 								})
@@ -78,6 +92,12 @@ export const FTabs = (props: FTabsProps) => {
 								props.renderCustomizedTabButton(true, {
 									...defaultButtonProps,
 									label: props.children.props.label,
+									leadingComponents:
+										props.children.props.leadingComponents &&
+										props.children.props.leadingComponents(true),
+									actionComponents:
+										props.children.props.actionConmponents &&
+										props.children.props.actionConmponents(true),
 									disabled: props.disabled ?? props.children.props.disabled,
 									...props.children.props.tabButtonProps,
 								})

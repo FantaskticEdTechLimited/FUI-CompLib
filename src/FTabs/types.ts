@@ -1,9 +1,17 @@
+import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
+import { FSVGIconProps } from "../FSVGIcon/types";
 import { OnClickFunction } from "../global.types";
 
 export interface FTabPanelProps {
 	label?: string;
+	leadingComponents?: (
+		isSelected: boolean
+	) => ReactElement<FIconProps | FSVGIconProps> | ReactNode;
+	actionConmponents?: (
+		isSelected: boolean
+	) => ReactElement<FIconProps | FSVGIconProps> | ReactNode;
 	children?: ReactNode;
 	disabled?: boolean;
 	onClick?: OnClickFunction;
