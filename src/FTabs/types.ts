@@ -1,25 +1,31 @@
-import { CSSProperties, ReactElement, ReactNode } from "react"; 
-import { FButtonProps } from "../FButton/types"; 
- 
+import { CSSProperties, ReactElement, ReactNode } from "react";
+import { FButtonProps } from "../FButton/types";
+import { OnClickFunction } from "../global.types";
+
 export interface FTabPanelProps {
-	label?: string; 
+	label?: string;
 	children?: ReactNode;
 	disabled?: boolean;
-	tabButtonProps?: FButtonProps;
+	onClick?: OnClickFunction;
+	// user design own tab independently
+	renderCustomizedTabButton?: (
+		isSelected: boolean,
+		buttonProps: FButtonProps
+	) => ReactNode;
 }
- 
+
 export interface FTabsProps {
 	children?: ReactElement<FTabPanelProps> | Array<ReactElement<FTabPanelProps>>;
-
-	// customized tabs by user
-	renderCustomizedTabs?: ReactNode;
-	tabIndex?: number;
-
 	disabled?: boolean;
 	// leading components in the header container
 	leadingComponents?: ReactNode;
 	// action components in the header container
-	actionComponents?: ReactNode; 
+	actionComponents?: ReactNode;
+	// user design own tab in general
+	renderCustomizedTabButton?: (
+		isSelected: boolean,
+		buttonProps: FButtonProps
+	) => ReactNode;
 
 	// css style of FTabs wrapper
 	wrapperClassName?: string;
@@ -31,5 +37,10 @@ export interface FTabsProps {
 
 	// css style of FTabs tab container
 	tabContainerClassName?: string;
-	tabContainerStyle?: CSSProperties; 
+	tabContainerStyle?: CSSProperties;
+
+	// css style of FTabs tab
+	tabButtonClassName?: string;
+	tabButtonStyle?: CSSProperties;
+	tabButtonProps?: FButtonProps;
 }

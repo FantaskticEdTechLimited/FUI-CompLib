@@ -1,6 +1,6 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { FButton } from "..";
-import { FButtonTypes } from "../FButton/types";
+import { FButtonProps, FButtonTypes } from "../FButton/types";
 import * as styles from "./styles";
 import { FTabPanelProps, FTabsProps } from "./types";
 
@@ -11,10 +11,6 @@ export const FTabsPanel = (props: FTabPanelProps) => {
 
 export const FTabs = (props: FTabsProps) => {
 	const [tabIndex, setTabIndex] = useState<number>(0);
-
-	useEffect(() => {
-		if (props.tabIndex) setTabIndex(props.tabIndex);
-	}, [props.tabIndex]);
 
 	return (
 		<div
@@ -35,31 +31,42 @@ export const FTabs = (props: FTabsProps) => {
 						props.tabContainerClassName + " " + styles.FTabsTabContainer
 					}
 				>
-					{props.renderCustomizedTabs ??
-						(props.children && Array.isArray(props.children)
-							? props.children.map((tab, index) => (
+					{props.children && Array.isArray(props.children)
+						? props.children.map((tab, index) => { 
+								let isSelect = tabIndex === index ? true : false;
+								let buttonProps: FButtonProps = {
+									type: isSelect
+										? FButtonTypes.PRIMARY
+										: FButtonTypes.SECONDARY,
+									label: tab.props.label,
+									disabled: props.disabled ?? tab.props.disabled,
+									onClick: () => setTabIndex(index),
+									style: props.tabButtonStyle,
+									className: props.tabButtonClassName,
+								};
+
+								return tab.props.renderCustomizedTabButton ? (
+									tab.props.renderCustomizedTabButton(isSelect, buttonProps)
+								) : props.renderCustomizedTabButton ? (
+									props.renderCustomizedTabButton(isSelect, buttonProps)
+								) : (
 									<FButton
 										key={index}
-										type={
-											tabIndex === index
-												? FButtonTypes.PRIMARY
-												: FButtonTypes.SECONDARY
-										}
-										disabled={props.disabled ?? tab.props.disabled}
-										label={tab.props.label}
-										onClick={() => setTabIndex(index)}
-										{...tab.props.tabButtonProps}
+										{...buttonProps}
+										{...props.tabButtonProps}
 									/>
-							  ))
-							: props.children && (
-									<FButton
-										type={FButtonTypes.PRIMARY}
-										disabled={props.disabled ?? props.children.props.disabled}
-										label={props.children.props.label}
-										onClick={() => setTabIndex(0)}
-										{...props.children.props.tabButtonProps}
-									/>
-							  ))}
+								);
+						  })
+						: props.children && (
+								<FButton
+									type={FButtonTypes.PRIMARY}
+									disabled={props.disabled ?? props.children.props.disabled}
+									label={props.children.props.label}
+									style={props.tabButtonStyle}
+									className={props.tabButtonClassName}
+									{...props.tabButtonProps}
+								/>
+						  )}
 				</div>
 				{props.actionComponents}
 			</div>
@@ -68,7 +75,7 @@ export const FTabs = (props: FTabsProps) => {
 				props.children.map((panel, index) => {
 					if (index === tabIndex)
 						return <Fragment key={index}>{panel.props.children}</Fragment>;
-					else return
+					else return;
 				})
 			) : (
 				<Fragment>{props.children && props.children.props.children}</Fragment>
