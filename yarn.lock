@@ -7,10 +7,10 @@
   resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-colorlib/0.0.5/3c48537bb46875c70516bf73b4359b881cba64c28750260c114e69d40c9dc97d#4235663b5bc59be2b8a4668fb9fe020d7ef47697"
   integrity sha512-IDRdciWrFO7s0ONjR3BfQAOfB1pcgDsm0OOK1hxhRI5z+F5cC/1MtkXCmcC+gbrP0xUR48Fnse41xcD+dgvMOQ==
 
-"@fantaskticedtechlimited/fui-fontlib@^0.0.4":
-  version "0.0.4"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/0.0.4/e838140911f8684019558af33a8f1d75c6da47d0f2d929418a79e17ab798fc2a#2e5349be9e066efb4a2ba7fc5c9c698341f92cee"
-  integrity sha512-nYJxalyx+Stcj5y3Q/FhVgjVhuqO1tHuW026ktk6UKRVZzk00e+wu1ijX2TCUDXeCGPR9ipyUWuQzEwSIkFBIA==
+"@fantaskticedtechlimited/fui-fontlib@^0.0.5":
+  version "0.0.5"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/0.0.5/7fda87c223c3f5c98e7df2845f135eba1985853b6d0878696bd000cd6e1f1eef#e5edfa5b9b67e4f903068abbc4ffcadf20859628"
+  integrity sha512-z2o1mkCKxG5DcEzNZcfQsQsmgPcxWrPNcYZgncGldrM6cdJJpmISMv+rU2Co/NXA+/XIAWgEaPFUjP/dDHWVsg==
 
 "@fantaskticedtechlimited/fui-iconlib@^0.0.12":
   version "0.0.12"
