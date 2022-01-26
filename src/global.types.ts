@@ -2,7 +2,7 @@ export type Nullable<T> = T | null;
 
 export type OnClickFunction = () => void;
 
-export type OnSubmitFuncion<T> =
+export type OnSubmitFunction<T> =
 	| ((data: T) => void)
 	| ((data: T) => Promise<void>);
 
