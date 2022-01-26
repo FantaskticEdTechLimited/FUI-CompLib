@@ -30,8 +30,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 	}, [props.forcedToClose]);
 
 	return (
-		<>
-			{/* Top NavBar when tablet mode */}
+		<> 
 			{screenWidth < 1280 && (
 				<div
 					style={props.topBarStyle}
@@ -48,11 +47,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 							size="large"
 							onClick={() => setOpenSideBar(true)}
 							strokeColor={FColorTypes.BRAND}
-							containerStyle={{
-								borderRadius: "0.25rem",
-								backgroundColor: FColorTypes.BRAND_BG,
-								padding: "0.25rem",
-							}}
+							containerClassName={styles.FTopNavBarContainer_MenuIcon} 
 							{...props.menuIconProps}
 						/>
 					)}
@@ -96,12 +91,7 @@ export const FSideNavBar = (props: FSideNavBarProps) => {
 								size="large"
 								onClick={() => setOpenSideBar(false)}
 								strokeColor={FColorTypes.BRAND}
-								containerStyle={{
-									borderRadius: "0.25rem",
-									backgroundColor: FColorTypes.BRAND_BG,
-									padding: "0.25rem",
-									alignSelf: "flex-end",
-								}}
+								containerClassName={styles.FTopNavBarContainer_CloseIcon}
 								{...props.closeIconProps}
 							/>
 						)}

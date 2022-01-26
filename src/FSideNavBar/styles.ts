@@ -17,7 +17,7 @@ export const FSideNarBarOverlayContainer = (
 		left: screenWidth >= 1280 ? 0 : undefined,
 		position: "fixed",
 		right: screenWidth >= 1280 ? undefined : isOpen ? 0 : "-100vw",
-		top: 0, 
+		top: 0,
 		width: isOpen ? "100vw" : undefined,
 		zIndex: isOpen ? 20 : 10,
 	});
@@ -78,3 +78,16 @@ export const FTopNavBarContainer = (
 		width: "100%",
 		zIndex: 15,
 	});
+
+export const FTopNavBarContainer_MenuIcon = style({
+	borderRadius: "0.25rem",
+	backgroundColor: FColorTypes.BRAND_BG,
+	padding: "0.25rem",
+});
+
+export const FTopNavBarContainer_CloseIcon = style({
+	borderRadius: "0.25rem",
+	backgroundColor: FColorTypes.BRAND_BG,
+	padding: "0.25rem",
+	alignSelf: "flex-end",
+});
