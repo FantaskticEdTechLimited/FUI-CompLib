@@ -20,11 +20,13 @@ import { FHeaderButton } from "./FHeaderButton";
 import { FEmailInputField } from "./FEmailInputField";
 import { FPasswordInputField } from "./FPasswordInputField";
 import { FTabs, FTabsPanel } from "./FTabs";
+import { FDnDOrder } from "./FDnDOrder";
 
 export {
 	FBottomNavBar,
 	FButton,
 	FCheckBox,
+	FDnDOrder,
 	FDropdown,
 	FEmailInputField,
 	FHeaderButton,
