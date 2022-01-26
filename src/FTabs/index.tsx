@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from "react";
-import { FButton } from "..";
+import { FAutoConvertArray, FButton } from "..";
 import { FButtonProps, FButtonTypes } from "../FButton/types";
 import * as styles from "./styles";
 import { FTabPanelProps, FTabsProps } from "./types";
@@ -40,89 +40,59 @@ export const FTabs = (props: FTabsProps) => {
 						props.tabContainerClassName + " " + styles.FTabsTabContainer
 					}
 				>
-					{props.children && Array.isArray(props.children)
-						? props.children.map((tab, index) => {
-								let isSelect = tabIndex === index ? true : false;
-								let buttonProps: FButtonProps = {
-									key: index,
-									...defaultButtonProps,
-									type: isSelect
-										? FButtonTypes.PRIMARY
-										: FButtonTypes.SECONDARY,
-									label: tab.props.label,
-									leadingComponents:
-										tab.props.leadingComponents &&
-										tab.props.leadingComponents(isSelect),
-									actionComponents:
-										tab.props.actionConmponents &&
-										tab.props.actionConmponents(isSelect),
-									disabled: props.disabled ?? tab.props.disabled,
-									onClick: () => setTabIndex(index),
-									...tab.props.tabButtonProps,
-								};
+					{FAutoConvertArray(props.children).map((tab, index) => {
+						let isSelect = tabIndex === index ? true : false;
+						let buttonProps: FButtonProps = {
+							key: index,
+							...defaultButtonProps,
+							type: isSelect ? FButtonTypes.PRIMARY : FButtonTypes.SECONDARY,
+							label: tab.props.label,
+							leadingComponents:
+								tab.props.leadingComponents &&
+								tab.props.leadingComponents(isSelect),
+							actionComponents:
+								tab.props.actionConmponents &&
+								tab.props.actionConmponents(isSelect),
+							disabled: props.disabled ?? tab.props.disabled,
+							onClick: () => setTabIndex(index),
+							...tab.props.tabButtonProps,
+						};
 
-								return tab.props.renderCustomizedTabButton ? (
-									tab.props.renderCustomizedTabButton(isSelect, buttonProps)
-								) : props.renderCustomizedTabButton ? (
-									props.renderCustomizedTabButton(isSelect, buttonProps)
-								) : (
-									<FButton
-										key={index}
-										{...buttonProps}
-										{...props.tabButtonProps}
-										{...tab.props.tabButtonProps}
-									/>
-								);
-						  })
-						: props.children &&
-						  (props.children.props.renderCustomizedTabButton ? (
-								props.children.props.renderCustomizedTabButton(true, {
-									...defaultButtonProps,
-									label: props.children.props.label,
-									leadingComponents:
-										props.children.props.leadingComponents &&
-										props.children.props.leadingComponents(true),
-									actionComponents:
-										props.children.props.actionConmponents &&
-										props.children.props.actionConmponents(true),
-									disabled: props.disabled ?? props.children.props.disabled,
-									...props.children.props.tabButtonProps,
-								})
-						  ) : props.renderCustomizedTabButton ? (
-								props.renderCustomizedTabButton(true, {
-									...defaultButtonProps,
-									label: props.children.props.label,
-									leadingComponents:
-										props.children.props.leadingComponents &&
-										props.children.props.leadingComponents(true),
-									actionComponents:
-										props.children.props.actionConmponents &&
-										props.children.props.actionConmponents(true),
-									disabled: props.disabled ?? props.children.props.disabled,
-									...props.children.props.tabButtonProps,
-								})
-						  ) : (
-								<FButton
-									{...defaultButtonProps}
-									label={props.children.props.label}
-									disabled={props.disabled ?? props.children.props.disabled}
-									{...props.tabButtonProps}
-									{...props.children.props.tabButtonProps}
-								/>
-						  ))}
+						return tab.props.renderCustomizedTabButton ? (
+							tab.props.renderCustomizedTabButton(isSelect, buttonProps)
+						) : props.renderCustomizedTabButton ? (
+							props.renderCustomizedTabButton(isSelect, buttonProps)
+						) : (
+							<FButton
+								key={index}
+								{...buttonProps}
+								{...props.tabButtonProps}
+								{...tab.props.tabButtonProps}
+							/>
+						);
+					})}
 				</div>
 				{props.actionComponents}
 			</div>
 			{/* panel under the corresponding tab */}
-			{props.children && Array.isArray(props.children) ? (
-				props.children.map((panel, index) => {
+			{FAutoConvertArray(props.children).map((panel, index) => {
+				if (panel.props.isRenderOnSelected) {
 					if (index === tabIndex)
 						return <Fragment key={index}>{panel.props.children}</Fragment>;
 					else return;
-				})
-			) : (
-				<Fragment>{props.children && props.children.props.children}</Fragment>
-			)}
+				} else {
+					return (
+						<div
+							key={index}
+							style={{
+								display: index === tabIndex ? "block" : "none",
+							}}
+						>
+							{panel.props.children}
+						</div>
+					);
+				}
+			})}
 		</div>
 	);
 };

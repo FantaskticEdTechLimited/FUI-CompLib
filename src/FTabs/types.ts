@@ -21,6 +21,9 @@ export interface FTabPanelProps {
 		buttonProps: FButtonProps
 	) => ReactNode;
 	tabButtonProps?: FButtonProps;
+
+	// control rerender 
+	isRenderOnSelected?: boolean
 }
 
 export interface FTabsProps {
@@ -52,4 +55,5 @@ export interface FTabsProps {
 	tabButtonClassName?: string;
 	tabButtonStyle?: CSSProperties;
 	tabButtonProps?: FButtonProps;
+
 }

@@ -1,4 +1,4 @@
-import { FSideBarHandler, FScreenSizeHandler } from "./utils";
+import { FSideBarHandler, FScreenSizeHandler, FAutoConvertArray } from "./utils";
 import { FText } from "./FText";
 import { FInputField } from "./FInputField";
 import { FButton } from "./FButton";
@@ -48,4 +48,5 @@ export {
 	// utils functions
 	FScreenSizeHandler,
 	FSideBarHandler,
+	FAutoConvertArray
 };
