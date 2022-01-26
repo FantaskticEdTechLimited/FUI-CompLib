@@ -1,6 +1,6 @@
 {
 	"name": "@fantaskticedtechlimited/fui-complib",
-	"version": "0.0.37",
+	"version": "0.0.38",
 	"description": "Fantasktic UI Component library",
 	"main": "./lib/cjs/index.js",
 	"module": "./lib/esm/index.js",
@@ -36,6 +36,10 @@
 		"@fantaskticedtechlimited/fui-colorlib": "^0.0.5",
 		"@fantaskticedtechlimited/fui-fontlib": "^0.0.5",
 		"@fantaskticedtechlimited/fui-iconlib": "^0.0.12",
+		"@types/hoist-non-react-statics": "^3.3.1",
+		"immutability-helper": "^3.1.1",
+		"react-dnd": "^14.0.5",
+		"react-dnd-html5-backend": "^14.1.0",
 		"typestyle": "^2.2.0"
 	}
 }
