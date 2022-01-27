@@ -1,4 +1,6 @@
-import { CSSProperties, Key, ReactNode } from "react";
+import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { CSSProperties, Key, ReactElement, ReactNode } from "react";
+import { FSVGIconProps } from "../FSVGIcon/types";
 import { FTextProps } from "../FText/types";
 import { OnClickFunction } from "../global.types";
 
@@ -8,6 +10,8 @@ export enum FButtonTypes {
 	SECONDARY = "Secondary",
 	TEXT = "Text",
 }
+
+type ComponentsType = ReactElement<FIconProps | FSVGIconProps> | ReactNode;
 
 export interface FButtonProps {
 	key?: Key;
@@ -21,6 +25,6 @@ export interface FButtonProps {
 	labelClassName?: string;
 	labelStyle?: CSSProperties;
 	labelProps?: FTextProps;
-	leadingComponents?: ReactNode;
-	actionComponents?: ReactNode;
+	leadingComponents?: ComponentsType | Array<ComponentsType>;
+	actionComponents?: ComponentsType | Array<ComponentsType>;
 }

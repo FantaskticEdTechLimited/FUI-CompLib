@@ -1,8 +1,16 @@
 import { CSSProperties, ReactNode } from "react";
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib"; 
+import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { FScrollBarProps } from "../FScrollBar/types";
-
+import { RWDMode } from "../global.types";
+ 
+export type MenuPosition = "left" | "right";
 export interface FSideNavBarProps {
+	// control rwd
+	rwdMode: RWDMode;
+
+	// overlay menu from left or right
+	overlayMenuPosition: MenuPosition;
+
 	children: ReactNode;
 	// control visibility of sideBar/topBar
 	visible: boolean;
@@ -33,6 +41,6 @@ export interface FSideNavBarProps {
 	topBarClassName?: string;
 	topBarLeadingComponents?: ReactNode;
 	topBarActionComponents?: ReactNode;
-	 
+
 	scrollBarProps?: FScrollBarProps;
 }

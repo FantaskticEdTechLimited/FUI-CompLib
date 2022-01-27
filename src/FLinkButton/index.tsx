@@ -24,14 +24,14 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 		>
 			{props.children ?? (
 				<>
-					{props.leadingComponent ?? (
+					{props.leadingComponents ?? props.leadingIcon ? (
 						<FIcon
 							strokeColor={
 								isSelected ? FColorTypes.BRAND : FColorTypes.PRIMARY_BLACK
 							}
 							{...props.leadingIcon}
 						/>
-					)}
+					) : undefined}
 					<FText
 						style={props.labelStyle}
 						className={props.labelClassName + " " + styles.FLinkButtonLabel}
@@ -39,8 +39,8 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 						children={props.label}
 						{...props.labelProps}
 					/>
-					{props.actionComponent
-						? props.actionComponent
+					{props.actionComponents
+						? props.actionComponents
 						: props.containsRouteChildren && (
 								<FIcon
 									name={FIconTypes.ARROW_DOWN}

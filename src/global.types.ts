@@ -12,3 +12,9 @@ export type OnDataCallbackFunction<T, C> = (
 ) => Promise<void>;
 
 export type OnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
+
+export enum RWDMode {
+	FULL = "FULL",
+	TABLET = "TABLET",
+	MOBILE = "MOBILE",
+}

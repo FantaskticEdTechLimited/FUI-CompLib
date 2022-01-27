@@ -10,7 +10,7 @@ import { FRadioButton } from "./FRadioButton";
 import { FSearchBar } from "./FSearchBar";
 import { FSVGIcon } from "./FSVGIcon";
 import { FScrollBarStyle } from "./FScrollBar";
-import { FSideNavBar } from "./FSideNavBar";
+import { FRWDNavBar } from "./FRWDNavBar";
 import { FSelector } from "./FSelector";
 import { FDropdown } from "./FDropdown";
 import { FLinkButton } from "./FLinkButton";
@@ -35,10 +35,10 @@ export {
 	FPasswordInputField,
 	FPopUp,
 	FRadioButton,
+	FRWDNavBar,
 	FScrollBarStyle,
 	FSearchBar,
 	FSelector,
-	FSideNavBar,
 	FSVGIcon,
 	FSwitchButton,
 	FTabs,
