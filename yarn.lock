@@ -14,10 +14,12 @@
   resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-colorlib/0.0.5/3c48537bb46875c70516bf73b4359b881cba64c28750260c114e69d40c9dc97d#4235663b5bc59be2b8a4668fb9fe020d7ef47697"
   integrity sha512-IDRdciWrFO7s0ONjR3BfQAOfB1pcgDsm0OOK1hxhRI5z+F5cC/1MtkXCmcC+gbrP0xUR48Fnse41xcD+dgvMOQ==
 
-"@fantaskticedtechlimited/fui-fontlib@^0.0.5":
-  version "0.0.5"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/0.0.5/7fda87c223c3f5c98e7df2845f135eba1985853b6d0878696bd000cd6e1f1eef#e5edfa5b9b67e4f903068abbc4ffcadf20859628"
-  integrity sha512-z2o1mkCKxG5DcEzNZcfQsQsmgPcxWrPNcYZgncGldrM6cdJJpmISMv+rU2Co/NXA+/XIAWgEaPFUjP/dDHWVsg==
+"@fantaskticedtechlimited/fui-fontlib@^0.0.6":
+  version "0.0.6"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/0.0.6/307c8ce416cbcaf41316c919974b2bdfecde86f9c645ca276f2b30d63917b6a0#3f1434ae585c956bc9f90b0fbeaa5811379057af"
+  integrity sha512-/jxcFFSprnYg1ai034Wn95MGVXc+aWjZIoG79SoI9pcLwJlqy4GbNwjB119QIbps+3A3chCsCgWRs8M0BDKPIQ==
+  dependencies:
+    "@types/webfontloader" "^1.6.34"
 
 "@fantaskticedtechlimited/fui-iconlib@^0.0.12":
   version "0.0.12"
@@ -97,6 +99,11 @@
   version "0.16.2"
   resolved "https://registry.npmjs.org/@types/scheduler/-/scheduler-0.16.2.tgz#1a62f89525723dde24ba1b01b092bf5df8ad4d39"
   integrity sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==
+
+"@types/webfontloader@^1.6.34":
+  version "1.6.34"
+  resolved "https://registry.npmjs.org/@types/webfontloader/-/webfontloader-1.6.34.tgz#3ad1530c3cf2827d3ed80679b4f8c688e6c6957c"
+  integrity sha512-yNIPDl3P1yK/ag9C8CdleEhWrtU1myGr3cxb0yEBN/tkCYoGP5PbQa53mQCXcOLFAvBFzJJQfuEahOZ0ARakqw==
 
 csstype@2.6.9:
   version "2.6.9"
