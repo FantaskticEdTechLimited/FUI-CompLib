@@ -6,6 +6,7 @@ export const FTabsWrapper = (disabled: boolean) =>
 		display: "flex",
 		flexDirection: "column",
 		height: "100%",
+		width: "100%",
 		rowGap: "1rem",
 		cursor: disabled ? "not-allowed" : "auto",
 		opacity: disabled ? 0.4 : 1,

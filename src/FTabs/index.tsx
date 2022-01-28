@@ -85,7 +85,10 @@ export const FTabs = (props: FTabsProps) => {
 						<div
 							key={index}
 							style={{
-								display: index === tabIndex ? "block" : "none",
+								overflow:"hidden",
+								height:"100%",
+								width:"100%",
+								display: index === tabIndex ? "block" : "none"
 							}}
 						>
 							{panel.props.children}

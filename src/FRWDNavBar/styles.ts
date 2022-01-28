@@ -1,4 +1,4 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
 import { style } from "typestyle";
 import { RWDMode } from "../global.types";
 import { FSideNavBarProps } from "./types";
@@ -29,6 +29,7 @@ export const FHiddenSideBarContainer = style({
 	flexDirection: "column",
 	rowGap: ".5rem",
 	padding: ".7rem 1rem",
+	boxShadow: "0rem 0rem 0.5rem rgba(72, 63, 226, 0.16)",
 });
 
 export const FNormalSideNavBarContainer = style({
@@ -45,12 +46,15 @@ export const FNormalSideNavBarContainer = style({
 	overflow: "hidden",
 	boxSizing: "border-box",
 	padding: ".7rem 1rem",
+
+	boxShadow: "0rem 0rem 0.5rem rgba(72, 63, 226, 0.16)",
 });
 
 export const FSideNavBarContainer = style({
+	width:"100%",
 	flexGrow: 1,
-	boxShadow: "0rem 0rem 0.5rem rgba(72, 63, 226, 0.16)",
 	boxSizing: "border-box",
+	overflowX:"hidden",
 	overflowY: "scroll",
 	zIndex: 20,
 	display: "flex",

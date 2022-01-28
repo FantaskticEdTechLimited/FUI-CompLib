@@ -1,11 +1,12 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
+import React from "react";
 import { useState, useEffect, useRef, Fragment } from "react";
+import { FScrollBarStyle } from "..";
+import { RWDMode } from "../global.types";
 import * as styles from "./styles";
 import { FSideNavBarProps } from "./types";
-import { FScrollBarStyle } from "../FScrollBar";
-import React from "react";
-import { RWDMode } from "../global.types";
+
 export const FRWDNavBar = (props: FSideNavBarProps) => {
 	const [openSideBar, setOpenSideBar] = useState<boolean>(false);
 	const OpenedSideNavBarRef = useRef<HTMLDivElement>(null);
@@ -65,7 +66,9 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 					>
 						{/* Menu location controller */}
 						<div
-							className={styles.FHiddenSideBarContainer}
+							className={
+								styles.FHiddenSideBarContainer + " " + props.containerClassName
+							}
 							ref={OpenedSideNavBarRef}
 						>
 							{/* close button */}
@@ -100,7 +103,11 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 				// PC Mode
 				<Fragment>
 					{/* Normal SideBar */}
-					<div className={styles.FNormalSideNavBarContainer}>
+					<div
+						className={
+							styles.FNormalSideNavBarContainer + " " + props.containerClassName
+						}
+					>
 						{props.logo}
 						<div className={styles.Divider} />
 						{/* scrollable menu */}
