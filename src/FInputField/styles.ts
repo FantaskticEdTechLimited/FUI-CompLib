@@ -5,7 +5,6 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FInputFieldContainer = (props: FInputFieldProps) =>
 	style({
-		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		display: "flex",
 		flexDirection: "column",
 		rowGap: props.wordCount ? "0.25rem" : 0,
@@ -18,6 +17,7 @@ export const FInputFieldDiv = (
 	isFilled: boolean
 ) =>
 	style({
+		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		borderRadius: "0.5rem",
 		border:
 			"0.1rem solid " +

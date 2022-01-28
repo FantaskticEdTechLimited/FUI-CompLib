@@ -20,7 +20,7 @@ export const FButton = (props: FButtonProps) => {
 				props.children
 			) : (
 				<FText
-					font={FFontTypes.Large_Text()}
+					font={FFontTypes.Text()}
 					color={
 						props.type === FButtonTypes.PRIMARY
 							? FColorTypes.PRIMARY_WHITE

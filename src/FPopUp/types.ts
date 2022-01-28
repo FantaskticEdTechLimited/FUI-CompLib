@@ -5,7 +5,8 @@ export interface FPopUpProps {
 	children: ReactNode;
 	onClose: OnClickFunction;
 	className?: string;
-	isNotAllowToClose?: boolean;
+    popUpName:string
+    isDisableCloseWhenClickOutside?:boolean
 	overlayClassName?: string;
 	overlayStyle?: CSSProperties;
 	style?: CSSProperties;
