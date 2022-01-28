@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
-import { OnClickFunction } from "../global.types";
+import { OnClickFunction, ThemeProps } from "../global.types";
 
 export interface FBottomNavBarProps {
 	actionButtonLabel?: string;
@@ -24,4 +24,7 @@ export interface FBottomNavBarProps {
 	// css style of FBottomNavBar
 	navBarClassName?: string;
 	navBarStyle?: CSSProperties;
+
+	// theme for different project
+	themeProps?: ThemeProps
 }

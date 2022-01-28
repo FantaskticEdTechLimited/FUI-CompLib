@@ -1,7 +1,7 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement } from "react";
 import { FPasswordInputFieldIconProps } from "./svg/types";
-import { OnClickFunction } from "../global.types";
+import { OnClickFunction, ThemeProps } from "../global.types";
 import { FSVGIconProps } from "../FSVGIcon/types";
 
 export interface FPasswordInputFieldProps {
@@ -27,4 +27,6 @@ export interface FPasswordInputFieldProps {
 	// css style of FPasswordInputField input area
 	inputAreaClassName?: string;
 	inputAreaStyle?: CSSProperties;
+
+	themeProps?: ThemeProps;
 }

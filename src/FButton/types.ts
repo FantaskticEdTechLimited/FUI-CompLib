@@ -2,7 +2,7 @@ import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, Key, ReactElement, ReactNode } from "react";
 import { FSVGIconProps } from "../FSVGIcon/types";
 import { FTextProps } from "../FText/types";
-import { OnClickFunction } from "../global.types";
+import { OnClickFunction, ThemeProps } from "../global.types";
 
 export enum FButtonTypes {
 	PRIMARY = "Primary",
@@ -27,4 +27,6 @@ export interface FButtonProps {
 	labelProps?: FTextProps;
 	leadingComponents?: ComponentsType | Array<ComponentsType>;
 	actionComponents?: ComponentsType | Array<ComponentsType>;
+	// theme for different project
+	themeProps?: ThemeProps
 }

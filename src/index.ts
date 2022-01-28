@@ -4,6 +4,7 @@ import {
 	FAutoConvertArray,
 	FScrollTopHandler,
 	FUseStateSafeHandler,
+	FRwdModeHandler
 } from "./utils";
 import { FText } from "./FText";
 import { FInputField } from "./FInputField";
@@ -67,4 +68,5 @@ export {
 	FAutoConvertArray,
 	FScrollTopHandler,
 	FUseStateSafeHandler,
+	FRwdModeHandler
 };

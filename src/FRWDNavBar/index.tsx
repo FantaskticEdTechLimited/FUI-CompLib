@@ -1,9 +1,8 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { useState, useEffect, useRef, Fragment } from "react";
 import { FScrollBarStyle } from "..";
-import { RWDMode } from "../global.types";
+import { defaultThemeProps, RWDMode } from "../global.types";
 import * as styles from "./styles";
 import { FSideNavBarProps } from "./types";
 
@@ -48,8 +47,10 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								name={FIconTypes.MENU}
 								size="large"
 								onClick={() => setOpenSideBar(true)}
-								strokeColor={FColorTypes.BRAND}
-								containerClassName={styles.FTopNavBarContainer_MenuIcon}
+								strokeColor={
+									props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+								}
+								containerClassName={styles.FTopNavBarContainer_MenuIcon(props)}
 								{...props.menuIconProps}
 							/>
 						)}
@@ -76,8 +77,10 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								name={FIconTypes.CLOSE}
 								size="large"
 								onClick={() => setOpenSideBar(false)}
-								strokeColor={FColorTypes.BRAND}
-								containerClassName={styles.FTopNavBarContainer_CloseIcon}
+								strokeColor={
+									props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+								}
+								containerClassName={styles.FTopNavBarContainer_CloseIcon(props)}
 								{...props.closeIconProps}
 							/>
 							{/* scrollable menu */}

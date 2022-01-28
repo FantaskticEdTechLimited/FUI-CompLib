@@ -11,5 +11,5 @@ export interface ConfirmPopupProps extends FPopUpProps {
 	onActionButtonClick?: OnClickFunction;
 	FBottomNavigationProps?: Partial<FBottomNavBarProps>;
 	titleProps?: FTextProps;
-	subtitleProps?: FTextProps;
+	subtitleProps?: FTextProps; 
 }

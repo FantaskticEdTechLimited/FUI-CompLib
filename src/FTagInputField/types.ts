@@ -1,8 +1,9 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { CSSProperties, ReactElement, ReactNode } from "react"; 
+import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FDropdownProps } from "../FDropdown/types";
 import { FScrollBarProps } from "../FScrollBar/types";
 import { FTagProps } from "../FTag/types";
+import { ThemeProps } from "../global.types";
 
 export interface FDropdownHintLabelsProps {
 	newTagHintLabel?: string;
@@ -35,15 +36,15 @@ export interface FTagInputFieldProps<T> {
 	tagHintLabels?: FDropdownHintLabelsProps;
 	// render filtered tag result whether the tag is new or existed
 	renderFilteredTagResult?: (result: FilteredTagResultProps) => void;
- 
+
 	tagProps?: FTagProps;
 	// user can design how to show existed or inputted tags
 	renderCustomizedTagComponents?: ReactNode;
 	// create tags after user input and press Enter
 	onTagCreate?: (data: T) => void;
 	// click tag delete icon to delete
-	onTagDelete?: (data: T) => void; 
-	clearIconProps?: FIconProps; 
+	onTagDelete?: (data: T) => void;
+	clearIconProps?: FIconProps;
 	dropdownProps?: FDropdownProps<T>;
 	// user can design how to show dropdown of tags
 	renderCustomizedDropdownComponent?: ReactElement<FDropdownProps<T>>;
@@ -67,6 +68,7 @@ export interface FTagInputFieldProps<T> {
 	// css style of FTagInputField input area
 	inputAreaClassName?: string;
 	inputAreaStyle?: CSSProperties;
- 
+
 	scrollBarProps?: FScrollBarProps;
+	themeProps?: ThemeProps;
 }

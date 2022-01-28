@@ -1,23 +1,27 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
+import { defaultThemeProps } from "../global.types";
+import { FHeaderButtonProps } from "./types";
 
-export const FHeaderButtonContainer = (disabled: boolean) =>
+export const FHeaderButtonContainer = (props: FHeaderButtonProps) =>
 	style({
 		display: "flex",
 		alignItems: "center",
 		width: "fit-content",
-		backgroundColor: FColorTypes.BRAND_BG,
+		backgroundColor: props.themeProps?.subTheme ?? defaultThemeProps.subTheme,
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		padding: "0.5rem",
-		cursor: disabled ? "not-allowed" : "pointer",
-		opacity: disabled ? 0.4 : 1,
+		cursor: props.disabled ? "not-allowed" : "pointer",
+		opacity: props.disabled ? 0.4 : 1,
 		$nest: {
 			"&:hover": {
-				backgroundColor: disabled ? undefined : FColorTypes.BRAND,
+				backgroundColor: props.disabled
+					? undefined
+					: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
 				$nest: {
 					"svg path": {
-						stroke: disabled ? undefined : FColorTypes.PRIMARY_WHITE,
+						stroke: props.disabled ? undefined : FColorTypes.PRIMARY_WHITE,
 					},
 				},
 			},

@@ -5,8 +5,8 @@ import { MoreActionItemProps } from "./MoreActionItem/types";
 import { CTACloseIcon } from "./svg";
 import React from "react";
 import { FPopUp, FSVGIcon, FText } from "..";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib"; 
+import { defaultThemeProps } from "../global.types";
 
 export const FMoreActionPopUp = (props: FMoreActionPopUpProps) => {
 	const handlePopUpCloseButtonClick = () => {
@@ -16,7 +16,10 @@ export const FMoreActionPopUp = (props: FMoreActionPopUpProps) => {
 		<>
 			<FPopUp {...props}>
 				<div className={styles.topicRowMoreActionPopupTitleDiv}>
-					<FText font={FFontTypes.Text()} color={FColorTypes.BRAND}>
+					<FText
+						font={FFontTypes.Text()}
+						color={props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme}
+					>
 						{props.header ?? "Header"}
 					</FText>
 					<FText font={FFontTypes.Title()} maxRows={2}>
@@ -47,4 +50,4 @@ export const FMoreActionPopUp = (props: FMoreActionPopUpProps) => {
 			</FPopUp>
 		</>
 	);
-} 
+};

@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { OnClickFunction } from "../global.types";
+import { OnClickFunction, ThemeProps } from "../global.types";
 
 export interface FCheckBoxProps {
 	checked: boolean;
@@ -16,4 +16,7 @@ export interface FCheckBoxProps {
 	fillColor?: string;
 	iconColor?: string;
 	strokeWidth?: number | string;
+
+	// theme for different project
+	themeProps?: ThemeProps
 }

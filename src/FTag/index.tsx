@@ -4,8 +4,8 @@ import React from "react";
 import { FText } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 
-import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib"; 
+import { defaultThemeProps } from "../global.types";
 
 export const FTag = (props: FTagProps) => {
 	return (
@@ -19,7 +19,7 @@ export const FTag = (props: FTagProps) => {
 			{props.leadingComponents}
 			<FText
 				font={FFontTypes.Text()}
-				color={FColorTypes.BRAND}
+				color={props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme}
 				style={props.labelStyle}
 				className={props.labelClassName + " " + styles.FTagLabel}
 				children={props.label}
@@ -31,7 +31,9 @@ export const FTag = (props: FTagProps) => {
 						<FIcon
 							size="small"
 							name={FIconTypes.CLOSE}
-							strokeColor={FColorTypes.BRAND}
+							strokeColor={
+								props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+							}
 							onClick={() =>
 								props.disabled ? undefined : props.onDelete && props.onDelete()
 							}

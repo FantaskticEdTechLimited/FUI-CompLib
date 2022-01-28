@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { OnClickFunction } from "../global.types";
+import { OnClickFunction, ThemeProps } from "../global.types";
 
 export interface FRadioButtonProps {
 	checked?: boolean;
@@ -14,4 +14,6 @@ export interface FRadioButtonProps {
 	fillColor?: string;
 	strokeColor?: string;
 	strokeWidth?: number | string;
+
+	themeProps?: ThemeProps;
 }

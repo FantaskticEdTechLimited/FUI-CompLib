@@ -10,13 +10,15 @@ export const FSearchBar = (props: FSearchBarProps) => {
 
 	useEffect(() => {
 		if (isTriggered && inputRef.current) inputRef.current.focus();
-	}, [isTriggered]); 
+	}, [isTriggered]);
 
 	return (
 		<div
 			style={props.containerStyle}
 			className={
-				props.containerClassName + " " + styles.FSearchBarContainer(isTriggered)
+				props.containerClassName +
+				" " +
+				styles.FSearchBarContainer(isTriggered, props)
 			}
 			onClick={() => setIsTriggered(true)}
 			onBlur={() => setIsTriggered(false)}

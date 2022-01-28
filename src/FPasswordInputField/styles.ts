@@ -1,11 +1,13 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
+import { defaultThemeProps } from "../global.types";
+import { FPasswordInputFieldProps } from "./types";
 
 export const FPasswordInputFieldContainer = (
 	isTriggered: boolean,
 	isFilled: boolean,
-	disabled: boolean
+	props: FPasswordInputFieldProps
 ) =>
 	style({
 		display: "flex",
@@ -18,12 +20,12 @@ export const FPasswordInputFieldContainer = (
 		border:
 			"0.125rem solid " +
 			(isTriggered
-				? FColorTypes.BRAND
+				? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 				: isFilled
 				? FColorTypes.PRIMARY_BLACK
 				: FColorTypes.PRIMARY_LIGHT),
-		opacity: disabled ? 0.4 : 1,
-		cursor: disabled ? "not-allowed" : "text",
+		opacity: props.disabled ? 0.4 : 1,
+		cursor: props.disabled ? "not-allowed" : "text",
 	});
 
 export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>

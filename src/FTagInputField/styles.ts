@@ -2,6 +2,7 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { RefObject } from "react";
 import { style } from "typestyle";
+import { defaultThemeProps } from "../global.types";
 import { FTagInputFieldProps } from "./types";
 
 export const FTagInputFieldContainer = (props: FTagInputFieldProps<any>) =>
@@ -35,7 +36,10 @@ export const FTagInputFieldWrapper = style({
 	width: "fit-content",
 });
 
-export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
+export const FTagInputFieldInputContainer = (
+	isTriggered: boolean,
+	props: FTagInputFieldProps<any>
+) =>
 	style({
 		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		display: "flex",
@@ -44,15 +48,20 @@ export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
 		alignItems: "center",
 		width: "inherit",
 		borderBottom:
-			"0.125rem solid " + (isTriggered ? FColorTypes.BRAND : "transparent"),
+			"0.125rem solid " +
+			(isTriggered
+				? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+				: "transparent"),
 	});
 
-export const FTagInputFieldInputAreaDiv = (value: string) =>
+export const FTagInputFieldInputAreaDiv = ( 
+	props: FTagInputFieldProps<any>
+) =>
 	style({
 		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		border: "none",
-		caretColor: FColorTypes.BRAND,
-		color: value ? FColorTypes.PRIMARY_BLACK : FColorTypes.PRIMARY_GREY,
+		caretColor: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
+		color: props.inputValue ? FColorTypes.PRIMARY_BLACK : FColorTypes.PRIMARY_GREY,
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
@@ -78,7 +87,8 @@ export const FTagInputFieldDropdownContainer = (
 export const FTagInputFieldDropdownOptionDiv = (
 	isSelected: boolean,
 	isNew: boolean,
-	isExisted: boolean
+	isExisted: boolean,
+	props: FTagInputFieldProps<any>
 ) =>
 	style({
 		font: FFontTypes.Large_Text(),
@@ -96,13 +106,14 @@ export const FTagInputFieldDropdownOptionDiv = (
 		textAlign: "left",
 		$nest: {
 			"&:hover": {
-				backgroundColor: FColorTypes.BRAND_BG,
+				backgroundColor:
+					props.themeProps?.subTheme ?? defaultThemeProps.subTheme,
 				color:
 					isNew || isSelected
 						? FColorTypes.PRIMARY_GREY + " !important"
 						: isExisted
 						? FColorTypes.SECONDARY_RED + " !important"
-						: FColorTypes.BRAND,
+						: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
 			},
 		},
 	});

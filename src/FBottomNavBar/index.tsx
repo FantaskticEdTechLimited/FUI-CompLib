@@ -23,7 +23,9 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						}
 						style={props.leadingButtonStyle}
 						className={
-							props.leadingButtonClassName + " " + styles.FLeadingButtonDiv
+							props.leadingButtonClassName +
+							" " +
+							styles.FLeadingButtonDiv(props.themeProps!)
 						}
 						{...props.leadingButtonProps}
 					/>
@@ -40,7 +42,10 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						className={
 							props.actionButtonClassName +
 							" " +
-							styles.FActionButtonDiv(props.disableActionButton!)
+							styles.FActionButtonDiv(
+								props.disableActionButton!,
+								props.themeProps!
+							)
 						}
 						{...props.actionButtonProps}
 					/>

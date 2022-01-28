@@ -1,6 +1,7 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
+import { defaultThemeProps, ThemeProps } from "../global.types";
 
 export const FEmailInputFieldWrapper = (isError: boolean, disabled: boolean) =>
 	style({
@@ -13,7 +14,8 @@ export const FEmailInputFieldWrapper = (isError: boolean, disabled: boolean) =>
 
 export const FEmailInputFieldContainer = (
 	isTriggered: boolean,
-	isFilled: boolean
+	isFilled: boolean,
+	theme: ThemeProps
 ) =>
 	style({
 		alignItems: "center",
@@ -22,12 +24,12 @@ export const FEmailInputFieldContainer = (
 		border:
 			"0.125rem solid " +
 			(isTriggered
-				? FColorTypes.BRAND
+				? theme.mainTheme ?? defaultThemeProps.mainTheme
 				: isFilled
 				? FColorTypes.PRIMARY_BLACK
 				: FColorTypes.PRIMARY_LIGHT),
 		boxSizing: "border-box",
-		caretColor: FColorTypes.BRAND,
+		caretColor: theme.mainTheme ?? defaultThemeProps.mainTheme,
 		columnGap: "0.5rem",
 		display: "flex",
 		flexDirection: "row",

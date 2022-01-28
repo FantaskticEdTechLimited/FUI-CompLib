@@ -2,9 +2,9 @@ import * as styles from "./styles";
 import React from "react";
 import { FText } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-
 import { FButtonProps, FButtonTypes } from "./types";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { defaultThemeProps } from "../global.types";
 
 export const FButton = (props: FButtonProps) => {
 	return (
@@ -26,11 +26,13 @@ export const FButton = (props: FButtonProps) => {
 							? FColorTypes.PRIMARY_WHITE
 							: props.type === FButtonTypes.OUTLINE ||
 							  props.type === FButtonTypes.SECONDARY
-							? FColorTypes.BRAND
+							? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 							: FColorTypes.PRIMARY_BLACK
 					}
 					style={props.labelStyle}
-					className={props.labelClassName}
+					className={
+						props.labelClassName + " " + styles.FButtonContainer_LabelDiv(props)
+					}
 					children={props.label ?? "Button_Text"}
 					{...props.labelProps}
 				/>

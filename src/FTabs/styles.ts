@@ -1,4 +1,3 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
 
 export const FTabsWrapper = (disabled: boolean) =>
@@ -29,17 +28,4 @@ export const FTabsTabContainer = style({
 			padding: "0.75rem 1.5rem",
 		},
 	},
-});
-
-export const FTabsPanelContainer = style({
-	display: "flex",
-	flexDirection: "column", 
-	rowGap: "1rem",
-	overflowX: "hidden",
-	overflowY: "auto",
-	boxSizing: "border-box",
-	padding: "1.5rem",
-	backgroundColor: FColorTypes.PANEL_BG_COLOR,
-	boxShadow: "inset 0 0 0.25rem rgba(0, 0, 0, 0.08)",
-	borderRadius: "0.75rem", 
-});
+}); 

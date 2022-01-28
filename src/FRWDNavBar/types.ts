@@ -1,8 +1,8 @@
 import { CSSProperties, ReactNode } from "react";
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib"; 
-import { RWDMode } from "../global.types";
+import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { RWDMode, ThemeProps } from "../global.types";
 import { FScrollBarProps } from "../FScrollBar/types";
- 
+
 export type MenuPosition = "left" | "right";
 export interface FSideNavBarProps {
 	// control rwd
@@ -43,4 +43,5 @@ export interface FSideNavBarProps {
 	topBarActionComponents?: ReactNode;
 
 	scrollBarProps?: FScrollBarProps;
+	themeProps?: ThemeProps;
 }

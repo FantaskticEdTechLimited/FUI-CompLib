@@ -149,7 +149,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 					className={
 						props.inputContainerClassName +
 						" " +
-						styles.FTagInputFieldInputContainer(isTriggered)
+						styles.FTagInputFieldInputContainer(isTriggered, props)
 					}
 					onClick={() => {
 						if (!props.disabled) {
@@ -165,7 +165,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 						className={
 							props.inputAreaClassName +
 							" " +
-							styles.FTagInputFieldInputAreaDiv(props.inputValue!)
+							styles.FTagInputFieldInputAreaDiv(props)
 						}
 						type="text"
 						ref={inputRef}
@@ -348,7 +348,8 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 											className={styles.FTagInputFieldDropdownOptionDiv(
 												selected,
 												option === NewTagHintLabel,
-												option === ExitsedTagHintLabel
+												option === ExitsedTagHintLabel,
+												props
 											)}
 										>
 											{option}

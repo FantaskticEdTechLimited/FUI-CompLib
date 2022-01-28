@@ -1,6 +1,7 @@
 import { CSSProperties, ReactNode } from "react";
-import { FScrollBarProps } from "../FScrollBar/types"; 
+import { FScrollBarProps } from "../FScrollBar/types";
 import { FTextProps } from "../FText/types";
+import { ThemeProps } from "../global.types";
 
 export interface FDropdownProps<T> {
 	options?: T | T[];
@@ -43,6 +44,7 @@ export interface FDropdownProps<T> {
 	emptyOptionTextClassName?: string;
 	emptyOptionTextStyle?: CSSProperties;
 	emptyOptionTextProps?: FTextProps;
- 
+
 	scrollBarProps?: FScrollBarProps;
+	themeProps?: ThemeProps;
 }

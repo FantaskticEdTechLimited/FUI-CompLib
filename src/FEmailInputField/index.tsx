@@ -5,6 +5,7 @@ import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FText } from "..";
+import { defaultThemeProps } from "../global.types";
 
 export const FEmailInputField = (props: FEmailInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
@@ -44,7 +45,7 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 				className={
 					props.containerClassName +
 					" " +
-					styles.FEmailInputFieldContainer(isTriggered, isFilled)
+					styles.FEmailInputFieldContainer(isTriggered, isFilled, props.themeProps!)
 				}
 				onClick={() => (props.disabled ? undefined : setIsTriggered(true))}
 				onBlur={() => {
@@ -58,7 +59,9 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 					<FIcon
 						name={FIconTypes.EMAIL}
 						strokeColor={
-							isTriggered ? FColorTypes.BRAND : FColorTypes.PRIMARY_BLACK
+							isTriggered
+								? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+								: FColorTypes.PRIMARY_BLACK
 						}
 						containerStyle={props.iconStyle}
 						containerClassName={props.iconClassName}

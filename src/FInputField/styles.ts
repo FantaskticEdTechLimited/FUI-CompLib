@@ -2,6 +2,7 @@ import { style } from "typestyle";
 import { FInputFieldProps } from "./types";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { defaultThemeProps } from "../global.types";
 
 export const FInputFieldContainer = (props: FInputFieldProps) =>
 	style({
@@ -22,12 +23,12 @@ export const FInputFieldDiv = (
 		border:
 			"0.1rem solid " +
 			(isTriggered
-				? FColorTypes.BRAND
+				? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 				: isFilled
 				? FColorTypes.PRIMARY_BLACK
 				: FColorTypes.PRIMARY_LIGHT),
 		boxSizing: "border-box",
-		caretColor: FColorTypes.BRAND,
+		caretColor: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
 		cursor: props.disabled ? "not-allowed" : "text",
 		display: "flex",
 		flexDirection: "column",

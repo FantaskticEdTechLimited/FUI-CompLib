@@ -1,12 +1,12 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
+import { defaultThemeProps } from "../global.types";
 
 import { FTagProps } from "./types";
 
 export const FTagContainer = (props: FTagProps) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FColorTypes.BRAND_BG,
+		backgroundColor: props.themeProps?.subTheme ?? defaultThemeProps.mainTheme,
 		borderRadius: "0.125rem",
 		boxSizing: "border-box",
 		columnGap: "0.25rem",

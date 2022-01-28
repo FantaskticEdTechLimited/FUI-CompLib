@@ -1,5 +1,6 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
+import { defaultThemeProps } from "../global.types";
 import { FSelectorProps } from "./types";
 
 export const FSelectorWrapper = style({
@@ -18,7 +19,7 @@ export const FSelectorContainer = (
 		border:
 			"0.125rem solid " +
 			(isClicked
-				? FColorTypes.BRAND
+				? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 				: props.selectedOptions && props.selectedOptions.length > 0
 				? FColorTypes.PRIMARY_BLACK
 				: FColorTypes.PRIMARY_LIGHT),
@@ -47,7 +48,7 @@ export const FSelectorContentDiv = (props: FSelectorProps<any>) =>
 		display: "flex",
 		flexDirection: "column",
 		flex: 1,
-		rowGap: props.showLabelOnly ? 0 : "0.25rem", 
+		rowGap: props.showLabelOnly ? 0 : "0.25rem",
 	});
 
 export const FSelectorSelectedOptionDiv = style({

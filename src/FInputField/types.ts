@@ -1,6 +1,7 @@
 import { CSSProperties } from "react";
 import { FScrollBarProps } from "../FScrollBar/types"; 
 import { FTextProps } from "../FText/types";
+import { ThemeProps } from "../global.types";
 
 export interface FInputFieldProps {
 	disabled?: boolean;
@@ -35,4 +36,7 @@ export interface FInputFieldProps {
 	wordCountProps?: FTextProps;
 
 	scrollBarProps?: FScrollBarProps;
+
+	// theme for different project
+	themeProps?: ThemeProps;
 }

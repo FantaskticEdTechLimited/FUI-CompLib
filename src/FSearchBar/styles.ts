@@ -1,15 +1,18 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
+import { defaultThemeProps } from "../global.types";
+import { FSearchBarProps } from "./types";
 
-export const FSearchBarContainer = (isTriggered: boolean) =>
+export const FSearchBarContainer = (isTriggered: boolean, props: FSearchBarProps) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FColorTypes.BRAND_BG,
-		border: "0.125rem solid " + (isTriggered ? FColorTypes.BRAND : "none"),
+		backgroundColor: props.themeProps?.subTheme ?? defaultThemeProps.subTheme,
+		border:
+			"0.125rem solid " + (isTriggered ? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme : "none"),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
-		caretColor: FColorTypes.BRAND,
+		caretColor: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
 		columnGap: "0.5rem",
 		cursor: "text",
 		display: "flex",

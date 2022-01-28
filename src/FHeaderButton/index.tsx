@@ -10,7 +10,7 @@ export const FHeaderButton = (props: FHeaderButtonProps) => {
 			className={
 				props.containerClassName +
 				" " +
-				styles.FHeaderButtonContainer(props.disabled!)
+				styles.FHeaderButtonContainer(props)
 			}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick()

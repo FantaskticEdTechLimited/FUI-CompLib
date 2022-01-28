@@ -1,11 +1,12 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
-import { FScreenSizeHandler } from "..";
+import { FRwdModeHandler } from "..";
+import { defaultThemeProps, RWDMode } from "../global.types";
 import { FHeaderButtonProps, FHeaderButtonTypes } from "./types";
 
 export const handleFHeaderButton = (props: FHeaderButtonProps) => {
-	const [screenWidth] = FScreenSizeHandler();
+	const rwdMode = FRwdModeHandler(props.configureRwdSize);
+
 	switch (props.type) {
 		case FHeaderButtonTypes.BACK:
 			return (
@@ -15,11 +16,15 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 					size={
 						props.disableAutoResize
 							? props.size
-							: screenWidth < 720 // mobile version
+							: rwdMode === RWDMode.MOBILE
 							? "small"
 							: "large"
 					}
-					strokeColor={props.iconStrokeColor ?? FColorTypes.BRAND}
+					strokeColor={
+						props.iconStrokeColor ??
+						props.themeProps?.mainTheme ??
+						defaultThemeProps.mainTheme
+					}
 				/>
 			);
 		case FHeaderButtonTypes.CLOSE:
@@ -30,11 +35,15 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 					size={
 						props.disableAutoResize
 							? props.size
-							: screenWidth < 720 // mobile version
+							: rwdMode === RWDMode.MOBILE
 							? "small"
 							: "large"
 					}
-					strokeColor={props.iconStrokeColor ?? FColorTypes.BRAND}
+					strokeColor={
+						props.iconStrokeColor ??
+						props.themeProps?.mainTheme ??
+						defaultThemeProps.mainTheme
+					}
 				/>
 			);
 		case FHeaderButtonTypes.MORE:
@@ -45,11 +54,15 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 					size={
 						props.disableAutoResize
 							? props.size
-							: screenWidth < 720 // mobile version
+							: rwdMode === RWDMode.MOBILE
 							? "small"
 							: "large"
 					}
-					strokeColor={props.iconStrokeColor ?? FColorTypes.BRAND}
+					strokeColor={
+						props.iconStrokeColor ??
+						props.themeProps?.mainTheme ??
+						defaultThemeProps.mainTheme
+					}
 				/>
 			);
 		default:

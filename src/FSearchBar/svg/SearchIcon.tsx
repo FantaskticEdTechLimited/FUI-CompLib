@@ -1,6 +1,7 @@
 import React from "react";
 import { SearchIconProps } from "./types";
 import * as styles from "./styles";
+import { defaultThemeProps } from "../../global.types";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const SearchIcon = (props: SearchIconProps) => {
@@ -16,7 +17,7 @@ export const SearchIcon = (props: SearchIconProps) => {
 				d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
 				stroke={
 					props.isTriggered
-						? FColorTypes.BRAND
+						? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 						: props.inputValue && props.inputValue.length > 0
 						? FColorTypes.PRIMARY_BLACK
 						: FColorTypes.PRIMARY_GREY
@@ -29,7 +30,7 @@ export const SearchIcon = (props: SearchIconProps) => {
 				d="M15.75 15.75L12.4875 12.4875"
 				stroke={
 					props.isTriggered
-						? FColorTypes.BRAND
+						? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 						: props.inputValue && props.inputValue.length > 0
 						? FColorTypes.PRIMARY_BLACK
 						: FColorTypes.PRIMARY_GREY

@@ -2,6 +2,7 @@ import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement } from "react";
 import { FSVGIconProps } from "../FSVGIcon/types";
 import { FTextProps } from "../FText/types";
+import { ThemeProps } from "../global.types";
 
 export interface FEmailInputFieldProps {
 	inputValue?: string;
@@ -34,4 +35,6 @@ export interface FEmailInputFieldProps {
 	// css style of FEmailInputField input area
 	inputAreaClassName?: string
 	inputAreaStyle?: CSSProperties
+	// theme for different project
+	themeProps?: ThemeProps
 }

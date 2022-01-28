@@ -75,7 +75,8 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 							styles.FDropdownOptionDiv(
 								pressCount,
 								index,
-								hideSelectedOptions ? false : isSelected
+								hideSelectedOptions ? false : isSelected,
+								props
 							)
 						}
 						onClick={() => {

@@ -4,6 +4,7 @@ import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
 import { FText } from "..";
 import { FDropdown } from "../FDropdown";
+import { defaultThemeProps } from "../global.types";
 import * as styles from "./styles";
 import { FSelectorProps } from "./types";
 
@@ -71,7 +72,7 @@ export const FSelector = (props: FSelectorProps<any>) => {
 								font={FFontTypes.Text()}
 								color={
 									openDropdown
-										? FColorTypes.BRAND
+										? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 										: props.selectedOptions && props.selectedOptions.length > 0
 										? FColorTypes.PRIMARY_BLACK
 										: FColorTypes.PRIMARY_GREY

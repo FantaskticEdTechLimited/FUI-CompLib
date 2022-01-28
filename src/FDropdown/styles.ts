@@ -1,5 +1,7 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
+import { defaultThemeProps } from "../global.types";
+import { FDropdownProps } from "./types";
 
 export const FDropdownContainer = style({
 	maxHeight: "inherit",
@@ -18,17 +20,20 @@ export const FDropdownContainer = style({
 export const FDropdownOptionDiv = (
 	pressCount: number,
 	index: number,
-	isSelected: boolean
+	isSelected: boolean,
+	props: FDropdownProps<any>
 ) =>
 	style({
 		backgroundColor:
-			pressCount - index === 1 ? FColorTypes.BRAND_BG : "inherit",
+			pressCount - index === 1
+				? props.themeProps?.subTheme ?? defaultThemeProps.subTheme
+				: "inherit",
 		cursor: isSelected ? "not-allowed" : "pointer",
 		$nest: {
 			"&:hover": {
 				$nest: {
 					"&> div": {
-						color: FColorTypes.BRAND,
+						color: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
 					},
 				},
 			},

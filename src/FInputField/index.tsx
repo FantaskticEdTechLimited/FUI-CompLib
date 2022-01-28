@@ -5,6 +5,7 @@ import * as styles from "./styles";
 import { FInputFieldProps } from "./types";
 import { FScrollBarStyle, FText } from "..";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { defaultThemeProps } from "../global.types";
 
 export const FInputField = (props: FInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
@@ -67,7 +68,7 @@ export const FInputField = (props: FInputFieldProps) => {
 						}
 						color={
 							isTriggered
-								? FColorTypes.BRAND
+								? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 								: isFilled
 								? FColorTypes.PRIMARY_BLACK
 								: FColorTypes.PRIMARY_GREY
@@ -132,7 +133,7 @@ export const FInputField = (props: FInputFieldProps) => {
 				font={FFontTypes.Text()}
 				color={
 					isTriggered
-						? FColorTypes.BRAND
+						? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 						: isFilled
 						? FColorTypes.PRIMARY_BLACK
 						: FColorTypes.PRIMARY_GREY
