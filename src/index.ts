@@ -4,7 +4,7 @@ import {
 	FAutoConvertArray,
 	FScrollTopHandler,
 	FUseStateSafeHandler,
-	FRwdModeHandler
+	FRwdModeHandler,
 } from "./utils";
 import { FText } from "./FText";
 import { FInputField } from "./FInputField";
@@ -32,6 +32,7 @@ import { FNoData } from "./FNoData";
 import { FForm } from "./FForm";
 import { FMoreActionPopUp } from "./FMoreActionPopUp";
 import { FConfirmPopup } from "./FConfirmPopup";
+import { FDoubleTabs } from "./FDoubleTabs";
 
 export {
 	FBottomNavBar,
@@ -39,6 +40,7 @@ export {
 	FCheckBox,
 	FConfirmPopup,
 	FDnDOrder,
+	FDoubleTabs,
 	FDropdown,
 	FEmailInputField,
 	FForm,
@@ -68,5 +70,5 @@ export {
 	FAutoConvertArray,
 	FScrollTopHandler,
 	FUseStateSafeHandler,
-	FRwdModeHandler
+	FRwdModeHandler,
 };

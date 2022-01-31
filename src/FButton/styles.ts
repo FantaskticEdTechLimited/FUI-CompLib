@@ -38,14 +38,6 @@ export const FButtonContainer = (props: FButtonProps) =>
 					props.type === FButtonTypes.OUTLINE
 						? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 						: undefined,
-			},
-		},
-	});
-
-export const FButtonContainer_LabelDiv = (props: FButtonProps) =>
-	style({
-		$nest: {
-			"&:hover": {
 				$nest: {
 					div: {
 						color:

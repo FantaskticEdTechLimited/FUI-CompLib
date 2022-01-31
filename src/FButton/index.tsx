@@ -30,9 +30,7 @@ export const FButton = (props: FButtonProps) => {
 							: FColorTypes.PRIMARY_BLACK
 					}
 					style={props.labelStyle}
-					className={
-						props.labelClassName + " " + styles.FButtonContainer_LabelDiv(props)
-					}
+					className={props.labelClassName}
 					children={props.label ?? "Button_Text"}
 					{...props.labelProps}
 				/>

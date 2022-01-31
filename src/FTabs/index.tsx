@@ -31,7 +31,7 @@ export const FTabs = (props: FTabsProps) => {
 			{/* header container that contains tabs */}
 			<div
 				style={props.headerStyle}
-				className={props.headerClassName + " " + styles.FTabsHeaderContainer}
+				className={props.headerClassName + " " + styles.FTabsHeader}
 			>
 				{props.leadingComponents}
 				<div
@@ -48,11 +48,11 @@ export const FTabs = (props: FTabsProps) => {
 							type: isSelect ? FButtonTypes.PRIMARY : FButtonTypes.SECONDARY,
 							label: tab.props.label,
 							leadingComponents:
-								tab.props.leadingComponents &&
-								tab.props.leadingComponents(isSelect),
+								tab.props.tabLeadingComponents &&
+								tab.props.tabLeadingComponents(isSelect),
 							actionComponents:
-								tab.props.actionConmponents &&
-								tab.props.actionConmponents(isSelect),
+								tab.props.tabActionConmponents &&
+								tab.props.tabActionConmponents(isSelect),
 							disabled: props.disabled ?? tab.props.disabled,
 							onClick: () => setTabIndex(index),
 							...tab.props.tabButtonProps,

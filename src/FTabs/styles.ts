@@ -11,11 +11,10 @@ export const FTabsWrapper = (disabled: boolean) =>
 		opacity: disabled ? 0.4 : 1,
 	});
 
-export const FTabsHeaderContainer = style({
+export const FTabsHeader = style({
 	display: "flex",
 	flexDirection: "row",
-	alignItems: "center",
-	justifyContent: "space-between",
+	alignItems: "center", 
 });
 
 export const FTabsTabContainer = style({
@@ -23,6 +22,7 @@ export const FTabsTabContainer = style({
 	flexDirection: "row",
 	alignItems: "center",
 	columnGap: "0.5rem",
+	flex: 1,
 	$nest: {
 		"&>div": {
 			padding: "0.75rem 1.5rem",
