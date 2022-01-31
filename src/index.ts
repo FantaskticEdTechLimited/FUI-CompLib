@@ -33,6 +33,7 @@ import { FForm } from "./FForm";
 import { FMoreActionPopUp } from "./FMoreActionPopUp";
 import { FConfirmPopup } from "./FConfirmPopup";
 import { FDoubleTabs } from "./FDoubleTabs";
+import { FScrollable } from "./FScrollable";
 
 export {
 	FBottomNavBar,
@@ -53,6 +54,7 @@ export {
 	FPopUp,
 	FRadioButton,
 	FRWDNavBar,
+	FScrollable,
 	FScrollBarStyle,
 	FSearchBar,
 	FSelector,
