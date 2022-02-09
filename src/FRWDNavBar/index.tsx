@@ -68,7 +68,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 						{/* Menu location controller */}
 						<div
 							className={
-								styles.FHiddenSideBarContainer + " " + props.containerClassName
+								styles.FHiddenSideBarContainer(props) + " " + props.containerClassName
 							}
 							ref={OpenedSideNavBarRef}
 						>
@@ -108,7 +108,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 					{/* Normal SideBar */}
 					<div
 						className={
-							styles.FNormalSideNavBarContainer + " " + props.containerClassName
+							styles.FNormalSideNavBarContainer(props) + " " + props.containerClassName
 						}
 					>
 						{props.logo}
