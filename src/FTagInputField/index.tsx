@@ -319,28 +319,29 @@ export const FTagInputField = <T extends unknown>(
 										props.disableFilteredTags ? props.tagData! : filteredTagData
 									}
 									selectedOptions={props.selectedTags}
-									onSelect={(option: any, selected: boolean) => {
-										if (
-											!props.disableFilteredTags &&
-											option !== ExitsedTagHintLabel &&
-											props.inputValue !== NewTagHintLabel &&
-											props.inputValue !== ExitsedTagHintLabel
-										) {
-											if (option === NewTagHintLabel)
-												props.onTagCreate &&
-													props.onTagCreate(props.inputValue!);
-											else props.onTagCreate && props.onTagCreate(option);
-											props.renderInputValue && props.renderInputValue("");
-										} else {
-											if (
-												!selected &&
-												option !== ExitsedTagHintLabel &&
-												option !== NewTagHintLabel
-											) {
-												props.onTagCreate && props.onTagCreate(option);
-												props.renderInputValue && props.renderInputValue("");
-											}
-										}
+									onSelect={(option: any) => {
+										console.log("option", option)
+										// if (
+										// 	!props.disableFilteredTags &&
+										// 	option !== ExitsedTagHintLabel &&
+										// 	props.inputValue !== NewTagHintLabel &&
+										// 	props.inputValue !== ExitsedTagHintLabel
+										// ) {
+										// 	if (option === NewTagHintLabel)
+										// 		props.onTagCreate &&
+										// 			props.onTagCreate(props.inputValue!);
+										// 	else props.onTagCreate && props.onTagCreate(option);
+										// 	props.renderInputValue && props.renderInputValue("");
+										// } else {
+										// 	if (
+										// 		!selected &&
+										// 		option !== ExitsedTagHintLabel &&
+										// 		option !== NewTagHintLabel
+										// 	) {
+										// 		props.onTagCreate && props.onTagCreate(option);
+										// 		props.renderInputValue && props.renderInputValue("");
+										// 	}
+										// }
 										setIsTriggered(true);
 									}}
 									arrowKeyPressCount={arrowKeyPressCount}

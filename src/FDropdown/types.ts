@@ -5,7 +5,7 @@ import { FTheme } from "../FThemeContext";
 
 export interface FDropdownProps<T> {
 	options:T[];
-	onSelect?: (data: T) => void;
+	onSelect: (data: T) => void;
 	// selected option or options
 	selectedOptions?: T | T[] | null;
 	hideSelectedOptions?: boolean;

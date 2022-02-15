@@ -57,7 +57,7 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 				className={
 					props.selectorContainerClassName +
 					" " +
-					styles.FSelectorContainer(selectorStyleProps.isClicked, props)
+					styles.FSelectorContainer(selectorStyleProps)
 				}
 			>
 				<div
