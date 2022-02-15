@@ -1,17 +1,16 @@
 import { FTagProps } from "./types";
 import * as styles from "./styles";
 import React from "react";
-import { FText } from "..";
+import { FText, FUseTheme } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-
-import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib"; 
-import { defaultThemeProps } from "../global.types";
+import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 
 export const FTag = <T extends unknown>(props: FTagProps<T>) => {
+	const { theme } = FUseTheme();
 	return (
 		<div
 			style={props.style}
-			className={props.className + " " + styles.FTagContainer(props)}
+			className={props.className + " " + styles.FTagContainer(props, theme)}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick(props.tag)
 			}
@@ -19,7 +18,7 @@ export const FTag = <T extends unknown>(props: FTagProps<T>) => {
 			{props.leadingComponents}
 			<FText
 				font={FFontTypes.Text()}
-				color={props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme}
+				color={theme.mainThemeColor}
 				style={props.labelStyle}
 				className={props.labelClassName + " " + styles.FTagLabel}
 				children={props.label}
@@ -31,11 +30,11 @@ export const FTag = <T extends unknown>(props: FTagProps<T>) => {
 						<FIcon
 							size="small"
 							name={FIconTypes.CLOSE}
-							strokeColor={
-								props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
-							}
+							strokeColor={theme.mainThemeColor}
 							onClick={() =>
-								props.disabled ? undefined : props.onDelete && props.onDelete(props.tag)
+								props.disabled
+									? undefined
+									: props.onDelete && props.onDelete(props.tag)
 							}
 							{...props.deleteIconProps}
 						/>

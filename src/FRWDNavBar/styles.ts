@@ -1,6 +1,7 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { defaultThemeProps, RWDMode } from "../global.types";
+import { FTheme } from "..";
+import { RWDMode } from "../global.types";
 import { FSideNavBarProps } from "./types";
 
 export const FHiddenSideBarOverlay = (
@@ -20,10 +21,10 @@ export const FHiddenSideBarOverlay = (
 		zIndex: 20,
 		overflow: "hidden",
 	});
-export const FHiddenSideBarContainer = (props: FSideNavBarProps) =>
+export const FHiddenSideBarContainer = (theme: FTheme) =>
 	style({
 		width: "15rem",
-		backgroundColor: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
+		backgroundColor: theme.mainThemeColor,
 		boxSizing: "border-box",
 		height: "inherit",
 		display: "flex",
@@ -33,11 +34,11 @@ export const FHiddenSideBarContainer = (props: FSideNavBarProps) =>
 		boxShadow: "0rem 0rem 0.5rem rgba(72, 63, 226, 0.16)",
 	});
 
-export const FNormalSideNavBarContainer = (props: FSideNavBarProps) =>
+export const FNormalSideNavBarContainer = (theme: FTheme) =>
 	style({
 		height: "100vh",
 		width: "15rem",
-		backgroundColor: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
+		backgroundColor: theme.mainThemeColor,
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "flex-start",
@@ -59,13 +60,11 @@ export const FSideNavBarContainer = style({
 	flexDirection: "column",
 });
 
-export const FTopNavBarContainer = (props: FSideNavBarProps) =>
+export const FTopNavBarContainer = (props: FSideNavBarProps, theme: FTheme) =>
 	style({
-		backgroundColor: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
+		backgroundColor: theme.mainThemeColor,
 		border: "0.063rem solid " + FColorTypes.PRIMARY_LIGHT,
-		boxShadow:
-			"0rem 0rem 0.5rem " + props.themeProps?.subTheme ??
-			defaultThemeProps.subTheme,
+		boxShadow: "0rem 0rem 0.5rem " + theme.subThemeColor,
 		boxSizing: "border-box",
 		display: props.visible ? "flex" : "none",
 		flexDirection: "row",
@@ -77,17 +76,17 @@ export const FTopNavBarContainer = (props: FSideNavBarProps) =>
 		zIndex: 15,
 	});
 
-export const FTopNavBarContainer_MenuIcon = (props: FSideNavBarProps) =>
+export const FTopNavBarContainer_MenuIcon = (theme: FTheme) =>
 	style({
 		borderRadius: "0.25rem",
-		backgroundColor: props.themeProps?.subTheme ?? defaultThemeProps.subTheme,
+		backgroundColor: theme.subThemeColor,
 		padding: "0.25rem",
 	});
 
-export const FTopNavBarContainer_CloseIcon = (props: FSideNavBarProps) =>
+export const FTopNavBarContainer_CloseIcon = (theme: FTheme) =>
 	style({
 		borderRadius: "0.25rem",
-		backgroundColor: props.themeProps?.subTheme ?? defaultThemeProps.subTheme,
+		backgroundColor: theme.subThemeColor,
 		padding: "0.25rem",
 		alignSelf: "flex-end",
 	});

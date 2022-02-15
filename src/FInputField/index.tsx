@@ -3,15 +3,15 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 
 import * as styles from "./styles";
 import { FInputFieldProps } from "./types";
-import { FScrollBarStyle, FText } from "..";
+import { FScrollBarStyle, FText, FUseTheme } from "..";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { defaultThemeProps } from "../global.types";
 
 export const FInputField = (props: FInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
+	const { theme } = FUseTheme();
 
 	const handleTextareaHeight = () => {
 		if (textareaRef && textareaRef.current) {
@@ -47,7 +47,7 @@ export const FInputField = (props: FInputFieldProps) => {
 				className={
 					props.inputDivClassName +
 					" " +
-					styles.FInputFieldDiv(props, isTriggered, isFilled)
+					styles.FInputFieldDiv(props, isTriggered, isFilled, theme)
 				}
 				onClick={() => {
 					if (!props.disabled) setIsTriggered(true);
@@ -68,7 +68,7 @@ export const FInputField = (props: FInputFieldProps) => {
 						}
 						color={
 							isTriggered
-								? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+								? theme.mainThemeColor
 								: isFilled
 								? FColorTypes.PRIMARY_BLACK
 								: FColorTypes.PRIMARY_GREY
@@ -133,7 +133,7 @@ export const FInputField = (props: FInputFieldProps) => {
 				font={FFontTypes.Text()}
 				color={
 					isTriggered
-						? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+						? theme.mainThemeColor
 						: isFilled
 						? FColorTypes.PRIMARY_BLACK
 						: FColorTypes.PRIMARY_GREY

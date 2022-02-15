@@ -1,5 +1,4 @@
-import { CSSProperties } from "react";
-import { ThemeProps } from "../global.types";
+import { CSSProperties } from "react"; 
 
 export interface FSearchBarProps {
 	placeholder?: string;
@@ -12,6 +11,5 @@ export interface FSearchBarProps {
 	inputAreaClassName?: string;
 	inputAreaStyle?: CSSProperties;
 	searchIconClassName?: string
-	searchIconStyle?: CSSProperties
-	themeProps?: ThemeProps
+	searchIconStyle?: CSSProperties 
 }

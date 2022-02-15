@@ -1,6 +1,6 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement } from "react";
-import { OnClickFunction, RwdSizeProps, ThemeProps } from "../global.types";
+import { OnClickFunction, RwdSizeProps } from "../global.types";
 import { FSVGIconProps } from "../FSVGIcon/types";
 
 export enum FHeaderButtonTypes {
@@ -25,8 +25,5 @@ export interface FHeaderButtonProps {
 
 	// css style of FHeaderButton container
 	containerClassName?: string;
-	containerStyle?: CSSProperties;
-
-	// theme for different project
-	themeProps?: ThemeProps;
+	containerStyle?: CSSProperties; 
 }

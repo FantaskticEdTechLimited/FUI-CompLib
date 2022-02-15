@@ -1,21 +1,20 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import React from "react";
-import { defaultThemeProps } from "../global.types";
+import React from "react"; 
+import { FTheme } from "..";
 import { FRadioButtonProps } from "./types";
 
 export const handleFRadioButton = (
 	props: FRadioButtonProps,
-	checked: boolean
-) => {
+	checked: boolean,
+	theme: FTheme
+) => { 
 	return checked ? (
 		<>
 			<path
 				d="M23.2 12C23.2 18.1856 18.1856 23.2 12 23.2C5.81441 23.2 0.8 18.1856 0.8 12C0.8 5.81441 5.81441 0.8 12 0.8C18.1856 0.8 23.2 5.81441 23.2 12Z"
 				fill={props.fillColor ?? FColorTypes.PRIMARY_WHITE}
 				stroke={
-					props.strokeColor ??
-					props.themeProps?.mainTheme ??
-					defaultThemeProps.mainTheme
+					props.strokeColor ?? theme.mainThemeColor
 				}
 				strokeWidth={props.strokeWidth ?? "1.6"}
 				strokeLinecap="round"
@@ -24,9 +23,7 @@ export const handleFRadioButton = (
 			<path
 				d="M12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20Z"
 				fill={
-					props.strokeColor ??
-					props.themeProps?.mainTheme ??
-					defaultThemeProps.mainTheme
+					props.strokeColor ?? theme.mainThemeColor
 				}
 			/>
 		</>

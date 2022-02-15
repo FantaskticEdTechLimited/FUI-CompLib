@@ -1,12 +1,12 @@
 import { style } from "typestyle";
-import { defaultThemeProps } from "../global.types";
+import { FTheme } from "..";
 
 import { FTagProps } from "./types";
 
-export const FTagContainer = (props: FTagProps<any>) =>
+export const FTagContainer = (props: FTagProps<any>, theme: FTheme) =>
 	style({
 		alignItems: "center",
-		backgroundColor: props.themeProps?.subTheme ?? defaultThemeProps.mainTheme,
+		backgroundColor: theme.subThemeColor,
 		borderRadius: "0.125rem",
 		boxSizing: "border-box",
 		columnGap: "0.25rem",
