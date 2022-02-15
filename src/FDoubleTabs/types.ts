@@ -1,8 +1,7 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
-import { FSVGIconProps } from "../FSVGIcon/types";
-import { ThemeProps } from "../global.types";
+import { FSVGIconProps } from "../FSVGIcon/types"; 
 
 export interface FDoubleTabsPanelProps {
 	label?: string;
@@ -53,6 +52,5 @@ export interface FDoubleTabsProps {
 	// css style of FDoubleTabs tab
 	tabButtonClassName?: string;
 	tabButtonStyle?: CSSProperties;
-	tabButtonProps?: FButtonProps;
-	themeProps?: ThemeProps;
+	tabButtonProps?: FButtonProps; 
 }

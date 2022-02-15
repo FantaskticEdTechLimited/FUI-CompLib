@@ -1,13 +1,14 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
+import { FTheme } from "..";
 import { FDropdownProps } from "../FDropdown/types";
 import { FTextProps } from "../FText/types";
-import { OnClickFunction, ThemeProps } from "../global.types";
+import { OnClickFunction } from "../global.types";
 
 export interface FSelectorProps<T> {
 	options: T[];
 	onSelect: (data: T, isSelected?: boolean) => void;
-	selectedOptions: T | T[] | null;
+	selectedOptions: ReactNode | null;
 	disabled?: boolean;
 	label?: string;
 	// show label only when no selectedOption or no placeholder
@@ -15,14 +16,14 @@ export interface FSelectorProps<T> {
 	placeholder?: string;
 	onClear?: OnClickFunction;
 	// display the selected option with user own method
-	renderCustomizedSelectedOption?: (data: T) => ReactNode;
+	renderCustomizedSelectedOption?: (data: ReactNode) => ReactNode;
 	// display the selected option with selected option name only
-	renderSelectedOptionNameOnly?: (data: T) => string;
+	renderSelectedOptionNameOnly?: (data: ReactNode) => string;
 
 	clearIconProps?: FIconProps;
 	dropdownArrowIconProps?: FIconProps;
 	iconComponent?: ReactNode;
-	dropdownProps?: FDropdownProps<any>; // Omit<FDropdownProps<any>, "options" | "onSelect">;
+	dropdownProps?: FDropdownProps<T>; // Omit<FDropdownProps<any>, "options" | "onSelect">;
 	dropdownComponent?: ReactElement<FDropdownProps<any>>;
 
 	// css style of FSelector label
@@ -50,6 +51,11 @@ export interface FSelectorProps<T> {
 	// css style of FDropdown container
 	dropdownContainerClassName?: string;
 	dropdownContainerStyle?: CSSProperties;
+}
 
-	themeProps?: ThemeProps;
+export interface FSelectorContainerStyleProps {
+	isClicked: boolean;
+	disabled: boolean;
+	selectedOptions: ReactNode | null;
+	theme: FTheme;
 }

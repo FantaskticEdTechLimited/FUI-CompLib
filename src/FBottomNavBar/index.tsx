@@ -1,10 +1,11 @@
 import { FBottomNavBarProps } from "./types";
 import * as styles from "./styles";
 import React from "react";
-import { FButton } from "..";
+import { FButton, FUseTheme } from "..";
 import { FButtonTypes } from "../FButton/types";
 
 export const FBottomNavBar = (props: FBottomNavBarProps) => {
+	const { theme } = FUseTheme();
 	return (
 		<div
 			style={props.navBarStyle}
@@ -25,7 +26,7 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						className={
 							props.leadingButtonClassName +
 							" " +
-							styles.FLeadingButtonDiv(props.themeProps!)
+							styles.FLeadingButtonDiv(theme)
 						}
 						{...props.leadingButtonProps}
 					/>
@@ -42,10 +43,7 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						className={
 							props.actionButtonClassName +
 							" " +
-							styles.FActionButtonDiv(
-								props.disableActionButton!,
-								props.themeProps!
-							)
+							styles.FActionButtonDiv(props.disableActionButton!, theme)
 						}
 						{...props.actionButtonProps}
 					/>

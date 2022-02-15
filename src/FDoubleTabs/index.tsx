@@ -4,7 +4,7 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { Fragment, useEffect, useState } from "react";
 import React from "react";
 import { FButtonProps, FButtonTypes } from "../FButton/types";
-import { FButton } from "..";
+import { FButton, FUseTheme } from "..";
 
 export const FDoubleTabsPanel = (props: FDoubleTabsPanelProps) => {
 	const { children } = props;
@@ -12,6 +12,7 @@ export const FDoubleTabsPanel = (props: FDoubleTabsPanelProps) => {
 };
 
 export const FDoubleTabs = (props: FDoubleTabsProps) => {
+	const { theme } = FUseTheme();
 	const [tabIndex, setTabIndex] = useState<number>(0);
 	let defaultTabButtonProps: FButtonProps = {
 		type: FButtonTypes.PRIMARY,
@@ -42,7 +43,7 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 							className={
 								props.tabContainerClassName +
 								" " +
-								styles.FDoubleTabs_TabsContainer(props.themeProps!)
+								styles.FDoubleTabs_TabsContainer(theme)
 							}
 						>
 							{props.children &&

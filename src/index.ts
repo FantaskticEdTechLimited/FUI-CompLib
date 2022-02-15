@@ -34,6 +34,13 @@ import { FMoreActionPopUp } from "./FMoreActionPopUp";
 import { FConfirmPopup } from "./FConfirmPopup";
 import { FDoubleTabs } from "./FDoubleTabs";
 import { FScrollable } from "./FScrollable";
+import {
+	FTheme,
+	FThemeContextType,
+	FDefaultThemeContext,
+	FThemeContext,
+	FUseTheme,
+} from "./FThemeContext";
 
 export {
 	FBottomNavBar,
@@ -65,8 +72,17 @@ export {
 	FTag,
 	FTagInputField,
 	FText,
-	//
+	// =====================
+	// Theme
+	// =====================
+	FTheme,
+	FThemeContextType,
+	FDefaultThemeContext,
+	FThemeContext,
+	FUseTheme,
+	// =====================
 	// utils functions
+	// =====================
 	FScreenSizeHandler,
 	FSideBarHandler,
 	FAutoConvertArray,

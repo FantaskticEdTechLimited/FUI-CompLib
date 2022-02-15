@@ -2,15 +2,22 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
-import { FText } from "..";
-import { FDropdown } from "../FDropdown";
-import { defaultThemeProps } from "../global.types";
+import { FText, FUseTheme } from "..";
+import { FDropdown } from "../FDropdown"; 
 import * as styles from "./styles";
-import { FSelectorProps } from "./types";
+import { FSelectorContainerStyleProps, FSelectorProps } from "./types";
 
-export const FSelector = (props: FSelectorProps<any>) => {
+export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
 	const FSelectorWithDropdownRef = useRef<HTMLDivElement>(null);
+	const { theme } = FUseTheme();
+
+	const selectorStyleProps: FSelectorContainerStyleProps = {
+		isClicked: openDropdown, 
+		disabled: props.disabled!, 
+		selectedOptions: props.selectedOptions,
+		theme: theme
+	}
 
 	const handleSelectedOption = async (
 		_selectedOption: any,
@@ -51,7 +58,7 @@ export const FSelector = (props: FSelectorProps<any>) => {
 				className={
 					props.selectorContainerClassName +
 					" " +
-					styles.FSelectorContainer(openDropdown, props)
+					styles.FSelectorContainer(selectorStyleProps)
 				}
 			>
 				<div
@@ -72,8 +79,8 @@ export const FSelector = (props: FSelectorProps<any>) => {
 								font={FFontTypes.Text()}
 								color={
 									openDropdown
-										? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
-										: props.selectedOptions && props.selectedOptions.length > 0
+										? theme.mainThemeColor
+										: props.selectedOptions 
 										? FColorTypes.PRIMARY_BLACK
 										: FColorTypes.PRIMARY_GREY
 								}
@@ -85,8 +92,7 @@ export const FSelector = (props: FSelectorProps<any>) => {
 							<FText
 								font={FFontTypes.Large_Text()}
 								color={
-									props.selectedOptions === null ||
-									props.selectedOptions.length === 0
+									props.selectedOptions === null  
 										? FColorTypes.PRIMARY_GREY
 										: FColorTypes.PRIMARY_BLACK
 								}
@@ -104,7 +110,7 @@ export const FSelector = (props: FSelectorProps<any>) => {
 										: props.placeholder ?? "Select an option"
 									: props.renderSelectedOptionNameOnly
 									? props.renderSelectedOptionNameOnly(props.selectedOptions)
-									: props.selectedOptions && props.selectedOptions.length > 0
+									: props.selectedOptions  
 									? props.selectedOptions
 									: props.showLabelOnly
 									? ""
@@ -165,6 +171,7 @@ export const FSelector = (props: FSelectorProps<any>) => {
 							onSelect={handleSelectedOption}
 							dropdownContainerClassName={props.dropdownContainerClassName}
 							dropdownContainerStyle={props.dropdownContainerStyle}
+							renderCustomizedOption={props.renderCustomizedSelectedOption}
 							{...props.dropdownProps}
 						/>
 					)}

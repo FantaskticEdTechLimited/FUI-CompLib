@@ -1,12 +1,13 @@
-import { FDropdownProps } from "./types";
+import { FDropdownOptionDivProps, FDropdownProps } from "./types";
 import * as styles from "./styles";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 
 import React from "react";
-import { FScrollBarStyle, FText } from "..";
+import { FScrollBarStyle, FText, FUseTheme } from "..";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FDropdown = (props: FDropdownProps<any>) => {
+	const { theme } = FUseTheme();
 	const compareSelectedOption =
 		props.compareSelectedOption ?? props.customizedCompareSelectedOption
 			? false
@@ -65,6 +66,14 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 				if (props.renderArrowKeySelectedOption && pressCount - index === 1)
 					props.renderArrowKeySelectedOption(option);
 
+				const dropdownOptionDivProps: FDropdownOptionDivProps = {
+					pressCount: pressCount,
+					index: index,
+					isSelected: hideSelectedOptions ? false : isSelected,
+					props: props,
+					theme: theme,
+				};
+
 				return (
 					<div
 						key={index}
@@ -72,12 +81,7 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 						className={
 							props.optionDivClassName +
 							" " +
-							styles.FDropdownOptionDiv(
-								pressCount,
-								index,
-								hideSelectedOptions ? false : isSelected,
-								props
-							)
+							styles.FDropdownOptionDiv(dropdownOptionDivProps)
 						}
 						onClick={() => {
 							props.onSelect && props.onSelect(option, isSelected);

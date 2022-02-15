@@ -1,7 +1,6 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { style } from "typestyle";
-import { defaultThemeProps } from "../global.types";
-import { FSelectorProps } from "./types";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
+import { style } from "typestyle"; 
+import { FSelectorContainerStyleProps, FSelectorProps } from "./types";
 
 export const FSelectorWrapper = style({
 	position: "relative",
@@ -9,28 +8,25 @@ export const FSelectorWrapper = style({
 	flexDirection: "column",
 });
 
-export const FSelectorContainer = (
-	isClicked: boolean,
-	props: FSelectorProps<any>
-) =>
+export const FSelectorContainer = (stylesProps: FSelectorContainerStyleProps) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		border:
 			"0.125rem solid " +
-			(isClicked
-				? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
-				: props.selectedOptions && props.selectedOptions.length > 0
+			(stylesProps.isClicked
+				? stylesProps.theme.mainThemeColor
+				: stylesProps.selectedOptions
 				? FColorTypes.PRIMARY_BLACK
 				: FColorTypes.PRIMARY_LIGHT),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		columnGap: "0.5rem",
-		cursor: props.disabled ? "not-allowed" : "pointer",
+		cursor: stylesProps.disabled ? "not-allowed" : "pointer",
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "space-between",
-		opacity: props.disabled ? 0.4 : 1,
+		opacity: stylesProps.disabled ? 0.4 : 1,
 		padding: "0.75rem",
 		$nest: {
 			"&:hover": {

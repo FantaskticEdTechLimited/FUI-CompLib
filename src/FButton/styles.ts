@@ -1,23 +1,21 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { defaultThemeProps } from "../global.types";
-
+import { FTheme } from "..";
 import { FButtonProps, FButtonTypes } from "./types";
 
-export const FButtonContainer = (props: FButtonProps) =>
+export const FButtonContainer = (props: FButtonProps, theme: FTheme) =>
 	style({
 		alignItems: "center",
 		backgroundColor:
 			props.type === FButtonTypes.PRIMARY
-				? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+				? theme.mainThemeColor
 				: props.type === FButtonTypes.SECONDARY
-				? props.themeProps?.subTheme ?? defaultThemeProps.subTheme
+				? theme.subThemeColor
 				: FColorTypes.PRIMARY_WHITE,
 		borderRadius: "0.25rem",
 		border:
 			props.type === FButtonTypes.OUTLINE
-				? "0.125rem solid" + props.themeProps?.mainTheme ??
-				  defaultThemeProps.mainTheme
+				? "0.125rem solid" + theme.mainThemeColor
 				: "none",
 		cursor: props.disabled ? "not-allowed" : "pointer",
 		display: "flex",
@@ -36,7 +34,7 @@ export const FButtonContainer = (props: FButtonProps) =>
 				backgroundColor:
 					props.type === FButtonTypes.SECONDARY ||
 					props.type === FButtonTypes.OUTLINE
-						? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+						? theme.mainThemeColor
 						: undefined,
 				$nest: {
 					div: {
@@ -45,7 +43,7 @@ export const FButtonContainer = (props: FButtonProps) =>
 							props.type === FButtonTypes.OUTLINE
 								? FColorTypes.PRIMARY_WHITE
 								: props.type === FButtonTypes.TEXT
-								? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+								? theme.mainThemeColor
 								: undefined,
 					},
 				},

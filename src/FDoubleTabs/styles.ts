@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { defaultThemeProps, ThemeProps } from "../global.types";
+import { FTheme } from "..";
 
 export const FDoubleTabs_Wrapper = (disabled: boolean) =>
 	style({
@@ -20,7 +20,7 @@ export const FDoubleTabs_Header = style({
 	width: "fit-content",
 });
 
-export const FDoubleTabs_TabsContainer = (theme: ThemeProps) =>
+export const FDoubleTabs_TabsContainer = (theme: FTheme) =>
 	style({
 		display: "flex",
 		flex: 1,
@@ -29,7 +29,7 @@ export const FDoubleTabs_TabsContainer = (theme: ThemeProps) =>
 		columnGap: "0.25rem",
 		boxSizing: "border-box",
 		padding: "0.25rem",
-		backgroundColor: theme?.subTheme ?? defaultThemeProps.subTheme,
+		backgroundColor: theme.subThemeColor,
 		boxShadow: "inset 0 0 0.125rem rgba(0, 0, 0, 0.04)",
 		borderRadius: "0.5rem",
 	});
