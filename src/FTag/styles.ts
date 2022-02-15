@@ -3,7 +3,7 @@ import { defaultThemeProps } from "../global.types";
 
 import { FTagProps } from "./types";
 
-export const FTagContainer = (props: FTagProps) =>
+export const FTagContainer = (props: FTagProps<any>) =>
 	style({
 		alignItems: "center",
 		backgroundColor: props.themeProps?.subTheme ?? defaultThemeProps.mainTheme,

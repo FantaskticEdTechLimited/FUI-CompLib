@@ -8,7 +8,7 @@ export const FSelectorWrapper = style({
 	flexDirection: "column",
 });
 
-export const FSelectorContainer = (stylesProps: FSelectorContainerStyleProps) =>
+export const FSelectorContainer = (stylesProps: FSelectorContainerStyleProps<any>) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.PRIMARY_WHITE,

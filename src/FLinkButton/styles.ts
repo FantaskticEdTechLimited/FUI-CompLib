@@ -1,16 +1,17 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { defaultThemeProps } from "../global.types";
+import { FTheme } from ".."; 
 import { FLinkButtonProps } from "./types";
 
 export const FLinkButtonContainer = (
 	isSelected: boolean,
-	props: FLinkButtonProps
+	props: FLinkButtonProps,
+	theme: FTheme
 ) =>
 	style({
 		alignItems: "center",
 		backgroundColor: isSelected
-			? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+			?  theme.mainThemeColor
 			: FColorTypes.PRIMARY_WHITE,
 		border: "none",
 		borderRadius: "0.25rem",

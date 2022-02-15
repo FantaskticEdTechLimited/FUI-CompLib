@@ -2,13 +2,13 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FText } from "..";
-import { defaultThemeProps } from "../global.types";
+import { FText, FUseTheme } from ".."; 
 import * as styles from "./styles";
 import { FLinkButtonProps } from "./types";
 
 export const FLinkButton = (props: FLinkButtonProps) => {
 	const isSelected = props.pathIsSelected;
+	const { theme } = FUseTheme();
 
 	return (
 		<Link
@@ -16,7 +16,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 			className={
 				props.className +
 				" " +
-				styles.FLinkButtonContainer(isSelected!, props)
+				styles.FLinkButtonContainer(isSelected!, props, theme)
 			}
 			to={props.pathLink!}
 			onClick={() =>
@@ -28,9 +28,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 					{props.leadingComponents ?? props.leadingIcon ? (
 						<FIcon
 							strokeColor={
-								isSelected
-									? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
-									: FColorTypes.PRIMARY_BLACK
+								isSelected ? theme.mainThemeColor : FColorTypes.PRIMARY_BLACK
 							}
 							{...props.leadingIcon}
 						/>
@@ -39,9 +37,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 						style={props.labelStyle}
 						className={props.labelClassName + " " + styles.FLinkButtonLabel}
 						color={
-							isSelected
-								? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
-								: FColorTypes.PRIMARY_BLACK
+							isSelected ? theme.mainThemeColor : FColorTypes.PRIMARY_BLACK
 						}
 						children={props.label}
 						{...props.labelProps}
@@ -54,8 +50,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 									size="small"
 									strokeColor={
 										isSelected
-											? props.themeProps?.mainTheme ??
-											  defaultThemeProps.mainTheme
+											? theme.mainThemeColor
 											: FColorTypes.PRIMARY_BLACK
 									}
 									{...props.actionIcon}
