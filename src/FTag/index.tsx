@@ -5,7 +5,7 @@ import { FText, FUseTheme } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 
-export const FTag = <T extends unknown>(props: FTagProps<T>) => {
+export const FTag = <T,>(props: FTagProps<T>) => {
 	const { theme } = FUseTheme();
 	return (
 		<div
