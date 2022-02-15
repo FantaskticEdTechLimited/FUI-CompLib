@@ -8,7 +8,7 @@ import { FUseTheme } from "../FThemeContext";
 import * as styles from "./styles";
 import { FSelectorContainerStyleProps, FSelectorProps } from "./types";
 
-export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
+export const FSelector = <T,>(props: FSelectorProps<T>) => {
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
 	const FSelectorWithDropdownRef = useRef<HTMLDivElement>(null);
 	const { theme } = FUseTheme();
@@ -111,7 +111,7 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 										: placeHolder
 									: props.renderSelectedOptionNameOnly
 									? props.renderSelectedOptionNameOnly(props.selectedOptions)
-									: (props.selectedOptions as string)}
+									: (props.selectedOptions as unknown as string)}
 							</FText>
 						</>
 					)}

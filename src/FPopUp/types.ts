@@ -3,7 +3,7 @@ import { OnClickFunction } from "../global.types";
 
 export interface FPopUpProps {
 	children?: ReactNode;
-	onClose: OnClickFunction;
+	onClose?: OnClickFunction;
 	className?: string;
     popUpName:string
     isDisableCloseWhenClickOutside?:boolean

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from "react";
 import { FPopUpProps } from "./types";
 import * as styles from "./styles";
-
 export const FPopUp = (props: FPopUpProps) => {
 	const PopupRef = useRef<HTMLDivElement>(null);
 

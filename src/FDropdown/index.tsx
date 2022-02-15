@@ -7,7 +7,7 @@ import { FUseTheme } from "../FThemeContext";
 import { FScrollBarStyle } from "../FScrollBar";
 import { FText } from "../FText";
 import { FAutoConvertArray } from "..";
-export const FDropdown = <T extends unknown>(props: FDropdownProps<T>) => {
+export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 	const { theme } = FUseTheme();
 	const hideSelectedOptions = props.hideSelectedOptions ?? true;
 	const pressCount = props.arrowKeyPressCount ?? 0;
@@ -109,7 +109,7 @@ export const FDropdown = <T extends unknown>(props: FDropdownProps<T>) => {
 								{props.renderOptionNameOnly
 									? props.renderOptionNameOnly(option)
 									: isString
-									? (option as string)
+									? (option as unknown as string)
 									: props.emptyOptionHintLabel ?? "No option data"}
 							</FText>
 						)}
