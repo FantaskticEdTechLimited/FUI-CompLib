@@ -34,7 +34,7 @@ export const FPopUp = (props: FPopUpProps) => {
 				style={props.style}
 				className={props.className + " " + styles.FPopUpDiv}
 			>
-				{props.children}
+				{props.children && props.children}
 			</div>
 		</div>
 	);

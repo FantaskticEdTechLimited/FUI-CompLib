@@ -2,7 +2,7 @@ import { CSSProperties, ReactNode } from "react";
 import { OnClickFunction } from "../global.types";
 
 export interface FPopUpProps {
-	children: ReactNode;
+	children?: ReactNode;
 	onClose: OnClickFunction;
 	className?: string;
     popUpName:string
