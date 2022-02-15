@@ -2,8 +2,7 @@ import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FDropdownProps } from "../FDropdown/types";
 import { FScrollBarProps } from "../FScrollBar/types";
-import { FTagProps } from "../FTag/types";
-import { ThemeProps } from "../global.types";
+import { FTagProps } from "../FTag/types"; 
 
 export interface FDropdownHintLabelsProps {
 	newTagHintLabel?: string;
@@ -69,6 +68,5 @@ export interface FTagInputFieldProps<T> {
 	inputAreaClassName?: string;
 	inputAreaStyle?: CSSProperties;
 
-	scrollBarProps?: FScrollBarProps;
-	themeProps?: ThemeProps;
+	scrollBarProps?: FScrollBarProps; 
 }

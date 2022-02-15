@@ -7,12 +7,13 @@ import { FDropdown } from "../FDropdown";
 
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
-import { FScrollBarStyle, FText } from "..";
+import { FScrollBarStyle, FText, FUseTheme } from "..";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FTagInputField = <T extends unknown>(
 	props: FTagInputFieldProps<T>
 ) => {
+	const { theme } = FUseTheme();
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [filteredTagData, setFilteredTagData] = useState<any[]>([]);
 	const [arrowKeyPressCount, setArrowKeyPressCount] = useState<number>(0);
@@ -34,7 +35,7 @@ export const FTagInputField = <T extends unknown>(
 
 	// compare method
 	const checkDataExist = (datas: T[], newData: string) => {
-		return datas.includes(newData as T)
+		return datas.includes(newData as T);
 		// return datas.find((e) => {
 		// 	props.onTagCompare ? props.onTagCompare(e, newData) : e === newData;
 		// })
@@ -161,7 +162,7 @@ export const FTagInputField = <T extends unknown>(
 					className={
 						props.inputContainerClassName +
 						" " +
-						styles.FTagInputFieldInputContainer(isTriggered, props)
+						styles.FTagInputFieldInputContainer(isTriggered, theme)
 					}
 					onClick={() => {
 						if (!props.disabled) {
@@ -177,7 +178,7 @@ export const FTagInputField = <T extends unknown>(
 						className={
 							props.inputAreaClassName +
 							" " +
-							styles.FTagInputFieldInputAreaDiv(props)
+							styles.FTagInputFieldInputAreaDiv(props, theme)
 						}
 						type="text"
 						ref={inputRef}
@@ -361,7 +362,7 @@ export const FTagInputField = <T extends unknown>(
 												selected,
 												option === NewTagHintLabel,
 												option === ExitsedTagHintLabel,
-												props
+												theme
 											)}
 										>
 											{option}

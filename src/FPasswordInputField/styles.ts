@@ -1,13 +1,14 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { defaultThemeProps } from "../global.types";
+import { FTheme } from "..";
 import { FPasswordInputFieldProps } from "./types";
 
 export const FPasswordInputFieldContainer = (
 	isTriggered: boolean,
 	isFilled: boolean,
-	props: FPasswordInputFieldProps
+	props: FPasswordInputFieldProps,
+	theme: FTheme
 ) =>
 	style({
 		display: "flex",
@@ -20,7 +21,7 @@ export const FPasswordInputFieldContainer = (
 		border:
 			"0.125rem solid " +
 			(isTriggered
-				? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
+				? theme.mainThemeColor
 				: isFilled
 				? FColorTypes.PRIMARY_BLACK
 				: FColorTypes.PRIMARY_LIGHT),

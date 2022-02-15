@@ -1,10 +1,12 @@
 import React from "react";
+import { FUseTheme } from "..";
 import { handleFRadioButton } from "./func";
 import * as styles from "./styles";
 import { FRadioButtonProps } from "./types";
 
 export const FRadioButton = (props: FRadioButtonProps) => {
 	const checked = props.checked ?? true; //default checked
+	const { theme } = FUseTheme();
 
 	return (
 		<svg
@@ -17,7 +19,7 @@ export const FRadioButton = (props: FRadioButtonProps) => {
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 		>
-			{handleFRadioButton(props, checked)}
+			{handleFRadioButton(props, checked, theme)}
 		</svg>
 	);
 };

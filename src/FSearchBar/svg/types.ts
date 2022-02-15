@@ -1,12 +1,13 @@
 import { CSSProperties } from "react";
-import { OnClickFunction, ThemeProps } from "../../global.types";
+import { FTheme } from "../..";
+import { OnClickFunction } from "../../global.types";
 
 export interface SearchIconProps {
 	isTriggered: boolean;
 	inputValue: string;
 	className?: string;
 	style?: CSSProperties;
-	themeProps?: ThemeProps
+	theme?: FTheme
 }
 
 export interface ClearIconProps {

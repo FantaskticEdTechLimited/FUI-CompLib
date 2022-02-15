@@ -1,7 +1,7 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactNode } from "react";
 import { FTextProps } from "../FText/types";
-import { OnSubmitFunction, ThemeProps } from "../global.types";
+import { OnSubmitFunction } from "../global.types";
 
 export interface FTagProps<T> {
 	tag: T;
@@ -25,6 +25,5 @@ export interface FTagProps<T> {
 	// css style of FTag label
 	labelClassName?: string;
 	labelStyle?: CSSProperties;
-	labelProps?: FTextProps;
-	themeProps?: ThemeProps;
+	labelProps?: FTextProps; 
 }

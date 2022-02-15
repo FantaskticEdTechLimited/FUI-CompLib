@@ -1,8 +1,8 @@
 import React from "react";
 import { FText } from "..";
-import * as styles from "./style";
+import * as styles from "./styles";
 import { noDataIcon } from "./svg";
-import { FNoDataProps } from "./type";
+import { FNoDataProps } from "./types";
 
 export const FNoData = (props: FNoDataProps) => {
 	return (

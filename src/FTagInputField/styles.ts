@@ -2,7 +2,7 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { RefObject } from "react";
 import { style } from "typestyle";
-import { defaultThemeProps } from "../global.types";
+import { FTheme } from "..";
 import { FTagInputFieldProps } from "./types";
 
 export const FTagInputFieldContainer = (props: FTagInputFieldProps<any>) =>
@@ -38,7 +38,7 @@ export const FTagInputFieldWrapper = style({
 
 export const FTagInputFieldInputContainer = (
 	isTriggered: boolean,
-	props: FTagInputFieldProps<any>
+	theme: FTheme
 ) =>
 	style({
 		backgroundColor: FColorTypes.PRIMARY_WHITE,
@@ -48,20 +48,20 @@ export const FTagInputFieldInputContainer = (
 		alignItems: "center",
 		width: "inherit",
 		borderBottom:
-			"0.125rem solid " +
-			(isTriggered
-				? props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
-				: "transparent"),
+			"0.125rem solid " + (isTriggered ? theme.mainThemeColor : "transparent"),
 	});
 
-export const FTagInputFieldInputAreaDiv = ( 
-	props: FTagInputFieldProps<any>
+export const FTagInputFieldInputAreaDiv = (
+	props: FTagInputFieldProps<any>,
+	theme: FTheme
 ) =>
 	style({
 		backgroundColor: FColorTypes.PRIMARY_WHITE,
 		border: "none",
-		caretColor: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
-		color: props.inputValue ? FColorTypes.PRIMARY_BLACK : FColorTypes.PRIMARY_GREY,
+		caretColor: theme.mainThemeColor,
+		color: props.inputValue
+			? FColorTypes.PRIMARY_BLACK
+			: FColorTypes.PRIMARY_GREY,
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
@@ -88,7 +88,7 @@ export const FTagInputFieldDropdownOptionDiv = (
 	isSelected: boolean,
 	isNew: boolean,
 	isExisted: boolean,
-	props: FTagInputFieldProps<any>
+	theme: FTheme
 ) =>
 	style({
 		font: FFontTypes.Large_Text(),
@@ -106,14 +106,13 @@ export const FTagInputFieldDropdownOptionDiv = (
 		textAlign: "left",
 		$nest: {
 			"&:hover": {
-				backgroundColor:
-					props.themeProps?.subTheme ?? defaultThemeProps.subTheme,
+				backgroundColor: theme.subThemeColor,
 				color:
 					isNew || isSelected
 						? FColorTypes.PRIMARY_GREY + " !important"
 						: isExisted
 						? FColorTypes.SECONDARY_RED + " !important"
-						: props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme,
+						: theme.mainThemeColor,
 			},
 		},
 	});
