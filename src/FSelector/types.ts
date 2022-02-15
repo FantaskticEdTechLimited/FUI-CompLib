@@ -7,7 +7,7 @@ import { OnClickFunction, ThemeProps } from "../global.types";
 export interface FSelectorProps<T> {
 	options: T[];
 	onSelect: (data: T, isSelected?: boolean) => void;
-	selectedOptions: T | T[] | null;
+	selectedOptions: T | null;
 	disabled?: boolean;
 	label?: string;
 	// show label only when no selectedOption or no placeholder
