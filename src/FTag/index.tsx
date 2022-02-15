@@ -7,13 +7,13 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib"; 
 import { defaultThemeProps } from "../global.types";
 
-export const FTag = (props: FTagProps) => {
+export const FTag = <T extends unknown>(props: FTagProps<T>) => {
 	return (
 		<div
 			style={props.style}
 			className={props.className + " " + styles.FTagContainer(props)}
 			onClick={() =>
-				props.disabled ? undefined : props.onClick && props.onClick()
+				props.disabled ? undefined : props.onClick && props.onClick(props.tag)
 			}
 		>
 			{props.leadingComponents}
@@ -35,7 +35,7 @@ export const FTag = (props: FTagProps) => {
 								props.themeProps?.mainTheme ?? defaultThemeProps.mainTheme
 							}
 							onClick={() =>
-								props.disabled ? undefined : props.onDelete && props.onDelete()
+								props.disabled ? undefined : props.onDelete && props.onDelete(props.tag)
 							}
 							{...props.deleteIconProps}
 						/>

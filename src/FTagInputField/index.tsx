@@ -10,7 +10,9 @@ import React from "react";
 import { FScrollBarStyle, FText } from "..";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
-export const FTagInputField = (props: FTagInputFieldProps<any>) => {
+export const FTagInputField = <T extends unknown>(
+	props: FTagInputFieldProps<T>
+) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [filteredTagData, setFilteredTagData] = useState<any[]>([]);
 	const [arrowKeyPressCount, setArrowKeyPressCount] = useState<number>(0);
@@ -29,6 +31,16 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 		(props.tagHintLabels && props.tagHintLabels.existedTagHintLabel) ??
 		"Error: Tag already exists.";
 	const isExisted = filteredTagData[0] === ExitsedTagHintLabel;
+
+	// compare method
+	const checkDataExist = (datas: T[], newData: string) => {
+		return datas.includes(newData as T)
+		// return datas.find((e) => {
+		// 	props.onTagCompare ? props.onTagCompare(e, newData) : e === newData;
+		// })
+		// 	? true
+		// 	: false;
+	};
 
 	useEffect(() => {
 		if (isTriggered && inputRef.current) inputRef.current.focus();
@@ -64,7 +76,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 				});
 				// no matter there are selectedTag tags
 				if (props.selectedTags) {
-					if (!props.selectedTags.includes(props.inputValue)) {
+					if (!checkDataExist(props.selectedTags, props.inputValue)) {
 						tempFilteredTagData.push(NewTagHintLabel);
 						props.renderFilteredTagResult &&
 							props.renderFilteredTagResult({ new: true });
@@ -127,7 +139,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 							return (
 								<FTag
 									key={i}
-									tagId={tagId}
+									tag={selectedTag}
 									label={selectedTag}
 									labelStyle={{
 										whiteSpace: "nowrap",
@@ -222,7 +234,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 												props.inputValue !== NewTagHintLabel
 											) {
 												props.onTagCreate &&
-													props.onTagCreate(props.inputValue);
+													props.onTagCreate(props.inputValue!);
 												props.renderInputValue && props.renderInputValue("");
 											}
 										});
@@ -231,7 +243,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 											props.inputValue !== ExitsedTagHintLabel &&
 											props.inputValue !== NewTagHintLabel
 										) {
-											props.onTagCreate && props.onTagCreate(props.inputValue);
+											props.onTagCreate && props.onTagCreate(props.inputValue!);
 											props.renderInputValue && props.renderInputValue("");
 										}
 									}
@@ -267,7 +279,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 													props.onTagCreate
 												) {
 													if (arrowKeySelectedOption === NewTagHintLabel)
-														props.onTagCreate(props.inputValue);
+														props.onTagCreate(props.inputValue!);
 													else props.onTagCreate(arrowKeySelectedOption);
 													props.renderInputValue && props.renderInputValue("");
 												}
@@ -315,7 +327,7 @@ export const FTagInputField = (props: FTagInputFieldProps<any>) => {
 										) {
 											if (option === NewTagHintLabel)
 												props.onTagCreate &&
-													props.onTagCreate(props.inputValue);
+													props.onTagCreate(props.inputValue!);
 											else props.onTagCreate && props.onTagCreate(option);
 											props.renderInputValue && props.renderInputValue("");
 										} else {
