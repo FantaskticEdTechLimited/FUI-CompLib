@@ -12,13 +12,14 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 	const FSelectorWithDropdownRef = useRef<HTMLDivElement>(null);
 	const { theme } = FUseTheme();
 
-	const selectorStyleProps: FSelectorContainerStyleProps = {
+	const selectorStyleProps: FSelectorContainerStyleProps<T> = {
 		isClicked: openDropdown, 
 		disabled: props.disabled!, 
 		selectedOptions: props.selectedOptions,
 		theme: theme
 	}
 
+	const placeHolder = props.placeholder ?? "Select an option";
 	const handleSelectedOption = async (
 		_selectedOption: any,
 		selected: boolean
@@ -75,6 +76,7 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 						props.renderCustomizedSelectedOption(props.selectedOptions)
 					) : (
 						<>
+							{/* label */}
 							<FText
 								font={FFontTypes.Text()}
 								color={
@@ -89,6 +91,7 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 								className={props.labelClassName}
 								{...props.labelProps}
 							/>
+							{/* Content or placeHolder */}
 							<FText
 								font={FFontTypes.Large_Text()}
 								color={
@@ -107,14 +110,10 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 								{props.selectedOptions === null
 									? props.showLabelOnly
 										? ""
-										: props.placeholder ?? "Select an option"
+										: placeHolder
 									: props.renderSelectedOptionNameOnly
 									? props.renderSelectedOptionNameOnly(props.selectedOptions)
-									: props.selectedOptions  
-									? props.selectedOptions
-									: props.showLabelOnly
-									? ""
-									: props.placeholder ?? "Select an option"}
+									: (props.selectedOptions as string)}
 							</FText>
 						</>
 					)}

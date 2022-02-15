@@ -1,13 +1,16 @@
 import { FDropdownOptionDivProps, FDropdownProps } from "./types";
 import * as styles from "./styles";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-
 import React from "react";
 import { FScrollBarStyle, FText, FUseTheme } from "..";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
+<<<<<<< HEAD
 export const FDropdown = (props: FDropdownProps<any>) => {
 	const { theme } = FUseTheme();
+=======
+export const FDropdown = <T, >(props: FDropdownProps<T>) => {
+>>>>>>> d90e3ca64a8080da9d1556c17a0c5d5b30959b1a
 	const compareSelectedOption =
 		props.compareSelectedOption ?? props.customizedCompareSelectedOption
 			? false

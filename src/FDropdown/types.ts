@@ -4,7 +4,7 @@ import { FScrollBarProps } from "../FScrollBar/types";
 import { FTextProps } from "../FText/types";
 
 export interface FDropdownProps<T> {
-	options?: T | T[];
+	options:T[];
 	onSelect?: (data: T, isSelected: boolean) => void;
 	// selected option or options
 	selectedOptions?: T | T[] | null;

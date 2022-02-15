@@ -37,11 +37,11 @@ export interface FTagInputFieldProps<T> {
 	// render filtered tag result whether the tag is new or existed
 	renderFilteredTagResult?: (result: FilteredTagResultProps) => void;
 
-	tagProps?: FTagProps;
+	tagProps?: FTagProps<T>;
 	// user can design how to show existed or inputted tags
 	renderCustomizedTagComponents?: ReactNode;
 	// create tags after user input and press Enter
-	onTagCreate?: (data: T) => void;
+	onTagCreate?: (data: string) => void;
 	// click tag delete icon to delete
 	onTagDelete?: (data: T) => void;
 	clearIconProps?: FIconProps;

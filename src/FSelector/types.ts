@@ -8,7 +8,7 @@ import { OnClickFunction } from "../global.types";
 export interface FSelectorProps<T> {
 	options: T[];
 	onSelect: (data: T, isSelected?: boolean) => void;
-	selectedOptions: ReactNode | null;
+	selectedOptions: T | null;
 	disabled?: boolean;
 	label?: string;
 	// show label only when no selectedOption or no placeholder
@@ -16,9 +16,9 @@ export interface FSelectorProps<T> {
 	placeholder?: string;
 	onClear?: OnClickFunction;
 	// display the selected option with user own method
-	renderCustomizedSelectedOption?: (data: ReactNode) => ReactNode;
+	renderCustomizedSelectedOption?: (data: T) => ReactNode;
 	// display the selected option with selected option name only
-	renderSelectedOptionNameOnly?: (data: ReactNode) => string;
+	renderSelectedOptionNameOnly?: (data: T) => string;
 
 	clearIconProps?: FIconProps;
 	dropdownArrowIconProps?: FIconProps;
@@ -53,9 +53,9 @@ export interface FSelectorProps<T> {
 	dropdownContainerStyle?: CSSProperties;
 }
 
-export interface FSelectorContainerStyleProps {
+export interface FSelectorContainerStyleProps<T> {
 	isClicked: boolean;
 	disabled: boolean;
-	selectedOptions: ReactNode | null;
+	selectedOptions: T | null;
 	theme: FTheme;
 }
