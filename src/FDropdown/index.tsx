@@ -2,19 +2,16 @@ import { FDropdownOptionDivProps, FDropdownProps } from "./types";
 import * as styles from "./styles";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
-import { FScrollBarStyle, FText, FUseTheme } from "..";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-
-export const FDropdown = (props: FDropdownProps<any>) => {
+import { FUseTheme } from "../FThemeContext";
+import { FScrollBarStyle } from "../FScrollBar";
+import { FText } from "../FText";
+import { FAutoConvertArray } from "..";
+export const FDropdown = <T extends unknown>(props: FDropdownProps<T>) => {
 	const { theme } = FUseTheme();
-	const compareSelectedOption =
-		props.compareSelectedOption ?? props.customizedCompareSelectedOption
-			? false
-			: true; //default true
-
 	const hideSelectedOptions = props.hideSelectedOptions ?? true;
 	const pressCount = props.arrowKeyPressCount ?? 0;
-
+	const selectedOptionsArray = FAutoConvertArray(props.selectedOptions);
 	return (
 		<div
 			style={props.dropdownContainerStyle}
@@ -29,38 +26,45 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 				})
 			}
 		>
-			{props.options.map((option: any, index: number) => {
-				let isSelected = false;
-				if (props.selectedOptions) {
-					if (compareSelectedOption) {
-						if (
-							Array.isArray(props.selectedOptions) &&
-							props.selectedOptions.length > 1
-						) {
-							props.selectedOptions.map((selectedoption: any) => {
-								if (option === selectedoption) {
-									isSelected = true;
-									return;
-								}
-							});
-						}
-						// if selectedOptions is not an array, or only one
-						else {
-							if (option === props.selectedOptions) {
-								isSelected = true;
-								return;
-							}
-						}
-					} else {
-						isSelected =
-							props.customizedCompareSelectedOption !== undefined &&
-							props.customizedCompareSelectedOption(
-								option,
-								props.selectedOptions
-							);
-					}
-				}
+			{props.options.map((option: T, index: number) => {
+				let isString = typeof option === "string";
+				let isSelected = selectedOptionsArray.find((e) => {
+					props.onOptionCompare ? props.onOptionCompare(e, option) : false;
+				})
+					? true
+					: false;
+
+				// if (props.selectedOptions) {
+				// 	if (compareSelectedOption) {
+				// 		if (
+				// 			Array.isArray(props.selectedOptions) &&
+				// 			props.selectedOptions.length > 1
+				// 		) {
+				// 			props.selectedOptions.map((selectedoption: any) => {
+				// 				if (option === selectedoption) {
+				// 					isSelected = true;
+				// 					return;
+				// 				}
+				// 			});
+				// 		}
+				// 		// if selectedOptions is not an array, or only one
+				// 		else {
+				// 			if (option === props.selectedOptions) {
+				// 				isSelected = true;
+				// 				return;
+				// 			}
+				// 		}
+				// 	} else {
+				// 		isSelected =
+				// 			props.onOptionCompare !== undefined &&
+				// 			props.onOptionCompare(
+				// 				option,
+				// 				props.selectedOptions
+				// 			);
+				// 	}
+				// }
 				if (hideSelectedOptions && isSelected) return;
+				if (option === null) return;
 
 				if (props.renderArrowKeySelectedOption && pressCount - index === 1)
 					props.renderArrowKeySelectedOption(option);
@@ -83,39 +87,29 @@ export const FDropdown = (props: FDropdownProps<any>) => {
 							styles.FDropdownOptionDiv(dropdownOptionDivProps)
 						}
 						onClick={() => {
-							props.onSelect && props.onSelect(option, isSelected);
+							props.onSelect && props.onSelect(option);
 						}}
 					>
 						{props.renderCustomizedOption ? (
 							props.renderCustomizedOption(option, isSelected!)
 						) : (
 							<FText
-								font={FFontTypes.Large_Text()}
+								font={FFontTypes.Text()}
 								color={
-									isSelected ||
-									option === null ||
-									(option !== null && option.length === 0)
+									isSelected
 										? FColorTypes.PRIMARY_GREY
 										: FColorTypes.PRIMARY_BLACK
 								}
-								style={
-									option !== null && option.length > 0
-										? props.optionTextStyle
-										: props.emptyOptionTextStyle
-								}
-								className={
-									option !== null && option.length > 0
-										? props.optionTextClassName
-										: props.emptyOptionTextClassName
-								}
-								{...(option !== null && option.length > 0
+								style={props.optionTextStyle}
+								className={props.optionTextClassName}
+								{...(option !== null
 									? props.optionTextProps
 									: props.emptyOptionTextProps)}
 							>
-								{option !== null && option.length > 0
-									? props.renderOptionNameOnly
-										? props.renderOptionNameOnly(option)
-										: option
+								{props.renderOptionNameOnly
+									? props.renderOptionNameOnly(option)
+									: isString
+									? (option as string)
 									: props.emptyOptionHintLabel ?? "No option data"}
 							</FText>
 						)}

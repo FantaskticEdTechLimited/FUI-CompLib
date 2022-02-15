@@ -1,13 +1,13 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
-import { FTheme } from "..";
 import { FDropdownProps } from "../FDropdown/types";
 import { FTextProps } from "../FText/types";
+import { FTheme } from "../FThemeContext";
 import { OnClickFunction } from "../global.types";
 
 export interface FSelectorProps<T> {
 	options: T[];
-	onSelect: (data: T, isSelected?: boolean) => void;
+	onSelect: (data: T) => void;
 	selectedOptions: T | null;
 	disabled?: boolean;
 	label?: string;

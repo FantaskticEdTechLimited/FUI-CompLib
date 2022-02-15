@@ -2,8 +2,9 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
-import { FText, FUseTheme } from "..";
-import { FDropdown } from "../FDropdown"; 
+import { FDropdown } from "../FDropdown";
+import { FText } from "../FText";
+import { FUseTheme } from "../FThemeContext";
 import * as styles from "./styles";
 import { FSelectorContainerStyleProps, FSelectorProps } from "./types";
 
@@ -13,18 +14,15 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 	const { theme } = FUseTheme();
 
 	const selectorStyleProps: FSelectorContainerStyleProps<T> = {
-		isClicked: openDropdown, 
-		disabled: props.disabled!, 
+		isClicked: openDropdown,
+		disabled: props.disabled!,
 		selectedOptions: props.selectedOptions,
-		theme: theme
-	}
+		theme: theme,
+	};
 
 	const placeHolder = props.placeholder ?? "Select an option";
-	const handleSelectedOption = async (
-		_selectedOption: any,
-		selected: boolean
-	) => {
-		await props.onSelect(_selectedOption, selected);
+	const handleSelectedOption = async (_selectedOption: any) => {
+		await props.onSelect(_selectedOption);
 		setOpenDropdown(false);
 	};
 
@@ -59,7 +57,7 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 				className={
 					props.selectorContainerClassName +
 					" " +
-					styles.FSelectorContainer(selectorStyleProps)
+					styles.FSelectorContainer(selectorStyleProps.isClicked, props)
 				}
 			>
 				<div
@@ -82,7 +80,7 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 								color={
 									openDropdown
 										? theme.mainThemeColor
-										: props.selectedOptions 
+										: props.selectedOptions
 										? FColorTypes.PRIMARY_BLACK
 										: FColorTypes.PRIMARY_GREY
 								}
@@ -95,7 +93,7 @@ export const FSelector = <T extends unknown>(props: FSelectorProps<T>) => {
 							<FText
 								font={FFontTypes.Large_Text()}
 								color={
-									props.selectedOptions === null  
+									props.selectedOptions === null
 										? FColorTypes.PRIMARY_GREY
 										: FColorTypes.PRIMARY_BLACK
 								}
