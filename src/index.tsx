@@ -34,13 +34,8 @@ import { FMoreActionPopUp } from "./FMoreActionPopUp";
 import { FConfirmPopup } from "./FConfirmPopup";
 import { FDoubleTabs } from "./FDoubleTabs";
 import { FScrollable } from "./FScrollable";
-import {
-	FTheme,
-	FThemeContextType,
-	FDefaultThemeContext,
-	FThemeContext,
-	FUseTheme,
-} from "./FThemeContext";
+import { FUseTheme } from "./FThemeContext";
+import { FTheme, FThemeContextProps } from "./FThemeContext/types";
 
 export {
 	FBottomNavBar,
@@ -76,9 +71,7 @@ export {
 	// Theme
 	// =====================
 	FTheme,
-	FThemeContextType,
-	FDefaultThemeContext,
-	FThemeContext,
+	FThemeContextProps,
 	FUseTheme,
 	// =====================
 	// utils functions
