@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { FTheme } from "..";
+import { FTheme } from "../FThemeContext/types";
 
 export const FDoubleTabs_Wrapper = (disabled: boolean) =>
 	style({

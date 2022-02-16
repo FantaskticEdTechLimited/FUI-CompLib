@@ -1,5 +1,6 @@
 import { CSSProperties } from "react";
-import { FTheme } from "../..";
+import { FTheme } from "../../FThemeContext/types";
+
 import { OnClickFunction } from "../../global.types";
 
 export interface SearchIconProps {

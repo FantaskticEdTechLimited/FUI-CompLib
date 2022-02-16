@@ -1,6 +1,6 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import React from "react"; 
-import { FTheme } from "..";
+import { FTheme } from "../FThemeContext/types";
 import { FRadioButtonProps } from "./types";
 
 export const handleFRadioButton = (

@@ -1,6 +1,6 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FTheme } from "..";
+import { FTheme } from "../FThemeContext/types";
 import { FHeaderButtonProps } from "./types";
 
 export const FHeaderButtonContainer = (

@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { FTheme } from "..";
+import { FTheme } from "../FThemeContext/types";
 
 import { FTagProps } from "./types";
 

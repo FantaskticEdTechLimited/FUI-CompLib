@@ -2,7 +2,7 @@ import { style } from "typestyle";
 import { FInputFieldProps } from "./types";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
-import { FTheme } from "..";
+import { FTheme } from "../FThemeContext/types";
 
 export const FInputFieldContainer = (props: FInputFieldProps) =>
 	style({

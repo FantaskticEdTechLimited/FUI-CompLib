@@ -2,7 +2,7 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { RefObject } from "react";
 import { style } from "typestyle";
-import { FTheme } from "..";
+import { FTheme } from "../FThemeContext/types";
 import { FTagInputFieldProps } from "./types";
 
 export const FTagInputFieldContainer = (props: FTagInputFieldProps<any>) =>

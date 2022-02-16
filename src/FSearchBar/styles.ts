@@ -1,7 +1,7 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FTheme } from ".."; 
+import { FTheme } from "../FThemeContext/types"; 
 
 export const FSearchBarContainer = (
 	isTriggered: boolean, 
