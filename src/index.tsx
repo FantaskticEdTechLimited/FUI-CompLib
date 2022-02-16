@@ -34,7 +34,7 @@ import { FMoreActionPopUp } from "./FMoreActionPopUp";
 import { FConfirmPopup } from "./FConfirmPopup";
 import { FDoubleTabs } from "./FDoubleTabs";
 import { FScrollable } from "./FScrollable";
-import { WithFUIThemeContext, FUseTheme } from "./FThemeContext";
+import { WithFUIThemeContext, useFUITheme } from "./FThemeContext";
 
 export {
 	FBottomNavBar,
@@ -70,7 +70,7 @@ export {
 	// Theme
 	// =====================
 	WithFUIThemeContext,
-	FUseTheme,
+	useFUITheme as FUseTheme,
 	// =====================
 	// utils functions
 	// =====================
