@@ -13,7 +13,7 @@ const FThemeContext = createContext<FThemeContextProps>({
 	setTheme: () => {},
 });
 
-export const FUseTheme = () => useContext(FThemeContext);
+export const useFUITheme = () => useContext(FThemeContext);
 export const WithFUIThemeContext = (Component: ElementType, _theme?:FTheme) =>{
 	return function WithFUIThemeContext(props: any) {
 		const [theme, setTheme] = useState<FTheme>(_theme ?? defaultTheme)
