@@ -4,14 +4,14 @@ import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
 import { FDropdown } from "../FDropdown";
 import { FText } from "../FText";
-import { FUseTheme } from "../FThemeContext";
+import { useFUITheme } from "../FThemeContext";
 import * as styles from "./styles";
 import { FSelectorContainerStyleProps, FSelectorProps } from "./types";
 
 export const FSelector = <T,>(props: FSelectorProps<T>) => {
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
 	const FSelectorWithDropdownRef = useRef<HTMLDivElement>(null);
-	const { theme } = FUseTheme();
+	const { theme } = useFUITheme();
 
 	const selectorStyleProps: FSelectorContainerStyleProps<T> = {
 		isClicked: openDropdown,

@@ -3,12 +3,12 @@ import * as styles from "./styles";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { FUseTheme } from "../FThemeContext";
+import { useFUITheme } from "../FThemeContext";
 import { FScrollBarStyle } from "../FScrollBar";
 import { FText } from "../FText";
 import { FAutoConvertArray } from "..";
 export const FDropdown = <T,>(props: FDropdownProps<T>) => {
-	const { theme } = FUseTheme();
+	const { theme } = useFUITheme();
 	const hideSelectedOptions = props.hideSelectedOptions ?? true;
 	const pressCount = props.arrowKeyPressCount ?? 0;
 	const selectedOptionsArray = FAutoConvertArray(props.selectedOptions);
