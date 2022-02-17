@@ -6,7 +6,7 @@ import { FButtonProps, FButtonTypes } from "./types";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FButton = (props: FButtonProps) => {
-	const { theme } = FUseTheme();
+	const { theme } = FUseTheme(); 
 	return (
 		<div
 			style={props.style}
@@ -16,8 +16,8 @@ export const FButton = (props: FButtonProps) => {
 			}
 		>
 			{props.leadingComponents}
-			{props.children ? (
-				props.children
+			{props.customChildren ? (
+				props.customChildren
 			) : (
 				<FText
 					font={FFontTypes.Text()}

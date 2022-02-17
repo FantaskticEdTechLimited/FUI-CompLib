@@ -3,28 +3,28 @@ import { style } from "typestyle";
 
 export const FPopUpOverlay = style({
 	backgroundColor: FColorTypes.PRIMARY_DARK + "AB",
-	height: "fit-content",
-	minHeight: "100vh",
+	height: "100vh",
 	width: "100%",
 	top: 0,
 	left: 0,
 	position: "absolute",
 	zIndex: 20,
 	display: "flex",
+	justifyContent: "center",
+	alignItems: "center",
 });
 
-export const FPopUpDiv = style({
-	display: "flex",
-	flexDirection: "column",
-	rowGap: "1.5rem",
-	justifyContent: "center",
-	minWidth: "25rem",
-	height: "fit-content",
-	margin: "auto",
-	marginTop: "10vh",
-	marginBottom: "10vh",
-	padding: "1.5rem",
-	backgroundColor: FColorTypes.PRIMARY_WHITE,
-	border: "0.063rem solid " + FColorTypes.PRIMARY_LIGHT,
-	borderRadius: "0.5rem",
-});
+export const FPopUpContainer = (screenWidth: number, screenHeight: number) =>
+	style({
+		display: "flex",
+		flexDirection: "column",
+		rowGap: "1.5rem",
+		maxWidth: screenWidth,
+		maxHeight: screenHeight,
+		backgroundColor: FColorTypes.PRIMARY_WHITE,
+		border: "1px solid " + FColorTypes.PRIMARY_LIGHT,
+		borderRadius: "0.5rem",
+		boxSizing: "border-box",
+		padding: "1.5rem",
+		overflow: "auto",
+	}); 
