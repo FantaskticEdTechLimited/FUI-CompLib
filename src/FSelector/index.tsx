@@ -2,16 +2,15 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
-import { FDropdown } from "../FDropdown";
-import { FText } from "../FText";
-import { FUseTheme } from "../FThemeContext";
+import { FText, FDropdown } from "..";
+import { useFUITheme } from "../FThemeContext";
 import * as styles from "./styles";
 import { FSelectorContainerStyleProps, FSelectorProps } from "./types";
 
 export const FSelector = <T,>(props: FSelectorProps<T>) => {
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
 	const FSelectorWithDropdownRef = useRef<HTMLDivElement>(null);
-	const { theme } = FUseTheme();
+	const { theme } = useFUITheme();
 
 	const selectorStyleProps: FSelectorContainerStyleProps<T> = {
 		isClicked: openDropdown,
@@ -46,6 +45,53 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 		};
 	}, []);
 
+	const DefaultSelector = (selectedOption: T | null) => {
+		return (
+			<>
+				{/* label */}
+				<FText
+					font={FFontTypes.Text()}
+					color={
+						openDropdown
+							? theme.mainThemeColor
+							: selectedOption
+							? FColorTypes.PRIMARY_BLACK
+							: FColorTypes.PRIMARY_GREY
+					}
+					children={props.label ?? "Title"}
+					style={props.labelStyle}
+					className={props.labelClassName}
+					{...props.labelProps}
+				/>
+				{/* Content or placeHolder */}
+				<FText
+					font={FFontTypes.Large_Text()}
+					color={
+						selectedOption === null
+							? FColorTypes.PRIMARY_GREY
+							: FColorTypes.PRIMARY_BLACK
+					}
+					style={props.selectedOptionStyle}
+					className={
+						props.selectedOptionClassName +
+						" " +
+						styles.FSelectorSelectedOptionDiv
+					}
+					{...props.selectedOptionProps}
+				>
+					{selectedOption === null
+						? props.showLabelOnly
+							? ""
+							: placeHolder
+						: props.renderSelectedOptionNameOnly
+						? props.renderSelectedOptionNameOnly(selectedOption)
+						: props.renderOptionNameOnly
+						? props.renderOptionNameOnly(selectedOption)
+						: (selectedOption as unknown as string)}
+				</FText>
+			</>
+		);
+	};
 	return (
 		<div
 			style={props.wrapperStyle}
@@ -69,52 +115,13 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 						props.disabled ? undefined : setOpenDropdown(!openDropdown)
 					}
 				>
-					{props.selectedOptions !== null &&
-					props.renderCustomizedSelectedOption ? (
-						props.renderCustomizedSelectedOption(props.selectedOptions)
-					) : (
-						<>
-							{/* label */}
-							<FText
-								font={FFontTypes.Text()}
-								color={
-									openDropdown
-										? theme.mainThemeColor
-										: props.selectedOptions
-										? FColorTypes.PRIMARY_BLACK
-										: FColorTypes.PRIMARY_GREY
-								}
-								children={props.label ?? "Title"}
-								style={props.labelStyle}
-								className={props.labelClassName}
-								{...props.labelProps}
-							/>
-							{/* Content or placeHolder */}
-							<FText
-								font={FFontTypes.Large_Text()}
-								color={
-									props.selectedOptions === null
-										? FColorTypes.PRIMARY_GREY
-										: FColorTypes.PRIMARY_BLACK
-								}
-								style={props.selectedOptionStyle}
-								className={
-									props.selectedOptionClassName +
-									" " +
-									styles.FSelectorSelectedOptionDiv
-								}
-								{...props.selectedOptionProps}
-							>
-								{props.selectedOptions === null
-									? props.showLabelOnly
-										? ""
-										: placeHolder
-									: props.renderSelectedOptionNameOnly
-									? props.renderSelectedOptionNameOnly(props.selectedOptions)
-									: (props.selectedOptions as unknown as string)}
-							</FText>
-						</>
-					)}
+					{props.selectedOptions !== null
+						? props.renderCustomizedSelectedOption
+							? props.renderCustomizedSelectedOption(props.selectedOptions)
+							: props.renderCustomizedOption
+							? props.renderCustomizedOption(props.selectedOptions)
+							: DefaultSelector(props.selectedOptions)
+						: DefaultSelector(null)}
 				</div>
 				{props.iconComponent ? (
 					props.iconComponent
@@ -168,7 +175,8 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 							onSelect={handleSelectedOption}
 							dropdownContainerClassName={props.dropdownContainerClassName}
 							dropdownContainerStyle={props.dropdownContainerStyle}
-							renderCustomizedOption={props.renderCustomizedSelectedOption}
+							renderCustomizedOption={props.renderCustomizedOption}
+							renderOptionNameOnly={props.renderOptionNameOnly}
 							{...props.dropdownProps}
 						/>
 					)}

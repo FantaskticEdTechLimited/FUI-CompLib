@@ -15,11 +15,14 @@ export interface FSelectorProps<T> {
 	showLabelOnly?: boolean;
 	placeholder?: string;
 	onClear?: OnClickFunction;
+
 	// display the selected option with user own method
 	renderCustomizedSelectedOption?: (data: T) => ReactNode;
+	renderCustomizedOption?: (data: T) => ReactNode;
 	// display the selected option with selected option name only
 	renderSelectedOptionNameOnly?: (data: T) => string;
-
+	renderOptionNameOnly?: (data: T) => string;
+	
 	clearIconProps?: FIconProps;
 	dropdownArrowIconProps?: FIconProps;
 	iconComponent?: ReactNode;
