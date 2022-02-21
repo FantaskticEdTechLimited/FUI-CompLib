@@ -5,5 +5,8 @@ export const fformContainer = style({
     flexDirection:"column",
     justifyContent: "flex-start",
     alignItems: "center",
-    rowGap:"0.75rem"
+    rowGap:"0.75rem",
+    height:"100%",
+    width:"100%",
+    overflow:"hidden",
 }) 

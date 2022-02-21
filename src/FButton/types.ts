@@ -16,7 +16,7 @@ type ComponentsType = ReactElement<FIconProps | FSVGIconProps> | ReactNode;
 export interface FButtonProps {
 	key?: Key;
 	type?: FButtonTypes;
-	children?: ReactNode;
+	customChildren?: ReactNode;
 	className?: string;
 	disabled?: boolean;
 	label?: string;

@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import { FPopUpProps } from "./types";
-import * as styles from "./styles";
+import * as styles from "./styles"; 
+import { FScreenSizeHandler, FScrollBarStyle } from "..";
 export const FPopUp = (props: FPopUpProps) => {
 	const PopupRef = useRef<HTMLDivElement>(null);
+	const [width, height] = FScreenSizeHandler();
 
 	const handleClickOutside = async (event: any) => {
 		if (props.isDisableCloseWhenClickOutside) {
@@ -31,7 +33,13 @@ export const FPopUp = (props: FPopUpProps) => {
 			<div
 				ref={props.isDisableCloseWhenClickOutside ? undefined : PopupRef}
 				style={props.style}
-				className={props.className + " " + styles.FPopUpDiv}
+				className={
+					props.className +
+					" " +
+					styles.FPopUpContainer(width, height) +
+					" " +
+					FScrollBarStyle({ visible: true })
+				}
 			>
 				{props.children && props.children}
 			</div>

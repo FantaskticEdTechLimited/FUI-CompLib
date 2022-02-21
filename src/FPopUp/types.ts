@@ -4,9 +4,8 @@ import { OnClickFunction } from "../global.types";
 export interface FPopUpProps {
 	children?: ReactNode;
 	onClose?: OnClickFunction;
-	className?: string;
-    popUpName:string
-    isDisableCloseWhenClickOutside?:boolean
+	className?: string; 
+	isDisableCloseWhenClickOutside?: boolean;
 	overlayClassName?: string;
 	overlayStyle?: CSSProperties;
 	style?: CSSProperties;

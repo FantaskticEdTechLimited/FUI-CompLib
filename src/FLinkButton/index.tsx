@@ -23,7 +23,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 				props.disabled ? () => {} : props.onClick && props.onClick()
 			}
 		>
-			{props.children ?? (
+			{props.customChildren ?? (
 				<>
 					{props.leadingComponents ?? props.leadingIcon ? (
 						<FIcon

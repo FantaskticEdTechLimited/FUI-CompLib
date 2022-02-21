@@ -14,7 +14,9 @@ export const FForm = (props: FFormProps) => {
 		props.onClose && (await props.onClose());
 	};
 	return (
-		<div className={styles.fformContainer}>
+		<div className={styles.fformContainer}
+			style={props.containerStyle}
+		>
 			{/* content */}
 			{props.children}
 
