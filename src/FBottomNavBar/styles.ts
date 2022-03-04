@@ -13,7 +13,7 @@ export const FBottomNavBarContainer = style({
 export const FLeadingButtonDiv = (theme: FTheme) =>
 	style({
 		padding: "0.5rem 0.75rem",
-		backgroundColor: theme.mainThemeColor ?? undefined,
+		backgroundColor: theme.subThemeColor ?? undefined,
 	});
 
 export const FActionButtonDiv = (disabled: boolean, theme: FTheme) =>
