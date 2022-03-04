@@ -14,7 +14,7 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 			{props.children ?? (
 				<>
 					<FButton
-						type={FButtonTypes.TEXT}
+						type={FButtonTypes.SECONDARY}
 						disabled={props.disableLeadingButton}
 						label={props.leadingButtonLabel ?? "Cancel"}
 						onClick={() =>
@@ -26,7 +26,7 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						className={
 							props.leadingButtonClassName +
 							" " +
-							styles.FLeadingButtonDiv(theme)
+							styles.FLeadingButtonDiv()
 						}
 						{...props.leadingButtonProps}
 					/>

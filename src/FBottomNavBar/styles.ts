@@ -10,10 +10,9 @@ export const FBottomNavBarContainer = style({
 	width: "100%",
 });
 
-export const FLeadingButtonDiv = (theme: FTheme) =>
+export const FLeadingButtonDiv = () =>
 	style({
 		padding: "0.5rem 0.75rem",
-		backgroundColor: theme.subThemeColor ?? undefined,
 	});
 
 export const FActionButtonDiv = (disabled: boolean, theme: FTheme) =>
