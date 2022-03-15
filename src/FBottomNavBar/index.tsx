@@ -9,12 +9,12 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 	return (
 		<div
 			style={props.navBarStyle}
-			className={props.navBarClassName + " " + styles.FBottomNavBarContainer}
+			className={styles.FBottomNavBarContainer + " " + props.navBarClassName}
 		>
 			{props.children ?? (
 				<>
 					<FButton
-						type={FButtonTypes.SECONDARY}
+						type={props.leadingButtonProps?.type ?? FButtonTypes.SECONDARY}
 						disabled={props.disableLeadingButton}
 						label={props.leadingButtonLabel ?? "Cancel"}
 						onClick={() =>
@@ -24,14 +24,12 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						}
 						style={props.leadingButtonStyle}
 						className={
-							props.leadingButtonClassName +
-							" " +
-							styles.FLeadingButtonDiv()
+							styles.FLeadingButtonDiv + " " + props.leadingButtonClassName
 						}
 						{...props.leadingButtonProps}
 					/>
 					<FButton
-						type={FButtonTypes.PRIMARY}
+						type={props.actionButtonProps?.type ?? FButtonTypes.PRIMARY}
 						disabled={props.disableActionButton}
 						label={props.actionButtonLabel ?? "Next"}
 						onClick={() =>
@@ -41,9 +39,9 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						}
 						style={props.actionButtonStyle}
 						className={
-							props.actionButtonClassName +
+							styles.FActionButtonDiv(props.disableActionButton!, theme) +
 							" " +
-							styles.FActionButtonDiv(props.disableActionButton!, theme)
+							props.actionButtonClassName
 						}
 						{...props.actionButtonProps}
 					/>

@@ -6,7 +6,7 @@ export const FSVGIcon = (props: FSVGIconProps) => {
 	return (
 		<div
 			style={props.style}
-			className={props.className + " " + styles.FSVGIconDiv(props)}
+			className={styles.FSVGIconDiv(props) + " " + props.className}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick()
 			}

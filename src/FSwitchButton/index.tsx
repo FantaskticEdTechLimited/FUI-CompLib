@@ -10,7 +10,7 @@ export const FSwitchButton = (props: FSwitchButtonProps) => {
 		<div
 			style={props.containerStyle}
 			className={
-				props.containerClassName + " " + styles.FSwitchButtonDiv(props, checked)
+				styles.FSwitchButtonDiv(props, checked) + " " + props.containerClassName
 			}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick()

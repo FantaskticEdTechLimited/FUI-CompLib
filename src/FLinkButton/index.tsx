@@ -2,7 +2,7 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FText, FUseTheme } from ".."; 
+import { FText, FUseTheme } from "..";
 import * as styles from "./styles";
 import { FLinkButtonProps } from "./types";
 
@@ -14,9 +14,9 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 		<Link
 			style={props.style}
 			className={
-				props.className +
+				styles.FLinkButtonContainer(isSelected!, props, theme) +
 				" " +
-				styles.FLinkButtonContainer(isSelected!, props, theme)
+				props.className
 			}
 			to={props.pathLink!}
 			onClick={() =>
@@ -35,7 +35,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 					) : undefined}
 					<FText
 						style={props.labelStyle}
-						className={props.labelClassName + " " + styles.FLinkButtonLabel}
+						className={styles.FLinkButtonLabel + " " + props.labelClassName}
 						color={
 							isSelected ? theme.mainThemeColor : FColorTypes.PRIMARY_BLACK
 						}

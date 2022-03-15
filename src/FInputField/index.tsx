@@ -39,15 +39,15 @@ export const FInputField = (props: FInputFieldProps) => {
 		<div
 			style={props.containerStyle}
 			className={
-				props.containerClassName + " " + styles.FInputFieldContainer(props)
+				styles.FInputFieldContainer(props) + " " + props.containerClassName
 			}
 		>
 			<div
 				style={props.inputDivStyle}
 				className={
-					props.inputDivClassName +
+					styles.FInputFieldDiv(props, isTriggered, isFilled, theme) +
 					" " +
-					styles.FInputFieldDiv(props, isTriggered, isFilled, theme)
+					props.inputDivClassName
 				}
 				onClick={() => {
 					if (!props.disabled) setIsTriggered(true);
@@ -84,15 +84,14 @@ export const FInputField = (props: FInputFieldProps) => {
 					<textarea
 						style={props.inputAreaStyle}
 						className={
-							props.inputAreaClassName +
-							" " +
 							styles.FInputFieldInputAreaDiv(
 								props,
 								isTriggered || isFilled || props.label === undefined
 							) +
 							" " +
+							props.inputAreaClassName +
+							" " +
 							FScrollBarStyle({
-								visible: true,
 								...props.scrollBarProps,
 							})
 						}
@@ -110,12 +109,12 @@ export const FInputField = (props: FInputFieldProps) => {
 					<input
 						style={props.inputAreaStyle}
 						className={
-							props.inputAreaClassName +
-							" " +
 							styles.FInputFieldInputAreaDiv(
 								props,
 								isTriggered || isFilled || props.label === undefined
-							)
+							) +
+							" " +
+							props.inputAreaClassName
 						}
 						type="text"
 						ref={inputRef}
@@ -140,7 +139,7 @@ export const FInputField = (props: FInputFieldProps) => {
 				}
 				style={props.wordCountStyle}
 				className={
-					props.wordCountClassName + " " + styles.FInputFieldWordCountDiv
+					styles.FInputFieldWordCountDiv + " " + props.wordCountClassName
 				}
 				{...props.wordCountProps}
 			>

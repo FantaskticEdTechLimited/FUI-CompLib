@@ -39,9 +39,9 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 					<div
 						style={props.topBarStyle}
 						className={
-							props.topBarClassName +
+							styles.FTopNavBarContainer(props, theme) +
 							" " +
-							styles.FTopNavBarContainer(props, theme)
+							props.topBarClassName
 						}
 					>
 						{props.logo ?? props.topBarLeadingComponents}
@@ -61,9 +61,9 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 					<div
 						style={props.overlayStyle}
 						className={
-							props.overlayClassName +
+							styles.FHiddenSideBarOverlay(props, openSideBar) +
 							" " +
-							styles.FHiddenSideBarOverlay(props, openSideBar)
+							props.overlayClassName
 						}
 					>
 						{/* Menu location controller */}
@@ -88,12 +88,11 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 							<div
 								style={props.contentDivStyle}
 								className={
-									props.contentDivClassName +
-									" " +
 									styles.FSideNavBarContainer +
 									" " +
+									props.contentDivClassName +
+									" " +
 									FScrollBarStyle({
-										visible: true,
 										...props.scrollBarProps,
 									})
 								}
@@ -119,12 +118,11 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 						{/* scrollable menu */}
 						<div
 							className={
-								props.contentDivClassName +
-								" " +
 								styles.FSideNavBarContainer +
 								" " +
+								props.contentDivClassName +
+								" " +
 								FScrollBarStyle({
-									visible: true,
 									...props.scrollBarProps,
 								})
 							}

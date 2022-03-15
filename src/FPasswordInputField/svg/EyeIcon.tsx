@@ -1,7 +1,7 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import React from "react";
 import { FPasswordInputFieldIconProps } from "./types";
-import * as styles from "./styles"
+import * as styles from "./styles";
 
 export const EyeIcon = (props: FPasswordInputFieldIconProps) => {
 	return (
@@ -12,8 +12,14 @@ export const EyeIcon = (props: FPasswordInputFieldIconProps) => {
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 			style={props.style}
-			className={props.className+" "+styles.FPasswordInputFieldEyeIcon(props.disabled!)}
-			onClick={() => props.disabled ? undefined : props.onClick && props.onClick()}
+			className={
+				styles.FPasswordInputFieldEyeIcon(props.disabled!) +
+				" " +
+				props.className
+			}
+			onClick={() =>
+				props.disabled ? undefined : props.onClick && props.onClick()
+			}
 		>
 			<path
 				d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"

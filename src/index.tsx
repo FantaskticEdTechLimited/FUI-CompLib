@@ -35,12 +35,15 @@ import { FConfirmPopup } from "./FConfirmPopup";
 import { FDoubleTabs } from "./FDoubleTabs";
 import { FScrollable } from "./FScrollable";
 import { WithFUIThemeContext, useFUITheme } from "./FThemeContext";
+import { FTheme } from "./FThemeContext/types";
+import { FDivider } from "./FDivider";
 
 export {
 	FBottomNavBar,
 	FButton,
 	FCheckBox,
 	FConfirmPopup,
+	FDivider,
 	FDnDOrder,
 	FDoubleTabs,
 	FDropdown,
@@ -71,6 +74,7 @@ export {
 	// =====================
 	WithFUIThemeContext,
 	useFUITheme as FUseTheme,
+	FTheme,
 	// =====================
 	// utils functions
 	// =====================

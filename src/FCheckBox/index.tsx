@@ -7,7 +7,7 @@ export const FCheckBox = (props: FCheckBoxProps) => {
 	return (
 		<svg
 			style={props.containerStyle}
-			className={props.containerClassName + " " + styles.FCheckBoxDiv(props)}
+			className={styles.FCheckBoxDiv(props) + " " + props.containerClassName}
 			onClick={() => (props.disabled ? undefined : props.onClick())}
 			viewBox="0 0 24 24"
 			fill="none"

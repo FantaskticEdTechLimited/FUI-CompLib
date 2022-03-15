@@ -1,6 +1,6 @@
 import React from "react";
 import { FPasswordInputFieldIconProps } from "./types";
-import * as styles from "./styles"
+import * as styles from "./styles";
 
 export const LockIcon = (props: FPasswordInputFieldIconProps) => {
 	return (
@@ -11,7 +11,11 @@ export const LockIcon = (props: FPasswordInputFieldIconProps) => {
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
 			style={props.style}
-			className={props.className+" "+styles.FPasswordInputFieldEyeIcon(props.disabled!)}
+			className={
+				styles.FPasswordInputFieldEyeIcon(props.disabled!) +
+				" " +
+				props.className
+			}
 		>
 			<path
 				d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z"
