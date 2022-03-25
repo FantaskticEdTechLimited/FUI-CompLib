@@ -41,7 +41,7 @@ export const FConfirmPopup = (props: ConfirmPopupProps) => {
 			</div>
 
 			{/* content */}
-			{props.children}
+			{props.children && <div style={{overflow:"hidden"}}>{props.children}</div>}
 
 			{/* Footer */}
 			{!props.isDisableBottomNavigation && (
