@@ -46,7 +46,7 @@ export const FPopUp = (props: FPopUpProps) => {
 					})
 				}
 			>
-				{props.children && <div style={{overflow:"hidden"}}>{props.children}</div>}
+				{props.children && props.children}
 			</div>
 		</div>
 	)
