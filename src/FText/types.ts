@@ -1,7 +1,7 @@
-import { CSSProperties } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 export interface FTextProps {
-	children?: string;
+	children?: ReactNode;
 	color?: string;
 	font?: string;
 	className?: string;

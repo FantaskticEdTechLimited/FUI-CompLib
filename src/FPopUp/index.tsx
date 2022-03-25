@@ -1,7 +1,8 @@
 import React, { useEffect, useRef } from "react"
 import { FPopUpProps } from "./types"
 import * as styles from "./styles"
-import { FScreenSizeHandler, FScrollBarStyle } from ".."
+import { FScreenSizeHandler } from "../utils"
+import { FScrollBarStyle } from "../FScrollBar"
 export const FPopUp = (props: FPopUpProps) => {
 	const PopupRef = useRef<HTMLDivElement>(null)
 	const [width, height] = FScreenSizeHandler()
@@ -28,7 +29,7 @@ export const FPopUp = (props: FPopUpProps) => {
 	return (
 		<div
 			style={props.overlayStyle}
-			className={props.overlayClassName + " " + styles.FPopUpOverlay}
+			className={styles.FPopUpOverlay + " " + props.overlayClassName}
 		>
 			<div
 				ref={
@@ -36,11 +37,13 @@ export const FPopUp = (props: FPopUpProps) => {
 				}
 				style={props.style}
 				className={
-					props.className +
-					" " +
 					styles.FPopUpContainer(width, height) +
 					" " +
-					FScrollBarStyle({ visible: true })
+					props.className +
+					" " +
+					FScrollBarStyle({
+						...props.scrollBarProps,
+					})
 				}
 			>
 				{props.children && <div style={{overflow:"hidden"}}>{props.children}</div>}

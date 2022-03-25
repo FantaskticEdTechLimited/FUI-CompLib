@@ -1,5 +1,5 @@
 export interface FScrollBarProps {
-	visible: boolean;
+	disabled?: boolean;
 	width?: number | string;
 	height?: number | string;
 

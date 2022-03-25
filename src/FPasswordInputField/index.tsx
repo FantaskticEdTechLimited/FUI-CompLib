@@ -84,9 +84,14 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 		<div
 			style={props.containerStyle}
 			className={
-				props.containerClassName +
+				styles.FPasswordInputFieldContainer(
+					isTriggered,
+					isFilled,
+					props,
+					theme
+				) +
 				" " +
-				styles.FPasswordInputFieldContainer(isTriggered, isFilled, props, theme)
+				props.containerClassName
 			}
 			onClick={() => (props.disabled ? undefined : setIsTriggered(true))}
 			onBlur={() => {
@@ -108,9 +113,9 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 			<input
 				style={props.inputAreaStyle}
 				className={
-					props.inputAreaClassName +
+					styles.FPasswordInputFieldInputAreaDiv(props.disabled!) +
 					" " +
-					styles.FPasswordInputFieldInputAreaDiv(props.disabled!)
+					props.inputAreaClassName
 				}
 				type="text"
 				ref={passwordInputRef}

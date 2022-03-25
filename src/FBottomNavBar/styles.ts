@@ -10,7 +10,7 @@ export const FBottomNavBarContainer = style({
 	width: "100%",
 });
 
-export const FLeadingButtonDiv = () =>
+export const FLeadingButtonDiv =  
 	style({
 		padding: "0.5rem 0.75rem",
 	});

@@ -6,11 +6,11 @@ import { FButtonProps, FButtonTypes } from "./types";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FButton = (props: FButtonProps) => {
-	const { theme } = FUseTheme(); 
+	const { theme } = FUseTheme();
 	return (
 		<div
 			style={props.style}
-			className={props.className + " " + styles.FButtonContainer(props, theme)}
+			className={styles.FButtonContainer(props, theme) + " " + props.className}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick()
 			}

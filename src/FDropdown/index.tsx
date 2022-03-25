@@ -16,12 +16,11 @@ export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 		<div
 			style={props.dropdownContainerStyle}
 			className={
-				props.dropdownContainerClassName +
-				" " +
 				styles.FDropdownContainer +
 				" " +
+				props.dropdownContainerClassName +
+				" " +
 				FScrollBarStyle({
-					visible: true,
 					...props.scrollBarProps,
 				})
 			}
@@ -82,9 +81,9 @@ export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 						key={index}
 						style={props.optionDivStyle}
 						className={
-							props.optionDivClassName +
+							styles.FDropdownOptionDiv(dropdownOptionDivProps) +
 							" " +
-							styles.FDropdownOptionDiv(dropdownOptionDivProps)
+							props.optionDivClassName
 						}
 						onClick={() => {
 							props.onSelect && props.onSelect(option);

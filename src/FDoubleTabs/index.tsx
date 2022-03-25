@@ -30,20 +30,27 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 	}, [props.children]);
 
 	return (
-		<div className={styles.FDoubleTabs_Wrapper(props.disabled!)}>
+		<div
+			style={props.wrapperStyle}
+			className={
+				styles.FDoubleTabs_Wrapper(props.disabled!) +
+				" " +
+				props.wrapperClassName
+			}
+		>
 			{props.children && props.children.length === 2 && (
 				<>
 					<div
 						style={props.headerStyle}
-						className={props.headerClassName + " " + styles.FDoubleTabs_Header}
+						className={styles.FDoubleTabs_Header + " " + props.headerClassName}
 					>
 						{props.leadingComponents}
 						<div
 							style={props.tabContainerStyle}
 							className={
-								props.tabContainerClassName +
+								styles.FDoubleTabs_TabsContainer(theme) +
 								" " +
-								styles.FDoubleTabs_TabsContainer(theme)
+								props.tabContainerClassName
 							}
 						>
 							{props.children &&

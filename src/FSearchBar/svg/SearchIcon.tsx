@@ -1,13 +1,13 @@
 import React from "react";
 import { SearchIconProps } from "./types";
-import * as styles from "./styles"; 
+import * as styles from "./styles";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const SearchIcon = (props: SearchIconProps) => {
 	return (
 		<svg
 			style={props.style}
-			className={props.className + " " + styles.SearchIconDiv}
+			className={styles.SearchIconDiv + " " + props.className}
 			viewBox="0 0 18 18"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"

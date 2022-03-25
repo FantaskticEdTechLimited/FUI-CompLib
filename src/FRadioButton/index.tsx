@@ -11,7 +11,7 @@ export const FRadioButton = (props: FRadioButtonProps) => {
 	return (
 		<svg
 			style={props.containerStyle}
-			className={props.containerClassName + " " + styles.FRadioButtonDiv(props)}
+			className={styles.FRadioButtonDiv(props) + " " + props.containerClassName}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick()
 			}

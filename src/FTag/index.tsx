@@ -10,7 +10,7 @@ export const FTag = <T,>(props: FTagProps<T>) => {
 	return (
 		<div
 			style={props.style}
-			className={props.className + " " + styles.FTagContainer(props, theme)}
+			className={styles.FTagContainer(props, theme) + " " + props.className}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick(props.tag)
 			}
@@ -20,7 +20,7 @@ export const FTag = <T,>(props: FTagProps<T>) => {
 				font={FFontTypes.Text()}
 				color={theme.mainThemeColor}
 				style={props.labelStyle}
-				className={props.labelClassName + " " + styles.FTagLabel}
+				className={styles.FTagLabel + " " + props.labelClassName}
 				children={props.label}
 				{...props.labelProps}
 			/>

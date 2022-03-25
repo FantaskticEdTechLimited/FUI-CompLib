@@ -114,12 +114,11 @@ export const FTagInputField = <T extends unknown>(
 		<div
 			style={props.containerStyle}
 			className={
-				props.containerClassName +
-				" " +
 				styles.FTagInputFieldContainer(props) +
 				" " +
+				props.containerClassName +
+				" " +
 				FScrollBarStyle({
-					visible: true,
 					...props.scrollBarProps,
 				})
 			}
@@ -127,9 +126,9 @@ export const FTagInputField = <T extends unknown>(
 			<div
 				style={props.tagsDisplayDivStyle}
 				className={
-					props.tagsDisplayDivClassName +
+					styles.FTagInputFieldTagsDisplayDiv(props.flexColumn!) +
 					" " +
-					styles.FTagInputFieldTagsDisplayDiv(props.flexColumn!)
+					props.tagsDisplayDivClassName
 				}
 			>
 				{props.renderCustomizedTagComponents
@@ -154,15 +153,15 @@ export const FTagInputField = <T extends unknown>(
 			<div
 				style={props.inputWrapperStyle}
 				className={
-					props.inputWrapperClassName + " " + styles.FTagInputFieldWrapper
+					styles.FTagInputFieldWrapper + " " + props.inputWrapperClassName
 				}
 			>
 				<div
 					style={props.inputContainerStyle}
 					className={
-						props.inputContainerClassName +
+						styles.FTagInputFieldInputContainer(isTriggered, theme) +
 						" " +
-						styles.FTagInputFieldInputContainer(isTriggered, theme)
+						props.inputContainerClassName
 					}
 					onClick={() => {
 						if (!props.disabled) {
@@ -176,9 +175,9 @@ export const FTagInputField = <T extends unknown>(
 					<input
 						style={props.inputAreaStyle}
 						className={
-							props.inputAreaClassName +
+							styles.FTagInputFieldInputAreaDiv(props, theme) +
 							" " +
-							styles.FTagInputFieldInputAreaDiv(props, theme)
+							props.inputAreaClassName
 						}
 						type="text"
 						ref={inputRef}
@@ -320,7 +319,7 @@ export const FTagInputField = <T extends unknown>(
 									}
 									selectedOptions={props.selectedTags}
 									onSelect={(option: any) => {
-										console.log("option", option)
+										console.log("option", option);
 										// if (
 										// 	!props.disableFilteredTags &&
 										// 	option !== ExitsedTagHintLabel &&

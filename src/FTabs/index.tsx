@@ -25,19 +25,19 @@ export const FTabs = (props: FTabsProps) => {
 		<div
 			style={props.wrapperStyle}
 			className={
-				props.wrapperClassName + " " + styles.FTabsWrapper(props.disabled!)
+				styles.FTabsWrapper(props.disabled!) + " " + props.wrapperClassName
 			}
 		>
 			{/* header container that contains tabs */}
 			<div
 				style={props.headerStyle}
-				className={props.headerClassName + " " + styles.FTabsHeader}
+				className={styles.FTabsHeader + " " + props.headerClassName}
 			>
 				{props.leadingComponents}
 				<div
 					style={props.tabContainerStyle}
 					className={
-						props.tabContainerClassName + " " + styles.FTabsTabContainer
+						styles.FTabsTabContainer + " " + props.tabContainerClassName
 					}
 				>
 					{FAutoConvertArray(props.children).map((tab, index) => {
@@ -85,10 +85,10 @@ export const FTabs = (props: FTabsProps) => {
 						<div
 							key={index}
 							style={{
-								overflow:"hidden",
-								height:"100%",
-								width:"100%",
-								display: index === tabIndex ? "block" : "none"
+								overflow: "hidden",
+								height: "100%",
+								width: "100%",
+								display: index === tabIndex ? "block" : "none",
 							}}
 						>
 							{panel.props.children}

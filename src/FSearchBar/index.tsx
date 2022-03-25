@@ -18,9 +18,9 @@ export const FSearchBar = (props: FSearchBarProps) => {
 		<div
 			style={props.containerStyle}
 			className={
-				props.containerClassName +
+				styles.FSearchBarContainer(isTriggered, theme) +
 				" " +
-				styles.FSearchBarContainer(isTriggered, theme)
+				props.containerClassName
 			}
 			onClick={() => setIsTriggered(true)}
 			onBlur={() => setIsTriggered(false)}
@@ -34,7 +34,7 @@ export const FSearchBar = (props: FSearchBarProps) => {
 			<input
 				style={props.inputAreaStyle}
 				className={
-					props.inputAreaClassName + " " + styles.FSearchBarInputAreaDiv
+					styles.FSearchBarInputAreaDiv + " " + props.inputAreaClassName
 				}
 				type="text"
 				ref={inputRef}

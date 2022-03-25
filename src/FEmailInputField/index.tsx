@@ -35,21 +35,17 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 		<div
 			style={props.wrapperStyle}
 			className={
-				props.wrapperClassName +
+				styles.FEmailInputFieldWrapper(isError, props.disabled!) +
 				" " +
-				styles.FEmailInputFieldWrapper(isError, props.disabled!)
+				props.wrapperClassName
 			}
 		>
 			<div
 				style={props.containerStyle}
 				className={
-					props.containerClassName +
+					styles.FEmailInputFieldContainer(isTriggered, isFilled, theme) +
 					" " +
-					styles.FEmailInputFieldContainer(
-						isTriggered,
-						isFilled,
-						theme
-					)
+					props.containerClassName
 				}
 				onClick={() => (props.disabled ? undefined : setIsTriggered(true))}
 				onBlur={() => {
@@ -63,9 +59,7 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 					<FIcon
 						name={FIconTypes.EMAIL}
 						strokeColor={
-							isTriggered
-								? theme.mainThemeColor
-								: FColorTypes.PRIMARY_BLACK
+							isTriggered ? theme.mainThemeColor : FColorTypes.PRIMARY_BLACK
 						}
 						containerStyle={props.iconStyle}
 						containerClassName={props.iconClassName}
@@ -75,7 +69,7 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 				<input
 					style={props.inputAreaStyle}
 					className={
-						props.inputAreaClassName + " " + styles.FEmailInputFieldInputAreaDiv
+						styles.FEmailInputFieldInputAreaDiv + " " + props.inputAreaClassName
 					}
 					type={props.checkInput || props.disabled ? "text" : "email"}
 					ref={emailInputRef}
