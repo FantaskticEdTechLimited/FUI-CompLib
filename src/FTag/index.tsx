@@ -3,7 +3,7 @@ import * as styles from "./styles";
 import React from "react";
 import { FText, FUseTheme } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 
 export const FTag = <T,>(props: FTagProps<T>) => {
 	const { theme } = FUseTheme();
@@ -29,7 +29,7 @@ export const FTag = <T,>(props: FTagProps<T>) => {
 				: props.onDelete && (
 						<FIcon
 							size="small"
-							name={FIconTypes.CLOSE}
+							name={FIconNames.CLOSE}
 							strokeColor={theme.mainThemeColor}
 							onClick={() =>
 								props.disabled

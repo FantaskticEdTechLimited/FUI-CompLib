@@ -1,5 +1,5 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { Link } from "react-router-dom";
 import { FText, FUseTheme } from "..";
@@ -46,7 +46,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 						? props.actionComponents
 						: props.containsRouteChildren && (
 								<FIcon
-									name={FIconTypes.ARROW_DOWN}
+									name={FIconNames.ARROW_DOWN}
 									size="small"
 									strokeColor={
 										isSelected

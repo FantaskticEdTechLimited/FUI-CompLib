@@ -1,7 +1,7 @@
 import { FEmailInputFieldProps } from "./types";
 import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./styles";
-import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FText, FUseTheme } from "..";
@@ -57,12 +57,15 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 			>
 				{props.iconComponent ?? (
 					<FIcon
-						name={FIconTypes.EMAIL}
+						name={FIconNames.EMAIL}
 						strokeColor={
 							isTriggered ? theme.mainThemeColor : FColorTypes.PRIMARY_BLACK
 						}
-						containerStyle={props.iconStyle}
-						containerClassName={props.iconClassName}
+						style={props.iconStyle}
+						className={props.iconClassName}
+						// style
+						// containerStyle={props.iconStyle}
+						// containerClassName={props.iconClassName}
 						{...props.iconProps}
 					/>
 				)}

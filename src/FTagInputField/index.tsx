@@ -2,7 +2,7 @@ import { FTagInputFieldProps } from "./types";
 import * as styles from "./styles";
 import { FTag } from "../FTag";
 import { useEffect, useRef, useState } from "react";
-import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import { FDropdown } from "../FDropdown";
 
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
@@ -296,7 +296,7 @@ export const FTagInputField = <T extends unknown>(
 					{props.inputValue && props.inputValue.length > 0 && (
 						<FIcon
 							size="small"
-							name={FIconTypes.CLOSE}
+							name={FIconNames.CLOSE}
 							onClick={() =>
 								props.renderInputValue && props.renderInputValue("")
 							}

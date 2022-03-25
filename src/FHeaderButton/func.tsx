@@ -1,4 +1,4 @@
-import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { FRwdModeHandler, FUseTheme } from "..";
 import { RWDMode } from "../global.types";
@@ -12,7 +12,7 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 		case FHeaderButtonTypes.BACK:
 			return (
 				<FIcon
-					name={FIconTypes.LEFT_ARROW}
+					name={FIconNames.LEFT_ARROW}
 					disabled={props.disabled}
 					size={
 						props.disableAutoResize
@@ -27,7 +27,7 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 		case FHeaderButtonTypes.CLOSE:
 			return (
 				<FIcon
-					name={FIconTypes.CLOSE}
+					name={FIconNames.CLOSE}
 					disabled={props.disabled}
 					size={
 						props.disableAutoResize
@@ -42,7 +42,7 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 		case FHeaderButtonTypes.MORE:
 			return (
 				<FIcon
-					name={FIconTypes.MORE}
+					name={FIconNames.MORE}
 					disabled={props.disabled}
 					size={
 						props.disableAutoResize

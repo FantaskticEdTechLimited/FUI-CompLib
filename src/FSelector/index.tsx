@@ -1,6 +1,6 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FIcon, FIconTypes } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
 import { FText, FDropdown } from "..";
 import { useFUITheme } from "../FThemeContext";
@@ -127,7 +127,7 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 					props.iconComponent
 				) : !props.selectedOptions ? (
 					<FIcon
-						name={FIconTypes.RANKING}
+						name={FIconNames.RANKING}
 						strokeColor={
 							openDropdown
 								? FColorTypes.PRIMARY_BLACK
@@ -143,7 +143,7 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 					props.onClear &&
 					props.selectedOptions && (
 						<FIcon
-							name={FIconTypes.CLOSE}
+							name={FIconNames.CLOSE}
 							strokeColor={
 								openDropdown
 									? FColorTypes.PRIMARY_BLACK
