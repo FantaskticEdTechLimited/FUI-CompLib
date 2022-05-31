@@ -19,10 +19,10 @@
   resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-colorlib/1.1.0/7b8e80b6370e0e3495cc77ff88d61c41a13bec2b290782f035db77e0eac22e78#19b220a90338fc2af9a4ec511bd89ef1441c3639"
   integrity sha512-9eJL0HFhIrSWRu3t5SrkelVDhJWZTo293rY7niPlvpe2JMnLf28G9NBy9HwolpjvPmnS9eAyP8fUqJtacNURng==
 
-"@fantaskticedtechlimited/fui-fontlib@^1.0.0":
-  version "1.0.0"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/1.0.0/004e24d822b92343fca7b110203f11e9add0d2a8cbe69d92603f7dafd264808b#3ec30a5824e2542b9051d2f058aeb306573cdf4b"
-  integrity sha512-tscv0cSCys8zUdZ1v5Rjoem3ndKcT02m5K2gczgELIRLdrv/6EBQgQijbIE1v2khutjpMvV59qtnVOnTiAUZ4A==
+"@fantaskticedtechlimited/fui-fontlib@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/1.1.0/492b8bab15ab55c0037ea8a0026eb770b6299c38fc4274252d0e9c3029824b63#e109d2859fc5ce3ad52d41f84d1549552be2a496"
+  integrity sha512-0kf69VqoKDpIOgo3T8kf1B9amApESBcEhJWgirEeQEuCDSbyzpcHOBy3Jm2gjNLMl5L4aFZ1wb3WC0LQODXFGw==
   dependencies:
     "@types/webfontloader" "^1.6.34"
     webfontloader "^1.6.28"

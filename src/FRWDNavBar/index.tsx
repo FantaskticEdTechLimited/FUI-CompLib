@@ -51,7 +51,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								size="large"
 								onClick={() => setOpenSideBar(true)}
 								strokeColor={theme.mainThemeColor}
-								className={styles.FTopNavBarContainer_MenuIcon(theme)}
+								className={styles.FTopNavBarContainer_MenuIcon(theme)} 
 								{...props.menuIconProps}
 							/>
 						)}
@@ -81,7 +81,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								size="large"
 								onClick={() => setOpenSideBar(false)}
 								strokeColor={theme.mainThemeColor}
-								className={styles.FTopNavBarContainer_CloseIcon(theme)}
+								className={styles.FTopNavBarContainer_CloseIcon(theme)} 
 								{...props.closeIconProps}
 							/>
 							{/* scrollable menu */}

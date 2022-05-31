@@ -62,7 +62,7 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 							isTriggered ? theme.mainThemeColor : FColorTypes.PRIMARY_BLACK
 						}
 						style={props.iconStyle}
-						className={props.iconClassName}
+						className={props.iconClassName} 
 						{...props.iconProps}
 					/>
 				)}
