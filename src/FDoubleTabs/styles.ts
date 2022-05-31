@@ -1,4 +1,5 @@
 import { style } from "typestyle";
+import { FOverrideStyle } from "..";
 import { FTheme } from "../FThemeContext/types";
 
 export const FDoubleTabs_Wrapper = (disabled: boolean) =>
@@ -39,6 +40,6 @@ export const FDoubleTabs_TabButton_Container = (isSelected: boolean) =>
 		display: "flex",
 		justifyContent: "center",
 		boxSizing: "border-box",
-		padding: "0.5rem 0.625rem" + " !important",
-		backgroundColor: isSelected ? undefined : "transparent !important",
+		padding: FOverrideStyle("0.5rem 0.625rem"),
+		backgroundColor: isSelected ? undefined : FOverrideStyle("transparent"),
 	});

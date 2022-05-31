@@ -14,12 +14,19 @@ export const FForm = (props: FFormProps) => {
 		props.onClose && (await props.onClose());
 	};
 	return (
-		<div className={styles.fformContainer}
+		<div
+			className={styles.FForm_Container + " " + props.containerClassName}
 			style={props.containerStyle}
 		>
 			{/* content */}
-			{props.children}
-
+			<div
+				style={props.contentContainerStyle}
+				className={
+					styles.FForm_Content_Container + " " + props.contentContainerClassName
+				}
+			>
+				{props.children}
+			</div>
 			{/* Footer */}
 			<FBottomNavBar
 				leadingButtonLabel="Cancel"
@@ -31,4 +38,4 @@ export const FForm = (props: FFormProps) => {
 			/>
 		</div>
 	);
-}; 
+};

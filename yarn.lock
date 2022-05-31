@@ -27,10 +27,10 @@
     "@types/webfontloader" "^1.6.34"
     webfontloader "^1.6.28"
 
-"@fantaskticedtechlimited/fui-iconlib@^1.0.0":
-  version "1.0.0"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/1.0.0/04bbed9c7ad2e2ecf5279b9aa13361f5d2dd0c99871fb66c6c592849822556a6#b3e32359e88d75c7175b61142d71588a6bc3b055"
-  integrity sha512-oAn34XcjOf9441tvnwfvb/TLxdWMUuWfJHU3t6z5lmYDAEE3tp0V7J2fSfyO5m7svpUpRz6o3WPzY5I+zMTNBA==
+"@fantaskticedtechlimited/fui-iconlib@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/1.1.0/534f88ca044095495652ada4151f561a1bcd425ef8d59ba76ef7c37098291861#805753e94f08cd74c8a722ae7e607355f7a2ee4c"
+  integrity sha512-xIsc7jHQYwG6+PQ7SuCyrSRkbe/xLMvps/mUZKfsiJLscdo8e+HAjNaK4FHExvrYXBzg5dbR+5ryaG6/75+76w==
   dependencies:
     "@fantaskticedtechlimited/fui-colorlib" "^0.0.5"
     typestyle "^2.2.0"

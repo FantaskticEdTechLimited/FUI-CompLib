@@ -4,6 +4,7 @@ import { FAutoConvertArray } from "./FAutoConvertArray";
 import { FScrollTopHandler } from "./FScrollTopHandler";
 import { FUseStateSafeHandler } from "./FUseStateSafe";
 import { FRwdModeHandler } from "./FRwdModeHandler";
+import { FOverrideStyle } from "./FOverrideStyle";
 
 export {
 	FScreenSizeHandler,
@@ -12,4 +13,5 @@ export {
 	FScrollTopHandler,
 	FUseStateSafeHandler,
 	FRwdModeHandler,
+	FOverrideStyle,
 };

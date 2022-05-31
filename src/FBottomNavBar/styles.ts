@@ -1,5 +1,6 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { style } from "typestyle"; 
+import { style } from "typestyle";
+import { FOverrideStyle } from "..";
 import { FTheme } from "../FThemeContext/types";
 
 export const FBottomNavBarContainer = style({
@@ -10,16 +11,16 @@ export const FBottomNavBarContainer = style({
 	width: "100%",
 });
 
-export const FLeadingButtonDiv =  
+export const FLeadingButtonDiv = (disabled: boolean, theme: FTheme) =>
 	style({
-		padding: "0.5rem 0.75rem",
+		alignSelf: "flex-start",
+		padding: FOverrideStyle("0.5rem 0.75rem"),
+		backgroundColor: disabled ? FColorTypes.PRIMARY_GREY : theme.subThemeColor,
 	});
 
 export const FActionButtonDiv = (disabled: boolean, theme: FTheme) =>
 	style({
 		alignSelf: "flex-end",
-		padding: "0.5rem 0.75rem",
-		backgroundColor: disabled
-			? FColorTypes.PRIMARY_GREY
-			: theme.mainThemeColor,
+		padding: FOverrideStyle("0.5rem 0.75rem"),
+		backgroundColor: disabled ? FColorTypes.PRIMARY_GREY : theme.mainThemeColor,
 	});

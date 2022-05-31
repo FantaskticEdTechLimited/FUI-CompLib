@@ -2,6 +2,7 @@ import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { RefObject } from "react";
 import { style } from "typestyle";
+import { FOverrideStyle } from "..";
 import { FTheme } from "../FThemeContext/types";
 import { FTagInputFieldProps } from "./types";
 
@@ -109,9 +110,9 @@ export const FTagInputFieldDropdownOptionDiv = (
 				backgroundColor: theme.subThemeColor,
 				color:
 					isNew || isSelected
-						? FColorTypes.PRIMARY_GREY + " !important"
+						? FOverrideStyle(FColorTypes.PRIMARY_GREY)
 						: isExisted
-						? FColorTypes.SECONDARY_RED + " !important"
+						? FOverrideStyle(FColorTypes.SECONDARY_RED)
 						: theme.mainThemeColor,
 			},
 		},

@@ -26,5 +26,4 @@ export const FPopUpContainer = (screenWidth: number, screenHeight: number) =>
 		borderRadius: "0.5rem",
 		boxSizing: "border-box",
 		padding: "1.5rem",
-		overflow: "auto",
-	}); 
+	});

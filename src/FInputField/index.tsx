@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-
 import * as styles from "./styles";
 import { FInputFieldProps } from "./types";
 import { FScrollBarStyle, FText, FUseTheme } from "..";
@@ -102,6 +101,7 @@ export const FInputField = (props: FInputFieldProps) => {
 						onChange={(event: any) => {
 							props.renderInputValue &&
 								props.renderInputValue(event.target.value);
+							handleTextareaHeight();
 							event.preventDefault();
 						}}
 					/>

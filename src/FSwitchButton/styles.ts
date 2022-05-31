@@ -5,23 +5,21 @@ import { FSwitchButtonProps } from "./types";
 export const FSwitchButtonDiv = (props: FSwitchButtonProps, checked: boolean) =>
 	style({
 		alignItems: "center",
-		backgroundColor: checked
-			? FColorTypes.SECONDARY_GREEN
-			: FColorTypes.PRIMARY_WHITE, 
+		backgroundColor: checked ? FColorTypes.SECONDARY_GREEN : undefined,
 		border:
-			"0.075rem solid " +
-			(checked ? "rgba(10, 10, 12, 0.08)" : FColorTypes.PRIMARY_LIGHT),
-		borderRadius: "1.5rem",
+			"2px solid " +
+			(checked ? "rgba(10, 10, 12, 0.08)" : FColorTypes.PRIMARY_GREY),
+		borderRadius: 24,
 		boxSizing: "border-box",
 		cursor: props.disabled ? "not-allowed" : "pointer",
 		display: "flex",
-		height: "1.5rem",
-		padding: "0.125rem 0.25rem",
-		width: "3rem",
+		height: "24px",
+		padding: "2px 4px",
+		width: "48px",
 		transition: "all 0.2s ease-in-out",
 		$nest: {
 			"&>svg": {
-				transform: checked ? "translateX(1.25rem)" : "translateX(0)",
+				transform: checked ? "translateX(18px)" : "translateX(0)",
 			},
 		},
 	});

@@ -24,7 +24,9 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						}
 						style={props.leadingButtonStyle}
 						className={
-							styles.FLeadingButtonDiv + " " + props.leadingButtonClassName
+							styles.FLeadingButtonDiv(props.disableActionButton!, theme) +
+							" " +
+							props.leadingButtonClassName
 						}
 						{...props.leadingButtonProps}
 					/>

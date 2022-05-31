@@ -6,5 +6,6 @@ export interface FTextProps {
 	font?: string;
 	className?: string;
 	maxRows?: number;
+	overflowHidden?: boolean;
 	style?: CSSProperties;
 }
