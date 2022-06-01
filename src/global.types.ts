@@ -13,12 +13,21 @@ export type OnDataCallbackFunction<T, C> = (
 
 export type OnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 
+/**
+ * for different device types:
+ *
+ * Full = PC, Tablet = tablet/pad, Mobile = phone.
+ */
 export enum RWDMode {
+	// Full means PC device
 	FULL = "FULL",
 	TABLET = "TABLET",
 	MOBILE = "MOBILE",
-} 
+}
 
+/**
+ * for responsive device based on provided width
+ */
 export interface RwdSizeProps {
 	// under this mobileWidth, RWDMode = Mobile
 	mobileWidth?: number;

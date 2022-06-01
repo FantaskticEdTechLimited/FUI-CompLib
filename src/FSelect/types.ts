@@ -5,7 +5,7 @@ import { FTextProps } from "../FText/types";
 import { FTheme } from "../FThemeContext/types";
 import { OnClickFunction } from "../global.types";
 
-export interface FSelectorProps<T> {
+export interface FSelectProps<T> {
 	options: T[];
 	onSelect: (data: T) => void;
 	selectedOptions: T | null;
@@ -29,7 +29,7 @@ export interface FSelectorProps<T> {
 	dropdownProps?: FDropdownProps<T>; // Omit<FDropdownProps<any>, "options" | "onSelect">;
 	dropdownComponent?: ReactElement<FDropdownProps<any>>;
 
-	// css style of FSelector label
+	// css style of FSelect label
 	labelClassName?: string;
 	labelStyle?: CSSProperties;
 	labelProps?: FTextProps;
@@ -39,15 +39,15 @@ export interface FSelectorProps<T> {
 	selectedOptionStyle?: CSSProperties;
 	selectedOptionProps?: FTextProps;
 
-	// css style of FSelector container
+	// css style of FSelect container
 	selectorContainerClassName?: string;
 	selectorContainerStyle?: CSSProperties;
 
-	// css style of FSelector content div
+	// css style of FSelect content div
 	contentDivClassName?: string;
 	contentDivStyle?: CSSProperties;
 
-	// css style of FSelector wrapper (with dropdown)
+	// css style of FSelect wrapper (with dropdown)
 	wrapperClassName?: string;
 	wrapperStyle?: CSSProperties;
 
@@ -56,7 +56,7 @@ export interface FSelectorProps<T> {
 	dropdownContainerStyle?: CSSProperties;
 }
 
-export interface FSelectorContainerStyleProps<T> {
+export interface FSelectContainerStyleProps<T> {
 	isClicked: boolean;
 	disabled: boolean;
 	selectedOptions: T | null;

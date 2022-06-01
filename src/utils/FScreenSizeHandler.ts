@@ -1,6 +1,8 @@
 import { useLayoutEffect, useState } from "react";
 
-// Responsive device screen size (width, height)
+/**
+ * Return current screen size (width, height) for RWD purpose.
+ */
 export const FScreenSizeHandler = () => {
 	const [size, setSize] = useState([0, 0]);
 	useLayoutEffect(() => {
@@ -12,4 +14,4 @@ export const FScreenSizeHandler = () => {
 		return () => window.removeEventListener("resize", updateSize);
 	}, []);
 	return size;
-}
+};

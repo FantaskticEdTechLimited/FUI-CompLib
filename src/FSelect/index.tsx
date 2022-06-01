@@ -5,14 +5,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { FText, FDropdown } from "..";
 import { useFUITheme } from "../FThemeContext";
 import * as styles from "./styles";
-import { FSelectorContainerStyleProps, FSelectorProps } from "./types";
+import { FSelectContainerStyleProps, FSelectProps } from "./types";
 
-export const FSelector = <T,>(props: FSelectorProps<T>) => {
+export const FSelect = <T,>(props: FSelectProps<T>) => {
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
-	const FSelectorWithDropdownRef = useRef<HTMLDivElement>(null);
+	const FSelectWithDropdownRef = useRef<HTMLDivElement>(null);
 	const { theme } = useFUITheme();
 
-	const selectorStyleProps: FSelectorContainerStyleProps<T> = {
+	const selectorStyleProps: FSelectContainerStyleProps<T> = {
 		isClicked: openDropdown,
 		disabled: props.disabled!,
 		selectedOptions: props.selectedOptions,
@@ -32,8 +32,8 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 
 	const handleClickOutside = (event: any) => {
 		if (
-			FSelectorWithDropdownRef.current &&
-			!FSelectorWithDropdownRef.current.contains(event.target)
+			FSelectWithDropdownRef.current &&
+			!FSelectWithDropdownRef.current.contains(event.target)
 		)
 			setOpenDropdown(false);
 	};
@@ -73,7 +73,7 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 					}
 					style={props.selectedOptionStyle}
 					className={
-						styles.FSelectorSelectedOptionDiv +
+						styles.FSelectSelectedOptionDiv +
 						" " +
 						props.selectedOptionClassName
 					}
@@ -95,13 +95,13 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 	return (
 		<div
 			style={props.wrapperStyle}
-			className={styles.FSelectorWrapper + " " + props.wrapperClassName}
-			ref={FSelectorWithDropdownRef}
+			className={styles.FSelectWrapper + " " + props.wrapperClassName}
+			ref={FSelectWithDropdownRef}
 		>
 			<div
 				style={props.selectorContainerStyle}
 				className={
-					styles.FSelectorContainer(selectorStyleProps) +
+					styles.FSelectContainer(selectorStyleProps) +
 					" " +
 					props.selectorContainerClassName
 				}
@@ -109,7 +109,7 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 				<div
 					style={props.contentDivStyle}
 					className={
-						styles.FSelectorContentDiv(props) + " " + props.contentDivClassName
+						styles.FSelectContentDiv(props) + " " + props.contentDivClassName
 					}
 					onClick={() =>
 						props.disabled ? undefined : setOpenDropdown(!openDropdown)
@@ -160,8 +160,8 @@ export const FSelector = <T,>(props: FSelectorProps<T>) => {
 				<div
 					style={props.dropdownContainerStyle}
 					className={
-						styles.FSelectorDropdownContainer(
-							FSelectorWithDropdownRef,
+						styles.FSelectDropdownContainer(
+							FSelectWithDropdownRef,
 							openDropdown
 						) +
 						" " +

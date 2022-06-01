@@ -1,6 +1,9 @@
 import { FScreenSizeHandler } from ".";
-import { RWDMode, RwdSizeProps } from "../global.types"; 
+import { RWDMode, RwdSizeProps } from "../global.types";
 
+/**
+ * Return the current device type based on the input width.
+ */
 export const FRwdModeHandler = (props?: RwdSizeProps) => {
 	const [width] = FScreenSizeHandler();
 	const mobileWidth = props?.mobileWidth ?? 720;

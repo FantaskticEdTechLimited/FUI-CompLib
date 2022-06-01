@@ -23,5 +23,5 @@ export interface FBottomNavBarProps {
 
 	// css style of FBottomNavBar
 	navBarClassName?: string;
-	navBarStyle?: CSSProperties; 
+	navBarStyle?: CSSProperties;
 }

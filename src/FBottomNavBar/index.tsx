@@ -4,6 +4,9 @@ import React from "react";
 import { FButton, FUseTheme } from "..";
 import { FButtonTypes } from "../FButton/types";
 
+/**
+ * A bar at the bottom containing two buttons (one left: leading button; one right: action button).
+ */
 export const FBottomNavBar = (props: FBottomNavBarProps) => {
 	const { theme } = FUseTheme();
 	return (

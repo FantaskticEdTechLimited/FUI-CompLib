@@ -1,14 +1,14 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
 import { style } from "typestyle"; 
-import { FSelectorContainerStyleProps, FSelectorProps } from "./types";
+import { FSelectContainerStyleProps, FSelectProps } from "./types";
 
-export const FSelectorWrapper = style({
+export const FSelectWrapper = style({
 	position: "relative",
 	display: "flex",
 	flexDirection: "column",
 });
 
-export const FSelectorContainer = (stylesProps: FSelectorContainerStyleProps<any>) =>
+export const FSelectContainer = (stylesProps: FSelectContainerStyleProps<any>) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FColorTypes.PRIMARY_WHITE,
@@ -39,7 +39,7 @@ export const FSelectorContainer = (stylesProps: FSelectorContainerStyleProps<any
 		},
 	});
 
-export const FSelectorContentDiv = (props: FSelectorProps<any>) =>
+export const FSelectContentDiv = (props: FSelectProps<any>) =>
 	style({
 		display: "flex",
 		flexDirection: "column",
@@ -47,11 +47,11 @@ export const FSelectorContentDiv = (props: FSelectorProps<any>) =>
 		rowGap: props.showLabelOnly ? 0 : "0.25rem",
 	});
 
-export const FSelectorSelectedOptionDiv = style({
+export const FSelectSelectedOptionDiv = style({
 	whiteSpace: "pre-wrap",
 });
 
-export const FSelectorDropdownContainer = (
+export const FSelectDropdownContainer = (
 	ref: React.RefObject<HTMLDivElement>,
 	isClicked: boolean
 ) =>
