@@ -1,7 +1,7 @@
 import { style } from "typestyle";
 import { FInputFieldProps } from "./types";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FTheme } from "../FThemeContext/types";
 
 export const FInputFieldContainer = (props: FInputFieldProps) =>
@@ -19,15 +19,15 @@ export const FInputFieldDiv = (
 	theme: FTheme
 ) =>
 	style({
-		backgroundColor: FColorTypes.PRIMARY_WHITE,
+		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 		borderRadius: "0.5rem",
 		border:
 			"0.1rem solid " +
 			(isTriggered
 				? theme.mainThemeColor
 				: isFilled
-				? FColorTypes.PRIMARY_BLACK
-				: FColorTypes.PRIMARY_LIGHT),
+				? FColorTypes.FPrimaryColors.BLACK
+				: FColorTypes.FPrimaryColors.BG_LIGHT),
 		boxSizing: "border-box",
 		caretColor: theme.mainThemeColor,
 		cursor: props.disabled ? "not-allowed" : "text",
@@ -45,9 +45,9 @@ export const FInputFieldInputAreaDiv = (
 	state: boolean
 ) =>
 	style({
-		backgroundColor: FColorTypes.PRIMARY_WHITE,
+		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 		border: "none",
-		color: FColorTypes.PRIMARY_BLACK,
+		color: FColorTypes.FPrimaryColors.BLACK,
 		display: state ? "block" : "none",
 		font: props.multiline ? FFontTypes.Small_Title() : FFontTypes.Large_Text(),
 		outline: "none",
@@ -59,7 +59,7 @@ export const FInputFieldInputAreaDiv = (
 		wordBreak: "break-all",
 		$nest: {
 			"&::placeholder": {
-				color: FColorTypes.PRIMARY_LIGHT,
+				color: FColorTypes.FPrimaryColors.BG_LIGHT,
 			},
 		},
 	});

@@ -69,8 +69,8 @@ export const FInputField = (props: FInputFieldProps) => {
 							isTriggered
 								? theme.mainThemeColor
 								: isFilled
-								? FColorTypes.PRIMARY_BLACK
-								: FColorTypes.PRIMARY_GREY
+								? FColorTypes.FPrimaryColors.BLACK
+								: FColorTypes.FPrimaryColors.GREY
 						}
 						style={props.labelStyle}
 						className={props.labelClassName}
@@ -134,8 +134,8 @@ export const FInputField = (props: FInputFieldProps) => {
 					isTriggered
 						? theme.mainThemeColor
 						: isFilled
-						? FColorTypes.PRIMARY_BLACK
-						: FColorTypes.PRIMARY_GREY
+						? FColorTypes.FPrimaryColors.BLACK
+						: FColorTypes.FPrimaryColors.GREY
 				}
 				style={props.wordCountStyle}
 				className={

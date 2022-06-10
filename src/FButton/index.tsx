@@ -23,11 +23,11 @@ export const FButton = (props: FButtonProps) => {
 					font={FFontTypes.Text()}
 					color={
 						props.type === FButtonTypes.PRIMARY
-							? FColorTypes.PRIMARY_WHITE
+							? FColorTypes.FPrimaryColors.WHITE
 							: props.type === FButtonTypes.OUTLINE ||
 							  props.type === FButtonTypes.SECONDARY
 							? theme.mainThemeColor
-							: FColorTypes.PRIMARY_BLACK
+							: FColorTypes.FPrimaryColors.BLACK
 					}
 					style={props.labelStyle}
 					className={props.labelClassName}

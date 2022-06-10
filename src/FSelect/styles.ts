@@ -1,5 +1,5 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib"; 
-import { style } from "typestyle"; 
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { style } from "typestyle";
 import { FSelectContainerStyleProps, FSelectProps } from "./types";
 
 export const FSelectWrapper = style({
@@ -8,17 +8,19 @@ export const FSelectWrapper = style({
 	flexDirection: "column",
 });
 
-export const FSelectContainer = (stylesProps: FSelectContainerStyleProps<any>) =>
+export const FSelectContainer = (
+	stylesProps: FSelectContainerStyleProps<any>
+) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FColorTypes.PRIMARY_WHITE,
+		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 		border:
 			"0.125rem solid " +
 			(stylesProps.isClicked
 				? stylesProps.theme.mainThemeColor
 				: stylesProps.selectedOptions
-				? FColorTypes.PRIMARY_BLACK
-				: FColorTypes.PRIMARY_LIGHT),
+				? FColorTypes.FPrimaryColors.BLACK
+				: FColorTypes.FPrimaryColors.BG_LIGHT),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		columnGap: "0.5rem",
@@ -32,7 +34,7 @@ export const FSelectContainer = (stylesProps: FSelectContainerStyleProps<any>) =
 			"&:hover": {
 				$nest: {
 					"svg path": {
-						stroke: FColorTypes.PRIMARY_BLACK,
+						stroke: FColorTypes.FPrimaryColors.BLACK,
 					},
 				},
 			},

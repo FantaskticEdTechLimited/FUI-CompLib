@@ -9,7 +9,7 @@ import { FTagInputFieldProps } from "./types";
 export const FTagInputFieldContainer = (props: FTagInputFieldProps<any>) =>
 	style({
 		alignItems: props.flexColumn ? "normal" : "center",
-		backgroundColor: FColorTypes.PRIMARY_WHITE,
+		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 		columnGap:
 			props.renderCustomizedTagComponents ||
 			(props.selectedTags && props.selectedTags.length > 0)
@@ -42,7 +42,7 @@ export const FTagInputFieldInputContainer = (
 	theme: FTheme
 ) =>
 	style({
-		backgroundColor: FColorTypes.PRIMARY_WHITE,
+		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 		display: "flex",
 		columnGap: "0.5rem",
 		justifyContent: "space-between",
@@ -57,12 +57,12 @@ export const FTagInputFieldInputAreaDiv = (
 	theme: FTheme
 ) =>
 	style({
-		backgroundColor: FColorTypes.PRIMARY_WHITE,
+		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 		border: "none",
 		caretColor: theme.mainThemeColor,
 		color: props.inputValue
-			? FColorTypes.PRIMARY_BLACK
-			: FColorTypes.PRIMARY_GREY,
+			? FColorTypes.FPrimaryColors.BLACK
+			: FColorTypes.FPrimaryColors.GREY,
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
@@ -70,7 +70,7 @@ export const FTagInputFieldInputAreaDiv = (
 		resize: "none",
 		$nest: {
 			"&::placeholder": {
-				color: FColorTypes.PRIMARY_GREY,
+				color: FColorTypes.FPrimaryColors.GREY,
 			},
 		},
 	});
@@ -95,10 +95,10 @@ export const FTagInputFieldDropdownOptionDiv = (
 		font: FFontTypes.Large_Text(),
 		color:
 			isNew || isSelected
-				? FColorTypes.PRIMARY_GREY
+				? FColorTypes.FPrimaryColors.GREY
 				: isExisted
-				? FColorTypes.SECONDARY_RED
-				: FColorTypes.PRIMARY_BLACK,
+				? FColorTypes.FSecondaryColors.RED
+				: FColorTypes.FPrimaryColors.BLACK,
 		backgroundColor: "inherit",
 		border: "none",
 		width: "100%",
@@ -110,9 +110,9 @@ export const FTagInputFieldDropdownOptionDiv = (
 				backgroundColor: theme.subThemeColor,
 				color:
 					isNew || isSelected
-						? FOverrideStyle(FColorTypes.PRIMARY_GREY)
+						? FOverrideStyle(FColorTypes.FPrimaryColors.GREY)
 						: isExisted
-						? FOverrideStyle(FColorTypes.SECONDARY_RED)
+						? FOverrideStyle(FColorTypes.FSecondaryColors.RED)
 						: theme.mainThemeColor,
 			},
 		},

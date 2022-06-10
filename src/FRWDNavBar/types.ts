@@ -3,44 +3,95 @@ import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { RWDMode } from "../global.types";
 import { FScrollBarProps } from "../FScrollBar/types";
 
-export type MenuPosition = "left" | "right";
+export type OverlayEnterSide = "left" | "right";
+
 export interface FSideNavBarProps {
-	// control rwd
+	/**
+	 * responsive mode of the side bar
+	 */
 	rwdMode: RWDMode;
-
-	// overlay menu from left or right
-	overlayMenuPosition: MenuPosition;
-
+	/**
+	 * which side the overlay comes from
+	 */
+	overlayEnterSide: OverlayEnterSide;
+	/**
+	 * main content of the side / top bar
+	 */
 	children: ReactNode;
-	// control visibility of sideBar/topBar
+	/**
+	 * visibility of the side / top bar
+	 */
 	visible: boolean;
-	// change close menu icon attributes
+	/**
+	 * properties of the close menu icon
+	 */
 	closeIconProps?: FIconProps;
-	// change open menu icon attributes
+	/**
+	 * properties of the menu icon on the top bar
+	 */
 	menuIconProps?: FIconProps;
-
-	// css style of side bar container
-	containerClassName?: string;
+	/**
+	 * css style of (hidden/normal) side bar container
+	 */
 	containerStyle?: CSSProperties;
-
-	// css style of side bar content div (children)
-	contentDivClassName?: string;
+	/**
+	 * classname of (hidden/normal) side bar container
+	 */
+	containerClassName?: string;
+	/**
+	 * css style of side bar content div (children)
+	 */
 	contentDivStyle?: CSSProperties;
-
-	// menu button is clicked and then close side bar when tablet / mobile mode
+	/**
+	 * classname of side bar content div (children)
+	 */
+	contentDivClassName?: string;
+	/**
+	 * menu button is clicked and then close side bar when tablet / mobile mode
+	 */
 	forcedToClose?: boolean;
-	// whether there is a logo on the nav bar
+	/**
+	 * whether there is a logo on the side and top bar
+	 */
 	logo?: ReactNode;
-
-	// css style of overlay container
-	overlayClassName?: string;
+	/**
+	 * whether there is a need for a divider under the logo box on the side bar.
+	 */
+	needDivider?: boolean;
+	/**
+	 * css style of the divider
+	 */
+	dividerStyle?: CSSProperties;
+	/**
+	 * classname of the divider
+	 */
+	dividerClassName?: string;
+	/**
+	 * css style of the overlay
+	 */
 	overlayStyle?: CSSProperties;
-
-	// css style and components of top nav bar
+	/**
+	 * classname of the overlay
+	 */
+	overlayClassName?: string;
+	/**
+	 * css style of top bar
+	 */
 	topBarStyle?: CSSProperties;
+	/**
+	 * classname of top bar
+	 */
 	topBarClassName?: string;
+	/**
+	 * leading components of top nav bar
+	 */
 	topBarLeadingComponents?: ReactNode;
+	/**
+	 * action components of top nav bar
+	 */
 	topBarActionComponents?: ReactNode;
-
+	/**
+	 * properties of scroll bar
+	 */
 	scrollBarProps?: FScrollBarProps;
 }

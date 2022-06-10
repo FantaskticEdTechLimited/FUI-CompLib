@@ -36,7 +36,7 @@ export const FConfirmPopUp = (props: ConfirmPopUpProps) => {
 				{props.subtitle && (
 					<FText
 						font={FFontTypes.Text()}
-						color={FColorTypes.PRIMARY_GREY}
+						color={FColorTypes.FPrimaryColors.GREY}
 						children={props.subtitle}
 						{...props.subtitleProps}
 					/>

@@ -11,7 +11,7 @@ export const FButtonContainer = (props: FButtonProps, theme: FTheme) =>
 				? theme.mainThemeColor
 				: props.type === FButtonTypes.SECONDARY
 				? theme.subThemeColor
-				: FColorTypes.PRIMARY_WHITE,
+				: FColorTypes.FPrimaryColors.WHITE,
 		borderRadius: "0.25rem",
 		border:
 			props.type === FButtonTypes.OUTLINE
@@ -41,7 +41,7 @@ export const FButtonContainer = (props: FButtonProps, theme: FTheme) =>
 						color:
 							props.type === FButtonTypes.SECONDARY ||
 							props.type === FButtonTypes.OUTLINE
-								? FColorTypes.PRIMARY_WHITE
+								? FColorTypes.FPrimaryColors.WHITE
 								: props.type === FButtonTypes.TEXT
 								? theme.mainThemeColor
 								: undefined,

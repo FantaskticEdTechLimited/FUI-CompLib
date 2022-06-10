@@ -5,12 +5,11 @@ import { FTextProps } from "./types";
 
 export const FTextContainer = (props: FTextProps) =>
 	style({
-		color: props.color ?? FColorTypes.PRIMARY_BLACK,
+		color: props.color ?? FColorTypes.FPrimaryColors.BLACK,
 		font: props.font ?? FFontTypes.Small_Title(),
 		overflow: props.overflowHidden ? "hidden" : "visible",
 		textOverflow: "ellipsis",
 		whiteSpace: "pre-wrap",
-		wordBreak: "break-all",
 		display: props.maxRows && props.maxRows > 0 ? "-webkit-box" : "block",
 		"-webkit-line-clamp":
 			props.maxRows && props.maxRows > 0 ? props.maxRows : undefined,

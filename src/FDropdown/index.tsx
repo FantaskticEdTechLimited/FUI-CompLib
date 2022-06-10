@@ -96,8 +96,8 @@ export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 								font={FFontTypes.Text()}
 								color={
 									isSelected
-										? FColorTypes.PRIMARY_GREY
-										: FColorTypes.PRIMARY_BLACK
+										? FColorTypes.FPrimaryColors.GREY
+										: FColorTypes.FPrimaryColors.BLACK
 								}
 								style={props.optionTextStyle}
 								className={props.optionTextClassName}

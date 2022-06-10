@@ -353,10 +353,10 @@ export const FTagInputField = <T extends unknown>(
 											font={FFontTypes.Large_Text()}
 											color={
 												option === NewTagHintLabel
-													? FColorTypes.PRIMARY_GREY
+													? FColorTypes.FPrimaryColors.GREY
 													: option === ExitsedTagHintLabel
-													? FColorTypes.SECONDARY_RED
-													: FColorTypes.PRIMARY_BLACK
+													? FColorTypes.FSecondaryColors.RED
+													: FColorTypes.FPrimaryColors.BLACK
 											}
 											className={styles.FTagInputFieldDropdownOptionDiv(
 												selected,

@@ -4,8 +4,8 @@ import { FTheme, FThemeContextProps } from "./types";
 
 
 const defaultTheme:FTheme = {
-	mainThemeColor: FColorTypes.DEFAULT_MAIN_THEME,
-	subThemeColor: FColorTypes.DEFAULT_SUB_THEME,
+	mainThemeColor: FColorTypes.FThemeColors.FTK_MAIN_THEME,
+	subThemeColor: FColorTypes.FThemeColors.FTK_SUB_THEME,
 }
 
 const FThemeContext = createContext<FThemeContextProps>({

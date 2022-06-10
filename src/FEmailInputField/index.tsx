@@ -59,10 +59,12 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 					<FIcon
 						name={FIconNames.EMAIL}
 						strokeColor={
-							isTriggered ? theme.mainThemeColor : FColorTypes.PRIMARY_BLACK
+							isTriggered
+								? theme.mainThemeColor
+								: FColorTypes.FPrimaryColors.BLACK
 						}
 						style={props.iconStyle}
-						className={props.iconClassName} 
+						className={props.iconClassName}
 						{...props.iconProps}
 					/>
 				)}
@@ -96,7 +98,7 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 			{isError && (
 				<FText
 					font={FFontTypes.Text()}
-					color={FColorTypes.SECONDARY_RED}
+					color={FColorTypes.FSecondaryColors.RED}
 					children={props.warningLabel ?? "Error: Input is missing an '@'."}
 					style={props.warningLabelStyle}
 					className={props.warninglabelClassName}

@@ -104,7 +104,9 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 			{props.leadingComponent ?? (
 				<LockIcon
 					strokeColor={
-						isTriggered ? theme.mainThemeColor : FColorTypes.PRIMARY_BLACK
+						isTriggered
+							? theme.mainThemeColor
+							: FColorTypes.FPrimaryColors.BLACK
 					}
 					disabled={props.disabled}
 					{...props.lockIconProps}

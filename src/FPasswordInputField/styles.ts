@@ -23,8 +23,8 @@ export const FPasswordInputFieldContainer = (
 			(isTriggered
 				? theme.mainThemeColor
 				: isFilled
-				? FColorTypes.PRIMARY_BLACK
-				: FColorTypes.PRIMARY_LIGHT),
+				? FColorTypes.FPrimaryColors.BLACK
+				: FColorTypes.FPrimaryColors.BG_LIGHT),
 		opacity: props.disabled ? 0.4 : 1,
 		cursor: props.disabled ? "not-allowed" : "text",
 	});
@@ -33,7 +33,7 @@ export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>
 	style({
 		backgroundColor: "inherit",
 		border: "none",
-		color: FColorTypes.PRIMARY_BLACK,
+		color: FColorTypes.FPrimaryColors.BLACK,
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
@@ -43,7 +43,7 @@ export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>
 		cursor: disabled ? "not-allowed" : "text",
 		$nest: {
 			"&::placeholder": {
-				color: FColorTypes.PRIMARY_GREY,
+				color: FColorTypes.FPrimaryColors.GREY,
 				font: FFontTypes.Large_Text(),
 			},
 		},

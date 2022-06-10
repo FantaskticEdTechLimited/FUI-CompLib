@@ -11,7 +11,7 @@ export const MoreActionItemnDiv = (props: MoreActionItemProps) =>
 		columnGap: "0.5rem",
 		boxSizing: "border-box",
 		padding: "0.75rem",
-		border: "0.075rem solid " + FColorTypes.PRIMARY_GREY,
+		border: "0.075rem solid " + FColorTypes.FPrimaryColors.GREY,
 		borderRadius: "0.25rem",
 		cursor: "pointer",
 		width: props.width ? props.width : "100%",

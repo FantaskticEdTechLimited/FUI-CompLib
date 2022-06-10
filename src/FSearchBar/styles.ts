@@ -1,20 +1,13 @@
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FTheme } from "../FThemeContext/types"; 
+import { FTheme } from "../FThemeContext/types";
 
-export const FSearchBarContainer = (
-	isTriggered: boolean, 
-	theme: FTheme
-) =>
+export const FSearchBarContainer = (isTriggered: boolean, theme: FTheme) =>
 	style({
 		alignItems: "center",
 		backgroundColor: theme.subThemeColor,
-		border:
-			"0.125rem solid " +
-			(isTriggered
-				? theme.mainThemeColor
-				: "none"),
+		border: "0.125rem solid " + (isTriggered ? theme.mainThemeColor : "none"),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		caretColor: theme.mainThemeColor,
@@ -29,7 +22,7 @@ export const FSearchBarContainer = (
 export const FSearchBarInputAreaDiv = style({
 	backgroundColor: "inherit",
 	border: "none",
-	color: FColorTypes.PRIMARY_BLACK,
+	color: FColorTypes.FPrimaryColors.BLACK,
 	font: FFontTypes.Large_Text(),
 	outline: "none",
 	overflow: "hidden",
@@ -38,7 +31,7 @@ export const FSearchBarInputAreaDiv = style({
 	width: "100%",
 	$nest: {
 		"&::placeholder": {
-			color: FColorTypes.PRIMARY_GREY,
+			color: FColorTypes.FPrimaryColors.GREY,
 		},
 	},
 });

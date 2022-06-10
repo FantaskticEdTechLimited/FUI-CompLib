@@ -21,18 +21,20 @@ export const FScrollBarStyle = (props?: FScrollBarProps) =>
 			},
 			"&::-webkit-scrollbar-thumb": {
 				borderRadius: props?.thumbBorderRadius ?? "0.625rem",
-				backgroundColor: props?.thumbFillColor ?? FColorTypes.PRIMARY_GREY,
+				backgroundColor:
+					props?.thumbFillColor ?? FColorTypes.FPrimaryColors.GREY,
 				borderWidth: props?.thumbBorderWidth ?? "0.0625rem",
 				borderStyle: "solid",
-				borderColor: props?.thumbBorderColor ?? FColorTypes.PRIMARY_GREY,
+				borderColor: props?.thumbBorderColor ?? FColorTypes.FPrimaryColors.GREY,
 				border: props?.thumbBorder,
 			},
 			"&::-webkit-scrollbar-thumb:hover": {
 				backgroundColor:
-					props?.thumbHoveredFillColor ?? FColorTypes.PRIMARY_DARK,
+					props?.thumbHoveredFillColor ?? FColorTypes.FPrimaryColors.DARK,
 				borderWidth: props?.thumbHoveredBorderWidth ?? "0.0625rem",
 				borderStyle: "solid",
-				borderColor: props?.thumbHoveredBorderColor ?? FColorTypes.PRIMARY_DARK,
+				borderColor:
+					props?.thumbHoveredBorderColor ?? FColorTypes.FPrimaryColors.DARK,
 				border: props?.thumbHoveredBorder,
 			},
 		},

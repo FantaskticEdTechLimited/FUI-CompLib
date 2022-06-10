@@ -9,7 +9,7 @@ export const functionalPopupDiv = style({
 	width: "23.75rem",
 	boxSizing: "border-box",
 	padding: "1.5rem",
-	backgroundColor: FColorTypes.PRIMARY_WHITE,
+	backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 	borderRadius: "0.5rem",
 	position: "fixed",
 	transition: "all 0.1s ease-in-out",

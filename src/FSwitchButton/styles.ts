@@ -5,10 +5,10 @@ import { FSwitchButtonProps } from "./types";
 export const FSwitchButtonDiv = (props: FSwitchButtonProps, checked: boolean) =>
 	style({
 		alignItems: "center",
-		backgroundColor: checked ? FColorTypes.SECONDARY_GREEN : undefined,
+		backgroundColor: checked ? FColorTypes.FSecondaryColors.GREEN : undefined,
 		border:
 			"2px solid " +
-			(checked ? "rgba(10, 10, 12, 0.08)" : FColorTypes.PRIMARY_GREY),
+			(checked ? "rgba(10, 10, 12, 0.08)" : FColorTypes.FPrimaryColors.GREY),
 		borderRadius: 24,
 		boxSizing: "border-box",
 		cursor: props.disabled ? "not-allowed" : "pointer",

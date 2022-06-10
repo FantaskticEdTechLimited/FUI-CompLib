@@ -19,15 +19,15 @@ export const FEmailInputFieldContainer = (
 ) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FColorTypes.PRIMARY_WHITE,
+		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 		borderRadius: "0.5rem",
 		border:
 			"0.125rem solid " +
 			(isTriggered
 				? theme.mainThemeColor
 				: isFilled
-				? FColorTypes.PRIMARY_BLACK
-				: FColorTypes.PRIMARY_LIGHT),
+				? FColorTypes.FPrimaryColors.BLACK
+				: FColorTypes.FPrimaryColors.BG_LIGHT),
 		boxSizing: "border-box",
 		caretColor: theme.mainThemeColor,
 		columnGap: "0.5rem",
@@ -37,9 +37,9 @@ export const FEmailInputFieldContainer = (
 	});
 
 export const FEmailInputFieldInputAreaDiv = style({
-	backgroundColor: FColorTypes.PRIMARY_WHITE,
+	backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 	border: "none",
-	color: FColorTypes.PRIMARY_BLACK,
+	color: FColorTypes.FPrimaryColors.BLACK,
 	font: FFontTypes.Large_Text(),
 	outline: "none",
 	overflow: "hidden",
@@ -48,7 +48,7 @@ export const FEmailInputFieldInputAreaDiv = style({
 	width: "100%",
 	$nest: {
 		"&::placeholder": {
-			color: FColorTypes.PRIMARY_GREY,
+			color: FColorTypes.FPrimaryColors.GREY,
 			font: FFontTypes.Large_Text(),
 		},
 	},

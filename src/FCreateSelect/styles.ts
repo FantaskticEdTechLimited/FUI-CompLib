@@ -85,7 +85,7 @@ export const FCreateSelect__ClearIcon_Container = style({
 			height: 24,
 			$nest: {
 				"&:hover": {
-					stroke: FColorTypes.SECONDARY_RED,
+					stroke: FColorTypes.FSecondaryColors.RED,
 				},
 			},
 		},

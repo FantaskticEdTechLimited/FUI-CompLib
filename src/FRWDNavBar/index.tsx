@@ -51,7 +51,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								size="large"
 								onClick={() => setOpenSideBar(true)}
 								strokeColor={theme.mainThemeColor}
-								className={styles.FTopNavBarContainer_MenuIcon(theme)} 
+								className={styles.FTopNavBarContainer_MenuIcon(theme)}
 								{...props.menuIconProps}
 							/>
 						)}
@@ -73,22 +73,21 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								" " +
 								props.containerClassName
 							}
+							style={props.containerStyle}
 							ref={OpenedSideNavBarRef}
 						>
-							{/* close button */}
 							<FIcon
 								name={FIconNames.CLOSE}
 								size="large"
 								onClick={() => setOpenSideBar(false)}
 								strokeColor={theme.mainThemeColor}
-								className={styles.FTopNavBarContainer_CloseIcon(theme)} 
+								className={styles.FTopNavBarContainer_CloseIcon(theme)}
 								{...props.closeIconProps}
 							/>
-							{/* scrollable menu */}
 							<div
 								style={props.contentDivStyle}
 								className={
-									styles.FSideNavBarContainer +
+									styles.FSideNavBar_ContentDiv +
 									" " +
 									props.contentDivClassName +
 									" " +
@@ -103,22 +102,21 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 					</div>
 				</Fragment>
 			) : (
-				// PC Mode
+				//  Normal SideBar
 				<Fragment>
-					{/* Normal SideBar */}
 					<div
 						className={
 							styles.FNormalSideNavBarContainer(theme) +
 							" " +
 							props.containerClassName
 						}
+						style={props.containerStyle}
 					>
 						{props.logo}
-						<div className={styles.Divider} />
-						{/* scrollable menu */}
+						{props.needDivider && <div className={styles.Divider} />}
 						<div
 							className={
-								styles.FSideNavBarContainer +
+								styles.FSideNavBar_ContentDiv +
 								" " +
 								props.contentDivClassName +
 								" " +
@@ -126,9 +124,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 									...props.scrollBarProps,
 								})
 							}
-							style={{
-								overflowY: "scroll",
-							}}
+							style={props.contentDivStyle}
 						>
 							{props.children}
 						</div>

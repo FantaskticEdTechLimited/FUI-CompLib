@@ -15,12 +15,12 @@ export const FLeadingButtonDiv = (disabled: boolean, theme: FTheme) =>
 	style({
 		alignSelf: "flex-start",
 		padding: FOverrideStyle("0.5rem 0.75rem"),
-		backgroundColor: disabled ? FColorTypes.PRIMARY_GREY : theme.subThemeColor,
+		backgroundColor: disabled ? FColorTypes.FPrimaryColors.GREY : theme.subThemeColor,
 	});
 
 export const FActionButtonDiv = (disabled: boolean, theme: FTheme) =>
 	style({
 		alignSelf: "flex-end",
 		padding: FOverrideStyle("0.5rem 0.75rem"),
-		backgroundColor: disabled ? FColorTypes.PRIMARY_GREY : theme.mainThemeColor,
+		backgroundColor: disabled ? FColorTypes.FPrimaryColors.GREY : theme.mainThemeColor,
 	});

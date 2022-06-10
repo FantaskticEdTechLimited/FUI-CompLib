@@ -10,7 +10,7 @@ export const MoreActionItem = (props: MoreActionItemProps) => {
 		<div className={styles.MoreActionItemnDiv(props)} onClick={props.onClick}>
 			<FText
 				font={props.font ?? FFontTypes.Text()}
-				color={props.fontColor ?? FColorTypes.PRIMARY_BLACK}
+				color={props.fontColor ?? FColorTypes.FPrimaryColors.BLACK}
 			>
 				{props.name}
 			</FText>

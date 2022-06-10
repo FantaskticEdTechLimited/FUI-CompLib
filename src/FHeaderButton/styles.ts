@@ -22,7 +22,9 @@ export const FHeaderButtonContainer = (
 				backgroundColor: props.disabled ? undefined : theme.mainThemeColor,
 				$nest: {
 					"svg path": {
-						stroke: props.disabled ? undefined : FColorTypes.PRIMARY_WHITE,
+						stroke: props.disabled
+							? undefined
+							: FColorTypes.FPrimaryColors.WHITE,
 					},
 				},
 			},

@@ -55,8 +55,8 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 						openDropdown
 							? theme.mainThemeColor
 							: selectedOption
-							? FColorTypes.PRIMARY_BLACK
-							: FColorTypes.PRIMARY_GREY
+							? FColorTypes.FPrimaryColors.BLACK
+							: FColorTypes.FPrimaryColors.GREY
 					}
 					children={props.label ?? "Title"}
 					style={props.labelStyle}
@@ -68,8 +68,8 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 					font={FFontTypes.Large_Text()}
 					color={
 						selectedOption === null
-							? FColorTypes.PRIMARY_GREY
-							: FColorTypes.PRIMARY_BLACK
+							? FColorTypes.FPrimaryColors.GREY
+							: FColorTypes.FPrimaryColors.BLACK
 					}
 					style={props.selectedOptionStyle}
 					className={
@@ -130,8 +130,8 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 						name={FIconNames.RANKING}
 						strokeColor={
 							openDropdown
-								? FColorTypes.PRIMARY_BLACK
-								: FColorTypes.PRIMARY_LIGHT
+								? FColorTypes.FPrimaryColors.BLACK
+								: FColorTypes.FPrimaryColors.BG_LIGHT
 						}
 						size="small"
 						onClick={() =>
@@ -146,8 +146,8 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 							name={FIconNames.CLOSE}
 							strokeColor={
 								openDropdown
-									? FColorTypes.PRIMARY_BLACK
-									: FColorTypes.PRIMARY_LIGHT
+									? FColorTypes.FPrimaryColors.BLACK
+									: FColorTypes.FPrimaryColors.BG_LIGHT
 							}
 							size="small"
 							onClick={handleClearSelectedOption}

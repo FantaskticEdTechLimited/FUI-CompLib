@@ -15,14 +15,14 @@ export const ClearIcon = (props: ClearIconProps) => {
 		>
 			<path
 				d="M13.5 4.5L4.5 13.5"
-				stroke={FColorTypes.PRIMARY_GREY}
+				stroke={FColorTypes.FPrimaryColors.GREY}
 				strokeWidth="1.2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
 			<path
 				d="M4.5 4.5L13.5 13.5"
-				stroke={FColorTypes.PRIMARY_GREY}
+				stroke={FColorTypes.FPrimaryColors.GREY}
 				strokeWidth="1.2"
 				strokeLinecap="round"
 				strokeLinejoin="round"

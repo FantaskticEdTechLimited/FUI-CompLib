@@ -18,8 +18,8 @@ export const SearchIcon = (props: SearchIconProps) => {
 					props.isTriggered
 						? props.theme?.mainThemeColor
 						: props.inputValue && props.inputValue.length > 0
-						? FColorTypes.PRIMARY_BLACK
-						: FColorTypes.PRIMARY_GREY
+						? FColorTypes.FPrimaryColors.BLACK
+						: FColorTypes.FPrimaryColors.GREY
 				}
 				strokeWidth="1.2"
 				strokeLinecap="round"
@@ -31,8 +31,8 @@ export const SearchIcon = (props: SearchIconProps) => {
 					props.isTriggered
 						? props.theme?.mainThemeColor
 						: props.inputValue && props.inputValue.length > 0
-						? FColorTypes.PRIMARY_BLACK
-						: FColorTypes.PRIMARY_GREY
+						? FColorTypes.FPrimaryColors.BLACK
+						: FColorTypes.FPrimaryColors.GREY
 				}
 				strokeWidth="1.2"
 				strokeLinecap="round"

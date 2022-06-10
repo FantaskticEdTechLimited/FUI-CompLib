@@ -12,15 +12,16 @@ export const FHiddenSideBarOverlay = (
 		position: "fixed",
 		marginTop: 0,
 		height: "100vh",
-		backgroundColor: FColorTypes.PRIMARY_DARK + "66",
+		backgroundColor: FColorTypes.FPrimaryColors.DARK + "66",
 		display: props.visible && isOpen ? "flex" : "none",
 		flexDirection: "row",
 		justifyContent:
-			props.overlayMenuPosition === "left" ? "flex-start" : "flex-end",
+			props.overlayEnterSide === "left" ? "flex-start" : "flex-end",
 		width: isOpen ? "100vw" : undefined,
 		zIndex: 20,
 		overflow: "hidden",
 	});
+
 export const FHiddenSideBarContainer = (theme: FTheme) =>
 	style({
 		width: "15rem",
@@ -49,7 +50,7 @@ export const FNormalSideNavBarContainer = (theme: FTheme) =>
 		boxShadow: "0rem 0rem 0.5rem rgba(72, 63, 226, 0.16)",
 	});
 
-export const FSideNavBarContainer = style({
+export const FSideNavBar_ContentDiv = style({
 	width: "100%",
 	flexGrow: 1,
 	boxSizing: "border-box",
@@ -63,7 +64,7 @@ export const FSideNavBarContainer = style({
 export const FTopNavBarContainer = (props: FSideNavBarProps, theme: FTheme) =>
 	style({
 		backgroundColor: theme.mainThemeColor,
-		border: "0.063rem solid " + FColorTypes.PRIMARY_LIGHT,
+		border: "0.063rem solid " + FColorTypes.FPrimaryColors.BG_LIGHT,
 		boxShadow: "0rem 0rem 0.5rem " + theme.subThemeColor,
 		boxSizing: "border-box",
 		display: props.visible ? "flex" : "none",
@@ -93,5 +94,5 @@ export const FTopNavBarContainer_CloseIcon = (theme: FTheme) =>
 
 export const Divider = style({
 	height: "0.125rem",
-	backgroundColor: FColorTypes.PRIMARY_WHITE,
+	backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 });

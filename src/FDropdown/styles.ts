@@ -11,15 +11,15 @@ export const FDropdownContainer = style({
 	rowGap: "0.75rem",
 	overflowY: "auto",
 	overflowX: "hidden",
-	border: "0.063rem solid " + FColorTypes.PRIMARY_LIGHT,
+	border: "0.063rem solid " + FColorTypes.FPrimaryColors.BG_LIGHT,
 	borderRadius: "0.5rem",
-	backgroundColor: FColorTypes.PRIMARY_WHITE,
+	backgroundColor: FColorTypes.FPrimaryColors.WHITE,
 });
 
 export const FDropdownOptionDiv = (stylesProps: FDropdownOptionDivProps) =>
 	style({
 		backgroundColor:
-		stylesProps.pressCount - stylesProps.index === 1
+			stylesProps.pressCount - stylesProps.index === 1
 				? stylesProps.theme.subThemeColor
 				: "inherit",
 		cursor: stylesProps.isSelected ? "not-allowed" : "pointer",
@@ -27,7 +27,7 @@ export const FDropdownOptionDiv = (stylesProps: FDropdownOptionDivProps) =>
 			"&:hover": {
 				$nest: {
 					"&> div": {
-						color: stylesProps.theme.mainThemeColor
+						color: stylesProps.theme.mainThemeColor,
 					},
 				},
 			},
