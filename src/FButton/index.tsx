@@ -1,16 +1,15 @@
 import * as styles from "./styles";
 import React from "react";
-import { FText, FUseTheme } from "..";
+import { FCheckIsDarkMode, FGetThemeColor, FText } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FButtonProps, FButtonTypes } from "./types";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FButton = (props: FButtonProps) => {
-	const { theme } = FUseTheme();
 	return (
 		<div
 			style={props.style}
-			className={styles.FButtonContainer(props, theme) + " " + props.className}
+			className={styles.FButtonContainer(props) + " " + props.className}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick()
 			}
@@ -23,11 +22,17 @@ export const FButton = (props: FButtonProps) => {
 					font={FFontTypes.Text()}
 					color={
 						props.type === FButtonTypes.PRIMARY
-							? FColorTypes.FPrimaryColors.WHITE
+							? FUseColor({
+									colorName: "White",
+									isDarkMode: FCheckIsDarkMode(),
+							  })
 							: props.type === FButtonTypes.OUTLINE ||
 							  props.type === FButtonTypes.SECONDARY
-							? theme.mainThemeColor
-							: FColorTypes.FPrimaryColors.BLACK
+							? FGetThemeColor("Main")
+							: FUseColor({
+									colorName: "Black",
+									isDarkMode: FCheckIsDarkMode(),
+							  })
 					}
 					style={props.labelStyle}
 					className={props.labelClassName}

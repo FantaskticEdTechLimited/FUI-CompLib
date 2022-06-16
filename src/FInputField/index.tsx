@@ -2,15 +2,23 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import * as styles from "./styles";
 import { FInputFieldProps } from "./types";
-import { FScrollBarStyle, FText, FUseTheme } from "..";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FCheckIsDarkMode, FGetThemeColor, FScrollBarStyle, FText } from "..";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FInputField = (props: FInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
-	const { theme } = FUseTheme();
+	const mainThemeColor = FGetThemeColor("Main");
+	const blackColor = FUseColor({
+		colorName: "Black",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+	const greyColor = FUseColor({
+		colorName: "Grey",
+		isDarkMode: FCheckIsDarkMode(),
+	});
 
 	const handleTextareaHeight = () => {
 		if (textareaRef && textareaRef.current) {
@@ -44,7 +52,7 @@ export const FInputField = (props: FInputFieldProps) => {
 			<div
 				style={props.inputDivStyle}
 				className={
-					styles.FInputFieldDiv(props, isTriggered, isFilled, theme) +
+					styles.FInputFieldDiv(props, isTriggered, isFilled) +
 					" " +
 					props.inputDivClassName
 				}
@@ -66,11 +74,7 @@ export const FInputField = (props: FInputFieldProps) => {
 								: FFontTypes.Large_Text()
 						}
 						color={
-							isTriggered
-								? theme.mainThemeColor
-								: isFilled
-								? FColorTypes.FPrimaryColors.BLACK
-								: FColorTypes.FPrimaryColors.GREY
+							isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor
 						}
 						style={props.labelStyle}
 						className={props.labelClassName}
@@ -130,13 +134,7 @@ export const FInputField = (props: FInputFieldProps) => {
 			</div>
 			<FText
 				font={FFontTypes.Text()}
-				color={
-					isTriggered
-						? theme.mainThemeColor
-						: isFilled
-						? FColorTypes.FPrimaryColors.BLACK
-						: FColorTypes.FPrimaryColors.GREY
-				}
+				color={isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor}
 				style={props.wordCountStyle}
 				className={
 					styles.FInputFieldWordCountDiv + " " + props.wordCountClassName

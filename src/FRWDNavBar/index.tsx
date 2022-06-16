@@ -1,15 +1,15 @@
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { useState, useEffect, useRef, Fragment } from "react";
-import { FScrollBarStyle, FUseTheme } from "..";
+import { FGetThemeColor, FScrollBarStyle } from "..";
 import { RWDMode } from "../global.types";
 import * as styles from "./styles";
 import { FSideNavBarProps } from "./types";
 
 export const FRWDNavBar = (props: FSideNavBarProps) => {
-	const { theme } = FUseTheme();
 	const [openSideBar, setOpenSideBar] = useState<boolean>(false);
 	const OpenedSideNavBarRef = useRef<HTMLDivElement>(null);
+	const mainThemeColor = FGetThemeColor("Main");
 
 	const handleClickOutside = (event: any) => {
 		if (
@@ -39,9 +39,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 					<div
 						style={props.topBarStyle}
 						className={
-							styles.FTopNavBarContainer(props, theme) +
-							" " +
-							props.topBarClassName
+							styles.FTopNavBarContainer(props) + " " + props.topBarClassName
 						}
 					>
 						{props.logo ?? props.topBarLeadingComponents}
@@ -50,8 +48,8 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								name={FIconNames.MENU}
 								size="large"
 								onClick={() => setOpenSideBar(true)}
-								strokeColor={theme.mainThemeColor}
-								className={styles.FTopNavBarContainer_MenuIcon(theme)}
+								strokeColor={mainThemeColor}
+								className={styles.FTopNavBarContainer_MenuIcon()}
 								{...props.menuIconProps}
 							/>
 						)}
@@ -69,7 +67,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 						{/* Menu location controller */}
 						<div
 							className={
-								styles.FHiddenSideBarContainer(theme) +
+								styles.FHiddenSideBarContainer() +
 								" " +
 								props.containerClassName
 							}
@@ -80,8 +78,8 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								name={FIconNames.CLOSE}
 								size="large"
 								onClick={() => setOpenSideBar(false)}
-								strokeColor={theme.mainThemeColor}
-								className={styles.FTopNavBarContainer_CloseIcon(theme)}
+								strokeColor={mainThemeColor}
+								className={styles.FTopNavBarContainer_CloseIcon()}
 								{...props.closeIconProps}
 							/>
 							<div
@@ -106,14 +104,14 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 				<Fragment>
 					<div
 						className={
-							styles.FNormalSideNavBarContainer(theme) +
+							styles.FNormalSideNavBarContainer() +
 							" " +
 							props.containerClassName
 						}
 						style={props.containerStyle}
 					>
 						{props.logo}
-						{props.needDivider && <div className={styles.Divider} />}
+						{props.needDivider && <div className={styles.Divider()} />}
 						<div
 							className={
 								styles.FSideNavBar_ContentDiv +

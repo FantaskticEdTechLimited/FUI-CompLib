@@ -1,7 +1,6 @@
 import { CSSProperties, ReactNode } from "react";
 import { FScrollBarProps } from "../FScrollBar/types";
-import { FTextProps } from "../FText/types";
-import { FTheme } from "../FThemeContext/types";
+import { FTextProps } from "../FText/types"; 
 
 export interface FDropdownProps<T> {
 	options:T[];
@@ -51,5 +50,4 @@ export interface FDropdownOptionDivProps {
 	index: number;
 	isSelected: boolean;
 	props: FDropdownProps<any>;
-	theme: FTheme;
 }

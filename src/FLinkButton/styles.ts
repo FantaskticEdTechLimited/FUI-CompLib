@@ -1,18 +1,20 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FTheme } from "../FThemeContext/types";
+import { FCheckIsDarkMode, FGetThemeColor } from "..";
 import { FLinkButtonProps } from "./types";
 
 export const FLinkButtonContainer = (
 	isSelected: boolean,
-	props: FLinkButtonProps,
-	theme: FTheme
+	props: FLinkButtonProps
 ) =>
 	style({
 		alignItems: "center",
 		backgroundColor: isSelected
-			? theme.mainThemeColor
-			: FColorTypes.FPrimaryColors.WHITE,
+			? FGetThemeColor("Main")
+			: FUseColor({
+					colorName: "White",
+					isDarkMode: FCheckIsDarkMode(),
+			  }),
 		border: "none",
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",

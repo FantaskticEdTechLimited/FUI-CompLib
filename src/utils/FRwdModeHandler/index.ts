@@ -1,5 +1,5 @@
-import { FScreenSizeHandler } from ".";
-import { RWDMode, RwdSizeProps } from "../global.types";
+import { FScreenSizeHandler } from "..";
+import { RWDMode, RwdSizeProps } from "../../global.types";
 
 /**
  * Return the current device type based on the input width.

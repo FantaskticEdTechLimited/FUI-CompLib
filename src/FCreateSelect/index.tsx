@@ -43,7 +43,7 @@ export const FCreateSelect = <T,>(props: FCreateSelectProps<T>) => {
 				" " +
 				props.componentClassName +
 				" " +
-				styles.FCreateSelect__ClearIcon_Container +
+				styles.FCreateSelect__ClearIcon_Container() +
 				" " +
 				props.clearIconClassName
 			}

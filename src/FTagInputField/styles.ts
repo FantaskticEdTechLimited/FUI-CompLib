@@ -1,15 +1,17 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { RefObject } from "react";
 import { style } from "typestyle";
-import { FOverrideStyle } from "..";
-import { FTheme } from "../FThemeContext/types";
+import { FCheckIsDarkMode, FGetThemeColor, FOverrideStyle } from "..";
 import { FTagInputFieldProps } from "./types";
 
 export const FTagInputFieldContainer = (props: FTagInputFieldProps<any>) =>
 	style({
 		alignItems: props.flexColumn ? "normal" : "center",
-		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
+		backgroundColor: FUseColor({
+			colorName: "White",
+			isDarkMode: FCheckIsDarkMode(),
+		}),
 		columnGap:
 			props.renderCustomizedTagComponents ||
 			(props.selectedTags && props.selectedTags.length > 0)
@@ -37,32 +39,41 @@ export const FTagInputFieldWrapper = style({
 	width: "fit-content",
 });
 
-export const FTagInputFieldInputContainer = (
-	isTriggered: boolean,
-	theme: FTheme
-) =>
+export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
 	style({
-		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
+		backgroundColor: FUseColor({
+			colorName: "White",
+			isDarkMode: FCheckIsDarkMode(),
+		}),
 		display: "flex",
 		columnGap: "0.5rem",
 		justifyContent: "space-between",
 		alignItems: "center",
 		width: "inherit",
 		borderBottom:
-			"0.125rem solid " + (isTriggered ? theme.mainThemeColor : "transparent"),
+			"0.125rem solid " +
+			(isTriggered ? FGetThemeColor("Main") : "transparent"),
 	});
 
-export const FTagInputFieldInputAreaDiv = (
-	props: FTagInputFieldProps<any>,
-	theme: FTheme
-) =>
-	style({
-		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
+export const FTagInputFieldInputAreaDiv = (props: FTagInputFieldProps<any>) => {
+	const greyColor = FUseColor({
+		colorName: "Grey",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+	const blackColor = FUseColor({
+		colorName: "Black",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+	const whiteColor = FUseColor({
+		colorName: "White",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+
+	return style({
+		backgroundColor: whiteColor,
 		border: "none",
-		caretColor: theme.mainThemeColor,
-		color: props.inputValue
-			? FColorTypes.FPrimaryColors.BLACK
-			: FColorTypes.FPrimaryColors.GREY,
+		caretColor: FGetThemeColor("Main"),
+		color: props.inputValue ? blackColor : greyColor,
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
@@ -70,10 +81,11 @@ export const FTagInputFieldInputAreaDiv = (
 		resize: "none",
 		$nest: {
 			"&::placeholder": {
-				color: FColorTypes.FPrimaryColors.GREY,
+				color: greyColor,
 			},
 		},
 	});
+};
 
 export const FTagInputFieldDropdownContainer = (
 	ref: RefObject<HTMLDivElement>
@@ -88,17 +100,24 @@ export const FTagInputFieldDropdownContainer = (
 export const FTagInputFieldDropdownOptionDiv = (
 	isSelected: boolean,
 	isNew: boolean,
-	isExisted: boolean,
-	theme: FTheme
-) =>
-	style({
+	isExisted: boolean
+) => {
+	const greyColor = FUseColor({
+		colorName: "Grey",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+	const redColor = FUseColor({
+		colorName: "Red",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+	const blackColor = FUseColor({
+		colorName: "Black",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+
+	return style({
 		font: FFontTypes.Large_Text(),
-		color:
-			isNew || isSelected
-				? FColorTypes.FPrimaryColors.GREY
-				: isExisted
-				? FColorTypes.FSecondaryColors.RED
-				: FColorTypes.FPrimaryColors.BLACK,
+		color: isNew || isSelected ? greyColor : isExisted ? redColor : blackColor,
 		backgroundColor: "inherit",
 		border: "none",
 		width: "100%",
@@ -107,13 +126,14 @@ export const FTagInputFieldDropdownOptionDiv = (
 		textAlign: "left",
 		$nest: {
 			"&:hover": {
-				backgroundColor: theme.subThemeColor,
+				backgroundColor: FGetThemeColor("Sub"),
 				color:
 					isNew || isSelected
-						? FOverrideStyle(FColorTypes.FPrimaryColors.GREY)
+						? FOverrideStyle(greyColor)
 						: isExisted
-						? FOverrideStyle(FColorTypes.FSecondaryColors.RED)
-						: theme.mainThemeColor,
+						? FOverrideStyle(redColor)
+						: FGetThemeColor("Main"),
 			},
 		},
 	});
+};

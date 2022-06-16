@@ -1,7 +1,7 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FTheme } from "../FThemeContext/types";
+import { FCheckIsDarkMode, FGetThemeColor } from "..";
 
 export const FEmailInputFieldWrapper = (isError: boolean, disabled: boolean) =>
 	style({
@@ -14,42 +14,62 @@ export const FEmailInputFieldWrapper = (isError: boolean, disabled: boolean) =>
 
 export const FEmailInputFieldContainer = (
 	isTriggered: boolean,
-	isFilled: boolean,
-	theme: FTheme
+	isFilled: boolean
 ) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
+		backgroundColor: FUseColor({
+			colorName: "White",
+			isDarkMode: FCheckIsDarkMode(),
+		}),
 		borderRadius: "0.5rem",
 		border:
 			"0.125rem solid " +
 			(isTriggered
-				? theme.mainThemeColor
+				? FGetThemeColor("Main")
 				: isFilled
-				? FColorTypes.FPrimaryColors.BLACK
-				: FColorTypes.FPrimaryColors.BG_LIGHT),
+				? FUseColor({
+						colorName: "Black",
+						isDarkMode: FCheckIsDarkMode(),
+				  })
+				: FUseColor({
+						colorName: "BG Light",
+						isDarkMode: FCheckIsDarkMode(),
+				  })),
 		boxSizing: "border-box",
-		caretColor: theme.mainThemeColor,
+		caretColor: FGetThemeColor("Main"),
 		columnGap: "0.5rem",
 		display: "flex",
 		flexDirection: "row",
 		padding: "0.75rem",
 	});
 
-export const FEmailInputFieldInputAreaDiv = style({
-	backgroundColor: FColorTypes.FPrimaryColors.WHITE,
-	border: "none",
-	color: FColorTypes.FPrimaryColors.BLACK,
-	font: FFontTypes.Large_Text(),
-	outline: "none",
-	overflow: "hidden",
-	padding: 0,
-	resize: "none",
-	width: "100%",
-	$nest: {
-		"&::placeholder": {
-			color: FColorTypes.FPrimaryColors.GREY,
-			font: FFontTypes.Large_Text(),
+export const FEmailInputFieldInputAreaDiv = () => {
+	const isDarkMode = FCheckIsDarkMode();
+	return style({
+		backgroundColor: FUseColor({
+			colorName: "White",
+			isDarkMode: isDarkMode,
+		}),
+		border: "none",
+		color: FUseColor({
+			colorName: "Black",
+			isDarkMode: isDarkMode,
+		}),
+		font: FFontTypes.Large_Text(),
+		outline: "none",
+		overflow: "hidden",
+		padding: 0,
+		resize: "none",
+		width: "100%",
+		$nest: {
+			"&::placeholder": {
+				color: FUseColor({
+					colorName: "Grey",
+					isDarkMode: isDarkMode,
+				}),
+				font: FFontTypes.Large_Text(),
+			},
 		},
-	},
-});
+	});
+};

@@ -1,16 +1,16 @@
 import { FTagProps } from "./types";
 import * as styles from "./styles";
 import React from "react";
-import { FText, FUseTheme } from "..";
+import { FGetThemeColor, FText } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 
 export const FTag = <T,>(props: FTagProps<T>) => {
-	const { theme } = FUseTheme();
+	const mainThemeColor = FGetThemeColor("Main");
 	return (
 		<div
 			style={props.style}
-			className={styles.FTagContainer(props, theme) + " " + props.className}
+			className={styles.FTagContainer(props) + " " + props.className}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick(props.tag)
 			}
@@ -18,7 +18,7 @@ export const FTag = <T,>(props: FTagProps<T>) => {
 			{props.leadingComponents}
 			<FText
 				font={FFontTypes.Text()}
-				color={theme.mainThemeColor}
+				color={mainThemeColor}
 				style={props.labelStyle}
 				className={styles.FTagLabel + " " + props.labelClassName}
 				children={props.label}
@@ -30,7 +30,7 @@ export const FTag = <T,>(props: FTagProps<T>) => {
 						<FIcon
 							size="small"
 							name={FIconNames.CLOSE}
-							strokeColor={theme.mainThemeColor}
+							strokeColor={mainThemeColor}
 							onClick={() =>
 								props.disabled
 									? undefined

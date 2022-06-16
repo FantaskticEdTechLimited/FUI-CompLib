@@ -1,5 +1,6 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
+import { FCheckIsDarkMode, FGetThemeColor } from "..";
 import { FSelectContainerStyleProps, FSelectProps } from "./types";
 
 export const FSelectWrapper = style({
@@ -13,14 +14,23 @@ export const FSelectContainer = (
 ) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FColorTypes.FPrimaryColors.WHITE,
+		backgroundColor: FUseColor({
+			colorName: "White",
+			isDarkMode: FCheckIsDarkMode(),
+		}),
 		border:
 			"0.125rem solid " +
 			(stylesProps.isClicked
-				? stylesProps.theme.mainThemeColor
+				? FGetThemeColor("Main")
 				: stylesProps.selectedOptions
-				? FColorTypes.FPrimaryColors.BLACK
-				: FColorTypes.FPrimaryColors.BG_LIGHT),
+				? FUseColor({
+						colorName: "Black",
+						isDarkMode: FCheckIsDarkMode(),
+				  })
+				: FUseColor({
+						colorName: "BG Light",
+						isDarkMode: FCheckIsDarkMode(),
+				  })),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		columnGap: "0.5rem",
@@ -34,7 +44,10 @@ export const FSelectContainer = (
 			"&:hover": {
 				$nest: {
 					"svg path": {
-						stroke: FColorTypes.FPrimaryColors.BLACK,
+						stroke: FUseColor({
+							colorName: "Black",
+							isDarkMode: FCheckIsDarkMode(),
+						}),
 					},
 				},
 			},

@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FUseTheme } from "..";
 import * as styles from "./styles";
 import { ClearIcon } from "./svg/ClearIcon";
 import { SearchIcon } from "./svg/SearchIcon";
@@ -8,7 +7,6 @@ import { FSearchBarProps } from "./types";
 export const FSearchBar = (props: FSearchBarProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
-	const { theme } = FUseTheme();
 
 	useEffect(() => {
 		if (isTriggered && inputRef.current) inputRef.current.focus();
@@ -18,9 +16,7 @@ export const FSearchBar = (props: FSearchBarProps) => {
 		<div
 			style={props.containerStyle}
 			className={
-				styles.FSearchBarContainer(isTriggered, theme) +
-				" " +
-				props.containerClassName
+				styles.FSearchBarContainer(isTriggered) + " " + props.containerClassName
 			}
 			onClick={() => setIsTriggered(true)}
 			onBlur={() => setIsTriggered(false)}
@@ -34,7 +30,7 @@ export const FSearchBar = (props: FSearchBarProps) => {
 			<input
 				style={props.inputAreaStyle}
 				className={
-					styles.FSearchBarInputAreaDiv + " " + props.inputAreaClassName
+					styles.FSearchBarInputAreaDiv() + " " + props.inputAreaClassName
 				}
 				type="text"
 				ref={inputRef}

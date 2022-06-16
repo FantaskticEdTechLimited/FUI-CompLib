@@ -1,3 +1,5 @@
+// =======================================================================
+// import components
 import { FText } from "./FText";
 import { FInputField } from "./FInputField";
 import { FButton } from "./FButton";
@@ -28,10 +30,13 @@ import { FMoreActionPopUp } from "./FMoreActionPopUp";
 import { FConfirmPopUp } from "./FConfirmPopUp";
 import { FDoubleTabs } from "./FDoubleTabs";
 import { FScrollableContentWrapper } from "./FScrollableContentWrapper";
-import { WithFUIThemeContext, useFUITheme } from "./FThemeContext";
-import { FTheme } from "./FThemeContext/types";
 import { FDivider } from "./FDivider";
 import { FCreateSelect } from "./FCreateSelect";
+// =======================================================================
+// import theme
+import { WithFUIThemeContext, useFUITheme } from "./FThemeContext";
+import { FTheme, FThemeColors, FThemeMode } from "./FThemeContext/types";
+// =======================================================================
 // import utils
 import {
 	FSideBarHandler,
@@ -41,7 +46,14 @@ import {
 	FUseStateSafeHandler,
 	FRwdModeHandler,
 	FOverrideStyle,
+	FCheckDefaultIsDarkMode,
+	FCheckIsDarkMode,
+	FGetThemeColor,
+	FNumberGenerator,
+	FOnlyFirstCapLetter,
+	FTimerGenerator,
 } from "./utils";
+// =======================================================================
 // import types
 import {
 	Nullable,
@@ -52,8 +64,12 @@ import {
 	RWDMode,
 	RwdSizeProps,
 } from "./global.types";
+// =======================================================================
 
 export {
+	// =====================
+	// components (w/types)
+	// =====================
 	FBottomNavBar,
 	FButton,
 	FButtonTypes,
@@ -88,11 +104,13 @@ export {
 	FTagInputField,
 	FText,
 	// =====================
-	// Theme
+	// theme
 	// =====================
 	WithFUIThemeContext,
 	useFUITheme as FUseTheme,
 	FTheme,
+	FThemeColors,
+	FThemeMode,
 	// =====================
 	// utils functions
 	// =====================
@@ -103,6 +121,12 @@ export {
 	FUseStateSafeHandler,
 	FRwdModeHandler,
 	FOverrideStyle,
+	FCheckDefaultIsDarkMode,
+	FCheckIsDarkMode,
+	FGetThemeColor,
+	FNumberGenerator,
+	FOnlyFirstCapLetter,
+	FTimerGenerator,
 	// =====================
 	// global types
 	// =====================

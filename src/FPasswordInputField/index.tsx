@@ -2,13 +2,12 @@ import { FPasswordInputFieldProps } from "./types";
 import * as styles from "./styles";
 import React, { useEffect, useRef, useState } from "react";
 import { LockIcon } from "./svg/LockIcon";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { EyeIcon } from "./svg/EyeIcon";
 import { EyeOffIcon } from "./svg/EyeOffIcon";
-import { FUseTheme } from "..";
+import { FCheckIsDarkMode, FGetThemeColor } from "..";
 
 export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
-	const { theme } = FUseTheme();
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const [showPassword, setShowPassword] = useState<boolean>(false);
@@ -84,12 +83,7 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 		<div
 			style={props.containerStyle}
 			className={
-				styles.FPasswordInputFieldContainer(
-					isTriggered,
-					isFilled,
-					props,
-					theme
-				) +
+				styles.FPasswordInputFieldContainer(isTriggered, isFilled, props) +
 				" " +
 				props.containerClassName
 			}
@@ -105,8 +99,11 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 				<LockIcon
 					strokeColor={
 						isTriggered
-							? theme.mainThemeColor
-							: FColorTypes.FPrimaryColors.BLACK
+							? FGetThemeColor("Main")
+							: FUseColor({
+									colorName: "Black",
+									isDarkMode: FCheckIsDarkMode(),
+							  })
 					}
 					disabled={props.disabled}
 					{...props.lockIconProps}

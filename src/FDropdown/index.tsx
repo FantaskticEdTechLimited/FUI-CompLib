@@ -2,21 +2,21 @@ import { FDropdownOptionDivProps, FDropdownProps } from "./types";
 import * as styles from "./styles";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
-import { useFUITheme } from "../FThemeContext";
 import { FScrollBarStyle } from "../FScrollBar";
 import { FText } from "../FText";
-import { FAutoConvertArray } from "..";
+import { FAutoConvertArray, FCheckIsDarkMode } from "..";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
+
 export const FDropdown = <T,>(props: FDropdownProps<T>) => {
-	const { theme } = useFUITheme();
 	const hideSelectedOptions = props.hideSelectedOptions ?? true;
 	const pressCount = props.arrowKeyPressCount ?? 0;
 	const selectedOptionsArray = FAutoConvertArray(props.selectedOptions);
+
 	return (
 		<div
 			style={props.dropdownContainerStyle}
 			className={
-				styles.FDropdownContainer +
+				styles.FDropdownContainer() +
 				" " +
 				props.dropdownContainerClassName +
 				" " +
@@ -32,36 +32,6 @@ export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 				})
 					? true
 					: false;
-
-				// if (props.selectedOptions) {
-				// 	if (compareSelectedOption) {
-				// 		if (
-				// 			Array.isArray(props.selectedOptions) &&
-				// 			props.selectedOptions.length > 1
-				// 		) {
-				// 			props.selectedOptions.map((selectedoption: any) => {
-				// 				if (option === selectedoption) {
-				// 					isSelected = true;
-				// 					return;
-				// 				}
-				// 			});
-				// 		}
-				// 		// if selectedOptions is not an array, or only one
-				// 		else {
-				// 			if (option === props.selectedOptions) {
-				// 				isSelected = true;
-				// 				return;
-				// 			}
-				// 		}
-				// 	} else {
-				// 		isSelected =
-				// 			props.onOptionCompare !== undefined &&
-				// 			props.onOptionCompare(
-				// 				option,
-				// 				props.selectedOptions
-				// 			);
-				// 	}
-				// }
 				if (hideSelectedOptions && isSelected) return;
 				if (option === null) return;
 
@@ -73,7 +43,6 @@ export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 					index: index,
 					isSelected: hideSelectedOptions ? false : isSelected,
 					props: props,
-					theme: theme,
 				};
 
 				return (
@@ -96,8 +65,14 @@ export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 								font={FFontTypes.Text()}
 								color={
 									isSelected
-										? FColorTypes.FPrimaryColors.GREY
-										: FColorTypes.FPrimaryColors.BLACK
+										? FUseColor({
+												colorName: "Grey",
+												isDarkMode: FCheckIsDarkMode(),
+										  })
+										: FUseColor({
+												colorName: "Black",
+												isDarkMode: FCheckIsDarkMode(),
+										  })
 								}
 								style={props.optionTextStyle}
 								className={props.optionTextClassName}

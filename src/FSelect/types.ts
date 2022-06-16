@@ -2,7 +2,6 @@ import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FDropdownProps } from "../FDropdown/types";
 import { FTextProps } from "../FText/types";
-import { FTheme } from "../FThemeContext/types";
 import { OnClickFunction } from "../global.types";
 
 export interface FSelectProps<T> {
@@ -22,7 +21,7 @@ export interface FSelectProps<T> {
 	// display the selected option with selected option name only
 	renderSelectedOptionNameOnly?: (data: T) => string;
 	renderOptionNameOnly?: (data: T) => string;
-	
+
 	clearIconProps?: FIconProps;
 	dropdownArrowIconProps?: FIconProps;
 	iconComponent?: ReactNode;
@@ -60,5 +59,4 @@ export interface FSelectContainerStyleProps<T> {
 	isClicked: boolean;
 	disabled: boolean;
 	selectedOptions: T | null;
-	theme: FTheme;
 }

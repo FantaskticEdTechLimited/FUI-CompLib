@@ -1,9 +1,13 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
+import { FCheckIsDarkMode } from "..";
 
 export const FDivider_Container = (isVertical: boolean) =>
 	style({
-		height: isVertical ? "100%" : "2px",
-		width: isVertical ? "2px" : "100%",
-		backgroundColor: FColorTypes.FPrimaryColors.GREY,
+		height: isVertical ? "100%" : "0.125rem",
+		width: isVertical ? "0.125rem" : "100%",
+		backgroundColor: FUseColor({
+			colorName: "Grey",
+			isDarkMode: FCheckIsDarkMode(),
+		}),
 	});

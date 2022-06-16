@@ -7,13 +7,12 @@ import { FDropdown } from "../FDropdown";
 
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
-import { FScrollBarStyle, FText, FUseTheme } from "..";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FCheckIsDarkMode, FScrollBarStyle, FText } from "..";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FTagInputField = <T extends unknown>(
 	props: FTagInputFieldProps<T>
 ) => {
-	const { theme } = FUseTheme();
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [filteredTagData, setFilteredTagData] = useState<any[]>([]);
 	const [arrowKeyPressCount, setArrowKeyPressCount] = useState<number>(0);
@@ -159,7 +158,7 @@ export const FTagInputField = <T extends unknown>(
 				<div
 					style={props.inputContainerStyle}
 					className={
-						styles.FTagInputFieldInputContainer(isTriggered, theme) +
+						styles.FTagInputFieldInputContainer(isTriggered) +
 						" " +
 						props.inputContainerClassName
 					}
@@ -175,7 +174,7 @@ export const FTagInputField = <T extends unknown>(
 					<input
 						style={props.inputAreaStyle}
 						className={
-							styles.FTagInputFieldInputAreaDiv(props, theme) +
+							styles.FTagInputFieldInputAreaDiv(props) +
 							" " +
 							props.inputAreaClassName
 						}
@@ -353,16 +352,24 @@ export const FTagInputField = <T extends unknown>(
 											font={FFontTypes.Large_Text()}
 											color={
 												option === NewTagHintLabel
-													? FColorTypes.FPrimaryColors.GREY
+													? FUseColor({
+															colorName: "Grey",
+															isDarkMode: FCheckIsDarkMode(),
+													  })
 													: option === ExitsedTagHintLabel
-													? FColorTypes.FSecondaryColors.RED
-													: FColorTypes.FPrimaryColors.BLACK
+													? FUseColor({
+															colorName: "Red",
+															isDarkMode: FCheckIsDarkMode(),
+													  })
+													: FUseColor({
+															colorName: "Black",
+															isDarkMode: FCheckIsDarkMode(),
+													  })
 											}
 											className={styles.FTagInputFieldDropdownOptionDiv(
 												selected,
 												option === NewTagHintLabel,
-												option === ExitsedTagHintLabel,
-												theme
+												option === ExitsedTagHintLabel
 											)}
 										>
 											{option}

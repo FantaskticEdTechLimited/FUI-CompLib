@@ -1,22 +1,31 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
-import { FText, FDropdown } from "..";
-import { useFUITheme } from "../FThemeContext";
+import { FText, FDropdown, FGetThemeColor, FCheckIsDarkMode } from "..";
 import * as styles from "./styles";
 import { FSelectContainerStyleProps, FSelectProps } from "./types";
 
 export const FSelect = <T,>(props: FSelectProps<T>) => {
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
 	const FSelectWithDropdownRef = useRef<HTMLDivElement>(null);
-	const { theme } = useFUITheme();
+	const blackColor = FUseColor({
+		colorName: "Black",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+	const greyColor = FUseColor({
+		colorName: "Grey",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+	const bgLightColor = FUseColor({
+		colorName: "BG Light",
+		isDarkMode: FCheckIsDarkMode(),
+	});
 
 	const selectorStyleProps: FSelectContainerStyleProps<T> = {
 		isClicked: openDropdown,
 		disabled: props.disabled!,
 		selectedOptions: props.selectedOptions,
-		theme: theme,
 	};
 
 	const placeHolder = props.placeholder ?? "Select an option";
@@ -53,10 +62,10 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 					font={FFontTypes.Text()}
 					color={
 						openDropdown
-							? theme.mainThemeColor
+							? FGetThemeColor("Main")
 							: selectedOption
-							? FColorTypes.FPrimaryColors.BLACK
-							: FColorTypes.FPrimaryColors.GREY
+							? blackColor
+							: greyColor
 					}
 					children={props.label ?? "Title"}
 					style={props.labelStyle}
@@ -66,11 +75,7 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 				{/* Content or placeHolder */}
 				<FText
 					font={FFontTypes.Large_Text()}
-					color={
-						selectedOption === null
-							? FColorTypes.FPrimaryColors.GREY
-							: FColorTypes.FPrimaryColors.BLACK
-					}
+					color={selectedOption === null ? greyColor : blackColor}
 					style={props.selectedOptionStyle}
 					className={
 						styles.FSelectSelectedOptionDiv +
@@ -128,11 +133,7 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 				) : !props.selectedOptions ? (
 					<FIcon
 						name={FIconNames.RANKING}
-						strokeColor={
-							openDropdown
-								? FColorTypes.FPrimaryColors.BLACK
-								: FColorTypes.FPrimaryColors.BG_LIGHT
-						}
+						strokeColor={openDropdown ? blackColor : bgLightColor}
 						size="small"
 						onClick={() =>
 							props.disabled ? undefined : setOpenDropdown(!openDropdown)
@@ -144,11 +145,7 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 					props.selectedOptions && (
 						<FIcon
 							name={FIconNames.CLOSE}
-							strokeColor={
-								openDropdown
-									? FColorTypes.FPrimaryColors.BLACK
-									: FColorTypes.FPrimaryColors.BG_LIGHT
-							}
+							strokeColor={openDropdown ? blackColor : bgLightColor}
 							size="small"
 							onClick={handleClearSelectedOption}
 							{...props.clearIconProps}

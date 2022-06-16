@@ -1,12 +1,12 @@
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
-import { FRwdModeHandler, FUseTheme } from "..";
+import { FGetThemeColor, FRwdModeHandler } from "..";
 import { RWDMode } from "../global.types";
 import { FHeaderButtonProps, FHeaderButtonTypes } from "./types";
 
 export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 	const rwdMode = FRwdModeHandler(props.configureRwdSize);
-	const { theme } = FUseTheme();
+	const mainThemeColor = FGetThemeColor("Main");
 
 	switch (props.type) {
 		case FHeaderButtonTypes.BACK:
@@ -21,7 +21,7 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 							? "small"
 							: "large"
 					}
-					strokeColor={props.iconStrokeColor ?? theme.mainThemeColor}
+					strokeColor={props.iconStrokeColor ?? mainThemeColor}
 				/>
 			);
 		case FHeaderButtonTypes.CLOSE:
@@ -36,7 +36,7 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 							? "small"
 							: "large"
 					}
-					strokeColor={props.iconStrokeColor ?? theme.mainThemeColor}
+					strokeColor={props.iconStrokeColor ?? mainThemeColor}
 				/>
 			);
 		case FHeaderButtonTypes.MORE:
@@ -51,7 +51,7 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 							? "small"
 							: "large"
 					}
-					strokeColor={props.iconStrokeColor ?? theme.mainThemeColor}
+					strokeColor={props.iconStrokeColor ?? mainThemeColor}
 				/>
 			);
 		default:

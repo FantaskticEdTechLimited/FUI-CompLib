@@ -1,5 +1,4 @@
 import { CSSProperties } from "react";
-import { FTheme } from "../../FThemeContext/types";
 
 import { OnClickFunction } from "../../global.types";
 
@@ -8,7 +7,6 @@ export interface SearchIconProps {
 	inputValue: string;
 	className?: string;
 	style?: CSSProperties;
-	theme?: FTheme
 }
 
 export interface ClearIconProps {

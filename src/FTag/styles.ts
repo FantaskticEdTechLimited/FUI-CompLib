@@ -1,12 +1,12 @@
 import { style } from "typestyle";
-import { FTheme } from "../FThemeContext/types";
+import { FGetThemeColor } from "..";
 
 import { FTagProps } from "./types";
 
-export const FTagContainer = (props: FTagProps<any>, theme: FTheme) =>
+export const FTagContainer = (props: FTagProps<any>) =>
 	style({
 		alignItems: "center",
-		backgroundColor: theme.subThemeColor,
+		backgroundColor: FGetThemeColor("Sub"),
 		borderRadius: "0.125rem",
 		boxSizing: "border-box",
 		columnGap: "0.25rem",

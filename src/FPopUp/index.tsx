@@ -29,7 +29,7 @@ export const FPopUp = (props: FPopUpProps) => {
 	return (
 		<div
 			style={props.overlayStyle}
-			className={styles.FPopUpOverlay + " " + props.overlayClassName}
+			className={styles.FPopUpOverlay() + " " + props.overlayClassName}
 		>
 			<div
 				ref={

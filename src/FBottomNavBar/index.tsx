@@ -1,14 +1,13 @@
 import { FBottomNavBarProps } from "./types";
 import * as styles from "./styles";
 import React from "react";
-import { FButton, FUseTheme } from "..";
+import { FButton } from "..";
 import { FButtonTypes } from "../FButton/types";
 
 /**
  * A bar at the bottom containing two buttons (one left: leading button; one right: action button).
  */
 export const FBottomNavBar = (props: FBottomNavBarProps) => {
-	const { theme } = FUseTheme();
 	return (
 		<div
 			style={props.navBarStyle}
@@ -27,7 +26,7 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						}
 						style={props.leadingButtonStyle}
 						className={
-							styles.FLeadingButtonDiv(props.disableActionButton!, theme) +
+							styles.FLeadingButtonDiv(props.disableActionButton!) +
 							" " +
 							props.leadingButtonClassName
 						}
@@ -44,7 +43,7 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						}
 						style={props.actionButtonStyle}
 						className={
-							styles.FActionButtonDiv(props.disableActionButton!, theme) +
+							styles.FActionButtonDiv(props.disableActionButton!) +
 							" " +
 							props.actionButtonClassName
 						}

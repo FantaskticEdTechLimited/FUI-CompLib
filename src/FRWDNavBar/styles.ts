@@ -1,6 +1,6 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FTheme } from "../FThemeContext/types";
+import { FCheckIsDarkMode, FGetThemeColor } from "..";
 import { RWDMode } from "../global.types";
 import { FSideNavBarProps } from "./types";
 
@@ -12,7 +12,13 @@ export const FHiddenSideBarOverlay = (
 		position: "fixed",
 		marginTop: 0,
 		height: "100vh",
-		backgroundColor: FColorTypes.FPrimaryColors.DARK + "66",
+		backgroundColor:
+			FUseColor({
+				colorName: "Dark",
+				isDarkMode: FCheckIsDarkMode(),
+			}) + FCheckIsDarkMode()
+				? undefined
+				: "66",
 		display: props.visible && isOpen ? "flex" : "none",
 		flexDirection: "row",
 		justifyContent:
@@ -22,10 +28,11 @@ export const FHiddenSideBarOverlay = (
 		overflow: "hidden",
 	});
 
-export const FHiddenSideBarContainer = (theme: FTheme) =>
-	style({
+export const FHiddenSideBarContainer = () => {
+	const color = FGetThemeColor("Main");
+	return style({
 		width: "15rem",
-		backgroundColor: theme.mainThemeColor,
+		backgroundColor: color,
 		boxSizing: "border-box",
 		height: "inherit",
 		display: "flex",
@@ -34,12 +41,14 @@ export const FHiddenSideBarContainer = (theme: FTheme) =>
 		padding: ".7rem 1rem",
 		boxShadow: "0rem 0rem 0.5rem rgba(72, 63, 226, 0.16)",
 	});
+};
 
-export const FNormalSideNavBarContainer = (theme: FTheme) =>
-	style({
+export const FNormalSideNavBarContainer = () => {
+	const color = FGetThemeColor("Main");
+	return style({
 		height: "100vh",
 		width: "15rem",
-		backgroundColor: theme.mainThemeColor,
+		backgroundColor: color,
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "flex-start",
@@ -49,6 +58,7 @@ export const FNormalSideNavBarContainer = (theme: FTheme) =>
 		padding: ".7rem 1rem",
 		boxShadow: "0rem 0rem 0.5rem rgba(72, 63, 226, 0.16)",
 	});
+};
 
 export const FSideNavBar_ContentDiv = style({
 	width: "100%",
@@ -61,11 +71,16 @@ export const FSideNavBar_ContentDiv = style({
 	flexDirection: "column",
 });
 
-export const FTopNavBarContainer = (props: FSideNavBarProps, theme: FTheme) =>
+export const FTopNavBarContainer = (props: FSideNavBarProps) =>
 	style({
-		backgroundColor: theme.mainThemeColor,
-		border: "0.063rem solid " + FColorTypes.FPrimaryColors.BG_LIGHT,
-		boxShadow: "0rem 0rem 0.5rem " + theme.subThemeColor,
+		backgroundColor: FGetThemeColor("Main"),
+		border:
+			"0.063rem solid " +
+			FUseColor({
+				colorName: "BG Light",
+				isDarkMode: FCheckIsDarkMode(),
+			}),
+		boxShadow: "0rem 0rem 0.5rem " + FGetThemeColor("Sub"),
 		boxSizing: "border-box",
 		display: props.visible ? "flex" : "none",
 		flexDirection: "row",
@@ -77,22 +92,32 @@ export const FTopNavBarContainer = (props: FSideNavBarProps, theme: FTheme) =>
 		zIndex: 15,
 	});
 
-export const FTopNavBarContainer_MenuIcon = (theme: FTheme) =>
-	style({
+export const FTopNavBarContainer_MenuIcon = () => {
+	const color = FGetThemeColor("Sub");
+	return style({
 		borderRadius: "0.25rem",
-		backgroundColor: theme.subThemeColor,
+		backgroundColor: color,
 		padding: "0.25rem",
 	});
+};
 
-export const FTopNavBarContainer_CloseIcon = (theme: FTheme) =>
-	style({
+export const FTopNavBarContainer_CloseIcon = () => {
+	const color = FGetThemeColor("Sub");
+	return style({
 		borderRadius: "0.25rem",
-		backgroundColor: theme.subThemeColor,
+		backgroundColor: color,
 		padding: "0.25rem",
 		alignSelf: "flex-end",
 	});
+};
 
-export const Divider = style({
-	height: "0.125rem",
-	backgroundColor: FColorTypes.FPrimaryColors.WHITE,
-});
+export const Divider = () => {
+	const isDarkMode = FCheckIsDarkMode();
+	return style({
+		height: "0.125rem",
+		backgroundColor: FUseColor({
+			colorName: "White",
+			isDarkMode: isDarkMode,
+		}),
+	});
+};

@@ -1,9 +1,15 @@
 import React from "react";
 import { ClearIconProps } from "./types";
 import * as styles from "./styles";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
+import { FCheckIsDarkMode } from "../..";
 
 export const ClearIcon = (props: ClearIconProps) => {
+	const greyColor = FUseColor({
+		colorName: "Grey",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+	
 	return (
 		<svg
 			style={props.style}
@@ -15,14 +21,14 @@ export const ClearIcon = (props: ClearIconProps) => {
 		>
 			<path
 				d="M13.5 4.5L4.5 13.5"
-				stroke={FColorTypes.FPrimaryColors.GREY}
+				stroke={greyColor}
 				strokeWidth="1.2"
 				strokeLinecap="round"
 				strokeLinejoin="round"
 			/>
 			<path
 				d="M4.5 4.5L13.5 13.5"
-				stroke={FColorTypes.FPrimaryColors.GREY}
+				stroke={greyColor}
 				strokeWidth="1.2"
 				strokeLinecap="round"
 				strokeLinejoin="round"

@@ -1,17 +1,15 @@
 import React from "react";
 import { FHeaderButtonProps } from "./types";
 import * as styles from "./styles";
-import { handleFHeaderButton } from "./func";
-import { FUseTheme } from "..";
+import { handleFHeaderButton } from "./func"; 
 
-export const FHeaderButton = (props: FHeaderButtonProps) => {
-	const { theme } = FUseTheme();
+export const FHeaderButton = (props: FHeaderButtonProps) => { 
 
 	return (
 		<div
 			style={props.containerStyle}
 			className={
-				styles.FHeaderButtonContainer(props, theme) +
+				styles.FHeaderButtonContainer(props) +
 				" " +
 				props.containerClassName
 			}

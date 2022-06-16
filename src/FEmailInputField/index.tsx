@@ -2,9 +2,9 @@ import { FEmailInputFieldProps } from "./types";
 import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./styles";
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FText, FUseTheme } from "..";
+import { FCheckIsDarkMode, FGetThemeColor, FText } from "..";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FEmailInputField = (props: FEmailInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
@@ -12,7 +12,6 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 	const [enterPress, setEnterPressed] = useState<boolean>(false);
 	const [isError, setIsError] = useState<boolean>(false);
 	const emailInputRef = useRef<HTMLInputElement>(null);
-	const { theme } = FUseTheme();
 
 	useEffect(() => {
 		if (isTriggered && emailInputRef.current) emailInputRef.current.focus();
@@ -43,7 +42,7 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 			<div
 				style={props.containerStyle}
 				className={
-					styles.FEmailInputFieldContainer(isTriggered, isFilled, theme) +
+					styles.FEmailInputFieldContainer(isTriggered, isFilled) +
 					" " +
 					props.containerClassName
 				}
@@ -60,8 +59,11 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 						name={FIconNames.EMAIL}
 						strokeColor={
 							isTriggered
-								? theme.mainThemeColor
-								: FColorTypes.FPrimaryColors.BLACK
+								? FGetThemeColor("Main")
+								: FUseColor({
+										colorName: "Black",
+										isDarkMode: FCheckIsDarkMode(),
+								  })
 						}
 						style={props.iconStyle}
 						className={props.iconClassName}
@@ -71,7 +73,9 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 				<input
 					style={props.inputAreaStyle}
 					className={
-						styles.FEmailInputFieldInputAreaDiv + " " + props.inputAreaClassName
+						styles.FEmailInputFieldInputAreaDiv() +
+						" " +
+						props.inputAreaClassName
 					}
 					type={props.checkInput || props.disabled ? "text" : "email"}
 					ref={emailInputRef}
@@ -98,7 +102,10 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 			{isError && (
 				<FText
 					font={FFontTypes.Text()}
-					color={FColorTypes.FSecondaryColors.RED}
+					color={FUseColor({
+						colorName: "Red",
+						isDarkMode: FCheckIsDarkMode(),
+					})}
 					children={props.warningLabel ?? "Error: Input is missing an '@'."}
 					style={props.warningLabelStyle}
 					className={props.warninglabelClassName}

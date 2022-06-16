@@ -1,7 +1,6 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FOverrideStyle } from "..";
-import { FTheme } from "../FThemeContext/types";
+import { FCheckIsDarkMode, FGetThemeColor, FOverrideStyle } from "..";
 
 export const FBottomNavBarContainer = style({
 	alignItems: "center",
@@ -11,16 +10,26 @@ export const FBottomNavBarContainer = style({
 	width: "100%",
 });
 
-export const FLeadingButtonDiv = (disabled: boolean, theme: FTheme) =>
+export const FLeadingButtonDiv = (disabled: boolean) =>
 	style({
 		alignSelf: "flex-start",
 		padding: FOverrideStyle("0.5rem 0.75rem"),
-		backgroundColor: disabled ? FColorTypes.FPrimaryColors.GREY : theme.subThemeColor,
+		backgroundColor: disabled
+			? FUseColor({
+					colorName: "Grey",
+					isDarkMode: FCheckIsDarkMode(),
+			  })
+			: FGetThemeColor("Sub"),
 	});
 
-export const FActionButtonDiv = (disabled: boolean, theme: FTheme) =>
+export const FActionButtonDiv = (disabled: boolean) =>
 	style({
 		alignSelf: "flex-end",
 		padding: FOverrideStyle("0.5rem 0.75rem"),
-		backgroundColor: disabled ? FColorTypes.FPrimaryColors.GREY : theme.mainThemeColor,
+		backgroundColor: disabled
+			? FUseColor({
+					colorName: "Grey",
+					isDarkMode: FCheckIsDarkMode(),
+			  })
+			: FGetThemeColor("Sub"),
 	});

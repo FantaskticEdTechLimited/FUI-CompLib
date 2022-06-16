@@ -1,10 +1,20 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
+import { FCheckIsDarkMode } from "..";
 import { FScrollBarProps } from "./types";
 
 // not a FC, only applies css style
-export const FScrollBarStyle = (props?: FScrollBarProps) =>
-	style({
+export const FScrollBarStyle = (props?: FScrollBarProps) => {
+	const greyColor = FUseColor({
+		colorName: "Grey",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+	const darkColor = FUseColor({
+		colorName: "Dark",
+		isDarkMode: FCheckIsDarkMode(),
+	});
+
+	return style({
 		$nest: {
 			"&::-webkit-scrollbar": {
 				display: props?.disabled ? "none" : "block",
@@ -21,21 +31,19 @@ export const FScrollBarStyle = (props?: FScrollBarProps) =>
 			},
 			"&::-webkit-scrollbar-thumb": {
 				borderRadius: props?.thumbBorderRadius ?? "0.625rem",
-				backgroundColor:
-					props?.thumbFillColor ?? FColorTypes.FPrimaryColors.GREY,
+				backgroundColor: props?.thumbFillColor ?? greyColor,
 				borderWidth: props?.thumbBorderWidth ?? "0.0625rem",
 				borderStyle: "solid",
-				borderColor: props?.thumbBorderColor ?? FColorTypes.FPrimaryColors.GREY,
+				borderColor: props?.thumbBorderColor ?? greyColor,
 				border: props?.thumbBorder,
 			},
 			"&::-webkit-scrollbar-thumb:hover": {
-				backgroundColor:
-					props?.thumbHoveredFillColor ?? FColorTypes.FPrimaryColors.DARK,
+				backgroundColor: props?.thumbHoveredFillColor ?? darkColor,
 				borderWidth: props?.thumbHoveredBorderWidth ?? "0.0625rem",
 				borderStyle: "solid",
-				borderColor:
-					props?.thumbHoveredBorderColor ?? FColorTypes.FPrimaryColors.DARK,
+				borderColor: props?.thumbHoveredBorderColor ?? darkColor,
 				border: props?.thumbHoveredBorder,
 			},
 		},
 	});
+};
