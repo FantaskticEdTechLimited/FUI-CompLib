@@ -1,15 +1,13 @@
 import React from "react";
 import { ClearIconProps } from "./types";
 import * as styles from "./styles";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
-import { FCheckIsDarkMode } from "../..";
+import { FUseColor } from "../..";
 
 export const ClearIcon = (props: ClearIconProps) => {
 	const greyColor = FUseColor({
 		colorName: "Grey",
-		isDarkMode: FCheckIsDarkMode(),
 	});
-	
+
 	return (
 		<svg
 			style={props.style}

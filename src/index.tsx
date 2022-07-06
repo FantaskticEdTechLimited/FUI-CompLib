@@ -48,10 +48,10 @@ import {
 	FOverrideStyle,
 	FCheckDefaultIsDarkMode,
 	FCheckIsDarkMode,
-	FGetThemeColor,
 	FNumberGenerator,
 	FOnlyFirstCapLetter,
 	FTimerGenerator,
+	FUseColor,
 } from "./utils";
 // =======================================================================
 // import types
@@ -123,10 +123,10 @@ export {
 	FOverrideStyle,
 	FCheckDefaultIsDarkMode,
 	FCheckIsDarkMode,
-	FGetThemeColor,
 	FNumberGenerator,
 	FOnlyFirstCapLetter,
 	FTimerGenerator,
+	FUseColor,
 	// =====================
 	// global types
 	// =====================

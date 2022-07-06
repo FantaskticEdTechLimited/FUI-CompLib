@@ -1,7 +1,7 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
+ 
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
-import { FCheckIsDarkMode, FText } from "../..";
+import { FText, FUseColor } from "../..";
 import * as styles from "./styles";
 import { MoreActionItemProps } from "./types";
 
@@ -14,7 +14,6 @@ export const MoreActionItem = (props: MoreActionItemProps) => {
 					props.fontColor ??
 					FUseColor({
 						colorName: "Black",
-						isDarkMode: FCheckIsDarkMode(),
 					})
 				}
 			>

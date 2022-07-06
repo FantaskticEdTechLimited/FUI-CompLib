@@ -2,14 +2,13 @@ import { ConfirmPopUpProps } from "./types";
 import * as styles from "./styles";
 import {
 	FBottomNavBar,
-	FCheckIsDarkMode,
 	FPopUp,
 	FText,
+	FUseColor,
 	FUseStateSafeHandler,
 } from "..";
 import React from "react";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 
 /**
  * A kind of FPopUp that mainly contains a header and a bottom navigation bar (i.e. FBottomNavBar).
@@ -44,7 +43,6 @@ export const FConfirmPopUp = (props: ConfirmPopUpProps) => {
 						font={FFontTypes.Text()}
 						color={FUseColor({
 							colorName: "Grey",
-							isDarkMode: FCheckIsDarkMode(),
 						})}
 						children={props.subtitle}
 						{...props.subtitleProps}

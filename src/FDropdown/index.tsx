@@ -4,8 +4,7 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
 import { FScrollBarStyle } from "../FScrollBar";
 import { FText } from "../FText";
-import { FAutoConvertArray, FCheckIsDarkMode } from "..";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
+import { FAutoConvertArray, FUseColor } from "..";
 
 export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 	const hideSelectedOptions = props.hideSelectedOptions ?? true;
@@ -67,11 +66,9 @@ export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 									isSelected
 										? FUseColor({
 												colorName: "Grey",
-												isDarkMode: FCheckIsDarkMode(),
 										  })
 										: FUseColor({
 												colorName: "Black",
-												isDarkMode: FCheckIsDarkMode(),
 										  })
 								}
 								style={props.optionTextStyle}

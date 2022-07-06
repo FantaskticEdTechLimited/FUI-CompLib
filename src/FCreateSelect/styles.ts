@@ -1,8 +1,7 @@
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
 import { SpecifiedClassNames } from "./types";
-import { FCheckIsDarkMode } from "..";
+import { FUseColor } from "..";
 
 const ControlProps = {
 	backgroundColor: "transparent",
@@ -69,32 +68,28 @@ export const FCreateSelect__Component_Container = style({
 	},
 });
 
-export const FCreateSelect__ClearIcon_Container = () => {
-	const isDarkMode = FCheckIsDarkMode();
-	return style({
-		$nest: {
-			[SpecifiedClassNames.CLEAR_ICON_WRAPPER]: {
-				padding: 0,
-				width: "1.5rem",
-				height: "1.5rem",
-				$nest: {
-					"&:hover": {
-						backgroundColor: "transparent",
-					},
-				},
-			},
-			[SpecifiedClassNames.CLEAR_ICON_SVG_CONTAINER]: {
-				width: "1.5rem",
-				height: "1.5rem",
-				$nest: {
-					"&:hover": {
-						stroke: FUseColor({
-							colorName: "Red",
-							isDarkMode: isDarkMode,
-						}),
-					},
+export const FCreateSelect__ClearIcon_Container = () => style({
+	$nest: {
+		[SpecifiedClassNames.CLEAR_ICON_WRAPPER]: {
+			padding: 0,
+			width: "1.5rem",
+			height: "1.5rem",
+			$nest: {
+				"&:hover": {
+					backgroundColor: "transparent",
 				},
 			},
 		},
-	});
-};
+		[SpecifiedClassNames.CLEAR_ICON_SVG_CONTAINER]: {
+			width: "1.5rem",
+			height: "1.5rem",
+			$nest: {
+				"&:hover": {
+					stroke: FUseColor({
+						colorName: "Red",
+					}),
+				},
+			},
+		},
+	},
+});

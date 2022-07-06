@@ -1,6 +1,5 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode, FGetThemeColor, FOverrideStyle } from "..";
+import { FOverrideStyle, FUseColor } from "..";
 
 export const FBottomNavBarContainer = style({
 	alignItems: "center",
@@ -17,9 +16,8 @@ export const FLeadingButtonDiv = (disabled: boolean) =>
 		backgroundColor: disabled
 			? FUseColor({
 					colorName: "Grey",
-					isDarkMode: FCheckIsDarkMode(),
 			  })
-			: FGetThemeColor("Sub"),
+			: FUseColor({ colorName: "Sub" }),
 	});
 
 export const FActionButtonDiv = (disabled: boolean) =>
@@ -29,7 +27,6 @@ export const FActionButtonDiv = (disabled: boolean) =>
 		backgroundColor: disabled
 			? FUseColor({
 					colorName: "Grey",
-					isDarkMode: FCheckIsDarkMode(),
 			  })
-			: FGetThemeColor("Sub"),
+			: FUseColor({ colorName: "Sub" }),
 	});

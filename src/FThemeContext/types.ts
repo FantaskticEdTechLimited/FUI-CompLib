@@ -3,9 +3,17 @@ export enum FThemeMode {
 	DARK = "dark",
 }
 
+/**
+ * The light and dark mode colors of the main and sub theme colors
+ */
+export interface FThemeColorWithModeProps {
+	lightMode: string;
+	darkMode: string;
+}
+
 export interface FThemeColors {
-	mainThemeColor: string;
-	subThemeColor: string;
+	mainThemeColor: FThemeColorWithModeProps;
+	subThemeColor: FThemeColorWithModeProps;
 }
 
 export interface FTheme {

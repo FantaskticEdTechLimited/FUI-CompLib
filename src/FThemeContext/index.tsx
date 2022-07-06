@@ -1,4 +1,4 @@
-import { FColorTypes, FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 import React, {
 	createContext,
 	ElementType,
@@ -12,8 +12,14 @@ import { FThemeContextProps, FTheme, FThemeMode, FThemeColors } from "./types";
 const defaultTheme: FTheme = {
 	themeMode: FThemeMode.LIGHT,
 	themeColors: {
-		mainThemeColor: FColorTypes.FThemeColors.MAIN.LM,
-		subThemeColor: FColorTypes.FThemeColors.SUB.LM,
+		mainThemeColor: {
+			lightMode: FColorTypes.FThemeColors.MAIN.LM,
+			darkMode: FColorTypes.FThemeColors.MAIN.DM,
+		},
+		subThemeColor: {
+			lightMode: FColorTypes.FThemeColors.SUB.LM,
+			darkMode: FColorTypes.FThemeColors.SUB.DM,
+		},
 	},
 };
 
@@ -25,12 +31,18 @@ const FThemeContext = createContext<FThemeContextProps>({
 });
 
 export const useFUITheme = () => useContext(FThemeContext);
+
 export const WithFUIThemeContext = (
 	Component: ElementType,
 	_theme?: FTheme
 ) => {
 	return function WithFUIThemeContext(props: any) {
 		const [theme, setTheme] = useState<FTheme>(_theme ?? defaultTheme);
+
+		const setLocalStorageThemeMode = (isDarkMode: boolean) => {
+			if (isDarkMode) localStorage.setItem("theme", "dark");
+			else localStorage.setItem("theme", "light");
+		};
 
 		const setThemeColors = (themeColors: FThemeColors) => {
 			let newTheme = { ...theme };
@@ -40,46 +52,34 @@ export const WithFUIThemeContext = (
 
 		const setThemeMode = (themeMode: FThemeMode) => {
 			let newTheme = { ...theme };
+			const isDarkMode = themeMode === FThemeMode.DARK;
+			setLocalStorageThemeMode(isDarkMode);
 			newTheme.themeMode = themeMode;
-			// need also change the theme color based on the theme mode
-			newTheme.themeColors = {
-				mainThemeColor: FUseColor({
-					colorName: "Main",
-					isDarkMode: themeMode === FThemeMode.DARK,
-				}),
-				subThemeColor: FUseColor({
-					colorName: "Sub",
-					isDarkMode: themeMode === FThemeMode.DARK,
-				}),
-			};
 			setTheme(newTheme);
 		};
 
 		const defaultContextValue: FThemeContextProps = {
 			theme: theme,
-			setTheme,
+			setTheme: setTheme,
 			setThemeColors,
 			setThemeMode,
 		};
 
 		useEffect(() => {
 			const isDefaultDarkMode = FCheckDefaultIsDarkMode();
-			if (isDefaultDarkMode) {
-				localStorage.setItem("theme", "dark");
+			setLocalStorageThemeMode(isDefaultDarkMode);
+			if (!_theme) {
 				setTheme({
-					themeMode: FThemeMode.DARK,
+					themeMode: isDefaultDarkMode ? FThemeMode.DARK : FThemeMode.LIGHT,
 					themeColors: {
-						mainThemeColor: FColorTypes.FThemeColors.MAIN.DM,
-						subThemeColor: FColorTypes.FThemeColors.SUB.DM,
-					},
-				});
-			} else {
-				localStorage.setItem("theme", "light");
-				setTheme({
-					themeMode: FThemeMode.LIGHT,
-					themeColors: {
-						mainThemeColor: FColorTypes.FThemeColors.MAIN.LM,
-						subThemeColor: FColorTypes.FThemeColors.SUB.LM,
+						mainThemeColor: {
+							lightMode: FColorTypes.FThemeColors.MAIN.LM,
+							darkMode: FColorTypes.FThemeColors.MAIN.DM,
+						},
+						subThemeColor: {
+							lightMode: FColorTypes.FThemeColors.SUB.LM,
+							darkMode: FColorTypes.FThemeColors.SUB.DM,
+						},
 					},
 				});
 			}

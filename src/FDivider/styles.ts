@@ -1,6 +1,5 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode } from "..";
+import { FUseColor } from "..";
 
 export const FDivider_Container = (isVertical: boolean) =>
 	style({
@@ -8,6 +7,5 @@ export const FDivider_Container = (isVertical: boolean) =>
 		width: isVertical ? "0.125rem" : "100%",
 		backgroundColor: FUseColor({
 			colorName: "Grey",
-			isDarkMode: FCheckIsDarkMode(),
 		}),
 	});

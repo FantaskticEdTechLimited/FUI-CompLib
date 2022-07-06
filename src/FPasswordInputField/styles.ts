@@ -1,7 +1,6 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode, FGetThemeColor } from "..";
+import { FUseColor } from "..";
 import { FPasswordInputFieldProps } from "./types";
 
 export const FPasswordInputFieldContainer = (
@@ -20,15 +19,13 @@ export const FPasswordInputFieldContainer = (
 		border:
 			"0.125rem solid " +
 			(isTriggered
-				? FGetThemeColor("Main")
+				? FUseColor({ colorName: "Main" })
 				: isFilled
 				? FUseColor({
 						colorName: "Black",
-						isDarkMode: FCheckIsDarkMode(),
 				  })
 				: FUseColor({
 						colorName: "BG Light",
-						isDarkMode: FCheckIsDarkMode(),
 				  })),
 		opacity: props.disabled ? 0.4 : 1,
 		cursor: props.disabled ? "not-allowed" : "text",
@@ -40,7 +37,6 @@ export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>
 		border: "none",
 		color: FUseColor({
 			colorName: "Black",
-			isDarkMode: FCheckIsDarkMode(),
 		}),
 		font: FFontTypes.Large_Text(),
 		outline: "none",
@@ -53,7 +49,6 @@ export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>
 			"&::placeholder": {
 				color: FUseColor({
 					colorName: "Grey",
-					isDarkMode: FCheckIsDarkMode(),
 				}),
 				font: FFontTypes.Large_Text(),
 			},

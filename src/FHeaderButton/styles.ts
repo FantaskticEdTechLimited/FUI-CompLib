@@ -1,6 +1,5 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode, FGetThemeColor } from "..";
+import { FUseColor } from "..";
 import { FHeaderButtonProps } from "./types";
 
 export const FHeaderButtonContainer = (props: FHeaderButtonProps) =>
@@ -8,7 +7,7 @@ export const FHeaderButtonContainer = (props: FHeaderButtonProps) =>
 		display: "flex",
 		alignItems: "center",
 		width: "fit-content",
-		backgroundColor: FGetThemeColor("Sub"),
+		backgroundColor: FUseColor({ colorName: "Sub" }),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
 		padding: "0.5rem",
@@ -16,14 +15,15 @@ export const FHeaderButtonContainer = (props: FHeaderButtonProps) =>
 		opacity: props.disabled ? 0.4 : 1,
 		$nest: {
 			"&:hover": {
-				backgroundColor: props.disabled ? undefined : FGetThemeColor("Main"),
+				backgroundColor: props.disabled
+					? undefined
+					: FUseColor({ colorName: "Main" }),
 				$nest: {
 					"svg path": {
 						stroke: props.disabled
 							? undefined
 							: FUseColor({
 									colorName: "White",
-									isDarkMode: FCheckIsDarkMode(),
 							  }),
 					},
 				},

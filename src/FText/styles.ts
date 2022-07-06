@@ -1,7 +1,6 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode } from "..";
+import { FUseColor } from "..";
 import { FTextProps } from "./types";
 
 export const FTextContainer = (props: FTextProps) =>
@@ -10,7 +9,6 @@ export const FTextContainer = (props: FTextProps) =>
 			props.color ??
 			FUseColor({
 				colorName: "Black",
-				isDarkMode: FCheckIsDarkMode(),
 			}),
 		font: props.font ?? FFontTypes.Small_Title(),
 		overflow: props.overflowHidden ? "hidden" : "visible",

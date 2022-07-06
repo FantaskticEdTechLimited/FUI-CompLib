@@ -1,17 +1,14 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import React from "react";
-import { FCheckIsDarkMode, FGetThemeColor } from "..";
+import { FUseColor } from "..";
 import { FCheckBoxProps } from "./types";
 
 export const handleFCheckBox = (props: FCheckBoxProps) => {
-	const mainThemeColor = FGetThemeColor("Main");
+	const mainThemeColor = FUseColor({ colorName: "Main" });
 	const whiteColor = FUseColor({
 		colorName: "White",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const bgLightColor = FUseColor({
 		colorName: "BG Light",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	switch (props.variant) {

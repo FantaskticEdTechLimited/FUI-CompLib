@@ -1,12 +1,12 @@
 import { FTagProps } from "./types";
 import * as styles from "./styles";
 import React from "react";
-import { FGetThemeColor, FText } from "..";
+import { FText, FUseColor } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 
 export const FTag = <T,>(props: FTagProps<T>) => {
-	const mainThemeColor = FGetThemeColor("Main");
+	const mainThemeColor = FUseColor({ colorName: "Main" });
 	return (
 		<div
 			style={props.style}

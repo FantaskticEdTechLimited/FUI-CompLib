@@ -4,11 +4,9 @@ import { FTag } from "../FTag";
 import { useEffect, useRef, useState } from "react";
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import { FDropdown } from "../FDropdown";
-
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
-import { FCheckIsDarkMode, FScrollBarStyle, FText } from "..";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
+import { FScrollBarStyle, FText, FUseColor } from "..";
 
 export const FTagInputField = <T extends unknown>(
 	props: FTagInputFieldProps<T>
@@ -354,16 +352,13 @@ export const FTagInputField = <T extends unknown>(
 												option === NewTagHintLabel
 													? FUseColor({
 															colorName: "Grey",
-															isDarkMode: FCheckIsDarkMode(),
 													  })
 													: option === ExitsedTagHintLabel
 													? FUseColor({
 															colorName: "Red",
-															isDarkMode: FCheckIsDarkMode(),
 													  })
 													: FUseColor({
 															colorName: "Black",
-															isDarkMode: FCheckIsDarkMode(),
 													  })
 											}
 											className={styles.FTagInputFieldDropdownOptionDiv(

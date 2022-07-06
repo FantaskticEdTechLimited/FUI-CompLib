@@ -1,9 +1,8 @@
 import * as styles from "./styles";
 import React from "react";
-import { FCheckIsDarkMode, FGetThemeColor, FText } from "..";
+import { FText, FUseColor } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FButtonProps, FButtonTypes } from "./types";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 
 export const FButton = (props: FButtonProps) => {
 	return (
@@ -24,14 +23,12 @@ export const FButton = (props: FButtonProps) => {
 						props.type === FButtonTypes.PRIMARY
 							? FUseColor({
 									colorName: "White",
-									isDarkMode: FCheckIsDarkMode(),
 							  })
 							: props.type === FButtonTypes.OUTLINE ||
 							  props.type === FButtonTypes.SECONDARY
-							? FGetThemeColor("Main")
+							? FUseColor({ colorName: "Main" })
 							: FUseColor({
 									colorName: "Black",
-									isDarkMode: FCheckIsDarkMode(),
 							  })
 					}
 					style={props.labelStyle}

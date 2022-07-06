@@ -1,17 +1,15 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { Link } from "react-router-dom";
-import { FCheckIsDarkMode, FGetThemeColor, FText } from "..";
+import { FText, FUseColor } from "..";
 import * as styles from "./styles";
 import { FLinkButtonProps } from "./types";
 
 export const FLinkButton = (props: FLinkButtonProps) => {
 	const isSelected = props.pathIsSelected;
-	const mainThemeColor = FGetThemeColor("Main");
+	const mainThemeColor = FUseColor({ colorName: "Main" });
 	const blackColor = FUseColor({
 		colorName: "Black",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	return (

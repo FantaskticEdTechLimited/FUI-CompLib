@@ -1,16 +1,17 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode, FGetThemeColor } from "..";
+import { FUseColor } from "..";
 
 export const FSearchBarContainer = (isTriggered: boolean) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FGetThemeColor("Sub"),
-		border: "0.125rem solid " + (isTriggered ? FGetThemeColor("Main") : "none"),
+		backgroundColor: FUseColor({ colorName: "Sub" }),
+		border:
+			"0.125rem solid " +
+			(isTriggered ? FUseColor({ colorName: "Main" }) : "none"),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
-		caretColor: FGetThemeColor("Main"),
+		caretColor: FUseColor({ colorName: "Main" }),
 		columnGap: "0.5rem",
 		cursor: "text",
 		display: "flex",
@@ -20,13 +21,11 @@ export const FSearchBarContainer = (isTriggered: boolean) =>
 	});
 
 export const FSearchBarInputAreaDiv = () => {
-	const isDarkMode = FCheckIsDarkMode();
 	return style({
 		backgroundColor: "inherit",
 		border: "none",
 		color: FUseColor({
 			colorName: "Black",
-			isDarkMode: isDarkMode,
 		}),
 		font: FFontTypes.Large_Text(),
 		outline: "none",
@@ -38,7 +37,6 @@ export const FSearchBarInputAreaDiv = () => {
 			"&::placeholder": {
 				color: FUseColor({
 					colorName: "Grey",
-					isDarkMode: isDarkMode,
 				}),
 			},
 		},

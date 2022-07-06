@@ -1,8 +1,7 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { RefObject } from "react";
 import { style } from "typestyle";
-import { FCheckIsDarkMode, FGetThemeColor, FOverrideStyle } from "..";
+import { FOverrideStyle, FUseColor } from "..";
 import { FTagInputFieldProps } from "./types";
 
 export const FTagInputFieldContainer = (props: FTagInputFieldProps<any>) =>
@@ -10,7 +9,6 @@ export const FTagInputFieldContainer = (props: FTagInputFieldProps<any>) =>
 		alignItems: props.flexColumn ? "normal" : "center",
 		backgroundColor: FUseColor({
 			colorName: "White",
-			isDarkMode: FCheckIsDarkMode(),
 		}),
 		columnGap:
 			props.renderCustomizedTagComponents ||
@@ -43,7 +41,6 @@ export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
 	style({
 		backgroundColor: FUseColor({
 			colorName: "White",
-			isDarkMode: FCheckIsDarkMode(),
 		}),
 		display: "flex",
 		columnGap: "0.5rem",
@@ -52,27 +49,24 @@ export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
 		width: "inherit",
 		borderBottom:
 			"0.125rem solid " +
-			(isTriggered ? FGetThemeColor("Main") : "transparent"),
+			(isTriggered ? FUseColor({ colorName: "Main" }) : "transparent"),
 	});
 
 export const FTagInputFieldInputAreaDiv = (props: FTagInputFieldProps<any>) => {
 	const greyColor = FUseColor({
 		colorName: "Grey",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const blackColor = FUseColor({
 		colorName: "Black",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const whiteColor = FUseColor({
 		colorName: "White",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	return style({
 		backgroundColor: whiteColor,
 		border: "none",
-		caretColor: FGetThemeColor("Main"),
+		caretColor: FUseColor({ colorName: "Main" }),
 		color: props.inputValue ? blackColor : greyColor,
 		font: FFontTypes.Large_Text(),
 		outline: "none",
@@ -104,15 +98,12 @@ export const FTagInputFieldDropdownOptionDiv = (
 ) => {
 	const greyColor = FUseColor({
 		colorName: "Grey",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const redColor = FUseColor({
 		colorName: "Red",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const blackColor = FUseColor({
 		colorName: "Black",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	return style({
@@ -126,13 +117,13 @@ export const FTagInputFieldDropdownOptionDiv = (
 		textAlign: "left",
 		$nest: {
 			"&:hover": {
-				backgroundColor: FGetThemeColor("Sub"),
+				backgroundColor: FUseColor({ colorName: "Sub" }),
 				color:
 					isNew || isSelected
 						? FOverrideStyle(greyColor)
 						: isExisted
 						? FOverrideStyle(redColor)
-						: FGetThemeColor("Main"),
+						: FUseColor({ colorName: "Main" }),
 			},
 		},
 	});

@@ -1,16 +1,14 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import React from "react";
-import { FCheckIsDarkMode, FGetThemeColor } from "..";
+import { FUseColor } from "..";
 import { FRadioButtonProps } from "./types";
 
 export const handleFRadioButton = (
 	props: FRadioButtonProps,
 	checked: boolean
 ) => {
-	const mainThemeColor = FGetThemeColor("Main");
+	const mainThemeColor = FUseColor({ colorName: "Main" });
 	const whiteColor = FUseColor({
 		colorName: "White",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	return checked ? (
@@ -36,7 +34,6 @@ export const handleFRadioButton = (
 				props.strokeColor ??
 				FUseColor({
 					colorName: "BG Light",
-					isDarkMode: FCheckIsDarkMode(),
 				})
 			}
 			strokeWidth={props.strokeWidth ?? "1.2"}

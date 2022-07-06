@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { FGetThemeColor, FOverrideStyle } from "..";
+import { FOverrideStyle, FUseColor } from "..";
 
 export const FDoubleTabs_Wrapper = (disabled: boolean) =>
 	style({
@@ -21,7 +21,7 @@ export const FDoubleTabs_Header = style({
 });
 
 export const FDoubleTabs_TabsContainer = () => {
-	const color = FGetThemeColor("Sub");
+	const color = FUseColor({ colorName: "Sub" });
 	return style({
 		display: "flex",
 		flex: 1,

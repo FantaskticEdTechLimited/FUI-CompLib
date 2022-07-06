@@ -1,17 +1,14 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
-import { style } from "typestyle";
-import { FCheckIsDarkMode } from "..";
+import { style } from "typestyle"; 
+import { FUseColor } from "..";
 import { FScrollBarProps } from "./types";
 
 // not a FC, only applies css style
 export const FScrollBarStyle = (props?: FScrollBarProps) => {
 	const greyColor = FUseColor({
 		colorName: "Grey",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const darkColor = FUseColor({
 		colorName: "Dark",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	return style({

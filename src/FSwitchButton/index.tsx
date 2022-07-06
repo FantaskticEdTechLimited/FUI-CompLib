@@ -1,6 +1,5 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import React from "react";
-import { FCheckIsDarkMode } from "..";
+import { FUseColor } from "..";
 import * as styles from "./styles";
 import { FSwitchButtonProps } from "./types";
 
@@ -35,14 +34,12 @@ export const FSwitchButton = (props: FSwitchButtonProps) => {
 						props.circleColor ??
 						FUseColor({
 							colorName: "White",
-							isDarkMode: FCheckIsDarkMode(),
 						})
 					}
 					stroke={
 						props.circleBorderColor ??
 						FUseColor({
 							colorName: "Grey",
-							isDarkMode: FCheckIsDarkMode(),
 						})
 					}
 					strokeWidth={props.circleStrokeWidth ?? "1.2"}

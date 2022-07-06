@@ -3,8 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./styles";
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FCheckIsDarkMode, FGetThemeColor, FText } from "..";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
+import { FText, FUseColor } from "..";
 
 export const FEmailInputField = (props: FEmailInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
@@ -59,10 +58,9 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 						name={FIconNames.EMAIL}
 						strokeColor={
 							isTriggered
-								? FGetThemeColor("Main")
+								? FUseColor({ colorName: "Main" })
 								: FUseColor({
 										colorName: "Black",
-										isDarkMode: FCheckIsDarkMode(),
 								  })
 						}
 						style={props.iconStyle}
@@ -104,7 +102,6 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 					font={FFontTypes.Text()}
 					color={FUseColor({
 						colorName: "Red",
-						isDarkMode: FCheckIsDarkMode(),
 					})}
 					children={props.warningLabel ?? "Error: Input is missing an '@'."}
 					style={props.warningLabelStyle}

@@ -2,22 +2,19 @@ import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import * as styles from "./styles";
 import { FInputFieldProps } from "./types";
-import { FCheckIsDarkMode, FGetThemeColor, FScrollBarStyle, FText } from "..";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
+import { FScrollBarStyle, FText, FUseColor } from "..";
 
 export const FInputField = (props: FInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
-	const mainThemeColor = FGetThemeColor("Main");
+	const mainThemeColor = FUseColor({ colorName: "Main" });
 	const blackColor = FUseColor({
 		colorName: "Black",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const greyColor = FUseColor({
 		colorName: "Grey",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	const handleTextareaHeight = () => {

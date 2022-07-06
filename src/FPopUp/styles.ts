@@ -1,13 +1,10 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode } from "..";
+import { FUseColor } from "..";
 
 export const FPopUpOverlay = () => {
-	const isDarkMode = FCheckIsDarkMode();
 	return style({
 		backgroundColor: FUseColor({
 			colorName: "Dark",
-			isDarkMode: isDarkMode,
 		}),
 		height: "100vh",
 		width: "100%",
@@ -30,13 +27,11 @@ export const FPopUpContainer = (screenWidth: number, screenHeight: number) =>
 		maxHeight: screenHeight,
 		backgroundColor: FUseColor({
 			colorName: "White",
-			isDarkMode: FCheckIsDarkMode(),
 		}),
 		border:
 			"0.0625rem solid " +
 			FUseColor({
 				colorName: "BG Light",
-				isDarkMode: FCheckIsDarkMode(),
 			}),
 		borderRadius: "0.5rem",
 		boxSizing: "border-box",

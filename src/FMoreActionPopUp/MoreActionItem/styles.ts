@@ -1,6 +1,5 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode } from "../..";
+import { FUseColor } from "../..";
 import { MoreActionItemProps } from "./types";
 
 export const MoreActionItemnDiv = (props: MoreActionItemProps) =>
@@ -16,7 +15,6 @@ export const MoreActionItemnDiv = (props: MoreActionItemProps) =>
 			"0.075rem solid " +
 			FUseColor({
 				colorName: "Grey",
-				isDarkMode: FCheckIsDarkMode(),
 			}),
 		borderRadius: "0.25rem",
 		cursor: "pointer",

@@ -1,12 +1,12 @@
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
-import { FGetThemeColor, FRwdModeHandler } from "..";
+import { FRwdModeHandler, FUseColor } from "..";
 import { RWDMode } from "../global.types";
 import { FHeaderButtonProps, FHeaderButtonTypes } from "./types";
 
 export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 	const rwdMode = FRwdModeHandler(props.configureRwdSize);
-	const mainThemeColor = FGetThemeColor("Main");
+	const mainThemeColor = FUseColor({ colorName: "Main" });
 
 	switch (props.type) {
 		case FHeaderButtonTypes.BACK:

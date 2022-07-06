@@ -1,7 +1,7 @@
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { useState, useEffect, useRef, Fragment } from "react";
-import { FGetThemeColor, FScrollBarStyle } from "..";
+import { FScrollBarStyle, FUseColor } from "..";
 import { RWDMode } from "../global.types";
 import * as styles from "./styles";
 import { FSideNavBarProps } from "./types";
@@ -9,7 +9,7 @@ import { FSideNavBarProps } from "./types";
 export const FRWDNavBar = (props: FSideNavBarProps) => {
 	const [openSideBar, setOpenSideBar] = useState<boolean>(false);
 	const OpenedSideNavBarRef = useRef<HTMLDivElement>(null);
-	const mainThemeColor = FGetThemeColor("Main");
+	const mainThemeColor = FUseColor({ colorName: "Main" });
 
 	const handleClickOutside = (event: any) => {
 		if (

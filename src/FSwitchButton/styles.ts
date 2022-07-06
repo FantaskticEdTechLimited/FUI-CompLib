@@ -1,6 +1,5 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
-import { style } from "typestyle";
-import { FCheckIsDarkMode } from "..";
+import { style } from "typestyle"; 
+import { FUseColor } from "..";
 import { FSwitchButtonProps } from "./types";
 
 export const FSwitchButtonDiv = (props: FSwitchButtonProps, checked: boolean) =>
@@ -9,7 +8,6 @@ export const FSwitchButtonDiv = (props: FSwitchButtonProps, checked: boolean) =>
 		backgroundColor: checked
 			? FUseColor({
 					colorName: "Green",
-					isDarkMode: FCheckIsDarkMode(),
 			  })
 			: undefined,
 		border:
@@ -18,7 +16,6 @@ export const FSwitchButtonDiv = (props: FSwitchButtonProps, checked: boolean) =>
 				? "rgba(10, 10, 12, 0.08)"
 				: FUseColor({
 						colorName: "Grey",
-						isDarkMode: FCheckIsDarkMode(),
 				  })),
 		borderRadius: 24,
 		boxSizing: "border-box",

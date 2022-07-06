@@ -1,8 +1,7 @@
 import { style } from "typestyle";
 import { FInputFieldProps } from "./types";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
-import { FCheckIsDarkMode, FGetThemeColor } from "..";
+import { FUseColor } from "..";
 
 export const FInputFieldContainer = (props: FInputFieldProps) =>
 	style({
@@ -20,24 +19,21 @@ export const FInputFieldDiv = (
 	style({
 		backgroundColor: FUseColor({
 			colorName: "White",
-			isDarkMode: FCheckIsDarkMode(),
 		}),
 		borderRadius: "0.5rem",
 		border:
 			"0.1rem solid " +
 			(isTriggered
-				? FGetThemeColor("Main")
+				? FUseColor({ colorName: "Main" })
 				: isFilled
 				? FUseColor({
 						colorName: "Black",
-						isDarkMode: FCheckIsDarkMode(),
 				  })
 				: FUseColor({
 						colorName: "BG Light",
-						isDarkMode: FCheckIsDarkMode(),
 				  })),
 		boxSizing: "border-box",
-		caretColor: FGetThemeColor("Main"),
+		caretColor: FUseColor({ colorName: "Main" }),
 		cursor: props.disabled ? "not-allowed" : "text",
 		display: "flex",
 		flexDirection: "column",
@@ -55,12 +51,10 @@ export const FInputFieldInputAreaDiv = (
 	style({
 		backgroundColor: FUseColor({
 			colorName: "White",
-			isDarkMode: FCheckIsDarkMode(),
 		}),
 		border: "none",
 		color: FUseColor({
 			colorName: "Black",
-			isDarkMode: FCheckIsDarkMode(),
 		}),
 		display: state ? "block" : "none",
 		font: props.multiline ? FFontTypes.Small_Title() : FFontTypes.Large_Text(),
@@ -75,7 +69,6 @@ export const FInputFieldInputAreaDiv = (
 			"&::placeholder": {
 				color: FUseColor({
 					colorName: "BG Light",
-					isDarkMode: FCheckIsDarkMode(),
 				}),
 			},
 		},

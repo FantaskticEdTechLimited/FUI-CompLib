@@ -1,6 +1,5 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode, FGetThemeColor } from "..";
+import { FUseColor } from "..";
 import { FButtonProps, FButtonTypes } from "./types";
 
 export const FButtonContainer = (props: FButtonProps) =>
@@ -8,17 +7,16 @@ export const FButtonContainer = (props: FButtonProps) =>
 		alignItems: "center",
 		backgroundColor:
 			props.type === FButtonTypes.PRIMARY
-				? FGetThemeColor("Main")
+				? FUseColor({ colorName: "Main" })
 				: props.type === FButtonTypes.SECONDARY
-				? FGetThemeColor("Sub")
+				? FUseColor({ colorName: "Sub" })
 				: FUseColor({
 						colorName: "White",
-						isDarkMode: FCheckIsDarkMode(),
 				  }),
 		borderRadius: "0.25rem",
 		border:
 			props.type === FButtonTypes.OUTLINE
-				? "0.125rem solid" + FGetThemeColor("Main")
+				? "0.125rem solid" + FUseColor({ colorName: "Main" })
 				: "none",
 		cursor: props.disabled ? "not-allowed" : "pointer",
 		display: "flex",
@@ -37,7 +35,7 @@ export const FButtonContainer = (props: FButtonProps) =>
 				backgroundColor:
 					props.type === FButtonTypes.SECONDARY ||
 					props.type === FButtonTypes.OUTLINE
-						? FGetThemeColor("Main")
+						? FUseColor({ colorName: "Main" })
 						: undefined,
 				$nest: {
 					div: {
@@ -46,10 +44,9 @@ export const FButtonContainer = (props: FButtonProps) =>
 							props.type === FButtonTypes.OUTLINE
 								? FUseColor({
 										colorName: "White",
-										isDarkMode: FCheckIsDarkMode(),
 								  })
 								: props.type === FButtonTypes.TEXT
-								? FGetThemeColor("Main")
+								? FUseColor({ colorName: "Main" })
 								: undefined,
 					},
 				},

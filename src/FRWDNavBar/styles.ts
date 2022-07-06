@@ -1,6 +1,5 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode, FGetThemeColor } from "..";
+import { FCheckIsDarkMode, FUseColor } from "..";
 import { RWDMode } from "../global.types";
 import { FSideNavBarProps } from "./types";
 
@@ -15,7 +14,6 @@ export const FHiddenSideBarOverlay = (
 		backgroundColor:
 			FUseColor({
 				colorName: "Dark",
-				isDarkMode: FCheckIsDarkMode(),
 			}) + FCheckIsDarkMode()
 				? undefined
 				: "66",
@@ -29,7 +27,7 @@ export const FHiddenSideBarOverlay = (
 	});
 
 export const FHiddenSideBarContainer = () => {
-	const color = FGetThemeColor("Main");
+	const color = FUseColor({ colorName: "Main" });
 	return style({
 		width: "15rem",
 		backgroundColor: color,
@@ -44,7 +42,7 @@ export const FHiddenSideBarContainer = () => {
 };
 
 export const FNormalSideNavBarContainer = () => {
-	const color = FGetThemeColor("Main");
+	const color = FUseColor({ colorName: "Main" });
 	return style({
 		height: "100vh",
 		width: "15rem",
@@ -73,14 +71,13 @@ export const FSideNavBar_ContentDiv = style({
 
 export const FTopNavBarContainer = (props: FSideNavBarProps) =>
 	style({
-		backgroundColor: FGetThemeColor("Main"),
+		backgroundColor: FUseColor({ colorName: "Main" }),
 		border:
 			"0.063rem solid " +
 			FUseColor({
 				colorName: "BG Light",
-				isDarkMode: FCheckIsDarkMode(),
 			}),
-		boxShadow: "0rem 0rem 0.5rem " + FGetThemeColor("Sub"),
+		boxShadow: "0rem 0rem 0.5rem " + FUseColor({ colorName: "Sub" }),
 		boxSizing: "border-box",
 		display: props.visible ? "flex" : "none",
 		flexDirection: "row",
@@ -93,7 +90,7 @@ export const FTopNavBarContainer = (props: FSideNavBarProps) =>
 	});
 
 export const FTopNavBarContainer_MenuIcon = () => {
-	const color = FGetThemeColor("Sub");
+	const color = FUseColor({ colorName: "Sub" });
 	return style({
 		borderRadius: "0.25rem",
 		backgroundColor: color,
@@ -102,7 +99,7 @@ export const FTopNavBarContainer_MenuIcon = () => {
 };
 
 export const FTopNavBarContainer_CloseIcon = () => {
-	const color = FGetThemeColor("Sub");
+	const color = FUseColor({ colorName: "Sub" });
 	return style({
 		borderRadius: "0.25rem",
 		backgroundColor: color,
@@ -112,12 +109,10 @@ export const FTopNavBarContainer_CloseIcon = () => {
 };
 
 export const Divider = () => {
-	const isDarkMode = FCheckIsDarkMode();
 	return style({
 		height: "0.125rem",
 		backgroundColor: FUseColor({
 			colorName: "White",
-			isDarkMode: isDarkMode,
 		}),
 	});
 };

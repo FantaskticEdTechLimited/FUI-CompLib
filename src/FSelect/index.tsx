@@ -1,8 +1,7 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
-import { FText, FDropdown, FGetThemeColor, FCheckIsDarkMode } from "..";
+import { FText, FDropdown, FUseColor } from "..";
 import * as styles from "./styles";
 import { FSelectContainerStyleProps, FSelectProps } from "./types";
 
@@ -11,15 +10,12 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 	const FSelectWithDropdownRef = useRef<HTMLDivElement>(null);
 	const blackColor = FUseColor({
 		colorName: "Black",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const greyColor = FUseColor({
 		colorName: "Grey",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const bgLightColor = FUseColor({
 		colorName: "BG Light",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	const selectorStyleProps: FSelectContainerStyleProps<T> = {
@@ -62,7 +58,7 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 					font={FFontTypes.Text()}
 					color={
 						openDropdown
-							? FGetThemeColor("Main")
+							? FUseColor({ colorName: "Main" })
 							: selectedOption
 							? blackColor
 							: greyColor

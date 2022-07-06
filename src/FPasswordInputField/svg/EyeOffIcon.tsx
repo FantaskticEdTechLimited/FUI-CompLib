@@ -1,13 +1,11 @@
 import React from "react";
 import { FPasswordInputFieldIconProps } from "./types";
 import * as styles from "./styles";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
-import { FCheckIsDarkMode } from "../..";
+import { FUseColor } from "../..";
 
 export const EyeOffIcon = (props: FPasswordInputFieldIconProps) => {
 	const greyColor = FUseColor({
 		colorName: "Grey",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	return (

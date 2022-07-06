@@ -1,18 +1,15 @@
 import React from "react";
 import { SearchIconProps } from "./types";
 import * as styles from "./styles";
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
-import { FCheckIsDarkMode, FGetThemeColor } from "../..";
+import { FUseColor } from "../..";
 
 export const SearchIcon = (props: SearchIconProps) => {
-	const mainThemeColor = FGetThemeColor("Main");
+	const mainThemeColor = FUseColor({ colorName: "Main" });
 	const greyColor = FUseColor({
 		colorName: "Grey",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 	const blackColor = FUseColor({
 		colorName: "Black",
-		isDarkMode: FCheckIsDarkMode(),
 	});
 
 	return (

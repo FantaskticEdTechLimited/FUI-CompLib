@@ -1,6 +1,5 @@
-import { FUseColor } from "@fantaskticedtechlimited/fui-colorlib";
 import { style } from "typestyle";
-import { FCheckIsDarkMode, FGetThemeColor } from "..";
+import { FUseColor } from "..";
 import { FSelectContainerStyleProps, FSelectProps } from "./types";
 
 export const FSelectWrapper = style({
@@ -16,20 +15,17 @@ export const FSelectContainer = (
 		alignItems: "center",
 		backgroundColor: FUseColor({
 			colorName: "White",
-			isDarkMode: FCheckIsDarkMode(),
 		}),
 		border:
 			"0.125rem solid " +
 			(stylesProps.isClicked
-				? FGetThemeColor("Main")
+				? FUseColor({ colorName: "Main" })
 				: stylesProps.selectedOptions
 				? FUseColor({
 						colorName: "Black",
-						isDarkMode: FCheckIsDarkMode(),
 				  })
 				: FUseColor({
 						colorName: "BG Light",
-						isDarkMode: FCheckIsDarkMode(),
 				  })),
 		borderRadius: "0.25rem",
 		boxSizing: "border-box",
@@ -46,7 +42,6 @@ export const FSelectContainer = (
 					"svg path": {
 						stroke: FUseColor({
 							colorName: "Black",
-							isDarkMode: FCheckIsDarkMode(),
 						}),
 					},
 				},
