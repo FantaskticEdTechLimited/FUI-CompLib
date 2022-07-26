@@ -147,15 +147,10 @@
   resolved "https://registry.npmjs.org/@emotion/weak-memoize/-/weak-memoize-0.2.5.tgz#8eed982e2ee6f7f4e44c253e12962980791efd46"
   integrity sha512-6U71C2Wp7r5XtFtQzYrW5iKFT67OixrSxjI4MptCHzdSVlgabczzqLe0ZSgnub/5Kp4hSbpDB1tMytZY9pwxxA==
 
-"@fantaskticedtechlimited/fui-colorlib@^0.0.5":
-  version "0.0.5"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-colorlib/0.0.5/3c48537bb46875c70516bf73b4359b881cba64c28750260c114e69d40c9dc97d#4235663b5bc59be2b8a4668fb9fe020d7ef47697"
-  integrity sha512-IDRdciWrFO7s0ONjR3BfQAOfB1pcgDsm0OOK1hxhRI5z+F5cC/1MtkXCmcC+gbrP0xUR48Fnse41xcD+dgvMOQ==
-
-"@fantaskticedtechlimited/fui-colorlib@^3.2.0":
-  version "3.2.0"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-colorlib/3.2.0/dd100cf50c0f439ff49c757dafa4e994a2e599bd73e5069d2c091703d5a95fd8#bab48979bec92d93b3109ff445f63f3a77cebdce"
-  integrity sha512-fJMwmnhhJ3rVppx2MW0UqR8dJG18WkbkdS5/BqEhhb5Z5086rPKaH9gMV59KfMSbMa2E6ec1LadXZLuVQdnwcw==
+"@fantaskticedtechlimited/fui-colorlib@^3.2.1":
+  version "3.2.1"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-colorlib/3.2.1/ec0faed63f041bb6f49ef10a74435367632917ce818f588109dea3e72bd7f2c5#f0615bcf7be370fb5ee95ae901259c6f0888c651"
+  integrity sha512-9qAfK/G3e8F7afYnkOA+U5i8F2VC/xPnI07ebAG82qtzUrzw5iZbv/ac8LLZhYvVDhkoxU22eKBrQLPoMB33rw==
 
 "@fantaskticedtechlimited/fui-fontlib@^1.1.0":
   version "1.1.0"
@@ -165,13 +160,13 @@
     "@types/webfontloader" "^1.6.34"
     webfontloader "^1.6.28"
 
-"@fantaskticedtechlimited/fui-iconlib@^1.1.0":
-  version "1.1.0"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/1.1.0/534f88ca044095495652ada4151f561a1bcd425ef8d59ba76ef7c37098291861#805753e94f08cd74c8a722ae7e607355f7a2ee4c"
-  integrity sha512-xIsc7jHQYwG6+PQ7SuCyrSRkbe/xLMvps/mUZKfsiJLscdo8e+HAjNaK4FHExvrYXBzg5dbR+5ryaG6/75+76w==
+"@fantaskticedtechlimited/fui-iconlib@^1.0.5":
+  version "1.0.5"
+  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/1.0.5/69e8095ed2312abf8bbb16df62c97b854df32711cc6b090ea4957becd9654f5c#022e2759b394f58cc0763dd2cf6f1f7c45057a8f"
+  integrity sha512-5d9wHJl2TK9yu2A85zFhEEYNtJB4tZPoSNLqlvfdxvvFwHYi6xuEjwEp6FUImIF8jEHlwyILFXPnGLtCdeLLWw==
   dependencies:
-    "@fantaskticedtechlimited/fui-colorlib" "^0.0.5"
-    typestyle "^2.2.0"
+    "@fantaskticedtechlimited/fui-colorlib" "^3.2.1"
+    typestyle "^2.3.0"
 
 "@react-dnd/asap@^4.0.0":
   version "4.0.0"
@@ -326,7 +321,7 @@ csstype@2.6.9:
   resolved "https://registry.npmjs.org/csstype/-/csstype-2.6.9.tgz#05141d0cd557a56b8891394c1911c40c8a98d098"
   integrity sha512-xz39Sb4+OaTsULgUERcCk+TJj8ylkL4aSVDQiX/ksxbELSqwkgt4d4RD7fovIdgJGSuNYqwZEiVjYY5l0ask+Q==
 
-csstype@^3.0.2:
+csstype@3.0.10, csstype@^3.0.2:
   version "3.0.10"
   resolved "https://registry.npmjs.org/csstype/-/csstype-3.0.10.tgz#2ad3a7bed70f35b965707c092e5f30b327c290e5"
   integrity sha512-2u44ZG2OcNUO9HDp/Jl8C07x6pU/eTR3ncV91SiK3dhG9TWvRVsCoJw14Ckx5DgWkzGA3waZWO3d7pgqpUI/XA==
@@ -637,6 +632,14 @@ typestyle@^2.2.0:
   integrity sha512-2lfoH6Wp0B2fhEwy+aXzRxAaLEz/JLKUKmlttYT2yYSZhoyI2MEgv5iQjvtIBu5q/EwyqTNuYcoL1Mioqv7dsA==
   dependencies:
     csstype "2.6.9"
+    free-style "3.1.0"
+
+typestyle@^2.3.0:
+  version "2.3.0"
+  resolved "https://registry.npmjs.org/typestyle/-/typestyle-2.3.0.tgz#eff768918d5799d12009ec1543369b76b7e5c3ce"
+  integrity sha512-JZd1R5cWxRvwXzPAKVFsbxO/QjDkFeQlqGF6ZxR7IREEXyFQrf1f1mmlx5EynOTItLLx4aBbcVpCH+CDsl5ZTw==
+  dependencies:
+    csstype "3.0.10"
     free-style "3.1.0"
 
 webfontloader@^1.6.28:
