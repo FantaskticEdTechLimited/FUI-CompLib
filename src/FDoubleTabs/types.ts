@@ -1,7 +1,7 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
-import { FSVGIconProps } from "../FSVGIcon/types"; 
+import { FSVGIconProps } from "../FSVGIcon/types";
 
 export interface FDoubleTabsPanelProps {
 	label?: string;
@@ -18,11 +18,17 @@ export interface FDoubleTabsPanelProps {
 		isSelected: boolean,
 		tabButtonProps: FButtonProps
 	) => ReactNode;
+	/**
+	 * Properties (including style and className) of the tab button.
+	 */
 	tabButtonProps?: FButtonProps;
 
 	// control rerender
 	isRenderOnSelected?: boolean;
 }
+
+// type ModifiedTabButtonClassName = Pick<FButtonProps, "className">;
+// type ModifiedTabButtonProps = Omit<FButtonProps, "className">;
 
 export interface FDoubleTabsProps {
 	children?: Array<ReactElement<FDoubleTabsPanelProps>>;
@@ -49,8 +55,8 @@ export interface FDoubleTabsProps {
 	tabContainerClassName?: string;
 	tabContainerStyle?: CSSProperties;
 
-	// css style of FDoubleTabs tab
-	tabButtonClassName?: string;
-	tabButtonStyle?: CSSProperties;
-	tabButtonProps?: FButtonProps; 
+	/**
+	 * Properties (including style and className) of the tab button.
+	 */
+	tabButtonProps?: FButtonProps;
 }

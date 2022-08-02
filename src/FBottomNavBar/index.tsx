@@ -10,8 +10,8 @@ import { FButtonTypes } from "../FButton/types";
 export const FBottomNavBar = (props: FBottomNavBarProps) => {
 	return (
 		<div
-			style={props.navBarStyle}
-			className={styles.FBottomNavBarContainer + " " + props.navBarClassName}
+			style={props.style}
+			className={styles.FBottomNavBarContainer + " " + props.className}
 		>
 			{props.children ?? (
 				<>
@@ -24,11 +24,11 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 								? () => {}
 								: props.onLeadingButtonClick!()
 						}
-						style={props.leadingButtonStyle}
-						className={
+						style={props.leadingButtonProps?.style}
+						className={() =>
 							styles.FLeadingButtonDiv(props.disableActionButton!) +
 							" " +
-							props.leadingButtonClassName
+							props.leadingButtonProps?.className
 						}
 						{...props.leadingButtonProps}
 					/>
@@ -41,11 +41,11 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 								? () => {}
 								: props.onActionButtonClick!()
 						}
-						style={props.actionButtonStyle}
-						className={
+						style={props.actionButtonProps?.style}
+						className={() =>
 							styles.FActionButtonDiv(props.disableActionButton!) +
 							" " +
-							props.actionButtonClassName
+							props.actionButtonProps?.className
 						}
 						{...props.actionButtonProps}
 					/>

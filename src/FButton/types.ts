@@ -17,14 +17,14 @@ export interface FButtonProps {
 	key?: Key;
 	type?: FButtonTypes;
 	customChildren?: ReactNode;
-	className?: string;
+	className?: (isHover?: boolean) => string;
 	disabled?: boolean;
 	label?: string;
 	onClick?: OnClickFunction;
-	style?: CSSProperties; 
-	labelClassName?: string;
-	labelStyle?: CSSProperties;
-	labelProps?: FTextProps;
+	style?: (isHover?: boolean) => CSSProperties;
+	labelClassName?: (isHover?: boolean) => string;
+	labelStyle?: (isHover?: boolean) => CSSProperties;
+	labelProps?: Omit<FTextProps, "style" | "className">;
 	leadingComponents?: ComponentsType | Array<ComponentsType>;
-	actionComponents?: ComponentsType | Array<ComponentsType>; 
+	actionComponents?: ComponentsType | Array<ComponentsType>;
 }

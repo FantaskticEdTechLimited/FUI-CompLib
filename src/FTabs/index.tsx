@@ -18,8 +18,8 @@ export const FTabs = (props: FTabsProps) => {
 		actionComponents: [],
 		disabled: props.disabled ?? false,
 		onClick: () => setTabIndex(0),
-		style: props.tabButtonStyle,
-		className: props.tabButtonClassName,
+		style: props.tabButtonProps?.style,
+		className: props.tabButtonProps?.className,
 	};
 	return (
 		<div

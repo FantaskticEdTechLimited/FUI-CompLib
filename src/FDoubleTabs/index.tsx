@@ -20,8 +20,8 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 		actionComponents: [],
 		disabled: props.disabled ?? false,
 		onClick: () => setTabIndex(0),
-		style: props.tabButtonStyle,
-		className: props.tabButtonClassName,
+		style: props.tabButtonProps?.style,
+		className: props.tabButtonProps?.className,
 	};
 	useEffect(() => {
 		if (props.children && props.children.length !== 2)
@@ -74,7 +74,8 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 												props.tabButtonProps?.labelProps?.font ??
 												FFontTypes.Large_Text(),
 										},
-										className: styles.FDoubleTabs_TabButton_Container(isSelect),
+										className: () =>
+											styles.FDoubleTabs_TabButton_Container(isSelect),
 										...tab.props.tabButtonProps,
 									};
 

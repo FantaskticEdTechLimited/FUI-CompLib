@@ -20,10 +20,13 @@ export interface FTabPanelProps {
 		isSelected: boolean,
 		buttonProps: FButtonProps
 	) => ReactNode;
+	/**
+	 * Properties (including style and className) of the tab button.
+	 */
 	tabButtonProps?: FButtonProps;
 
-	// control rerender 
-	isRenderOnSelected?: boolean
+	// control rerender
+	isRenderOnSelected?: boolean;
 }
 
 export interface FTabsProps {
@@ -31,7 +34,7 @@ export interface FTabsProps {
 	disabled?: boolean;
 	// leading components in the header
 	leadingComponents?: ReactNode;
-	// action components in the header 
+	// action components in the header
 	actionComponents?: ReactNode;
 	// user design own tab in general
 	renderCustomizedTabButton?: (
@@ -51,9 +54,8 @@ export interface FTabsProps {
 	tabContainerClassName?: string;
 	tabContainerStyle?: CSSProperties;
 
-	// css style of FTabs tab
-	tabButtonClassName?: string;
-	tabButtonStyle?: CSSProperties;
+	/**
+	 * Properties (including style and className) of the tab button.
+	 */
 	tabButtonProps?: FButtonProps;
-
 }

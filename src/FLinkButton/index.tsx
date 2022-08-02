@@ -1,5 +1,5 @@
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FText, FUseColor } from "..";
 import * as styles from "./styles";
@@ -7,6 +7,7 @@ import { FLinkButtonProps } from "./types";
 
 export const FLinkButton = (props: FLinkButtonProps) => {
 	const isSelected = props.pathIsSelected;
+	const [isHover, setIsHover] = useState<boolean>(false);
 	const mainThemeColor = FUseColor({ colorName: "Main" });
 	const blackColor = FUseColor({
 		colorName: "Black",
@@ -14,14 +15,19 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 
 	return (
 		<Link
-			style={props.style}
+			style={props.style && props.style(isHover)}
 			className={
-				styles.FLinkButtonContainer(isSelected!, props) + " " + props.className
+				styles.FLinkButtonContainer(isSelected!, props) +
+				" " +
+				(props.className && props.className(isHover))
 			}
 			to={props.pathLink!}
 			onClick={() =>
 				props.disabled ? () => {} : props.onClick && props.onClick()
 			}
+			// Added hover effect for className and style
+			onMouseEnter={() => setIsHover(true)}
+			onMouseLeave={() => setIsHover(false)}
 		>
 			{props.customChildren ?? (
 				<>
@@ -32,7 +38,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 						/>
 					) : undefined}
 					<FText
-						style={props.labelStyle}
+						style={props.labelStyle && props.labelStyle()}
 						className={styles.FLinkButtonLabel + " " + props.labelClassName}
 						color={isSelected ? mainThemeColor : blackColor}
 						children={props.label}
