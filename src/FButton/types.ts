@@ -17,11 +17,22 @@ export interface FButtonProps {
 	key?: Key;
 	type?: FButtonTypes;
 	customChildren?: ReactNode;
+	/**
+	 * Example of using inline style with hover state:
+	 *
+	 * `const buttonStyle = (hover?: boolean) => {`
+	 *
+	 * `	return {backgroundColor: hover ? "red" : "green"};`
+	 *
+	 * `};`
+	 *
+	 * `<FButton style={buttonStyle} />;`
+	 */
+	style?: (isHover?: boolean) => CSSProperties;
 	className?: (isHover?: boolean) => string;
 	disabled?: boolean;
 	label?: string;
 	onClick?: OnClickFunction;
-	style?: (isHover?: boolean) => CSSProperties;
 	labelClassName?: (isHover?: boolean) => string;
 	labelStyle?: (isHover?: boolean) => CSSProperties;
 	labelProps?: Omit<FTextProps, "style" | "className">;

@@ -1,7 +1,10 @@
 /**
- * To generate a timer, i.e. 00:00:00 (hr:min:sec) or 00:00 (min:sec).
+ * Returns the time in _`hour:min:sec`_ or _`min:sec`_ format
+ * from `time` in ms.
+ *
+ * For example, if it is `1000`ms, it will return `00:01` (1000ms = 1sec).
  */
-export const FTimerGenerator = (time: number) => {
+export const FTimer = (time: number) => {
 	let hour, min, sec, temp;
 
 	if (Math.floor(time / 3600) > 0 && Math.floor(time / 3600) < 10)

@@ -30,7 +30,7 @@ const FThemeContext = createContext<FThemeContextProps>({
 	setThemeMode: () => {},
 });
 
-export const useFUITheme = () => useContext(FThemeContext);
+export const FUseTheme = () => useContext(FThemeContext);
 
 export const WithFUIThemeContext = (
 	Component: ElementType,

@@ -34,7 +34,7 @@ import { FCreateSelect } from "./FCreateSelect";
 import { FConfirmPopUp } from "./FConfirmPopUp";
 // =======================================================================
 // import theme
-import { WithFUIThemeContext, useFUITheme } from "./FThemeContext";
+import { WithFUIThemeContext, FUseTheme } from "./FThemeContext";
 import { FTheme, FThemeColors, FThemeMode } from "./FThemeContext/types";
 // =======================================================================
 // import utils
@@ -48,10 +48,10 @@ import {
 	FOverrideStyle,
 	FCheckDefaultIsDarkMode,
 	FCheckIsDarkMode,
-	FNumberGenerator,
-	FOnlyFirstCapLetter,
-	FTimerGenerator,
 	FUseColor,
+	FFirstLetterUppercase,
+	FSingleDigitConverter,
+	FTimer,
 } from "./utils";
 // =======================================================================
 // import types
@@ -107,7 +107,7 @@ export {
 	// theme
 	// =====================
 	WithFUIThemeContext,
-	useFUITheme as FUseTheme,
+	FUseTheme,
 	FTheme,
 	FThemeColors,
 	FThemeMode,
@@ -123,10 +123,10 @@ export {
 	FOverrideStyle,
 	FCheckDefaultIsDarkMode,
 	FCheckIsDarkMode,
-	FNumberGenerator,
-	FOnlyFirstCapLetter,
-	FTimerGenerator,
 	FUseColor,
+	FFirstLetterUppercase,
+	FTimer,
+	FSingleDigitConverter,
 	// =====================
 	// global types
 	// =====================

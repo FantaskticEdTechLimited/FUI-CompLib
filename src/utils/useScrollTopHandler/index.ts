@@ -1,4 +1,4 @@
-import { FUseStateSafeHandler } from "../FUseStateSafe";
+import { FUseStateSafeHandler } from "../useStateSafe";
 
 export function FScrollTopHandler() {
 	const [scrollTop, setScrollTop] = FUseStateSafeHandler(0);
