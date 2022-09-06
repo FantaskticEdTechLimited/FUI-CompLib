@@ -54,6 +54,7 @@ import {
 	FTimer,
 	FCountTimer,
 	FDateTimer,
+	FCountDownTimer,
 } from "./utils";
 // =======================================================================
 // import types
@@ -131,6 +132,7 @@ export {
 	FSingleDigitConverter,
 	FCountTimer,
 	FDateTimer,
+	FCountDownTimer,
 	// =====================
 	// global types
 	// =====================

@@ -13,6 +13,7 @@ import { FTimer } from "./useTimer";
 import { FSingleDigitConverter } from "./useSingleDigitConverter";
 import { FCountTimer } from "./useCountTimer";
 import { FDateTimer } from "./useDateTimer";
+import { FCountDownTimer } from "./useCountDownTimer";
 
 export {
 	FUseScreenSize,
@@ -30,4 +31,5 @@ export {
 	FSingleDigitConverter,
 	FCountTimer,
 	FDateTimer,
+	FCountDownTimer,
 };
