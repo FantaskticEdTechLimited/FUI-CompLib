@@ -1,30 +1,31 @@
-import React, { useEffect, useRef } from "react"
-import { FPopUpProps } from "./types"
-import * as styles from "./styles"
-import { FScreenSizeHandler } from "../utils"
-import { FScrollBarStyle } from "../FScrollBar"
+import React, { useEffect, useRef } from "react";
+import { FPopUpProps } from "./types";
+import * as styles from "./styles";
+import { FScrollBarStyle } from "../FScrollBar";
+import { FUseScreenSize } from "../utils";
+
 export const FPopUp = (props: FPopUpProps) => {
-	const PopupRef = useRef<HTMLDivElement>(null)
-	const [width, height] = FScreenSizeHandler()
+	const PopupRef = useRef<HTMLDivElement>(null);
+	const [width, height] = FUseScreenSize();
 
 	const handleClickOutside = async (event: any) => {
 		if (props.isDisableCloseWhenClickOutside) {
-			return
+			return;
 		}
 
 		if (PopupRef.current) {
 			if (!PopupRef.current.contains(event.target)) {
-				props.onClose && (await props.onClose())
+				props.onClose && (await props.onClose());
 			}
 		}
-	}
+	};
 
 	useEffect(() => {
-		window.addEventListener("mousedown", handleClickOutside)
+		window.addEventListener("mousedown", handleClickOutside);
 		return () => {
-			window.removeEventListener("mousedown", handleClickOutside)
-		}
-	}, [])
+			window.removeEventListener("mousedown", handleClickOutside);
+		};
+	}, []);
 
 	return (
 		<div
@@ -32,9 +33,7 @@ export const FPopUp = (props: FPopUpProps) => {
 			className={styles.FPopUpOverlay() + " " + props.overlayClassName}
 		>
 			<div
-				ref={
-					props.isDisableCloseWhenClickOutside ? undefined : PopupRef
-				}
+				ref={props.isDisableCloseWhenClickOutside ? undefined : PopupRef}
 				style={props.style}
 				className={
 					styles.FPopUpContainer(width, height) +
@@ -49,5 +48,5 @@ export const FPopUp = (props: FPopUpProps) => {
 				{props.children && props.children}
 			</div>
 		</div>
-	)
-}
+	);
+};

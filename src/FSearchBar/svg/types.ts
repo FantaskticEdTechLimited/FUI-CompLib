@@ -1,6 +1,6 @@
 import { CSSProperties } from "react";
 
-import { OnClickFunction } from "../../global.types";
+import { FOnClickFunction } from "../../global.types";
 
 export interface SearchIconProps {
 	isTriggered: boolean;
@@ -10,7 +10,7 @@ export interface SearchIconProps {
 }
 
 export interface ClearIconProps {
-	onClick: OnClickFunction;
+	onClick: FOnClickFunction;
 	className?: string;
 	style?: CSSProperties;
 }

@@ -1,10 +1,10 @@
 import { CSSProperties } from "react";
-import { OnClickFunction } from "../global.types";
+import { FOnClickFunction } from "../global.types";
 
 export interface FSwitchButtonProps {
 	checked?: boolean;
 	disabled?: boolean;
-	onClick?: OnClickFunction;
+	onClick?: FOnClickFunction;
 
 	// css style of FSwitchButton container
 	containerClassName?: string;

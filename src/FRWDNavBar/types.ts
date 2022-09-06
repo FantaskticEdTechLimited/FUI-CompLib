@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from "react";
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { RWDMode } from "../global.types";
+import { FRWDMode } from "../global.types";
 import { FScrollBarProps } from "../FScrollBar/types";
 
 export type OverlayEnterSide = "left" | "right";
@@ -9,7 +9,7 @@ export interface FSideNavBarProps {
 	/**
 	 * responsive mode of the side bar
 	 */
-	rwdMode: RWDMode;
+	rwdMode: FRWDMode;
 	/**
 	 * which side the overlay comes from
 	 */

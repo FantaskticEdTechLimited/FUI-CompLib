@@ -40,10 +40,10 @@ import { FTheme, FThemeColors, FThemeMode } from "./FThemeContext/types";
 // import utils
 import {
 	FSideBarHandler,
-	FScreenSizeHandler,
+	FUseScreenSize,
 	FAutoConvertArray,
 	FScrollTopHandler,
-	FUseStateSafeHandler,
+	FUseStateSafe,
 	FRwdModeHandler,
 	FOverrideStyle,
 	FCheckDefaultIsDarkMode,
@@ -57,12 +57,12 @@ import {
 // import types
 import {
 	Nullable,
-	OnCallBackFuntion,
-	OnClickFunction,
-	OnDataCallbackFunction,
-	OnSubmitFunction,
-	RWDMode,
-	RwdSizeProps,
+	FOnCallBackFuntion,
+	FOnClickFunction,
+	FOnDataCallbackFunction,
+	FOnSubmitFunction,
+	FRWDMode,
+	FRwdSizeProps,
 } from "./global.types";
 // =======================================================================
 
@@ -114,11 +114,11 @@ export {
 	// =====================
 	// utils functions
 	// =====================
-	FScreenSizeHandler,
+	FUseScreenSize,
 	FSideBarHandler,
 	FAutoConvertArray,
 	FScrollTopHandler,
-	FUseStateSafeHandler,
+	FUseStateSafe,
 	FRwdModeHandler,
 	FOverrideStyle,
 	FCheckDefaultIsDarkMode,
@@ -131,10 +131,10 @@ export {
 	// global types
 	// =====================
 	Nullable,
-	OnClickFunction,
-	OnSubmitFunction,
-	OnDataCallbackFunction,
-	OnCallBackFuntion,
-	RWDMode,
-	RwdSizeProps,
+	FOnClickFunction,
+	FOnSubmitFunction,
+	FOnDataCallbackFunction,
+	FOnCallBackFuntion,
+	FRWDMode,
+	FRwdSizeProps,
 };

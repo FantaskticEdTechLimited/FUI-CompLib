@@ -2,7 +2,7 @@ import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, Key, ReactElement, ReactNode } from "react";
 import { FSVGIconProps } from "../FSVGIcon/types";
 import { FTextProps } from "../FText/types";
-import { OnClickFunction } from "../global.types";
+import { FOnClickFunction } from "../global.types";
 
 export enum FButtonTypes {
 	PRIMARY = "Primary",
@@ -17,6 +17,28 @@ export interface FButtonProps {
 	key?: Key;
 	type?: FButtonTypes;
 	customChildren?: ReactNode;
+	disabled?: boolean;
+	label?: string;
+	onClick?: FOnClickFunction;
+	labelClassName?: (isHover?: boolean) => string;
+	labelStyle?: (isHover?: boolean) => CSSProperties;
+	labelProps?: Omit<FTextProps, "style" | "className">;
+	leadingComponents?: ComponentsType | Array<ComponentsType>;
+	actionComponents?: ComponentsType | Array<ComponentsType>;
+	/**
+	 * Example of using hover effect for className:
+	 *
+	 * _assume using **typeStyle**_
+	 *
+	 * `export const ButtonDiv = (isHover: boolean) => style({ `
+	 *
+	 * `     backgroundColor: isHover ? "white" : undefined`
+	 *
+	 * `})`
+	 *
+	 * `<FButton className={(isHover) => styles.ButtonDiv(isHover!)} />`
+	 */
+	className?: (isHover?: boolean) => string;
 	/**
 	 * Example of using inline style with hover state:
 	 *
@@ -27,15 +49,8 @@ export interface FButtonProps {
 	 * `};`
 	 *
 	 * `<FButton style={buttonStyle} />;`
+	 *
+	 * Without hover effect, e.g. `<FButton style={()=>({ padding: "4px" })}`
 	 */
 	style?: (isHover?: boolean) => CSSProperties;
-	className?: (isHover?: boolean) => string;
-	disabled?: boolean;
-	label?: string;
-	onClick?: OnClickFunction;
-	labelClassName?: (isHover?: boolean) => string;
-	labelStyle?: (isHover?: boolean) => CSSProperties;
-	labelProps?: Omit<FTextProps, "style" | "className">;
-	leadingComponents?: ComponentsType | Array<ComponentsType>;
-	actionComponents?: ComponentsType | Array<ComponentsType>;
 }

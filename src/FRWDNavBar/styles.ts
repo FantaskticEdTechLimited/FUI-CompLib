@@ -1,6 +1,6 @@
 import { style } from "typestyle";
 import { FCheckIsDarkMode, FUseColor } from "..";
-import { RWDMode } from "../global.types";
+import { FRWDMode } from "../global.types";
 import { FSideNavBarProps } from "./types";
 
 export const FHiddenSideBarOverlay = (
@@ -84,7 +84,7 @@ export const FTopNavBarContainer = (props: FSideNavBarProps) =>
 		justifyContent: "space-between",
 		alignItems: "center",
 		padding:
-			props.rwdMode === RWDMode.MOBILE ? "0.5rem 1rem" : "0.75rem 1.5rem",
+			props.rwdMode === FRWDMode.MOBILE ? "0.5rem 1rem" : "0.75rem 1.5rem",
 		width: "100%",
 		zIndex: 15,
 	});

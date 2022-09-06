@@ -1,10 +1,10 @@
 import React from "react";
-import { FBottomNavBar, FUseStateSafeHandler } from "..";
+import { FBottomNavBar, FUseStateSafe } from "..";
 import * as styles from "./styles";
 import { FFormProps } from "./types";
 
 export const FForm = (props: FFormProps) => {
-	const [isLoading, setIsLoading] = FUseStateSafeHandler(false);
+	const [isLoading, setIsLoading] = FUseStateSafe(false);
 	const handleActionButtonClick = async () => {
 		setIsLoading(true);
 		props.onSubmit && (await props.onSubmit());

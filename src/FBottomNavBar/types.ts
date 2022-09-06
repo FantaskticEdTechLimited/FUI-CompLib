@@ -1,6 +1,6 @@
 import { CSSProperties, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
-import { OnClickFunction } from "../global.types";
+import { FOnClickFunction } from "../global.types";
 
 // type ModifiedButtonStyle = Pick<FButtonProps, "style">;
 // type ModifiedButtonClassName = Pick<FButtonProps, "className">;
@@ -12,8 +12,8 @@ export interface FBottomNavBarProps {
 	disableActionButton?: boolean;
 	disableLeadingButton?: boolean;
 	leadingButtonLabel?: string;
-	onActionButtonClick?: OnClickFunction;
-	onLeadingButtonClick?: OnClickFunction;
+	onActionButtonClick?: FOnClickFunction;
+	onLeadingButtonClick?: FOnClickFunction;
 
 	/**
 	 * Properties (including style and className) of the action button.

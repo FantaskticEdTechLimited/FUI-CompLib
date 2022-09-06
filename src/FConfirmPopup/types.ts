@@ -1,15 +1,15 @@
 import { FBottomNavBarProps } from "../FBottomNavBar/types";
 import { FPopUpProps } from "../FPopUp/types";
 import { FTextProps } from "../FText/types";
-import { OnClickFunction } from "../global.types";
+import { FOnClickFunction } from "../global.types";
 
 export interface ConfirmPopUpProps extends FPopUpProps {
 	title: string;
 	subtitle?: string;
 	isDisableBottomNavigation?: boolean;
-	onLeadingButtonClick?: OnClickFunction;
-	onActionButtonClick?: OnClickFunction;
+	onLeadingButtonClick?: FOnClickFunction;
+	onActionButtonClick?: FOnClickFunction;
 	FBottomNavigationProps?: Partial<FBottomNavBarProps>;
 	titleProps?: FTextProps;
-	subtitleProps?: FTextProps; 
+	subtitleProps?: FTextProps;
 }

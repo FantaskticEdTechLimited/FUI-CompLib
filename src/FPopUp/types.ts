@@ -1,11 +1,11 @@
 import { CSSProperties, ReactNode } from "react";
 import { FScrollBarProps } from "../FScrollBar/types";
-import { OnClickFunction } from "../global.types";
+import { FOnClickFunction } from "../global.types";
 
 export interface FPopUpProps {
 	popUpName?: string;
 	children?: ReactNode;
-	onClose?: OnClickFunction;
+	onClose?: FOnClickFunction;
 	className?: string;
 	isDisableCloseWhenClickOutside?: boolean;
 	overlayClassName?: string;

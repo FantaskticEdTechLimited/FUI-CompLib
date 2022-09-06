@@ -1,9 +1,9 @@
 import { CSSProperties } from "react";
-import { OnClickFunction } from "../global.types";
+import { FOnClickFunction } from "../global.types";
 
 export interface FCheckBoxProps {
 	checked: boolean;
-	onClick: OnClickFunction;
+	onClick: FOnClickFunction;
 	variant: "round" | "square";
 	disabled?: boolean;
 
@@ -15,5 +15,5 @@ export interface FCheckBoxProps {
 	borderColor?: string;
 	fillColor?: string;
 	iconColor?: string;
-	strokeWidth?: number | string; 
+	strokeWidth?: number | string;
 }

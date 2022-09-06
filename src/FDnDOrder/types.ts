@@ -1,12 +1,12 @@
 import { Key, ReactElement } from "react";
 import { ConnectDropTarget, ConnectDragSource } from "react-dnd";
-import { OnSubmitFunction } from "../global.types";
+import { FOnSubmitFunction } from "../global.types";
 
 export interface FDnDOrderProps<T> {
 	// a list of data to be mapped
 	data: Array<T>;
 	// drag and drop action to update the data list
-	onUpdateData: OnSubmitFunction<T[]>;
+	onUpdateData: FOnSubmitFunction<T[]>;
 	// render JSX Element children
 	renderData: (data: T, index: number) => ReactElement;
 }

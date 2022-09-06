@@ -1,6 +1,6 @@
 import { ReactNode } from "react";
 import { StylesConfig, GroupBase } from "react-select";
-import { OnClickFunction, OnSubmitFunction } from "..";
+import { FOnClickFunction, FOnSubmitFunction } from "..";
 
 export interface FCreateSelectProps<T> {
 	options: T[];
@@ -19,13 +19,13 @@ export interface FCreateSelectProps<T> {
 	isClearable?: boolean;
 	getOptionLabel: (d: T) => ReactNode;
 	getOptionKey: (d: T) => string | number;
-	onClear?: OnClickFunction;
+	onClear?: FOnClickFunction;
 	/**
 	 * It can only be used to remove selected options when multiple selected options is true.
 	 */
-	onRemove?: OnSubmitFunction<T>;
-	onSelect: OnSubmitFunction<T>;
-	onCreate?: OnSubmitFunction<string>;
+	onRemove?: FOnSubmitFunction<T>;
+	onSelect: FOnSubmitFunction<T>;
+	onCreate?: FOnSubmitFunction<string>;
 	/**
 	 * Option can be compared with input.
 	 */

@@ -1,8 +1,8 @@
-import { FScreenSizeHandler } from "./useScreenSizeHandler";
+import { FUseScreenSize } from "./useScreenSize";
 import { FSideBarHandler } from "./useSideBarHandler";
 import { FAutoConvertArray } from "./useAutoConvertArray";
 import { FScrollTopHandler } from "./useScrollTopHandler";
-import { FUseStateSafeHandler } from "./useStateSafe";
+import { FUseStateSafe } from "./useStateSafe";
 import { FRwdModeHandler } from "./useRwdModeHandler";
 import { FOverrideStyle } from "./useOverrideStyle";
 import { FCheckDefaultIsDarkMode } from "./useCheckDefaultIsDarkMode";
@@ -13,11 +13,11 @@ import { FTimer } from "./useTimer";
 import { FSingleDigitConverter } from "./useSingleDigitConverter";
 
 export {
-	FScreenSizeHandler,
+	FUseScreenSize,
 	FSideBarHandler,
 	FAutoConvertArray,
 	FScrollTopHandler,
-	FUseStateSafeHandler,
+	FUseStateSafe,
 	FRwdModeHandler,
 	FOverrideStyle,
 	FCheckDefaultIsDarkMode,

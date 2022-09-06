@@ -1,9 +1,9 @@
 import { CSSProperties } from "react";
-import { OnClickFunction } from "../global.types";
+import { FOnClickFunction } from "../global.types";
 
 export interface FRadioButtonProps {
 	checked?: boolean;
-	onClick?: OnClickFunction;
+	onClick?: FOnClickFunction;
 
 	// css style of FRadioButton container
 	containerClassName?: string;
@@ -13,5 +13,5 @@ export interface FRadioButtonProps {
 	// css style of FRadioButton svg path
 	fillColor?: string;
 	strokeColor?: string;
-	strokeWidth?: number | string; 
+	strokeWidth?: number | string;
 }

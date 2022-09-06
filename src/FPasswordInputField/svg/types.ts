@@ -1,5 +1,5 @@
-import { CSSProperties } from "react"; 
-import { OnClickFunction } from "../../global.types";
+import { CSSProperties } from "react";
+import { FOnClickFunction } from "../../global.types";
 
 export interface FPasswordInputFieldIconProps {
 	style?: CSSProperties;
@@ -7,5 +7,5 @@ export interface FPasswordInputFieldIconProps {
 	disabled?: boolean;
 	strokeColor?: string;
 	strokeWidth?: string | number;
-	onClick?: OnClickFunction;
+	onClick?: FOnClickFunction;
 }

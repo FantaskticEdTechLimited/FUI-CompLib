@@ -9,7 +9,7 @@ type dispatch<T> = React.Dispatch<React.SetStateAction<T>>;
  *
  * @param initialValue initial state value
  */
-export const FUseStateSafeHandler = <T>(
+export const FUseStateSafe = <T>(
 	initialValue: useStateSafeParams<T>
 ): [T, dispatch<T>] => {
 	const [val, setVal] = useState<T>(initialValue);

@@ -1,6 +1,6 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement } from "react";
-import { OnClickFunction, RwdSizeProps } from "../global.types";
+import { FOnClickFunction, FRwdSizeProps } from "../global.types";
 import { FSVGIconProps } from "../FSVGIcon/types";
 
 export enum FHeaderButtonTypes {
@@ -13,11 +13,11 @@ export interface FHeaderButtonProps {
 	type?: FHeaderButtonTypes;
 	children?: ReactElement<FSVGIconProps | FIconProps>;
 	disabled?: boolean;
-	onClick?: OnClickFunction;
+	onClick?: FOnClickFunction;
 	// disable auto resize the button based on screenWidth
 	disableAutoResize?: boolean;
-	// change rwd size 
-	configureRwdSize?: RwdSizeProps;
+	// change rwd size
+	configureRwdSize?: FRwdSizeProps;
 	// size is only active when disableAutoResize
 	size?: "small" | "large";
 	iconStrokeColor?: string;
@@ -25,5 +25,5 @@ export interface FHeaderButtonProps {
 
 	// css style of FHeaderButton container
 	containerClassName?: string;
-	containerStyle?: CSSProperties; 
+	containerStyle?: CSSProperties;
 }

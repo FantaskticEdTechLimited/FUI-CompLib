@@ -1,7 +1,7 @@
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { FRwdModeHandler, FUseColor } from "..";
-import { RWDMode } from "../global.types";
+import { FRWDMode } from "../global.types";
 import { FHeaderButtonProps, FHeaderButtonTypes } from "./types";
 
 export const handleFHeaderButton = (props: FHeaderButtonProps) => {
@@ -17,7 +17,7 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 					size={
 						props.disableAutoResize
 							? props.size
-							: rwdMode === RWDMode.MOBILE
+							: rwdMode === FRWDMode.MOBILE
 							? "small"
 							: "large"
 					}
@@ -32,7 +32,7 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 					size={
 						props.disableAutoResize
 							? props.size
-							: rwdMode === RWDMode.MOBILE
+							: rwdMode === FRWDMode.MOBILE
 							? "small"
 							: "large"
 					}
@@ -47,7 +47,7 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 					size={
 						props.disableAutoResize
 							? props.size
-							: rwdMode === RWDMode.MOBILE
+							: rwdMode === FRWDMode.MOBILE
 							? "small"
 							: "large"
 					}

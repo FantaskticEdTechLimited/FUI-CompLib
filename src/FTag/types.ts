@@ -1,15 +1,15 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactNode } from "react";
 import { FTextProps } from "../FText/types";
-import { OnSubmitFunction } from "../global.types";
+import { FOnSubmitFunction } from "../global.types";
 
 export interface FTagProps<T> {
 	tag: T;
 	children?: ReactNode;
 	disabled?: boolean;
 	label?: string;
-	onClick?: OnSubmitFunction<T>;
-	onDelete?: OnSubmitFunction<T>;
+	onClick?: FOnSubmitFunction<T>;
+	onDelete?: FOnSubmitFunction<T>;
 
 	// user can design own action icon or comp, e.g. tick icon
 	actionComponents?: ReactNode;
@@ -25,5 +25,5 @@ export interface FTagProps<T> {
 	// css style of FTag label
 	labelClassName?: string;
 	labelStyle?: CSSProperties;
-	labelProps?: FTextProps; 
+	labelProps?: FTextProps;
 }

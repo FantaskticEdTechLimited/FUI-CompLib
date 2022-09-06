@@ -1,24 +1,24 @@
 export type Nullable<T> = T | null;
 
-export type OnClickFunction = () => void;
+export type FOnClickFunction = () => void;
 
-export type OnSubmitFunction<T> =
+export type FOnSubmitFunction<T> =
 	| ((data: T) => void)
 	| ((data: T) => Promise<void>);
 
-export type OnDataCallbackFunction<T, C> = (
+export type FOnDataCallbackFunction<T, C> = (
 	data: T,
 	callbackFunction: C
 ) => Promise<void>;
 
-export type OnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
+export type FOnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 
 /**
  * for different device types:
  *
  * Full = PC, Tablet = tablet/pad, Mobile = phone.
  */
-export enum RWDMode {
+export enum FRWDMode {
 	// Full means PC device
 	FULL = "FULL",
 	TABLET = "TABLET",
@@ -28,7 +28,7 @@ export enum RWDMode {
 /**
  * for responsive device based on provided width
  */
-export interface RwdSizeProps {
+export interface FRwdSizeProps {
 	// under this mobileWidth, RWDMode = Mobile
 	mobileWidth?: number;
 	// over this desktopWidth, RWDMode = Desktop (FULL)

@@ -1,18 +1,18 @@
-import { FScreenSizeHandler } from "..";
-import { RWDMode, RwdSizeProps } from "../../global.types";
+import { FRWDMode, FRwdSizeProps } from "../../global.types";
+import { FUseScreenSize } from "../useScreenSize";
 
 /**
  * Return the current device type based on the input width.
  */
-export const FRwdModeHandler = (props?: RwdSizeProps) => {
-	const [width] = FScreenSizeHandler();
+export const FRwdModeHandler = (props?: FRwdSizeProps) => {
+	const [width] = FUseScreenSize();
 	const mobileWidth = props?.mobileWidth ?? 720;
 	const desktopWidth = props?.desktopWidth ?? 1280;
 	const rwdMode =
 		width < mobileWidth
-			? RWDMode.MOBILE
+			? FRWDMode.MOBILE
 			: width < desktopWidth
-			? RWDMode.TABLET
-			: RWDMode.FULL;
+			? FRWDMode.TABLET
+			: FRWDMode.FULL;
 	return rwdMode;
 };

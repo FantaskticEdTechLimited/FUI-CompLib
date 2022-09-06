@@ -2,7 +2,7 @@ import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FDropdownProps } from "../FDropdown/types";
 import { FTextProps } from "../FText/types";
-import { OnClickFunction } from "../global.types";
+import { FOnClickFunction } from "../global.types";
 
 export interface FSelectProps<T> {
 	options: T[];
@@ -13,7 +13,7 @@ export interface FSelectProps<T> {
 	// show label only when no selectedOption or no placeholder
 	showLabelOnly?: boolean;
 	placeholder?: string;
-	onClear?: OnClickFunction;
+	onClear?: FOnClickFunction;
 
 	// display the selected option with user own method
 	renderCustomizedSelectedOption?: (data: T) => ReactNode;

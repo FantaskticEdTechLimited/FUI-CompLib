@@ -2,7 +2,7 @@ import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { useState, useEffect, useRef, Fragment } from "react";
 import { FScrollBarStyle, FUseColor } from "..";
-import { RWDMode } from "../global.types";
+import { FRWDMode } from "../global.types";
 import * as styles from "./styles";
 import { FSideNavBarProps } from "./types";
 
@@ -33,7 +33,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 	return (
 		<>
 			{/* Mobile Mode */}
-			{props.rwdMode !== RWDMode.FULL ? (
+			{props.rwdMode !== FRWDMode.FULL ? (
 				<Fragment>
 					{/* Top Bar */}
 					<div
