@@ -11,6 +11,8 @@ import { FUseColor } from "./useColor";
 import { FFirstLetterUppercase } from "./useFirstLetterUppercase";
 import { FTimer } from "./useTimer";
 import { FSingleDigitConverter } from "./useSingleDigitConverter";
+import { FCountTimer } from "./useCountTimer";
+import { FDateTimer } from "./useDateTimer";
 
 export {
 	FUseScreenSize,
@@ -26,4 +28,6 @@ export {
 	FFirstLetterUppercase,
 	FTimer,
 	FSingleDigitConverter,
+	FCountTimer,
+	FDateTimer,
 };

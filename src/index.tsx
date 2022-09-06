@@ -52,6 +52,8 @@ import {
 	FFirstLetterUppercase,
 	FSingleDigitConverter,
 	FTimer,
+	FCountTimer,
+	FDateTimer,
 } from "./utils";
 // =======================================================================
 // import types
@@ -127,6 +129,8 @@ export {
 	FFirstLetterUppercase,
 	FTimer,
 	FSingleDigitConverter,
+	FCountTimer,
+	FDateTimer,
 	// =====================
 	// global types
 	// =====================
