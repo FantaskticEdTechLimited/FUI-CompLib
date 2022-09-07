@@ -1,12 +1,11 @@
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FUseColor } from "..";
-import { FPasswordInputFieldProps } from "./types";
+import { FUseColor } from ".."; 
 
 export const FPasswordInputFieldContainer = (
 	isTriggered: boolean,
 	isFilled: boolean,
-	props: FPasswordInputFieldProps
+	disabled: boolean
 ) =>
 	style({
 		display: "flex",
@@ -27,8 +26,8 @@ export const FPasswordInputFieldContainer = (
 				: FUseColor({
 						colorName: "BG Light",
 				  })),
-		opacity: props.disabled ? 0.4 : 1,
-		cursor: props.disabled ? "not-allowed" : "text",
+		opacity: disabled ? 0.4 : 1,
+		cursor: disabled ? "not-allowed" : "text",
 	});
 
 export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>

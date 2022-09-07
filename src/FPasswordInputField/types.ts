@@ -19,7 +19,7 @@ export interface FPasswordInputFieldProps {
 	// props of lock, eye and eye_off icon
 	lockIconProps?: FPasswordInputFieldIconProps;
 	eyeIconProps?: FPasswordInputFieldIconProps;
-	eyeOffIconPorps?: FPasswordInputFieldIconProps;
+	eyeOffIconProps?: FPasswordInputFieldIconProps;
 
 	// css style of FPasswordInputField container
 	containerClassName?: string;

@@ -10,14 +10,7 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const [showPassword, setShowPassword] = useState<boolean>(false);
-	const [asciiDifferenceValue, setAsciiDifferenceValue] = useState<number[]>(
-		[]
-	);
-	const [showInputValue, setShowInputValue] = useState<number[]>([]);
-	const [hideInputValue, setHideInputValue] = useState<number[]>([]);
 	const passwordInputRef = useRef<HTMLInputElement>(null);
-	let tempNumberArray: number[] = [];
-	let tempString: string = "";
 
 	useEffect(() => {
 		if (isTriggered && passwordInputRef.current)
@@ -28,61 +21,15 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 		if (props.showPassword) setShowPassword(true);
 	}, [props.showPassword]);
 
-	useEffect(() => {
-		if (props.inputValue) {
-			for (let index = 0; index < props.inputValue.length; index++) {
-				if (props.inputValue.charCodeAt(index) === 42) {
-					tempNumberArray.push(asciiDifferenceValue[index]);
-				} else tempNumberArray.push(props.inputValue.charCodeAt(index) - 42);
-			}
-			setAsciiDifferenceValue(tempNumberArray);
-			tempNumberArray = [];
-			if (showPassword == false) {
-				for (let index = 0; index < props.inputValue.length; index++) {
-					tempNumberArray.push(42);
-				}
-				setHideInputValue(tempNumberArray);
-			}
-		}
-	}, [props.inputValue]);
-
-	useEffect(() => {
-		if (showPassword) {
-			for (let index = 0; index < asciiDifferenceValue.length; index++) {
-				tempNumberArray.push(asciiDifferenceValue[index] + 42);
-			}
-			setShowInputValue(tempNumberArray);
-		} else {
-			for (let index = 0; index < asciiDifferenceValue.length; index++) {
-				tempNumberArray.push(42);
-			}
-			setHideInputValue(tempNumberArray);
-		}
-	}, [showPassword]);
-
-	useEffect(() => {
-		if (showInputValue) {
-			for (let index = 0; index < showInputValue.length; index++) {
-				tempString += String.fromCharCode(showInputValue[index]);
-			}
-			props.renderInputValue && props.renderInputValue(tempString);
-		}
-	}, [showInputValue]);
-
-	useEffect(() => {
-		if (hideInputValue) {
-			for (let index = 0; index < hideInputValue.length; index++) {
-				tempString += String.fromCharCode(hideInputValue[index]);
-			}
-			props.renderInputValue && props.renderInputValue(tempString);
-		}
-	}, [hideInputValue]);
-
 	return (
 		<div
 			style={props.containerStyle}
 			className={
-				styles.FPasswordInputFieldContainer(isTriggered, isFilled, props) +
+				styles.FPasswordInputFieldContainer(
+					isTriggered,
+					isFilled,
+					props.disabled!
+				) +
 				" " +
 				props.containerClassName
 			}
@@ -114,7 +61,7 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 					" " +
 					props.inputAreaClassName
 				}
-				type="text"
+				type={showPassword ? "text" : "password"}
 				ref={passwordInputRef}
 				placeholder={props.placeholder ?? "Password"}
 				value={props.inputValue ?? ""}
@@ -138,7 +85,7 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 				/>
 			) : (
 				<EyeOffIcon
-					{...props.eyeOffIconPorps}
+					{...props.eyeOffIconProps}
 					disabled={props.disabled}
 					onClick={() => (props.disabled ? undefined : setShowPassword(true))}
 				/>
