@@ -1,21 +1,25 @@
-import React from "react";
+import React, { useState } from "react";
 import { FHeaderButtonProps } from "./types";
 import * as styles from "./styles";
-import { handleFHeaderButton } from "./func"; 
+import { handleFHeaderButton } from "./func";
 
-export const FHeaderButton = (props: FHeaderButtonProps) => { 
+export const FHeaderButton = (props: FHeaderButtonProps) => {
+	const [isHover, setIsHover] = useState<boolean>(false);
 
 	return (
 		<div
-			style={props.containerStyle}
+			style={props.style && props.style(isHover)}
 			className={
 				styles.FHeaderButtonContainer(props) +
 				" " +
-				props.containerClassName
+				(props.className && props.className(isHover))
 			}
 			onClick={() =>
 				props.disabled ? undefined : props.onClick && props.onClick()
 			}
+			// Added hover effect for className and style
+			onMouseEnter={() => setIsHover(true)}
+			onMouseLeave={() => setIsHover(false)}
 		>
 			{props.children ?? handleFHeaderButton(props)}
 		</div>

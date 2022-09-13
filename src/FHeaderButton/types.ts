@@ -14,7 +14,11 @@ export interface FHeaderButtonProps {
 	children?: ReactElement<FSVGIconProps | FIconProps>;
 	disabled?: boolean;
 	onClick?: FOnClickFunction;
-	// disable auto resize the button based on screenWidth
+	/**
+	 *	To disable auto resize the button based on screenWidth
+	 *
+	 *	Then can use `size` to control the button size
+	 */
 	disableAutoResize?: boolean;
 	// change rwd size
 	configureRwdSize?: FRwdSizeProps;
@@ -22,8 +26,7 @@ export interface FHeaderButtonProps {
 	size?: "small" | "large";
 	iconStrokeColor?: string;
 	iconStrokeWidth?: string | number;
-
-	// css style of FHeaderButton container
-	containerClassName?: string;
-	containerStyle?: CSSProperties;
+	// same usage of FButton
+	className?: (isHover?: boolean) => string;
+	style?: (isHover?: boolean) => CSSProperties;
 }
