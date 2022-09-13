@@ -4,10 +4,7 @@ import { FRwdModeHandler, FUseColor } from "..";
 import { FRWDMode } from "../global.types";
 import { FHeaderButtonProps, FHeaderButtonTypes } from "./types";
 
-export const handleFHeaderButton = (
-	props: FHeaderButtonProps,
-	isHover: boolean
-) => {
+export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 	const rwdMode = FRwdModeHandler(props.configureRwdSize);
 	const mainThemeColor = FUseColor({ colorName: "Main" });
 
@@ -24,11 +21,7 @@ export const handleFHeaderButton = (
 							? "small"
 							: "large"
 					}
-					strokeColor={
-						props.iconStrokeColor
-							? props.iconStrokeColor(isHover)
-							: mainThemeColor
-					}
+					strokeColor={props.iconStrokeColor ?? mainThemeColor}
 				/>
 			);
 		case FHeaderButtonTypes.CLOSE:
@@ -43,11 +36,7 @@ export const handleFHeaderButton = (
 							? "small"
 							: "large"
 					}
-					strokeColor={
-						props.iconStrokeColor
-							? props.iconStrokeColor(isHover)
-							: mainThemeColor
-					}
+					strokeColor={props.iconStrokeColor ?? mainThemeColor}
 				/>
 			);
 		case FHeaderButtonTypes.MORE:
@@ -62,11 +51,7 @@ export const handleFHeaderButton = (
 							? "small"
 							: "large"
 					}
-					strokeColor={
-						props.iconStrokeColor
-							? props.iconStrokeColor(isHover)
-							: mainThemeColor
-					}
+					strokeColor={props.iconStrokeColor ?? mainThemeColor}
 				/>
 			);
 		default:

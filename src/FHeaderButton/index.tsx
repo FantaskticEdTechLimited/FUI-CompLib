@@ -21,7 +21,7 @@ export const FHeaderButton = (props: FHeaderButtonProps) => {
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
-			{props.children ?? handleFHeaderButton(props, isHover)}
+			{props.children ?? handleFHeaderButton(props)}
 		</div>
 	);
 };
