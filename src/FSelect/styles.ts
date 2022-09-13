@@ -17,7 +17,7 @@ export const FSelectContainer = (
 			colorName: "White",
 		}),
 		border:
-			"0.125rem solid " +
+			"2px solid " +
 			(stylesProps.isClicked
 				? FUseColor({ colorName: "Main" })
 				: stylesProps.selectedOptions
@@ -27,15 +27,15 @@ export const FSelectContainer = (
 				: FUseColor({
 						colorName: "BG Light",
 				  })),
-		borderRadius: "0.25rem",
+		borderRadius: "4px",
 		boxSizing: "border-box",
-		columnGap: "0.5rem",
+		columnGap: "8px",
 		cursor: stylesProps.disabled ? "not-allowed" : "pointer",
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "space-between",
 		opacity: stylesProps.disabled ? 0.4 : 1,
-		padding: "0.75rem",
+		padding: "12px",
 		$nest: {
 			"&:hover": {
 				$nest: {
@@ -54,7 +54,7 @@ export const FSelectContentDiv = (props: FSelectProps<any>) =>
 		display: "flex",
 		flexDirection: "column",
 		flex: 1,
-		rowGap: props.showLabelOnly ? 0 : "0.25rem",
+		rowGap: props.showLabelOnly ? 0 : "4px",
 	});
 
 export const FSelectSelectedOptionDiv = style({
@@ -68,7 +68,7 @@ export const FSelectDropdownContainer = (
 	style({
 		position: "absolute",
 		width: ref.current ? ref.current.offsetWidth : 0,
-		maxHeight: "20rem",
+		maxHeight: "320px",
 		marginTop: ref.current ? ref.current.offsetHeight : 0,
 		visibility: isClicked ? "visible" : "hidden",
 		transition: "all 0.1s ease-in-out",

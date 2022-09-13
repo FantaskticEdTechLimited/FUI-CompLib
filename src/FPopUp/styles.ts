@@ -22,18 +22,18 @@ export const FPopUpContainer = (screenWidth: number, screenHeight: number) =>
 	style({
 		display: "flex",
 		flexDirection: "column",
-		rowGap: "1.5rem",
+		rowGap: "24px",
 		maxWidth: screenWidth,
 		maxHeight: screenHeight,
 		backgroundColor: FUseColor({
 			colorName: "White",
 		}),
 		border:
-			"0.0625rem solid " +
+			"1px solid " +
 			FUseColor({
 				colorName: "BG Light",
 			}),
-		borderRadius: "0.5rem",
+		borderRadius: "8px",
 		boxSizing: "border-box",
-		padding: "1.5rem",
+		padding: "24px",
 	});

@@ -14,13 +14,13 @@ export const FLinkButtonContainer = (
 					colorName: "White",
 			  }),
 		border: "none",
-		borderRadius: "0.25rem",
+		borderRadius: "4px",
 		boxSizing: "border-box",
-		columnGap: "0.5rem",
+		columnGap: "8px",
 		cursor: props.disabled ? "not-allowed" : "pointer",
 		display: "flex",
 		flexDirection: "row",
-		padding: "0.75rem 0.75rem",
+		padding: "12px 12px",
 		textDecoration: "none",
 	});
 

@@ -7,16 +7,15 @@ export const FSearchBarContainer = (isTriggered: boolean) =>
 		alignItems: "center",
 		backgroundColor: FUseColor({ colorName: "Sub" }),
 		border:
-			"0.125rem solid " +
-			(isTriggered ? FUseColor({ colorName: "Main" }) : "none"),
-		borderRadius: "0.25rem",
+			"2px solid " + (isTriggered ? FUseColor({ colorName: "Main" }) : "none"),
+		borderRadius: "4px",
 		boxSizing: "border-box",
 		caretColor: FUseColor({ colorName: "Main" }),
-		columnGap: "0.5rem",
+		columnGap: "8px",
 		cursor: "text",
 		display: "flex",
 		flexDirection: "row",
-		padding: "0.75rem",
+		padding: "12px",
 		width: "100%",
 	});
 

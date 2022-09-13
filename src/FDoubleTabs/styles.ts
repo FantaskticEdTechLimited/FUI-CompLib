@@ -7,7 +7,7 @@ export const FDoubleTabs_Wrapper = (disabled: boolean) =>
 		flexDirection: "column",
 		height: "100%",
 		width: "100%",
-		rowGap: "1rem",
+		rowGap: "16px",
 		cursor: disabled ? "not-allowed" : "auto",
 		opacity: disabled ? 0.4 : 1,
 	});
@@ -27,12 +27,12 @@ export const FDoubleTabs_TabsContainer = () => {
 		flex: 1,
 		flexDirection: "row",
 		alignItems: "center",
-		columnGap: "0.25rem",
+		columnGap: "4px",
 		boxSizing: "border-box",
-		padding: "0.25rem",
+		padding: "4px",
 		backgroundColor: color,
-		boxShadow: "inset 0 0 0.125rem rgba(0, 0, 0, 0.04)",
-		borderRadius: "0.5rem",
+		boxShadow: "inset 0 0 2px rgba(0, 0, 0, 0.04)",
+		borderRadius: "8px",
 	});
 };
 
@@ -41,6 +41,6 @@ export const FDoubleTabs_TabButton_Container = (isSelected: boolean) =>
 		display: "flex",
 		justifyContent: "center",
 		boxSizing: "border-box",
-		padding: FOverrideStyle("0.5rem 0.625rem"),
+		padding: FOverrideStyle("8px 10px"),
 		backgroundColor: isSelected ? undefined : FOverrideStyle("transparent"),
 	});

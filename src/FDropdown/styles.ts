@@ -12,14 +12,14 @@ export const FDropdownContainer = () => {
 	return style({
 		maxHeight: "inherit",
 		boxSizing: "border-box",
-		padding: "0.75rem",
+		padding: "12px",
 		display: "flex",
 		flexDirection: "column",
-		rowGap: "0.75rem",
+		rowGap: "12px",
 		overflowY: "auto",
 		overflowX: "hidden",
-		border: "0.063rem solid " + borderColor,
-		borderRadius: "0.5rem",
+		border: "1px solid " + borderColor,
+		borderRadius: "8px",
 		backgroundColor: backgroundColor,
 	});
 };

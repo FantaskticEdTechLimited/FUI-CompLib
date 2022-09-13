@@ -13,17 +13,17 @@ export const FButtonContainer = (props: FButtonProps) =>
 				: FUseColor({
 						colorName: "White",
 				  }),
-		borderRadius: "0.25rem",
+		borderRadius: "4px",
 		border:
 			props.type === FButtonTypes.OUTLINE
-				? "0.125rem solid" + FUseColor({ colorName: "Main" })
+				? "2px solid" + FUseColor({ colorName: "Main" })
 				: "none",
 		cursor: props.disabled ? "not-allowed" : "pointer",
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "center",
 		opacity: props.disabled ? 0.4 : 1,
-		padding: "0.75rem 1rem",
+		padding: "12px 16px",
 		$nest: {
 			"&:hover": {
 				opacity:

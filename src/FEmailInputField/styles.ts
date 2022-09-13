@@ -6,7 +6,7 @@ export const FEmailInputFieldWrapper = (isError: boolean, disabled: boolean) =>
 	style({
 		display: "flex",
 		flexDirection: "column",
-		rowGap: isError ? "0.25rem" : 0,
+		rowGap: isError ? "4px" : 0,
 		opacity: disabled ? 0.4 : 1,
 		cursor: disabled ? "not-allowed" : "text",
 	});
@@ -20,9 +20,9 @@ export const FEmailInputFieldContainer = (
 		backgroundColor: FUseColor({
 			colorName: "White",
 		}),
-		borderRadius: "0.5rem",
+		borderRadius: "8px",
 		border:
-			"0.125rem solid " +
+			"2px solid " +
 			(isTriggered
 				? FUseColor({ colorName: "Main" })
 				: isFilled
@@ -34,10 +34,10 @@ export const FEmailInputFieldContainer = (
 				  })),
 		boxSizing: "border-box",
 		caretColor: FUseColor({ colorName: "Main" }),
-		columnGap: "0.5rem",
+		columnGap: "8px",
 		display: "flex",
 		flexDirection: "row",
-		padding: "0.75rem",
+		padding: "12px",
 	});
 
 export const FEmailInputFieldInputAreaDiv = () => {

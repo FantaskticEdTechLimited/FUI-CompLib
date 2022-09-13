@@ -8,9 +8,9 @@ export const FHeaderButtonContainer = (props: FHeaderButtonProps) =>
 		alignItems: "center",
 		width: "fit-content",
 		backgroundColor: FUseColor({ colorName: "Sub" }),
-		borderRadius: "0.25rem",
+		borderRadius: "4px",
 		boxSizing: "border-box",
-		padding: "0.5rem",
+		padding: "8px",
 		cursor: props.disabled ? "not-allowed" : "pointer",
 		opacity: props.disabled ? 0.4 : 1,
 		$nest: {

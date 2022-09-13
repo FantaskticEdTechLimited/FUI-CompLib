@@ -1,6 +1,6 @@
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FUseColor } from ".."; 
+import { FUseColor } from "..";
 
 export const FPasswordInputFieldContainer = (
 	isTriggered: boolean,
@@ -10,13 +10,13 @@ export const FPasswordInputFieldContainer = (
 	style({
 		display: "flex",
 		flexDirection: "row",
-		columnGap: "0.5rem",
+		columnGap: "8px",
 		alignItems: "center",
 		boxSizing: "border-box",
-		padding: "0.75rem",
-		borderRadius: "0.25rem",
+		padding: "12px",
+		borderRadius: "4px",
 		border:
-			"0.125rem solid " +
+			"2px solid " +
 			(isTriggered
 				? FUseColor({ colorName: "Main" })
 				: isFilled

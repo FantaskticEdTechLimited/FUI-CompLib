@@ -6,7 +6,7 @@ export const FTabsWrapper = (disabled: boolean) =>
 		flexDirection: "column",
 		height: "100%",
 		width: "100%",
-		rowGap: "1rem",
+		rowGap: "16px",
 		cursor: disabled ? "not-allowed" : "auto",
 		opacity: disabled ? 0.4 : 1,
 	});
@@ -14,18 +14,18 @@ export const FTabsWrapper = (disabled: boolean) =>
 export const FTabsHeader = style({
 	display: "flex",
 	flexDirection: "row",
-	alignItems: "center", 
+	alignItems: "center",
 });
 
 export const FTabsTabContainer = style({
 	display: "flex",
 	flexDirection: "row",
 	alignItems: "center",
-	columnGap: "0.5rem",
+	columnGap: "8px",
 	flex: 1,
 	$nest: {
 		"&>div": {
-			padding: "0.75rem 1.5rem",
+			padding: "12px 24px",
 		},
 	},
-}); 
+});

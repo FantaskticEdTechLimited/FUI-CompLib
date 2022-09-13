@@ -7,7 +7,7 @@ export const FInputFieldContainer = (props: FInputFieldProps) =>
 	style({
 		display: "flex",
 		flexDirection: "column",
-		rowGap: props.wordCount ? "0.25rem" : 0,
+		rowGap: props.wordCount ? "4px" : 0,
 		width: "100%",
 	});
 
@@ -20,9 +20,9 @@ export const FInputFieldDiv = (
 		backgroundColor: FUseColor({
 			colorName: "White",
 		}),
-		borderRadius: "0.5rem",
+		borderRadius: "8px",
 		border:
-			"0.1rem solid " +
+			"1.6px solid " +
 			(isTriggered
 				? FUseColor({ colorName: "Main" })
 				: isFilled
@@ -38,9 +38,8 @@ export const FInputFieldDiv = (
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: props.multiline ? undefined : "center",
-		minHeight: props.multiline ? "7rem" : "3.5rem",
-		padding:
-			isTriggered || isFilled ? "0.25rem 0.25rem 0.25rem 0.75rem" : "0.75rem",
+		minHeight: props.multiline ? "112px" : "56px",
+		padding: isTriggered || isFilled ? "4px 4px 4px 12px" : "12px",
 		transition: "all 0.2s ease-in-out",
 	});
 

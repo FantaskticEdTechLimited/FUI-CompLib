@@ -8,15 +8,15 @@ export const MoreActionItemnDiv = (props: MoreActionItemProps) =>
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		columnGap: "0.5rem",
+		columnGap: "8px",
 		boxSizing: "border-box",
-		padding: "0.75rem",
+		padding: "12px",
 		border:
-			"0.075rem solid " +
+			"1.2px solid " +
 			FUseColor({
 				colorName: "Grey",
 			}),
-		borderRadius: "0.25rem",
+		borderRadius: "4px",
 		cursor: "pointer",
 		width: props.width ? props.width : "100%",
 	});

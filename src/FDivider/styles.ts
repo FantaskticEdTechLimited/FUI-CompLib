@@ -3,8 +3,8 @@ import { FUseColor } from "..";
 
 export const FDivider_Container = (isVertical: boolean) =>
 	style({
-		height: isVertical ? "100%" : "0.125rem",
-		width: isVertical ? "0.125rem" : "100%",
+		height: isVertical ? "100%" : "2px",
+		width: isVertical ? "2px" : "100%",
 		backgroundColor: FUseColor({
 			colorName: "Grey",
 		}),

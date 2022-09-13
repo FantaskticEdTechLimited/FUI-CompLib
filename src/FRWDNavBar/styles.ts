@@ -29,15 +29,15 @@ export const FHiddenSideBarOverlay = (
 export const FHiddenSideBarContainer = () => {
 	const color = FUseColor({ colorName: "Main" });
 	return style({
-		width: "15rem",
+		width: "240px",
 		backgroundColor: color,
 		boxSizing: "border-box",
 		height: "inherit",
 		display: "flex",
 		flexDirection: "column",
-		rowGap: ".5rem",
-		padding: ".7rem 1rem",
-		boxShadow: "0rem 0rem 0.5rem rgba(72, 63, 226, 0.16)",
+		rowGap: "8px",
+		padding: "11.2px 16px",
+		boxShadow: "0 0 8px rgba(72, 63, 226, 0.16)",
 	});
 };
 
@@ -45,16 +45,16 @@ export const FNormalSideNavBarContainer = () => {
 	const color = FUseColor({ colorName: "Main" });
 	return style({
 		height: "100vh",
-		width: "15rem",
+		width: "240px",
 		backgroundColor: color,
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "flex-start",
-		rowGap: ".5rem",
+		rowGap: "8px",
 		overflow: "hidden",
 		boxSizing: "border-box",
-		padding: ".7rem 1rem",
-		boxShadow: "0rem 0rem 0.5rem rgba(72, 63, 226, 0.16)",
+		padding: "11.2px 16px",
+		boxShadow: "0 0 8px rgba(72, 63, 226, 0.16)",
 	});
 };
 
@@ -73,18 +73,17 @@ export const FTopNavBarContainer = (props: FSideNavBarProps) =>
 	style({
 		backgroundColor: FUseColor({ colorName: "Main" }),
 		border:
-			"0.063rem solid " +
+			"1px solid " +
 			FUseColor({
 				colorName: "BG Light",
 			}),
-		boxShadow: "0rem 0rem 0.5rem " + FUseColor({ colorName: "Sub" }),
+		boxShadow: "0 0 8px " + FUseColor({ colorName: "Sub" }),
 		boxSizing: "border-box",
 		display: props.visible ? "flex" : "none",
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		padding:
-			props.rwdMode === FRWDMode.MOBILE ? "0.5rem 1rem" : "0.75rem 1.5rem",
+		padding: props.rwdMode === FRWDMode.MOBILE ? "8px 16px" : "12px 24px",
 		width: "100%",
 		zIndex: 15,
 	});
@@ -92,25 +91,25 @@ export const FTopNavBarContainer = (props: FSideNavBarProps) =>
 export const FTopNavBarContainer_MenuIcon = () => {
 	const color = FUseColor({ colorName: "Sub" });
 	return style({
-		borderRadius: "0.25rem",
+		borderRadius: "4px",
 		backgroundColor: color,
-		padding: "0.25rem",
+		padding: "4px",
 	});
 };
 
 export const FTopNavBarContainer_CloseIcon = () => {
 	const color = FUseColor({ colorName: "Sub" });
 	return style({
-		borderRadius: "0.25rem",
+		borderRadius: "4px",
 		backgroundColor: color,
-		padding: "0.25rem",
+		padding: "4px",
 		alignSelf: "flex-end",
 	});
 };
 
 export const Divider = () => {
 	return style({
-		height: "0.125rem",
+		height: "2px",
 		backgroundColor: FUseColor({
 			colorName: "White",
 		}),

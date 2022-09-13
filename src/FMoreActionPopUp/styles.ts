@@ -3,13 +3,13 @@ import { style } from "typestyle";
 export const topicRowMoreActionPopupTitleDiv = style({
 	display: "flex",
 	flexDirection: "column",
-	rowGap: "0.25rem",
-	width: "22rem",
+	rowGap: "4px",
+	width: "352px",
 });
 
 export const topicRowMoreActionPopupContentDiv = style({
 	display: "flex",
 	flexDirection: "column",
-	rowGap: "0.75rem",
+	rowGap: "12px",
 	width: "100%",
 });

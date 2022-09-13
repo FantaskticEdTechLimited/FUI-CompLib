@@ -6,13 +6,13 @@ export const FTagContainer = (props: FTagProps<any>) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FUseColor({ colorName: "Sub" }),
-		borderRadius: "0.125rem",
+		borderRadius: "2px",
 		boxSizing: "border-box",
-		columnGap: "0.25rem",
+		columnGap: "4px",
 		cursor: props.disabled ? "not-allowed" : props.onClick && "pointer",
 		display: "flex",
 		opacity: props.disabled ? 0.4 : 1,
-		padding: "0.25rem 0.5rem",
+		padding: "4px 8px",
 		width: "fit-content",
 	});
 

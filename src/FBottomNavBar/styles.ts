@@ -12,7 +12,7 @@ export const FBottomNavBarContainer = style({
 export const FLeadingButtonDiv = (disabled: boolean) =>
 	style({
 		alignSelf: "flex-start",
-		padding: FOverrideStyle("0.5rem 0.75rem"),
+		padding: FOverrideStyle("8px 12px"),
 		backgroundColor: disabled
 			? FUseColor({
 					colorName: "Grey",
@@ -23,7 +23,7 @@ export const FLeadingButtonDiv = (disabled: boolean) =>
 export const FActionButtonDiv = (disabled: boolean) =>
 	style({
 		alignSelf: "flex-end",
-		padding: FOverrideStyle("0.5rem 0.75rem"),
+		padding: FOverrideStyle("8px 12px"),
 		backgroundColor: disabled
 			? FUseColor({
 					colorName: "Grey",
