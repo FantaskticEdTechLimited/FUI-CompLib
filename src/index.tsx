@@ -19,7 +19,7 @@ import { FLinkButton } from "./FLinkButton";
 import { FTag } from "./FTag";
 import { FTagInputField } from "./FTagInputField";
 import { FHeaderButton } from "./FHeaderButton";
-import { FHeaderButtonTypes } from "./FHeaderButton/types";
+import { FHeaderButtonTypes, FHeaderButtonProps } from "./FHeaderButton/types";
 import { FEmailInputField } from "./FEmailInputField";
 import { FPasswordInputField } from "./FPasswordInputField";
 import { FTabs, FTabsPanel } from "./FTabs";
@@ -55,6 +55,7 @@ import {
 	FCountTimer,
 	FDateTimer,
 	FCountDownTimer,
+	FCheckIsToday,
 } from "./utils";
 // =======================================================================
 // import types
@@ -87,6 +88,7 @@ export {
 	FForm,
 	FHeaderButton,
 	FHeaderButtonTypes,
+	FHeaderButtonProps,
 	FInputField,
 	FLinkButton,
 	FMoreActionPopUp,
@@ -133,6 +135,7 @@ export {
 	FCountTimer,
 	FDateTimer,
 	FCountDownTimer,
+	FCheckIsToday,
 	// =====================
 	// global types
 	// =====================
