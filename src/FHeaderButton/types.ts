@@ -24,7 +24,7 @@ export interface FHeaderButtonProps {
 	configureRwdSize?: FRwdSizeProps;
 	// size is only active when disableAutoResize
 	size?: "small" | "large";
-	iconStrokeColor?: string;
+	iconStrokeColor?: (isHover?: boolean) => string;
 	iconStrokeWidth?: string | number;
 	// same usage of FButton
 	className?: (isHover?: boolean) => string;
