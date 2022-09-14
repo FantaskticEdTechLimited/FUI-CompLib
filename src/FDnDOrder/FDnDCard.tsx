@@ -1,4 +1,4 @@
-import { forwardRef, useImperativeHandle, useRef } from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import {
 	DropTargetMonitor,
 	DragSourceMonitor,
@@ -9,12 +9,12 @@ import {
 } from "react-dnd";
 import {
 	FDnDCardDragObject,
+	FDnDCardDropObject,
 	FDnDCardInstance,
 	FDnDCardProps,
 	ItemTypes,
 } from "./types";
 import { XYCoord } from "dnd-core";
-import React from "react";
 
 const FDnDCard = forwardRef<HTMLDivElement, FDnDCardProps>(function Card(
 	{ component, isDragging, connectDragSource, connectDropTarget },
@@ -40,65 +40,98 @@ const FDnDCard = forwardRef<HTMLDivElement, FDnDCardProps>(function Card(
 export default DropTarget(
 	ItemTypes.CARD,
 	{
+		drop(
+			props: FDnDCardProps,
+			monitor: DropTargetMonitor,
+			component: FDnDCardInstance
+		) {
+			if (!props.enableHoverOnly) {
+				if (!component) {
+					return null;
+				}
+				const dragTargetIndex = monitor.getItem<FDnDCardDropObject>().index;
+				const dropTargetIndex = props.index;
+
+				// Don't replace items with themselves
+				if (dragTargetIndex === dropTargetIndex) {
+					return;
+				}
+
+				// Time to actually perform the action
+				props.onChildrenDrop(dragTargetIndex, dropTargetIndex);
+
+				// Note: we're mutating the monitor item here!
+				// Generally it's better to avoid mutations,
+				// but it's good here for the sake of performance
+				// to avoid expensive index searches.
+				monitor.getItem<FDnDCardDropObject>().index = dropTargetIndex;
+
+				return;
+			} else return;
+		},
+
 		hover(
 			props: FDnDCardProps,
 			monitor: DropTargetMonitor,
 			component: FDnDCardInstance
 		) {
-			if (!component) {
-				return null;
-			}
-			// node = HTML Div element from imperative API
-			const node = component.getNode();
-			if (!node) {
-				return null;
-			}
+			if (props.enableHoverOnly) {
+				if (!component) {
+					return null;
+				}
+				// node = HTML Div element from imperative API
+				const node = component.getNode();
+				if (!node) {
+					return null;
+				}
 
-			const dragIndex = monitor.getItem<FDnDCardDragObject>().index;
-			const hoverIndex = props.index;
+				const dragIndex = monitor.getItem<FDnDCardDragObject>().index;
+				const hoverIndex = props.index;
 
-			// Don't replace items with themselves
-			if (dragIndex === hoverIndex) {
+				// Don't replace items with themselves
+				if (dragIndex === hoverIndex) {
+					return;
+				}
+
+				// Determine rectangle on screen
+				const hoverBoundingRect = node.getBoundingClientRect();
+
+				// Get vertical middle
+				const hoverMiddleY =
+					(hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
+
+				// Determine mouse position
+				const clientOffset = monitor.getClientOffset();
+
+				// Get pixels to the top
+				const hoverClientY =
+					(clientOffset as XYCoord).y - hoverBoundingRect.top;
+
+				// Only perform the move when the mouse has crossed half of the items height
+				// When dragging downwards, only move when the cursor is below 50%
+				// When dragging upwards, only move when the cursor is above 50%
+
+				// Dragging downwards
+				if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
+					return;
+				}
+
+				// Dragging upwards
+				if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
+					return;
+				}
+
+				// Time to actually perform the action
+				props.onChildrenMove(dragIndex, hoverIndex);
+
+				// Note: we're mutating the monitor item here!
+				// Generally it's better to avoid mutations,
+				// but it's good here for the sake of performance
+				// to avoid expensive index searches.
+				monitor.getItem<FDnDCardDragObject>().index = hoverIndex;
+
 				return;
-			}
-
-			// Determine rectangle on screen
-			const hoverBoundingRect = node.getBoundingClientRect();
-
-			// Get vertical middle
-			const hoverMiddleY =
-				(hoverBoundingRect.bottom - hoverBoundingRect.top) / 2;
-
-			// Determine mouse position
-			const clientOffset = monitor.getClientOffset();
-
-			// Get pixels to the top
-			const hoverClientY = (clientOffset as XYCoord).y - hoverBoundingRect.top;
-
-			// Only perform the move when the mouse has crossed half of the items height
-			// When dragging downwards, only move when the cursor is below 50%
-			// When dragging upwards, only move when the cursor is above 50%
-
-			// Dragging downwards
-			if (dragIndex < hoverIndex && hoverClientY < hoverMiddleY) {
-				return;
-			}
-
-			// Dragging upwards
-			if (dragIndex > hoverIndex && hoverClientY > hoverMiddleY) {
-				return;
-			}
-
-			// Time to actually perform the action
-			props.onChildrenMove(dragIndex, hoverIndex);
-
-			// Note: we're mutating the monitor item here!
-			// Generally it's better to avoid mutations,
-			// but it's good here for the sake of performance
-			// to avoid expensive index searches.
-			monitor.getItem<FDnDCardDragObject>().index = hoverIndex;
-
-			return
+			} else return;
 		},
 	},
 	(connect: DropTargetConnector) => ({

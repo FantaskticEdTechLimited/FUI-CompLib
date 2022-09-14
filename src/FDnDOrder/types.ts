@@ -9,6 +9,10 @@ export interface FDnDOrderProps<T> {
 	onUpdateData: FOnSubmitFunction<T[]>;
 	// render JSX Element children
 	renderData: (data: T, index: number) => ReactElement;
+	/**
+	 * If not set, the DnD function will only return onDrop action, by default.
+	 */
+	enableHoverOnly?: boolean;
 }
 
 export interface FDnDOrderDataProps {
@@ -16,12 +20,13 @@ export interface FDnDOrderDataProps {
 	id?: string;
 	index: number;
 	onChildrenMove: (dragIndex: number, hoverIndex: number) => void;
+	onChildrenDrop: (dragIndex: number, hoverIndex: number) => void;
 }
 
 export interface FDnDCardProps extends FDnDOrderDataProps {
+	enableHoverOnly?: boolean;
 	// the JSX Element children
 	component: ReactElement;
-	onChildrenMove: (dragIndex: number, hoverIndex: number) => void;
 	isDragging: boolean;
 	connectDragSource: ConnectDragSource;
 	connectDropTarget: ConnectDropTarget;
@@ -32,6 +37,11 @@ export const ItemTypes = {
 };
 
 export interface FDnDCardDragObject {
+	id: string;
+	index: number;
+}
+
+export interface FDnDCardDropObject {
 	id: string;
 	index: number;
 }
