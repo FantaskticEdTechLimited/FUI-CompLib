@@ -11,7 +11,7 @@ export const FButton = (props: FButtonProps) => {
 		<div
 			style={props.style && props.style(isHover)}
 			className={
-				styles.FButtonContainer(props) +
+				styles.FButtonContainer(props, isHover) +
 				" " +
 				(props.className && props.className(isHover))
 			}
