@@ -5,8 +5,12 @@ import * as styles from "./styles";
 import { FTabPanelProps, FTabsProps } from "./types";
 
 export const FTabsPanel = (props: FTabPanelProps) => {
-	const { children } = props;
-	return <Fragment>{children}</Fragment>;
+	const { children, style, className } = props;
+	return (
+		<div style={style} className={className}>
+			{children}
+		</div>
+	);
 };
 
 export const FTabs = (props: FTabsProps) => {

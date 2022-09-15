@@ -3,7 +3,7 @@
 import { FText } from "./FText";
 import { FInputField } from "./FInputField";
 import { FButton } from "./FButton";
-import { FButtonTypes } from "./FButton/types";
+import { FButtonTypes, FButtonProps } from "./FButton/types";
 import { FBottomNavBar } from "./FBottomNavBar";
 import { FPopUp } from "./FPopUp";
 import { FSwitchButton } from "./FSwitchButton";
@@ -77,6 +77,7 @@ export {
 	FBottomNavBar,
 	FButton,
 	FButtonTypes,
+	FButtonProps,
 	FCheckBox,
 	FConfirmPopUp,
 	FCreateSelect,

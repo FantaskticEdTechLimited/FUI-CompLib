@@ -24,9 +24,10 @@ export interface FTabPanelProps {
 	 * Properties (including style and className) of the tab button.
 	 */
 	tabButtonProps?: FButtonProps;
-
 	// control rerender
 	isRenderOnSelected?: boolean;
+	style?: CSSProperties;
+	className?: string;
 }
 
 export interface FTabsProps {
