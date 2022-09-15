@@ -37,20 +37,17 @@ export const FButtonContainer = (props: FButtonProps, isHover: boolean) =>
 			: 1,
 		padding: "12px 16px",
 		$nest: {
-			"&:hover": {
-				$nest: {
-					div: {
-						color:
-							props.type === FButtonTypes.SECONDARY ||
-							props.type === FButtonTypes.OUTLINE
-								? FUseColor({
-										colorName: "White",
-								  })
-								: props.type === FButtonTypes.TEXT
-								? FUseColor({ colorName: "Main" })
-								: undefined,
-					},
-				},
+			div: {
+				color: isHover
+					? props.type === FButtonTypes.SECONDARY ||
+					  props.type === FButtonTypes.OUTLINE
+						? FUseColor({
+								colorName: "White",
+						  })
+						: props.type === FButtonTypes.TEXT
+						? FUseColor({ colorName: "Main" })
+						: undefined
+					: undefined,
 			},
 		},
 	});
