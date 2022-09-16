@@ -1,6 +1,7 @@
 // =======================================================================
 // import components
 import { FText } from "./FText";
+import { FTextProps } from "./FText/types";
 import { FInputField } from "./FInputField";
 import { FButton } from "./FButton";
 import { FButtonTypes, FButtonProps } from "./FButton/types";
@@ -23,6 +24,7 @@ import { FHeaderButtonTypes, FHeaderButtonProps } from "./FHeaderButton/types";
 import { FEmailInputField } from "./FEmailInputField";
 import { FPasswordInputField } from "./FPasswordInputField";
 import { FTabs, FTabsPanel } from "./FTabs";
+import { FTabPanelProps, FTabsProps } from "./FTabs/types";
 import { FDnDOrder } from "./FDnDOrder";
 import { FNoData } from "./FNoData";
 import { FForm } from "./FForm";
@@ -106,9 +108,12 @@ export {
 	FSwitchButton,
 	FTabs,
 	FTabsPanel,
+	FTabPanelProps,
+	FTabsProps,
 	FTag,
 	FTagInputField,
 	FText,
+	FTextProps,
 	// =====================
 	// theme
 	// =====================

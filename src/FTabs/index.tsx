@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from "react";
+import React, { useState } from "react";
 import { FAutoConvertArray, FButton } from "..";
 import { FButtonProps, FButtonTypes } from "../FButton/types";
 import * as styles from "./styles";
@@ -80,9 +80,19 @@ export const FTabs = (props: FTabsProps) => {
 			</div>
 			{/* panel under the corresponding tab */}
 			{FAutoConvertArray(props.children).map((panel, index) => {
-				if (panel.props.isRenderOnSelected) {
+				const panelProps = panel.props;
+
+				if (panelProps.isRenderOnSelected) {
 					if (index === tabIndex)
-						return <Fragment key={index}>{panel.props.children}</Fragment>;
+						return (
+							<div
+								key={index}
+								style={panelProps.style}
+								className={panelProps.className}
+							>
+								{panelProps.children}
+							</div>
+						);
 					else return;
 				} else {
 					return (
@@ -93,9 +103,11 @@ export const FTabs = (props: FTabsProps) => {
 								height: "100%",
 								width: "100%",
 								display: index === tabIndex ? "block" : "none",
+								...panelProps.style,
 							}}
+							className={panelProps.className}
 						>
-							{panel.props.children}
+							{panelProps.children}
 						</div>
 					);
 				}
