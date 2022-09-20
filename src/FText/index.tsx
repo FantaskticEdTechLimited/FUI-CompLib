@@ -1,13 +1,28 @@
+import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
+import { FUseColor } from "../utils";
 import * as styles from "./styles";
 import { FTextProps } from "./types";
 
-export const FText = (props: FTextProps) => {
+export const FText = ({
+	font = FFontTypes.Small_Title(),
+	color = FUseColor({ colorName: "Black" }),
+	overflowHidden = false,
+	children = "Text",
+	...props
+}: FTextProps) => {
+	const param: Partial<FTextProps> = {
+		font: font,
+		color: color,
+		overflowHidden: overflowHidden,
+		...props,
+	};
+
 	return (
 		<div
-			className={styles.FTextContainer(props) + " " + props.className}
+			className={styles.FTextContainer(param) + " " + props.className}
 			style={props.style}
-			children={props.children ?? "Text"}
+			children={children}
 		/>
 	);
 };
