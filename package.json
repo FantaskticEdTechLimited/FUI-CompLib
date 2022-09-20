@@ -1,43 +1,59 @@
 {
-	"name": "@fantaskticedtechlimited/fui-complib",
-	"version": "3.6.7",
-	"description": "Fantasktic UI Component library",
-	"main": "./lib/cjs/index.js",
-	"module": "./lib/esm/index.js",
-	"types": "./lib/esm/index.d.ts",
-	"repository": "https://github.com/FantaskticEdTechLimited/FUI-CompLib.git",
-	"author": "pakmatthew",
-	"license": "MIT",
-	"private": false,
-	"devDependencies": {
-		"@types/node": "^18.7.15",
-		"@types/react": "^17.0.38",
-		"@types/react-dom": "^17.0.11",
-		"@types/react-router-dom": "^5.3.2",
-		"react": "^17.0.2",
-		"react-dom": "^17.0.2",
-		"typescript": "^4.5.4"
-	},
-	"scripts": {
-		"build": "yarn build:esm && yarn build:cjs",
-		"build:esm": "tsc",
-		"build:cjs": "tsc --module commonjs --outDir lib/cjs"
-	},
-	"publishConfig": {
-		"registry": "https://npm.pkg.github.com"
-	},
-	"files": [
-		"/lib"
-	],
-	"dependencies": {
-		"@fantaskticedtechlimited/fui-colorlib": "^3.2.1",
-		"@fantaskticedtechlimited/fui-fontlib": "^1.1.0",
-		"@fantaskticedtechlimited/fui-iconlib": "^1.0.5",
-		"@types/hoist-non-react-statics": "^3.3.1",
-		"immutability-helper": "^3.1.1",
-		"react-dnd": "^14.0.5",
-		"react-dnd-html5-backend": "^14.1.0",
-		"react-select": "^5.3.2",
-		"typestyle": "^2.2.0"
-	}
+  "name": "@fantaskticedtechlimited/fui-complib",
+  "version": "3.7.0-beta",
+  "description": "Fantasktic UI Component library",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "types": "./lib/esm/index.d.ts",
+  "repository": "https://github.com/FantaskticEdTechLimited/FUI-CompLib.git",
+  "author": "pakmatthew",
+  "license": "MIT",
+  "private": false,
+  "devDependencies": {
+    "@babel/core": "^7.19.1",
+    "@storybook/addon-actions": "^6.5.12",
+    "@storybook/addon-docs": "^6.5.12",
+    "@storybook/addon-essentials": "^6.5.12",
+    "@storybook/addon-interactions": "^6.5.12",
+    "@storybook/addon-links": "^6.5.12",
+    "@storybook/builder-webpack4": "^6.5.12",
+    "@storybook/manager-webpack4": "^6.5.12",
+    "@storybook/react": "^6.5.12",
+    "@storybook/testing-library": "^0.0.13",
+    "@types/node": "^18.7.15",
+    "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
+    "@types/react-router": "^5.1.19",
+    "@types/react-router-dom": "^5.3.2",
+    "babel-loader": "^8.2.5",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router": "^6.4.0",
+    "react-router-dom": "^6.4.0",
+    "typescript": "^4.5.4"
+  },
+  "scripts": {
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir lib/cjs",
+    "start": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "files": [
+    "/lib"
+  ],
+  "dependencies": {
+    "@fantaskticedtechlimited/fui-colorlib": "^3.2.1",
+    "@fantaskticedtechlimited/fui-fontlib": "^1.1.0",
+    "@fantaskticedtechlimited/fui-iconlib": "^1.0.5",
+    "@types/hoist-non-react-statics": "^3.3.1",
+    "immutability-helper": "^3.1.1",
+    "react-dnd": "^14.0.5",
+    "react-dnd-html5-backend": "^14.1.0",
+    "react-select": "^5.3.2",
+    "typestyle": "^2.2.0"
+  }
 }
