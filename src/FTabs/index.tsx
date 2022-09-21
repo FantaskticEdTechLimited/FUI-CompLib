@@ -1,26 +1,25 @@
 import React, { useState } from "react";
 import { FAutoConvertArray, FButton } from "..";
-import { FButtonProps, FButtonTypes } from "../FButton/types";
+import { FButtonProps } from "../FButton/types";
 import * as styles from "./styles";
-import { FTabPanelProps, FTabsProps } from "./types";
+import { FTabsProps } from "./types";
 
-export const FTabsPanel = (props: FTabPanelProps) => {
-	const { children, style, className } = props;
-	return (
-		<div style={style} className={className}>
-			{children}
-		</div>
-	);
-};
-
-export const FTabs = (props: FTabsProps) => {
+/** `<FTabs />` is a customized `Tab` component,
+ * which returns tab buttons for tab screen.
+ *
+ * **Use with `<FTabsPanel />`.**
+ *
+ * Props: `FTabsProps`.
+ *
+ *  */
+export const FTabs = ({ disabled = false, ...props }: FTabsProps) => {
 	const [tabIndex, setTabIndex] = useState<number>(0);
 	let defaultButtonProps: FButtonProps = {
-		type: FButtonTypes.PRIMARY,
+		type: "Primary",
 		label: "",
 		leadingComponents: [],
 		actionComponents: [],
-		disabled: props.disabled ?? false,
+		disabled: disabled ?? false,
 		onClick: () => setTabIndex(0),
 		style: props.tabButtonProps?.style,
 		className: props.tabButtonProps?.className,
@@ -28,9 +27,7 @@ export const FTabs = (props: FTabsProps) => {
 	return (
 		<div
 			style={props.wrapperStyle}
-			className={
-				styles.FTabsWrapper(props.disabled!) + " " + props.wrapperClassName
-			}
+			className={styles.FTabsWrapper(disabled!) + " " + props.wrapperClassName}
 		>
 			{/* header container that contains tabs */}
 			<div
@@ -47,9 +44,8 @@ export const FTabs = (props: FTabsProps) => {
 					{FAutoConvertArray(props.children).map((tab, index) => {
 						let isSelect = tabIndex === index ? true : false;
 						let buttonProps: FButtonProps = {
-							key: index,
 							...defaultButtonProps,
-							type: isSelect ? FButtonTypes.PRIMARY : FButtonTypes.SECONDARY,
+							type: isSelect ? "Primary" : "Secondary",
 							label: tab.props.label,
 							leadingComponents:
 								tab.props.tabLeadingComponents &&
@@ -57,7 +53,7 @@ export const FTabs = (props: FTabsProps) => {
 							actionComponents:
 								tab.props.tabActionConmponents &&
 								tab.props.tabActionConmponents(isSelect),
-							disabled: props.disabled ?? tab.props.disabled,
+							disabled: disabled ?? tab.props.disabled,
 							onClick: () => setTabIndex(index),
 							...tab.props.tabButtonProps,
 						};
@@ -81,7 +77,6 @@ export const FTabs = (props: FTabsProps) => {
 			{/* panel under the corresponding tab */}
 			{FAutoConvertArray(props.children).map((panel, index) => {
 				const panelProps = panel.props;
-
 				if (panelProps.isRenderOnSelected) {
 					if (index === tabIndex)
 						return (

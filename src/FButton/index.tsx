@@ -2,43 +2,55 @@ import * as styles from "./styles";
 import React, { useState } from "react";
 import { FText, FUseColor } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FButtonProps, FButtonTypes } from "./types";
+import { FButtonProps } from "./types";
 
-export const FButton = (props: FButtonProps) => {
+/** `<FButton />` is a customized `Button` component.
+ *
+ * The default type is `"Primary"`.
+ *
+ * Props: `FButtonProps`.
+ *
+ * */
+export const FButton = ({
+	label = "Label",
+	type = "Primary",
+	disabled = false,
+	...props
+}: FButtonProps) => {
 	const [isHover, setIsHover] = useState<boolean>(false);
+	const param: Partial<FButtonProps> = {
+		label: label,
+		type: type,
+		disabled: disabled,
+		...props,
+	};
 
 	return (
 		<div
 			style={props.style && props.style(isHover)}
 			className={
-				styles.FButtonContainer(props, isHover) +
+				styles.FButtonContainer(param, isHover) +
 				" " +
 				(props.className && props.className(isHover))
 			}
-			onClick={() =>
-				props.disabled ? undefined : props.onClick && props.onClick()
-			}
-			// Added hover effect for className and style
+			onClick={() => (disabled ? undefined : props.onClick && props.onClick())}
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
 			{props.leadingComponents}
-			{props.customChildren ? (
-				props.customChildren
-			) : (
+			{props.customChildren ?? (
 				<FText
 					font={FFontTypes.Text()}
 					color={
-						props.type === FButtonTypes.PRIMARY
+						type === "Primary"
 							? FUseColor({ colorName: "White" })
-							: props.type === FButtonTypes.OUTLINE ||
-							  props.type === FButtonTypes.SECONDARY
+							: type === "Outline" || type === "Secondary"
 							? FUseColor({ colorName: "Main" })
 							: FUseColor({ colorName: "Black" })
 					}
 					style={props.labelStyle && props.labelStyle(isHover)}
 					className={props.labelClassName && props.labelClassName(isHover)}
-					children={props.label ?? "Button_Text"}
+					children={label}
 					{...props.labelProps}
 				/>
 			)}

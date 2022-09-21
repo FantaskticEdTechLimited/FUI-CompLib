@@ -4,6 +4,10 @@ import { FUseColor } from "../utils";
 import * as styles from "./styles";
 import { FTextProps } from "./types";
 
+/** `<FText />` is a customized `Text` component.
+ *
+ * Props: `FTextProps`.
+ */
 export const FText = ({
 	font = FFontTypes.Small_Title(),
 	color = FUseColor({ colorName: "Black" }),

@@ -7,28 +7,33 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export default {
-	title: "Components/FText",
+	title: "FUI-Complib/lib/FText",
 	component: FText,
+	argTypes: {
+		children: {
+			defaultValue: "FText sample",
+			type: "string",
+		},
+		style: { control: { disable: true } },
+		className: { control: { disable: true } },
+	},
 } as ComponentMeta<typeof FText>;
 
 const Template: ComponentStory<typeof FText> = (args) => <FText {...args} />;
 
 export const Default = Template.bind({});
-
 export const CustomColorAndFont = Template.bind({});
-
 export const CustomRowsWithOverflow = Template.bind({});
 
 Default.args = {
 	font: FFontTypes.Small_Title(),
 	color: FColorTypes.FPrimaryColors.BLACK.LM,
-	children: "Default FText.",
 } as FTextProps;
 
 CustomColorAndFont.args = {
 	font: FFontTypes.Text(),
 	color: FColorTypes.FThemeColors.MAIN.LM,
-	children: "The color and font are changed.",
+	children: "The color and font of text are changed.",
 } as FTextProps;
 
 CustomRowsWithOverflow.args = {

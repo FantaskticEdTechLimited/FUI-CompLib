@@ -1,56 +1,31 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { CSSProperties, Key, ReactElement, ReactNode } from "react";
-import { FSVGIconProps } from "../FSVGIcon/types";
+import { CSSProperties, ReactNode } from "react";
 import { FTextProps } from "../FText/types";
-import { FOnClickFunction } from "../global.types";
+import {
+	ComponentsType,
+	ComponentType,
+	FOnClickFunction,
+	FOnHoverProperty,
+} from "../global.types";
 
-export enum FButtonTypes {
-	PRIMARY = "Primary",
-	OUTLINE = "Outline",
-	SECONDARY = "Secondary",
-	TEXT = "Text",
-}
+export type FButtonTypes = "Primary" | "Secondary" | "Outline" | "Text";
 
-type ComponentsType = ReactElement<FIconProps | FSVGIconProps> | ReactNode;
+type LabelProps = Omit<FTextProps, "style" | "className">;
 
 export interface FButtonProps {
-	key?: Key;
 	type?: FButtonTypes;
+	/** Custom content without using `label` field. */
 	customChildren?: ReactNode;
+	/** If true, the button cannot have action event. */
 	disabled?: boolean;
+	/** Text content of button. */
 	label?: string;
 	onClick?: FOnClickFunction;
-	labelClassName?: (isHover?: boolean) => string;
-	labelStyle?: (isHover?: boolean) => CSSProperties;
-	labelProps?: Omit<FTextProps, "style" | "className">;
-	leadingComponents?: ComponentsType | Array<ComponentsType>;
-	actionComponents?: ComponentsType | Array<ComponentsType>;
-	/**
-	 * Example of using hover effect for className:
-	 *
-	 * _assume using **typeStyle**_
-	 *
-	 * `export const ButtonDiv = (isHover: boolean) => style({ `
-	 *
-	 * `     backgroundColor: isHover ? "white" : undefined`
-	 *
-	 * `})`
-	 *
-	 * `<FButton className={(isHover) => styles.ButtonDiv(isHover!)} />`
-	 */
-	className?: (isHover?: boolean) => string;
-	/**
-	 * Example of using inline style with hover state:
-	 *
-	 * `const buttonStyle = (hover?: boolean) => {`
-	 *
-	 * `	return {backgroundColor: hover ? "red" : "green"};`
-	 *
-	 * `};`
-	 *
-	 * `<FButton style={buttonStyle} />;`
-	 *
-	 * Without hover effect, e.g. `<FButton style={()=>({ padding: "4px" })}`
-	 */
-	style?: (isHover?: boolean) => CSSProperties;
+	labelClassName?: FOnHoverProperty<string>;
+	labelStyle?: FOnHoverProperty<CSSProperties>;
+	/** Properties of label without `className` and `style` fields under `FTextProps`.*/
+	labelProps?: LabelProps;
+	leadingComponents?: ComponentType | ComponentsType;
+	actionComponents?: ComponentType | ComponentsType;
+	className?: FOnHoverProperty<string>;
+	style?: FOnHoverProperty<CSSProperties>;
 }

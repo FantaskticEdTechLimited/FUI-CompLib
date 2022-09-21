@@ -1,62 +1,31 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
-import { FSVGIconProps } from "../FSVGIcon/types";
-import { FOnClickFunction } from "../global.types";
-
-export interface FTabPanelProps {
-	label?: string;
-	tabLeadingComponents?: (
-		isSelected: boolean
-	) => ReactElement<FIconProps | FSVGIconProps> | ReactNode;
-	tabActionConmponents?: (
-		isSelected: boolean
-	) => ReactElement<FIconProps | FSVGIconProps> | ReactNode;
-	children?: ReactNode;
-	disabled?: boolean;
-	onClick?: FOnClickFunction;
-	// user design own tab independently
-	renderCustomizedTabButton?: (
-		isSelected: boolean,
-		buttonProps: FButtonProps
-	) => ReactNode;
-	/**
-	 * Properties (including style and className) of the tab button.
-	 */
-	tabButtonProps?: FButtonProps;
-	// control rerender
-	isRenderOnSelected?: boolean;
-	style?: CSSProperties;
-	className?: string;
-}
+import { FTabPanelProps } from "../FTabsPanel/types";
 
 export interface FTabsProps {
 	children?: ReactElement<FTabPanelProps> | Array<ReactElement<FTabPanelProps>>;
 	disabled?: boolean;
-	// leading components in the header
+	/** Leading components in the tab header. */
 	leadingComponents?: ReactNode;
-	// action components in the header
+	/** Action components in the tab header. */
 	actionComponents?: ReactNode;
-	// user design own tab in general
+	/** Render user custom tab button. */
 	renderCustomizedTabButton?: (
 		isSelected: boolean,
 		buttonProps: FButtonProps
 	) => ReactNode;
-
-	// css style of FTabs wrapper
+	/** Class name to change the style of the wrapper. */
 	wrapperClassName?: string;
+	/** Style to change the style of the wrapper. */
 	wrapperStyle?: CSSProperties;
-
-	// css style of FTabs header container
+	/** Class name to change the style of the header container. */
 	headerClassName?: string;
+	/** Style to change the style of the header container. */
 	headerStyle?: CSSProperties;
-
-	// css style of FTabs tab container
+	/** Class name to change the style of the tab button. */
 	tabContainerClassName?: string;
+	/** Style to change the style of the tab button. */
 	tabContainerStyle?: CSSProperties;
-
-	/**
-	 * Properties (including style and className) of the tab button.
-	 */
+	/** Properties with `style` and `className` fields of the tab button. */
 	tabButtonProps?: FButtonProps;
 }

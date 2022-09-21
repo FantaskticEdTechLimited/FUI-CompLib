@@ -2,7 +2,6 @@ import { FBottomNavBarProps } from "./types";
 import * as styles from "./styles";
 import React from "react";
 import { FButton } from "..";
-import { FButtonTypes } from "../FButton/types";
 
 /**
  * A bar at the bottom containing two buttons (one left: leading button; one right: action button).
@@ -16,7 +15,7 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 			{props.children ?? (
 				<>
 					<FButton
-						type={props.leadingButtonProps?.type ?? FButtonTypes.SECONDARY}
+						type={props.leadingButtonProps?.type ?? "Secondary"}
 						disabled={props.disableLeadingButton}
 						label={props.leadingButtonLabel ?? "Cancel"}
 						onClick={() =>
@@ -33,7 +32,7 @@ export const FBottomNavBar = (props: FBottomNavBarProps) => {
 						{...props.leadingButtonProps}
 					/>
 					<FButton
-						type={props.actionButtonProps?.type ?? FButtonTypes.PRIMARY}
+						type={props.actionButtonProps?.type ?? "Primary"}
 						disabled={props.disableActionButton}
 						label={props.actionButtonLabel ?? "Next"}
 						onClick={() =>

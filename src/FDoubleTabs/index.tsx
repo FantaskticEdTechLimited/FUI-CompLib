@@ -3,7 +3,7 @@ import * as styles from "./styles";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { Fragment, useEffect, useState } from "react";
 import React from "react";
-import { FButtonProps, FButtonTypes } from "../FButton/types";
+import { FButtonProps } from "../FButton/types";
 import { FButton } from "..";
 
 export const FDoubleTabsPanel = (props: FDoubleTabsPanelProps) => {
@@ -14,7 +14,7 @@ export const FDoubleTabsPanel = (props: FDoubleTabsPanelProps) => {
 export const FDoubleTabs = (props: FDoubleTabsProps) => {
 	const [tabIndex, setTabIndex] = useState<number>(0);
 	let defaultTabButtonProps: FButtonProps = {
-		type: FButtonTypes.PRIMARY,
+		type: "Primary",
 		label: "",
 		leadingComponents: [],
 		actionComponents: [],
@@ -56,9 +56,8 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 								props.children.map((tab, index) => {
 									let isSelect = tabIndex === index ? true : false;
 									let tabButtonProps: FButtonProps = {
-										key: index,
 										...defaultTabButtonProps,
-										type: isSelect ? FButtonTypes.PRIMARY : FButtonTypes.TEXT,
+										type: isSelect ? "Primary" : "Text",
 										label:
 											tab.props.label ?? index === 0 ? "Section" : "Preview",
 										leadingComponents:

@@ -1,3 +1,7 @@
+import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { ReactElement, ReactNode } from "react";
+import { FSVGIconProps } from "./FSVGIcon/types";
+
 export type Nullable<T> = T | null;
 
 export type FOnClickFunction = () => void;
@@ -13,6 +17,14 @@ export type FOnDataCallbackFunction<T, C> = (
 
 export type FOnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 
+/** For className and style of component that contains hover effect. */
+export type FOnHoverProperty<T> = (isHover?: boolean) => T;
+
+export type ComponentType =
+	| ReactElement<FIconProps | FSVGIconProps>
+	| ReactNode;
+
+export type ComponentsType = Array<ComponentType>;
 /**
  * for different device types:
  *

@@ -23,8 +23,10 @@ import { FHeaderButton } from "./FHeaderButton";
 import { FHeaderButtonTypes, FHeaderButtonProps } from "./FHeaderButton/types";
 import { FEmailInputField } from "./FEmailInputField";
 import { FPasswordInputField } from "./FPasswordInputField";
-import { FTabs, FTabsPanel } from "./FTabs";
-import { FTabPanelProps, FTabsProps } from "./FTabs/types";
+import { FTabs } from "./FTabs";
+import { FTabsProps } from "./FTabs/types";
+import { FTabsPanel } from "./FTabsPanel";
+import { FTabPanelProps } from "./FTabsPanel/types";
 import { FDnDOrder } from "./FDnDOrder";
 import { FNoData } from "./FNoData";
 import { FForm } from "./FForm";
@@ -107,9 +109,9 @@ export {
 	FSVGIcon,
 	FSwitchButton,
 	FTabs,
+	FTabsProps,
 	FTabsPanel,
 	FTabPanelProps,
-	FTabsProps,
 	FTag,
 	FTagInputField,
 	FText,
