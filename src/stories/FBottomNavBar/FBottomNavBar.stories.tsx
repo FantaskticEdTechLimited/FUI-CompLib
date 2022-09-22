@@ -1,11 +1,11 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { FBottomNavBar } from "../../FBottomNavBar"; 
+import { FBottomNavBar } from "../../FBottomNavBar";
 import { FBottomNavBarProps } from "../../FBottomNavBar/types";
 import { action } from "@storybook/addon-actions";
 
 export default {
-	title: "FUI-Complib/lib/FBottomNavBar",
+	title: "FUI-Complib/COMPONENTS/FBottomNavBar",
 	component: FBottomNavBar,
 	argTypes: {
 		style: { control: { disable: true } },

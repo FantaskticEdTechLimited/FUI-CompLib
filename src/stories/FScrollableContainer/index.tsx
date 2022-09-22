@@ -2,10 +2,9 @@ import React from "react";
 import { FScrollBarStyle } from "../../FScrollBarStyle";
 import { FScrollableContainerProps } from "./types";
 
-/** `<FScrollableContainer />` is just an example
- * for showing a component using `FScrollBarStyle`.
+/** `<FScrollableContainer />` is an example to show a component using `FScrollBarStyle`.
  *
- * Thus, it is **NOT** included in `FUI-CompLib`. */
+ * Thus, it is temporarily **NOT** included in `FUI-CompLib`. */
 export const FScrollableContainer = ({
 	horizontal = false,
 	...props

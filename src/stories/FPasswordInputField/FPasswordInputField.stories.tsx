@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { FPasswordInputField } from "../../FPasswordInputField";
 
 export default {
-	title: "FUI-Complib/lib/FPasswordInputField",
+	title: "FUI-Complib/COMPONENTS/FPasswordInputField",
 	component: FPasswordInputField,
 	argTypes: {
 		renderInputValue: { control: { disable: true } },

@@ -1,0 +1,37 @@
+import { Meta } from "@storybook/addon-docs";
+
+<Meta title="FUI-Complib/FUNCTIONS/FCheckIsToday" />
+
+# FCheckIsToday
+
+`FCheckIsToday` is a function to determine whether the input `date` is today.
+
+<table>
+	<tr>
+		<th>Param</th>
+		<th>Type</th>
+		<th>Return</th>
+	</tr>
+	<tr>
+		<td>date</td>
+		<td>Date</td>
+		<td>boolean</td>
+	</tr>
+</table>
+
+    const FCheckIsToday = (date: Date) => {
+        const endDateDay = date.getDate();
+        const endDateMonth = date.getMonth() + 1;
+        const endDateYear = date.getFullYear();
+        const todayDay = new Date().getDate();
+        const todayMonth = new Date().getMonth() + 1;
+        const todayYear = new Date().getFullYear();
+
+        if (
+            endDateDay === todayDay &&
+            endDateMonth === todayMonth &&
+            endDateYear === todayYear
+        )
+            return true;
+        else return false;
+    };

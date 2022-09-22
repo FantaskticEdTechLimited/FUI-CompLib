@@ -5,8 +5,11 @@ import { FScrollableContainer } from ".";
 import { FText } from "../../FText";
 
 export default {
-	title: "FUI-Complib/lib/FScrollableContainer",
+	title: "FUI-Complib/COMPONENTS/FScrollableContainer",
 	component: FScrollableContainer,
+	argTypes: {
+		children: { control: { disable: true } },
+	},
 } as ComponentMeta<typeof FScrollableContainer>;
 
 const Template: ComponentStory<typeof FScrollableContainer> = (args) => (

@@ -5,7 +5,7 @@ import { FButton } from "../../FButton";
 import { FButtonProps, FButtonTypes } from "../../FButton/types";
 
 export default {
-	title: "FUI-Complib/lib/FButton",
+	title: "FUI-Complib/COMPONENTS/FButton",
 	component: FButton,
 	argTypes: {
 		type: { defaultValue: "Primary" },

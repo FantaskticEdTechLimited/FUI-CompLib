@@ -6,7 +6,7 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FText } from "../../FText";
 
 export default {
-	title: "FUI-Complib/lib/FTabs",
+	title: "FUI-Complib/COMPONENTS/FTabs",
 	component: FTabs,
 	argTypes: {
 		headerStyle: { control: { disable: true } },

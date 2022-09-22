@@ -1,3 +1,11 @@
+/** `FCheckIsToday` is a function to determine whether the input `date` is today.
+ *
+ * Props: `FCheckIsTodayProps`.
+ *
+ * @param date
+ * @type `Date`
+ * @returns _boolean_
+ */
 export const FCheckIsToday = (date: Date) => {
 	const endDateDay = date.getDate();
 	const endDateMonth = date.getMonth() + 1;

@@ -6,7 +6,7 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export default {
-	title: "FUI-Complib/lib/FText",
+	title: "FUI-Complib/COMPONENTS/FText",
 	component: FText,
 	argTypes: {
 		children: {
