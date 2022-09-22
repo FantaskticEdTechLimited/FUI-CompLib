@@ -1,9 +1,9 @@
 import { CSSProperties, ReactNode } from "react";
-import { FScrollBarProps } from "../FScrollBar/types";
-import { FTextProps } from "../FText/types"; 
+import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
+import { FTextProps } from "../FText/types";
 
 export interface FDropdownProps<T> {
-	options:T[];
+	options: T[];
 	onSelect: (data: T) => void;
 	// selected option or options
 	selectedOptions?: T | T[] | null;
@@ -17,7 +17,7 @@ export interface FDropdownProps<T> {
 	renderArrowKeySelectedOption?: (data: T) => void;
 
 	// user declare own method to compare selected option with option
-	onOptionCompare?: (dataA: T ,dataB: T) => boolean;
+	onOptionCompare?: (dataA: T, dataB: T) => boolean;
 
 	// display the option with user own method
 	renderCustomizedOption?: (data: T, isSelected: boolean) => ReactNode;
@@ -42,7 +42,7 @@ export interface FDropdownProps<T> {
 	emptyOptionTextStyle?: CSSProperties;
 	emptyOptionTextProps?: FTextProps;
 
-	scrollBarProps?: FScrollBarProps;
+	scrollBarProps?: FScrollBarStyleProps;
 }
 
 export interface FDropdownOptionDivProps {

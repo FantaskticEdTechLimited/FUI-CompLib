@@ -1,5 +1,6 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { ReactElement, ReactNode } from "react";
+import { FButtonProps } from "./FButton/types";
 import { FSVGIconProps } from "./FSVGIcon/types";
 
 export type Nullable<T> = T | null;
@@ -20,11 +21,17 @@ export type FOnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 /** For className and style of component that contains hover effect. */
 export type FOnHoverProperty<T> = (isHover?: boolean) => T;
 
-export type ComponentType =
+export type FButtonComponentType =
 	| ReactElement<FIconProps | FSVGIconProps>
 	| ReactNode;
 
-export type ComponentsType = Array<ComponentType>;
+export type FButtonComponentsType = Array<FButtonComponentType>;
+
+export type CustomTabButtonProps = (
+	isSelected: boolean,
+	buttonProps: FButtonProps
+) => ReactNode;
+
 /**
  * for different device types:
  *

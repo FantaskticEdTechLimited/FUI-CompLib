@@ -4,10 +4,9 @@ import { FButtonProps } from "../FButton/types";
 import * as styles from "./styles";
 import { FTabsProps } from "./types";
 
-/** `<FTabs />` is a customized `Tab` component,
- * which returns tab buttons for tab screen.
+/** `<FTabs />` is a customized `Tab` component, which returns tab buttons.
  *
- * **Use with `<FTabsPanel />`.**
+ * **Use with `<FTabsPanel />`** for the content of each tab.
  *
  * Props: `FTabsProps`.
  *
@@ -16,7 +15,6 @@ export const FTabs = ({ disabled = false, ...props }: FTabsProps) => {
 	const [tabIndex, setTabIndex] = useState<number>(0);
 	let defaultButtonProps: FButtonProps = {
 		type: "Primary",
-		label: "",
 		leadingComponents: [],
 		actionComponents: [],
 		disabled: disabled ?? false,

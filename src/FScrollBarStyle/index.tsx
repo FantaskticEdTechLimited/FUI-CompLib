@@ -1,9 +1,15 @@
 import { style } from "typestyle";
 import { FUseColor } from "..";
-import { FScrollBarProps } from "./types";
+import { FScrollBarStyleProps } from "./types";
 
-// not a FC, only applies css style
-export const FScrollBarStyle = (props?: FScrollBarProps) => {
+/** `FScrollBarStyle` is not a component,
+ * but a style function which can be applied on `className` of a component
+ * to show a scrollbar with default or custom style for the overflow content.
+ *
+ * Props: `FScrollBarStyleProps`.
+ *
+ *  */
+export const FScrollBarStyle = (props?: FScrollBarStyleProps) => {
 	const greyColor = FUseColor({
 		colorName: "Grey",
 	});

@@ -9,11 +9,11 @@ export interface FTextProps {
 	font?: string;
 	/** Maximum rows of text to be shown.
 	 *
-	 * Use with `overflowHidden`. */
+	 * **Use with `overflowHidden`.** */
 	maxRows?: number;
-	/** If true, the overflow text will be hidden.
+	/** If `true`, the overflow text will be hidden.
 	 *
-	 * Use with `maxRows`. */
+	 * **Use with `maxRows`.** */
 	overflowHidden?: boolean;
 	/** Class name to change text style. */
 	className?: string;

@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { FPopUpProps } from "./types";
 import * as styles from "./styles";
-import { FScrollBarStyle } from "../FScrollBar";
+import { FScrollBarStyle } from "../FScrollBarStyle";
 import { FUseScreenSize } from "../utils";
 
 export const FPopUp = (props: FPopUpProps) => {

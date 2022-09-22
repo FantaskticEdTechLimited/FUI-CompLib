@@ -2,7 +2,7 @@ import { FDropdownOptionDivProps, FDropdownProps } from "./types";
 import * as styles from "./styles";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
-import { FScrollBarStyle } from "../FScrollBar";
+import { FScrollBarStyle } from "../FScrollBarStyle";
 import { FText } from "../FText";
 import { FAutoConvertArray, FUseColor } from "..";
 

@@ -3,7 +3,7 @@ import { FTabPanelProps } from "./types";
 
 /** `<FTabsPanel />` is the content of `<FTabs />`.
  *
- * **Use with `<FTabs />`.**
+ * **Use with `<FTabs />`** for the header of the panel.
  *
  * Props: `FTabPanelProps`.
  *

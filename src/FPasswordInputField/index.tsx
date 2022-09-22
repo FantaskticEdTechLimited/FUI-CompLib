@@ -6,10 +6,19 @@ import { EyeIcon } from "./svg/EyeIcon";
 import { EyeOffIcon } from "./svg/EyeOffIcon";
 import { FUseColor } from "../utils";
 
-export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
+/** `<FPasswordInputField />` is an `Input` component for password only.
+ *
+ * Props: `FPasswordInputFieldProps`.
+ */
+export const FPasswordInputField = ({
+	placeholder = "Password",
+	showPassword = false,
+	disabled = false,
+	...props
+}: FPasswordInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
-	const [showPassword, setShowPassword] = useState<boolean>(false);
+	const [displayPassword, setDisplayPassword] = useState<boolean>(false);
 	const passwordInputRef = useRef<HTMLInputElement>(null);
 
 	useEffect(() => {
@@ -18,22 +27,18 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 	}, [isTriggered]);
 
 	useEffect(() => {
-		if (props.showPassword) setShowPassword(true);
-	}, [props.showPassword]);
+		if (showPassword) setDisplayPassword(true);
+	}, [showPassword]);
 
 	return (
 		<div
 			style={props.containerStyle}
 			className={
-				styles.FPasswordInputFieldContainer(
-					isTriggered,
-					isFilled,
-					props.disabled!
-				) +
+				styles.FPasswordInputFieldContainer(isTriggered, isFilled, disabled) +
 				" " +
 				props.containerClassName
 			}
-			onClick={() => (props.disabled ? undefined : setIsTriggered(true))}
+			onClick={() => (disabled ? undefined : setIsTriggered(true))}
 			onBlur={() => {
 				setIsTriggered(false);
 				if (props.inputValue === undefined || props.inputValue === "")
@@ -46,48 +51,46 @@ export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
 					strokeColor={
 						isTriggered
 							? FUseColor({ colorName: "Main" })
-							: FUseColor({
-									colorName: "Black",
-							  })
+							: FUseColor({ colorName: "Black" })
 					}
-					disabled={props.disabled}
+					disabled={disabled}
 					{...props.lockIconProps}
 				/>
 			)}
 			<input
 				style={props.inputAreaStyle}
 				className={
-					styles.FPasswordInputFieldInputAreaDiv(props.disabled!) +
+					styles.FPasswordInputFieldInputAreaDiv(disabled) +
 					" " +
 					props.inputAreaClassName
 				}
-				type={showPassword ? "text" : "password"}
+				type={displayPassword ? "text" : "password"}
 				ref={passwordInputRef}
-				placeholder={props.placeholder ?? "Password"}
+				placeholder={placeholder}
 				value={props.inputValue ?? ""}
 				onChange={(event: any) => {
-					if (!props.disabled) {
+					if (!disabled) {
 						props.renderInputValue &&
 							props.renderInputValue(event.target.value);
 					}
 				}}
 				onKeyDown={(event: any) => {
 					if (event.key === "Enter") {
-						!props.disabled && props.onEnterPress && props.onEnterPress();
+						!disabled && props.onEnterPress && props.onEnterPress();
 					}
 				}}
 			/>
-			{showPassword ? (
+			{displayPassword ? (
 				<EyeIcon
 					{...props.eyeIconProps}
-					disabled={props.disabled}
-					onClick={() => (props.disabled ? undefined : setShowPassword(false))}
+					disabled={disabled}
+					onClick={() => (disabled ? undefined : setDisplayPassword(false))}
 				/>
 			) : (
 				<EyeOffIcon
 					{...props.eyeOffIconProps}
-					disabled={props.disabled}
-					onClick={() => (props.disabled ? undefined : setShowPassword(true))}
+					disabled={disabled}
+					onClick={() => (disabled ? undefined : setDisplayPassword(true))}
 				/>
 			)}
 		</div>

@@ -1,5 +1,5 @@
 import { CSSProperties, ReactNode } from "react";
-import { FScrollBarProps } from "../FScrollBar/types";
+import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
 import { FOnClickFunction } from "../global.types";
 
 export interface FPopUpProps {
@@ -11,5 +11,5 @@ export interface FPopUpProps {
 	overlayClassName?: string;
 	overlayStyle?: CSSProperties;
 	style?: CSSProperties;
-	scrollBarProps?: FScrollBarProps;
+	scrollBarProps?: FScrollBarStyleProps;
 }

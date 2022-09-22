@@ -6,13 +6,14 @@ import { FInputField } from "./FInputField";
 import { FButton } from "./FButton";
 import { FButtonTypes, FButtonProps } from "./FButton/types";
 import { FBottomNavBar } from "./FBottomNavBar";
+import { FBottomNavBarProps } from "./FBottomNavBar/types";
 import { FPopUp } from "./FPopUp";
 import { FSwitchButton } from "./FSwitchButton";
 import { FCheckBox } from "./FCheckBox";
 import { FRadioButton } from "./FRadioButton";
 import { FSearchBar } from "./FSearchBar";
 import { FSVGIcon } from "./FSVGIcon";
-import { FScrollBarStyle } from "./FScrollBar";
+import { FScrollBarStyle } from "./FScrollBarStyle";
 import { FRWDNavBar } from "./FRWDNavBar";
 import { FSelect } from "./FSelect";
 import { FDropdown } from "./FDropdown";
@@ -72,6 +73,9 @@ import {
 	FRWDMode,
 	FRwdSizeProps,
 } from "./global.types";
+import { FPasswordInputFieldIconProps } from "./FPasswordInputField/svg/types";
+import { FPasswordInputFieldProps } from "./FPasswordInputField/types";
+import { FScrollBarStyleProps } from "./FScrollBarStyle/types";
 // =======================================================================
 
 export {
@@ -79,6 +83,7 @@ export {
 	// components (w/types)
 	// =====================
 	FBottomNavBar,
+	FBottomNavBarProps,
 	FButton,
 	FButtonTypes,
 	FButtonProps,
@@ -99,11 +104,14 @@ export {
 	FMoreActionPopUp,
 	FNoData,
 	FPasswordInputField,
+	FPasswordInputFieldProps,
+	FPasswordInputFieldIconProps,
 	FPopUp,
 	FRadioButton,
 	FRWDNavBar,
 	FScrollableContentWrapper,
 	FScrollBarStyle,
+	FScrollBarStyleProps,
 	FSearchBar,
 	FSelect,
 	FSVGIcon,
