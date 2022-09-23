@@ -18,7 +18,7 @@ export const FButtonContainer = (props: FButtonProps, isHover: boolean) =>
 		borderRadius: "4px",
 		border:
 			props.type === "Outline"
-				? "2px solid" + FUseColor({ colorName: "Main" })
+				? "2px solid " + FUseColor({ colorName: "Main" })
 				: "none",
 		cursor: props.disabled ? "not-allowed" : "pointer",
 		display: "flex",

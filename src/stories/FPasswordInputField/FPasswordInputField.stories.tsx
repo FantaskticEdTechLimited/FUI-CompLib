@@ -26,4 +26,4 @@ const Template: ComponentStory<typeof FPasswordInputField> = (args) => (
 	<FPasswordInputField {...args} />
 );
 
-export const Default = Template.bind({});
+export const Example = Template.bind({});

@@ -9,7 +9,10 @@ export default {
 	component: FButton,
 	argTypes: {
 		type: { defaultValue: "Primary" },
-		style: { control: { disable: true } },
+		style: {
+			defaultValue: () => ({ width: "100px" }),
+			control: { disable: true },
+		},
 		className: { control: { disable: true } },
 		labelProps: { control: { disable: true } },
 		labelStyle: { control: { disable: true } },
@@ -25,7 +28,7 @@ const Template: ComponentStory<typeof FButton> = (args) => (
 	<FButton {...args} />
 );
 
-export const Default = Template.bind({});
+export const Example = Template.bind({});
 export const Primary_Button = Template.bind({});
 export const Secondary_Button = Template.bind({});
 export const Outline_Button = Template.bind({});
@@ -37,11 +40,10 @@ const buttonProps: (
 ) => Partial<FButtonProps> = (type: FButtonTypes, isDefault?: boolean) => ({
 	label: isDefault ? undefined : `${type} Button`,
 	type: type,
-	style: () => ({ width: "100px" }),
 	onClick: action(`This is ${isDefault ? "default" : type} type button.`),
 });
 
-Default.args = {
+Example.args = {
 	...buttonProps("Primary", true),
 } as FButtonProps;
 

@@ -21,11 +21,11 @@ export type FOnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 /** For className and style of component that contains hover effect. */
 export type FOnHoverProperty<T> = (isHover?: boolean) => T;
 
-export type FButtonComponentType =
+export type FComponentType =
 	| ReactElement<FIconProps | FSVGIconProps>
 	| ReactNode;
 
-export type FButtonComponentsType = Array<FButtonComponentType>;
+export type FComponentsType = Array<FComponentType>;
 
 export type CustomTabButtonProps = (
 	isSelected: boolean,

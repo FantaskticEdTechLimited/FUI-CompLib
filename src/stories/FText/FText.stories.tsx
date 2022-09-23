@@ -20,11 +20,11 @@ export default {
 
 const Template: ComponentStory<typeof FText> = (args) => <FText {...args} />;
 
-export const Default = Template.bind({});
+export const Example = Template.bind({});
 export const CustomColorAndFont = Template.bind({});
 export const CustomRowsWithOverflow = Template.bind({});
 
-Default.args = {
+Example.args = {
 	font: FFontTypes.Small_Title(),
 	color: FColorTypes.FPrimaryColors.BLACK.LM,
 } as FTextProps;

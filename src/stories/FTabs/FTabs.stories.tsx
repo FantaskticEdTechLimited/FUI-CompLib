@@ -37,4 +37,4 @@ const Template: ComponentStory<typeof FTabs> = (args) => (
 	</FTabs>
 );
 
-export const Default = Template.bind({});
+export const Example = Template.bind({});

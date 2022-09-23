@@ -6,7 +6,7 @@ import { FButton } from "..";
 /** `<FBottomNavBar />` is a bottom navigation bar,
  * which contains a leading button (left) and a action button (right) in a row.
  *
- * Props: `FBottomNavBarProps`.
+ * Props: `FBottomNavBarProps`. 
  */
 export const FBottomNavBar = ({
 	disableActionButton = false,

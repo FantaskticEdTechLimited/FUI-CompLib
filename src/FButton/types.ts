@@ -1,8 +1,8 @@
 import { CSSProperties, ReactNode } from "react";
 import { FTextProps } from "../FText/types";
 import {
-	FButtonComponentsType,
-	FButtonComponentType,
+	FComponentsType,
+	FComponentType,
 	FOnClickFunction,
 	FOnHoverProperty,
 } from "../global.types";
@@ -14,14 +14,14 @@ type LabelProps = Omit<FTextProps, "style" | "className">;
 export interface FButtonProps {
 	/** Four different button types. */
 	type?: FButtonTypes;
-	/** Custom content without using `label` field. */
-	customChildren?: ReactNode;
 	/** If `true`, the button cannot have action event. */
 	disabled?: boolean;
 	/** Text content of button. */
 	label?: string;
 	/** Click action event for the button. */
 	onClick?: FOnClickFunction;
+	/** Custom content without using `label` field. */
+	customChildren?: ReactNode;
 	/** Class name to change the style of the button label. */
 	labelClassName?: FOnHoverProperty<string>;
 	/** Style to change the style of the button label. */
@@ -29,9 +29,9 @@ export interface FButtonProps {
 	/** Properties of label without `className` and `style` fields under `FTextProps`. */
 	labelProps?: LabelProps;
 	/** Custom leading component (header) of the button. */
-	leadingComponents?: FButtonComponentType | FButtonComponentsType;
+	leadingComponents?: FComponentType | FComponentsType;
 	/** Custom action component (footer) of the button. */
-	actionComponents?: FButtonComponentType | FButtonComponentsType;
+	actionComponents?: FComponentType | FComponentsType;
 	/** Class name to change the style of the button. */
 	className?: FOnHoverProperty<string>;
 	/** Style to change the style of the button. */

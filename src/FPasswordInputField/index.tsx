@@ -12,6 +12,7 @@ import { FUseColor } from "../utils";
  */
 export const FPasswordInputField = ({
 	placeholder = "Password",
+	inputValue = "",
 	showPassword = false,
 	disabled = false,
 	...props
@@ -41,8 +42,7 @@ export const FPasswordInputField = ({
 			onClick={() => (disabled ? undefined : setIsTriggered(true))}
 			onBlur={() => {
 				setIsTriggered(false);
-				if (props.inputValue === undefined || props.inputValue === "")
-					setIsFilled(false);
+				if (inputValue === undefined || inputValue === "") setIsFilled(false);
 				else setIsFilled(true);
 			}}
 		>
@@ -67,7 +67,7 @@ export const FPasswordInputField = ({
 				type={displayPassword ? "text" : "password"}
 				ref={passwordInputRef}
 				placeholder={placeholder}
-				value={props.inputValue ?? ""}
+				value={inputValue}
 				onChange={(event: any) => {
 					if (!disabled) {
 						props.renderInputValue &&
@@ -80,7 +80,8 @@ export const FPasswordInputField = ({
 					}
 				}}
 			/>
-			{displayPassword ? (
+			{(props.actionComponents && props.actionComponents(displayPassword)) ??
+			displayPassword ? (
 				<EyeIcon
 					{...props.eyeIconProps}
 					disabled={disabled}

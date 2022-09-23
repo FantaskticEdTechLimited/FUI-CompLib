@@ -3,8 +3,6 @@ import { FButtonProps } from "../FButton/types";
 import { FOnClickFunction } from "../global.types";
 
 export interface FBottomNavBarProps {
-	/** Custom content of the bottom nav bar. */
-	customChildren?: ReactNode;
 	/** If `true`, the action button cannot be used. */
 	disableActionButton?: boolean;
 	/** If `true`, the leading button cannot be used. */
@@ -17,6 +15,8 @@ export interface FBottomNavBarProps {
 	onActionButtonClick?: FOnClickFunction;
 	/** Click action event for the leading button. */
 	onLeadingButtonClick?: FOnClickFunction;
+	/** Custom content of the bottom nav bar. */
+	customChildren?: ReactNode;
 	/** Properties with `style` and `className` fields of the action button.
 	 *
 	 * Default action button type is `'Primary'`. */

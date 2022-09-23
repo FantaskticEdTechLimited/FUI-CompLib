@@ -6,7 +6,7 @@ import { FButtonProps } from "./types";
 
 /** `<FButton />` is a customized `Button` component.
  *
- * The default type is `"Primary"`.
+ * The default type is `"Primary"`. 
  *
  * Props: `FButtonProps`.
  *

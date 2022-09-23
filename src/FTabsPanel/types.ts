@@ -1,8 +1,8 @@
 import { ReactNode, CSSProperties } from "react";
 import { FButtonProps } from "../FButton/types";
 import {
-	FButtonComponentsType,
-	FButtonComponentType,
+	FComponentsType,
+	FComponentType,
 	CustomTabButtonProps,
 	FOnClickFunction,
 } from "../global.types";
@@ -15,11 +15,11 @@ export interface FTabPanelProps {
 	/** Leading components in the tab button. */
 	tabLeadingComponents?: (
 		isSelected: boolean
-	) => FButtonComponentType | FButtonComponentsType;
+	) => FComponentType | FComponentsType;
 	/** Action components in the tab button. */
 	tabActionConmponents?: (
 		isSelected: boolean
-	) => FButtonComponentType | FButtonComponentsType;
+	) => FComponentType | FComponentsType;
 	/** If `true`, the tab panel cannot be used. */
 	disabled?: boolean;
 	onClick?: FOnClickFunction;

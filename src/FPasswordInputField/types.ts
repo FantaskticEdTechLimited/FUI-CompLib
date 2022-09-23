@@ -1,7 +1,8 @@
 import { CSSProperties } from "react";
 import { FPasswordInputFieldIconProps } from "./svg/types";
 import {
-	FButtonComponentType,
+	FComponentsType,
+	FComponentType,
 	FOnClickFunction,
 	FOnSubmitFunction,
 } from "../global.types";
@@ -9,8 +10,6 @@ import {
 export interface FPasswordInputFieldProps {
 	/** Input password value. */
 	inputValue?: string;
-	/** Returns the input password value. */
-	renderInputValue?: FOnSubmitFunction<string>;
 	/** If `true`, the password inputfield cannot be used. */
 	disabled?: boolean;
 	/** Placeholder of the inputfield. */
@@ -19,8 +18,14 @@ export interface FPasswordInputFieldProps {
 	showPassword?: boolean;
 	/** Action event after pressing `Enter` key. */
 	onEnterPress?: FOnClickFunction;
+	/** Returns the input password value. */
+	renderInputValue?: FOnSubmitFunction<string>;
 	/** Leading component (header) of the inputfield. */
-	leadingComponent?: FButtonComponentType;
+	leadingComponent?: FComponentType;
+	/** action components (footer) of the inputfield. */
+	actionComponents?: (
+		showPassword?: boolean
+	) => FComponentType | FComponentsType;
 	/** Properties of the lock icon. */
 	lockIconProps?: FPasswordInputFieldIconProps;
 	/** Properties of the eye icon (show password). */

@@ -5,10 +5,18 @@ import update from "immutability-helper";
 import FDnDCard from "./FDnDCard";
 import React, { useEffect, useState } from "react";
 
-export const FDnDOrder = <T extends unknown>(props: FDnDOrderProps<T>) => {
+/** `<FDnDOrder />` is a Drag and Drop (**_DnD_**) component,
+ * which can _DnD_ an item to rearrange the order of items in the data list.
+ *
+ * Props: `FDnDOrderProps`.
+ *   */
+export const FDnDOrder = <T extends unknown>({
+	enableHoverOnly = false,
+	...props
+}: FDnDOrderProps<T>) => {
 	const [renderArray, setRenderArray] = useState<T[]>([]);
 
-	const handleDnDCardMove = (dragIndex: number, hoverIndex: number) => {
+	const handleDnDCardHover = (dragIndex: number, hoverIndex: number) => {
 		const dragCard = props.data[dragIndex];
 		props.onUpdateData(
 			update(props.data, {
@@ -29,6 +37,7 @@ export const FDnDOrder = <T extends unknown>(props: FDnDOrderProps<T>) => {
 		setRenderArray(result);
 	};
 
+	/** For handling _DnD_ Card onDrop function */
 	useEffect(() => {
 		if (renderArray && renderArray.length > 0) {
 			props.onUpdateData(renderArray);
@@ -44,10 +53,14 @@ export const FDnDOrder = <T extends unknown>(props: FDnDOrderProps<T>) => {
 						key={(data as any).id ?? index}
 						id={(data as any).id}
 						index={index}
-						enableHoverOnly={props.enableHoverOnly}
-						component={props.renderData(data, index)}
-						onChildrenMove={handleDnDCardMove}
+						enableHoverOnly={enableHoverOnly}
+						component={(isDragging) =>
+							props.renderData(data, index, isDragging)
+						}
+						onChildrenHover={handleDnDCardHover}
 						onChildrenDrop={handleDnDCardDrop}
+						style={props.style}
+						className={props.className}
 					/>
 				))}
 		</DndProvider>

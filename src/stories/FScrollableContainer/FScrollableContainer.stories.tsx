@@ -22,4 +22,4 @@ const Template: ComponentStory<typeof FScrollableContainer> = (args) => (
 	</FScrollableContainer>
 );
 
-export const Default = Template.bind({});
+export const Example = Template.bind({});

@@ -1,35 +1,57 @@
-import { Key, ReactElement } from "react";
+import { CSSProperties, Key, ReactElement, ReactNode } from "react";
 import { ConnectDropTarget, ConnectDragSource } from "react-dnd";
 import { FOnSubmitFunction } from "../global.types";
 
+type FDnDOrderDataReturnProps<T> = (
+	data: T,
+	index?: number,
+	isDragging?: boolean
+) => ReactElement;
+
 export interface FDnDOrderProps<T> {
-	// a list of data to be mapped
+	/** A list of data input to be mapped. */
 	data: Array<T>;
-	// drag and drop action to update the data list
+	/** Updates the order of the items after _DnD_ actions. */
 	onUpdateData: FOnSubmitFunction<T[]>;
-	// render JSX Element children
-	renderData: (data: T, index: number) => ReactElement;
-	/**
-	 * If not set, the DnD function will only return onDrop action, by default.
-	 */
+	/** Returns a list of items (JSX element) with the data input. */
+	renderData: FDnDOrderDataReturnProps<T>;
+	/** If `true`, `onHover` function will only be enabled for _DnD_ event.
+	 * Otherwise, it will only return `onDrop` function.
+	 *
+	 * `onHover`: There will be hover effect
+	 * (including the own hover effect of the item) on the items,
+	 * and data is also updating when dragging an item on another.
+	 *
+	 * `onDrop`: No hover effect (except the own hover effect of the item)
+	 * and data will be updated after _DnD_ process. */
 	enableHoverOnly?: boolean;
+	/** Class name to change the style of _DnD_ container. */
+	className?: string;
+	/** Style to change the style of _DnD_ container. */
+	style?: CSSProperties;
 }
 
-export interface FDnDOrderDataProps {
+type FDnDOrderOnChildrenMoveProps = (
+	dragIndex: number,
+	hoverIndex: number
+) => void;
+
+export interface FDnDCardProps {
 	key: Key;
 	id?: string;
 	index: number;
-	onChildrenMove: (dragIndex: number, hoverIndex: number) => void;
-	onChildrenDrop: (dragIndex: number, hoverIndex: number) => void;
-}
-
-export interface FDnDCardProps extends FDnDOrderDataProps {
+	onChildrenHover: FDnDOrderOnChildrenMoveProps;
+	onChildrenDrop: FDnDOrderOnChildrenMoveProps;
 	enableHoverOnly?: boolean;
-	// the JSX Element children
-	component: ReactElement;
+	/** For the JSX element component to be rendered. */
+	component: (isDragging?: boolean) => ReactNode;
 	isDragging: boolean;
 	connectDragSource: ConnectDragSource;
 	connectDropTarget: ConnectDropTarget;
+	/** Class name to change the style of _DnD_ container. */
+	className?: string;
+	/** Style to change the style of _DnD_ container. */
+	style?: CSSProperties;
 }
 
 export const ItemTypes = {

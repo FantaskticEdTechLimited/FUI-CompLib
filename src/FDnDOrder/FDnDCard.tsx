@@ -16,8 +16,16 @@ import {
 } from "./types";
 import { XYCoord } from "dnd-core";
 
-const FDnDCard = forwardRef<HTMLDivElement, FDnDCardProps>(function Card(
-	{ component, isDragging, connectDragSource, connectDropTarget },
+/** `<FDnDCard />` is to render component items from the data list. */
+export const FDnDCard = forwardRef<HTMLDivElement, FDnDCardProps>(function Card(
+	{
+		component,
+		isDragging,
+		connectDragSource,
+		connectDropTarget,
+		style,
+		className,
+	},
 	ref
 ) {
 	const elementRef = useRef(null);
@@ -31,8 +39,12 @@ const FDnDCard = forwardRef<HTMLDivElement, FDnDCardProps>(function Card(
 	}));
 
 	return (
-		<div ref={elementRef} style={{ opacity: opacity }}>
-			{component}
+		<div
+			ref={elementRef}
+			style={{ opacity: opacity, ...style }}
+			className={className}
+		>
+			{component(isDragging)}
 		</div>
 	);
 });
@@ -122,7 +134,7 @@ export default DropTarget(
 				}
 
 				// Time to actually perform the action
-				props.onChildrenMove(dragIndex, hoverIndex);
+				props.onChildrenHover(dragIndex, hoverIndex);
 
 				// Note: we're mutating the monitor item here!
 				// Generally it's better to avoid mutations,
