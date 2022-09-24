@@ -2,14 +2,14 @@ import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
 import { FRwdModeHandler, FUseColor } from "..";
 import { FRWDMode } from "../global.types";
-import { FHeaderButtonProps, FHeaderButtonTypes } from "./types";
+import { FHeaderButtonProps } from "./types";
 
 export const handleFHeaderButton = (props: FHeaderButtonProps) => {
-	const rwdMode = FRwdModeHandler(props.configureRwdSize);
+	const rwdMode = FRwdModeHandler(props.configRwdSize);
 	const mainThemeColor = FUseColor({ colorName: "Main" });
 
 	switch (props.type) {
-		case FHeaderButtonTypes.BACK:
+		case "Back":
 			return (
 				<FIcon
 					name={FIconNames.LEFT_ARROW}
@@ -22,9 +22,11 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 							: "large"
 					}
 					strokeColor={props.iconStrokeColor ?? mainThemeColor}
+					strokeWidth={props.iconStrokeWidth}
+					{...props.iconProps}
 				/>
 			);
-		case FHeaderButtonTypes.CLOSE:
+		case "Close":
 			return (
 				<FIcon
 					name={FIconNames.CLOSE}
@@ -37,9 +39,11 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 							: "large"
 					}
 					strokeColor={props.iconStrokeColor ?? mainThemeColor}
+					strokeWidth={props.iconStrokeWidth}
+					{...props.iconProps}
 				/>
 			);
-		case FHeaderButtonTypes.MORE:
+		case "More":
 			return (
 				<FIcon
 					name={FIconNames.MORE}
@@ -52,6 +56,8 @@ export const handleFHeaderButton = (props: FHeaderButtonProps) => {
 							: "large"
 					}
 					strokeColor={props.iconStrokeColor ?? mainThemeColor}
+					strokeWidth={props.iconStrokeWidth}
+					{...props.iconProps}
 				/>
 			);
 		default:

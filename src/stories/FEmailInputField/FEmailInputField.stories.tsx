@@ -6,6 +6,8 @@ export default {
 	title: "FUI-Complib/COMPONENTS/FEmailInputField",
 	component: FEmailInputField,
 	argTypes: {
+		/** In real case, if disabled, the input value is still shown but no input is allowed. */
+		inputValue: { control: "text", if: { arg: "disabled", truthy: false } },
 		renderInputValue: { control: { disable: true } },
 		onEnterPress: { control: { disable: true } },
 		wrapperClassName: { control: { disable: true } },
@@ -17,9 +19,9 @@ export default {
 			defaultValue: { width: "300px" },
 			control: { disable: true },
 		},
+		containerClassName: { control: { disable: true } },
 		inputAreaStyle: { control: { disable: true } },
 		inputAreaClassName: { control: { disable: true } },
-		containerClassName: { control: { disable: true } },
 		leadingComponent: { control: { disable: true } },
 		actionComponent: { control: { disable: true } },
 		emailIconClassName: { control: { disable: true } },

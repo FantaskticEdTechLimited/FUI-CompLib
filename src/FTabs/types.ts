@@ -18,17 +18,17 @@ export interface FTabsProps {
 	actionComponents?: ReactNode;
 	/** Render user custom tab button. */
 	renderCustomizedTabButton?: CustomTabButtonProps;
-	/** Class name to change the style of the wrapper. */
+	/** Class name of the wrapper. */
 	wrapperClassName?: string;
-	/** Style to change the style of the wrapper. */
+	/** Style of the wrapper. */
 	wrapperStyle?: CSSProperties;
-	/** Class name to change the style of the header container. */
+	/** Class name of the tab header. */
 	headerClassName?: string;
-	/** Style to change the style of the header container. */
+	/** Style of the tab header. */
 	headerStyle?: CSSProperties;
-	/** Class name to change the style of the tab button. */
+	/** Class name of the tab button. */
 	tabContainerClassName?: string;
-	/** Style to change the style of the tab button. */
+	/** Style of the tab button. */
 	tabContainerStyle?: CSSProperties;
 	/** Properties with `style` and `className` fields of the tab button. */
 	tabButtonProps?: FButtonProps;

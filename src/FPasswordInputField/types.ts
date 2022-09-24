@@ -32,12 +32,12 @@ export interface FPasswordInputFieldProps {
 	eyeIconProps?: FPasswordInputFieldIconProps;
 	/** Properties of the eye-off icon (hide password). */
 	eyeOffIconProps?: FPasswordInputFieldIconProps;
-	/** Class name to change the style of the container. */
+	/** Class name of the container. */
 	containerClassName?: string;
-	/** Style to change the style of the container. */
+	/** Style of the container. */
 	containerStyle?: CSSProperties;
-	/** Class name to change the style of the input area. */
+	/** Class name of the input area. */
 	inputAreaClassName?: string;
-	/** Style to change the style of the input area. */
+	/** Style of the input area. */
 	inputAreaStyle?: CSSProperties;
 }

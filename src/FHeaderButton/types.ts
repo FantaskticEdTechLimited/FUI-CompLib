@@ -1,36 +1,39 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { CSSProperties, ReactElement } from "react";
-import { FOnClickFunction, FRwdSizeProps } from "../global.types";
-import { FSVGIconProps } from "../FSVGIcon/types";
+import { CSSProperties } from "react";
+import {
+	FComponentType,
+	FOnClickFunction,
+	FRwdSizeProps,
+} from "../global.types";
 
-export enum FHeaderButtonTypes {
-	BACK = "Back",
-	CLOSE = "Close",
-	MORE = "More",
-}
+export type FHeaderButtonTypes = "Back" | "Close" | "More";
 
 export interface FHeaderButtonProps {
+	/** Three different header button types. */
 	type?: FHeaderButtonTypes;
-	children?: ReactElement<FSVGIconProps | FIconProps>;
-	disabled?: boolean;
-	onClick?: FOnClickFunction;
-	/**
-	 *	To disable auto resize the button based on screenWidth
-	 *
-	 *	Then can use `size` to control the button size
-	 */
-	disableAutoResize?: boolean;
-	// change rwd size
-	configureRwdSize?: FRwdSizeProps;
-	// size is only active when disableAutoResize
+	/** Two different sizes. It is **only** active if `disableAutoResize` is `true`. */
 	size?: "small" | "large";
-	/**
-	 * If need hover effect for stroke color,
-	 * use `className` with `isHover` param.
-	 */
+	/** Stroke color of the icon.
+	 *
+	 * If need `hover` effect for the icon, use `isHover` field in `className`. */
 	iconStrokeColor?: string;
+	/** Stroke width of the icon. */
 	iconStrokeWidth?: string | number;
-	// same usage of FButton
+	/** If `true`, the header button cannot be used. */
+	disabled?: boolean;
+	/** If `true`, it will disable auto resize the button based on screenWidth
+	 * and use `size` field to control the button size. */
+	disableAutoResize?: boolean;
+	/** Content of the header button. */
+	children?: FComponentType;
+	/** Click action event of the header button. */
+	onClick?: FOnClickFunction;
+	/** Configures rwd size based on the device width. */
+	configRwdSize?: FRwdSizeProps;
+	/** Properties of the icon. */
+	iconProps?: FIconProps;
+	/** Class name of the header button. */
 	className?: (isHover?: boolean) => string;
+	/** Style of the header button. */
 	style?: (isHover?: boolean) => CSSProperties;
 }

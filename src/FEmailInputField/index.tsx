@@ -100,14 +100,14 @@ export const FEmailInputField = ({
 					ref={emailInputRef}
 					value={inputValue}
 					placeholder={placeholder}
-					onChange={(event: any) => {
+					onChange={(event) => {
 						if (!disabled) {
 							setEnterPressed(false);
 							props.renderInputValue &&
 								props.renderInputValue(event.target.value);
 						}
 					}}
-					onKeyDown={(event: any) => {
+					onKeyDown={(event) => {
 						if (event.key === "Enter") {
 							if (!disabled) {
 								if (autoValidateEmail) setEnterPressed(true);

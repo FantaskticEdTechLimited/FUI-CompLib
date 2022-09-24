@@ -9,7 +9,7 @@ import {
 
 export type FButtonTypes = "Primary" | "Secondary" | "Outline" | "Text";
 
-type LabelProps = Omit<FTextProps, "style" | "className">;
+type FLabelProps = Omit<FTextProps, "style" | "className">;
 
 export interface FButtonProps {
 	/** Four different button types. */
@@ -18,22 +18,22 @@ export interface FButtonProps {
 	disabled?: boolean;
 	/** Text content of button. */
 	label?: string;
-	/** Click action event for the button. */
+	/** Click action event of the button. */
 	onClick?: FOnClickFunction;
 	/** Custom content without using `label` field. */
 	customChildren?: ReactNode;
-	/** Class name to change the style of the button label. */
+	/** Class name of the button label. */
 	labelClassName?: FOnHoverProperty<string>;
-	/** Style to change the style of the button label. */
+	/** Style of the button label. */
 	labelStyle?: FOnHoverProperty<CSSProperties>;
 	/** Properties of label without `className` and `style` fields under `FTextProps`. */
-	labelProps?: LabelProps;
+	labelProps?: FLabelProps;
 	/** Custom leading component (header) of the button. */
 	leadingComponents?: FComponentType | FComponentsType;
 	/** Custom action component (footer) of the button. */
 	actionComponents?: FComponentType | FComponentsType;
-	/** Class name to change the style of the button. */
+	/** Class name of the button. */
 	className?: FOnHoverProperty<string>;
-	/** Style to change the style of the button. */
+	/** Style of the button. */
 	style?: FOnHoverProperty<CSSProperties>;
 }

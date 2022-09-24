@@ -17,21 +17,15 @@ export const FInputFieldDiv = (
 	isFilled: boolean
 ) =>
 	style({
-		backgroundColor: FUseColor({
-			colorName: "White",
-		}),
+		backgroundColor: FUseColor({ colorName: "White" }),
 		borderRadius: "8px",
 		border:
 			"1.6px solid " +
 			(isTriggered
 				? FUseColor({ colorName: "Main" })
 				: isFilled
-				? FUseColor({
-						colorName: "Black",
-				  })
-				: FUseColor({
-						colorName: "BG Light",
-				  })),
+				? FUseColor({ colorName: "Black" })
+				: FUseColor({ colorName: "BG Light" })),
 		boxSizing: "border-box",
 		caretColor: FUseColor({ colorName: "Main" }),
 		cursor: props.disabled ? "not-allowed" : "text",
@@ -48,13 +42,9 @@ export const FInputFieldInputAreaDiv = (
 	state: boolean
 ) =>
 	style({
-		backgroundColor: FUseColor({
-			colorName: "White",
-		}),
+		backgroundColor: FUseColor({ colorName: "White" }),
 		border: "none",
-		color: FUseColor({
-			colorName: "Black",
-		}),
+		color: FUseColor({ colorName: "Black" }),
 		display: state ? "block" : "none",
 		font: props.multiline ? FFontTypes.Small_Title() : FFontTypes.Large_Text(),
 		outline: "none",
@@ -64,15 +54,8 @@ export const FInputFieldInputAreaDiv = (
 		resize: "none",
 		width: "100%",
 		wordBreak: "break-all",
+		cursor: props.disabled ? "not-allowed" : "text",
 		$nest: {
-			"&::placeholder": {
-				color: FUseColor({
-					colorName: "BG Light",
-				}),
-			},
+			"&::placeholder": { color: FUseColor({ colorName: "BG Light" }) },
 		},
 	});
-
-export const FInputFieldWordCountDiv = style({
-	textAlign: "right",
-});

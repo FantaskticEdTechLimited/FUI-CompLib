@@ -11,9 +11,9 @@ export interface FBottomNavBarProps {
 	actionButtonLabel?: string;
 	/** Label of the leading button. */
 	leadingButtonLabel?: string;
-	/** Click action event for the action button. */
+	/** Click action event of the action button. */
 	onActionButtonClick?: FOnClickFunction;
-	/** Click action event for the leading button. */
+	/** Click action event of the leading button. */
 	onLeadingButtonClick?: FOnClickFunction;
 	/** Custom content of the bottom nav bar. */
 	customChildren?: ReactNode;
@@ -25,8 +25,8 @@ export interface FBottomNavBarProps {
 	 *
 	 * Default leading button type is `'Secondary'`. */
 	leadingButtonProps?: FButtonProps;
-	/** Class name to change the style of the bottom nav bar. */
+	/** Class name of the bottom nav bar. */
 	className?: string;
-	/** Style to change the style of the bottom nav bar. */
+	/** Style of the bottom nav bar. */
 	style?: CSSProperties;
 }

@@ -1,38 +1,50 @@
 import { CSSProperties } from "react";
 import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
 import { FTextProps } from "../FText/types";
+import { FOnSubmitFunction } from "../global.types";
 
 export interface FInputFieldProps {
-	disabled?: boolean;
-	label?: string;
-	placeholder?: string;
-	multiline?: boolean;
-	renderInputValue?: (data: string) => void;
-	// input value cannot be null
+	/** Input value. */
 	inputValue?: string;
+	/** If `true`, the inputfield cannot be used. */
+	disabled?: boolean;
+	/** Placeholder of the inputfield. */
+	placeholder?: string;
+	/** Label at the header of the inputfield. */
+	label?: string;
+	/** If `true`, the inputfield can be expanded. */
+	multiline?: boolean;
+	/** Limit of the input word.
+	 *
+	 * If it is set as `30`, the maximum input will be **30** characters.
+	 */
 	wordCount?: number;
-
-	// css style of InputField container with wordcount container
+	/** Returns the input value. */
+	renderInputValue?: FOnSubmitFunction<string>;
+	/** Class name of the inputfield container. */
 	containerClassName?: string;
+	/** Style of the inputfield container. */
 	containerStyle?: CSSProperties;
-
-	// css style of InputField div with label
-	inputDivClassName?: string;
-	inputDivStyle?: CSSProperties;
-
-	// css style of InputField input area only
+	/** Class name of the input area. */
 	inputAreaClassName?: string;
+	/** Style of the input area. */
 	inputAreaStyle?: CSSProperties;
-
-	// css style of label
+	/** Class name of the inputfield (**with `label`**). */
+	inputDivClassName?: string;
+	/** Style of the inputfield (**with `label`**). */
+	inputDivStyle?: CSSProperties;
+	/** Class name of the label. */
 	labelClassName?: string;
+	/** Style of the label. */
 	labelStyle?: CSSProperties;
+	/** Properties of the label. */
 	labelProps?: FTextProps;
-
-	// css style of wordCount
+	/** Class name of the word count text. */
 	wordCountClassName?: string;
+	/** Style of the word count text. */
 	wordCountStyle?: CSSProperties;
+	/** Properties of the word count text. */
 	wordCountProps?: FTextProps;
-
+	/** Properties of the scrollbar. */
 	scrollBarProps?: FScrollBarStyleProps;
 }

@@ -25,9 +25,9 @@ export interface FDnDOrderProps<T> {
 	 * `onDrop`: No hover effect (except the own hover effect of the item)
 	 * and data will be updated after _DnD_ process. */
 	enableHoverOnly?: boolean;
-	/** Class name to change the style of _DnD_ container. */
+	/** Class name of _DnD_ container. */
 	className?: string;
-	/** Style to change the style of _DnD_ container. */
+	/** Style of _DnD_ container. */
 	style?: CSSProperties;
 }
 
@@ -48,9 +48,9 @@ export interface FDnDCardProps {
 	isDragging: boolean;
 	connectDragSource: ConnectDragSource;
 	connectDropTarget: ConnectDropTarget;
-	/** Class name to change the style of _DnD_ container. */
+	/** Class name of _DnD_ container. */
 	className?: string;
-	/** Style to change the style of _DnD_ container. */
+	/** Style of _DnD_ container. */
 	style?: CSSProperties;
 }
 

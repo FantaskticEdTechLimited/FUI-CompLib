@@ -68,13 +68,13 @@ export const FPasswordInputField = ({
 				ref={passwordInputRef}
 				placeholder={placeholder}
 				value={inputValue}
-				onChange={(event: any) => {
+				onChange={(event) => {
 					if (!disabled) {
 						props.renderInputValue &&
 							props.renderInputValue(event.target.value);
 					}
 				}}
-				onKeyDown={(event: any) => {
+				onKeyDown={(event) => {
 					if (event.key === "Enter") {
 						!disabled && props.onEnterPress && props.onEnterPress();
 					}

@@ -23,28 +23,28 @@ export interface FEmailInputFieldProps {
 	leadingComponent?: FComponentType;
 	/** action component (footer) of the inputfield. */
 	actionComponent?: FComponentType;
-	/** Class name to change the style of the email icon. */
+	/** Class name of the email icon. */
 	emailIconClassName?: string;
-	/** Style to change the style of the email icon. */
+	/** Style of the email icon. */
 	emailIconStyle?: CSSProperties;
 	/** Properties of the email icon. */
 	emailIconProps?: FIconProps;
-	/** Class name to change the style of the warning label. */
+	/** Class name of the warning label. */
 	warninglabelClassName?: string;
-	/** Style to change the style of the warning label. */
+	/** Style of the warning label. */
 	warningLabelStyle?: CSSProperties;
 	/** Properties of the warning label. */
 	warningLabelProps?: FTextProps;
-	/** Class name to change the style of the inputfield wrapper. */
+	/** Class name of the inputfield wrapper. */
 	wrapperClassName?: string;
-	/** Style to change the style of the inputfield wrapper. */
+	/** Style of the inputfield wrapper. */
 	wrapperStyle?: CSSProperties;
-	/** Class name to change the style of the inputfield container. */
+	/** Class name of the inputfield container. */
 	containerClassName?: string;
-	/** Style to change the style of the inputfield container. */
+	/** Style of the inputfield container. */
 	containerStyle?: CSSProperties;
-	/** Class name to change the style of the input area. */
+	/** Class name of the input area. */
 	inputAreaClassName?: string;
-	/** Style to change the style of the input area. */
+	/** Style of the input area. */
 	inputAreaStyle?: CSSProperties;
 }
