@@ -1,21 +1,24 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { FDnDOrder } from "../../FDnDOrder";
+import { FDragAndDrop } from "../../FDragAndDrop";
 import { FButton } from "../../FButton";
 
 export default {
-	title: "FUI-Complib/COMPONENTS/FDnDOrder",
-	component: FDnDOrder,
+	title: "FUI-Complib/COMPONENTS/FDragAndDrop",
+	component: FDragAndDrop,
 	argTypes: {
 		data: { control: { disable: true } },
 		renderData: { control: { disable: true } },
 		onUpdateData: { control: { disable: true } },
 		style: { control: { disable: true } },
 		className: { control: { disable: true } },
+		indicatorProps: { control: { disable: true } },
+		leadingComponents: { control: { disable: true } },
+		actionComponents: { control: { disable: true } },
 	},
-} as ComponentMeta<typeof FDnDOrder>;
+} as ComponentMeta<typeof FDragAndDrop>;
 
-const Template: ComponentStory<typeof FDnDOrder> = (args) => {
+const Template: ComponentStory<typeof FDragAndDrop> = (args) => {
 	const [dataList, setDataList] = useState<string[]>([
 		"Apple",
 		"Banana",
@@ -23,13 +26,13 @@ const Template: ComponentStory<typeof FDnDOrder> = (args) => {
 	]);
 
 	return (
-		<FDnDOrder
+		<FDragAndDrop
 			{...args}
 			data={dataList}
-			renderData={(data, index) => {
-				return <FButton key={index} type="Secondary" label={data} />;
+			renderData={(data: string, index: number) => {
+				return <FButton key={index} type="Outline" label={data} />;
 			}}
-			onUpdateData={setDataList}
+			onUpdateData={(data: string[]) => setDataList(data)}
 			style={{ marginBottom: "8px", width: "100px" }}
 		/>
 	);

@@ -9,7 +9,7 @@ import {
 
 export type FButtonTypes = "Primary" | "Secondary" | "Outline" | "Text";
 
-type FLabelProps = Omit<FTextProps, "style" | "className">;
+export type FButtonLabelProps = Omit<FTextProps, "style" | "className">;
 
 export interface FButtonProps {
 	/** Four different button types. */
@@ -27,7 +27,7 @@ export interface FButtonProps {
 	/** Style of the button label. */
 	labelStyle?: FOnHoverProperty<CSSProperties>;
 	/** Properties of label without `className` and `style` fields under `FTextProps`. */
-	labelProps?: FLabelProps;
+	labelProps?: FButtonLabelProps;
 	/** Custom leading component (header) of the button. */
 	leadingComponents?: FComponentType | FComponentsType;
 	/** Custom action component (footer) of the button. */

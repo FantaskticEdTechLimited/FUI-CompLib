@@ -130,7 +130,6 @@ export const FInputField = ({
 						placeholder={placeholder}
 						onChange={(event) => {
 							if (!disabled) {
-								console.log(event.target.value);
 								props.renderInputValue &&
 									props.renderInputValue(event.target.value);
 							}
