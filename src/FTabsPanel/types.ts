@@ -20,7 +20,7 @@ export interface FTabPanelProps {
 	tabActionConmponents?: (
 		isSelected: boolean
 	) => FComponentType | FComponentsType;
-	/** If `true`, the tab panel cannot be used. */
+	/** If `true`, the tab panel is **NOT** allowed to use. */
 	disabled?: boolean;
 	onClick?: FOnClickFunction;
 	/** Render user custom tab button. */

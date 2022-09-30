@@ -6,7 +6,7 @@ import { FOnSubmitFunction } from "../global.types";
 export interface FInputFieldProps {
 	/** Input value. */
 	inputValue?: string;
-	/** If `true`, the inputfield cannot be used. */
+	/** If `true`, the inputfield is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** Placeholder of the inputfield. */
 	placeholder?: string;

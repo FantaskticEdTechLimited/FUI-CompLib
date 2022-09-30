@@ -6,7 +6,7 @@ import { FComponentType, FOnSubmitFunction } from "../global.types";
 export interface FEmailInputFieldProps {
 	/** Input email value. */
 	inputValue?: string;
-	/** If `true`, the email inputfield cannot be used. */
+	/** If `true`, the email inputfield is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** Placeholder of the inputfield. */
 	placeholder?: string;

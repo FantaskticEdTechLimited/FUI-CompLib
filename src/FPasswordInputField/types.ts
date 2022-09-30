@@ -10,7 +10,7 @@ import {
 export interface FPasswordInputFieldProps {
 	/** Input password value. */
 	inputValue?: string;
-	/** If `true`, the password inputfield cannot be used. */
+	/** If `true`, the password inputfield is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** Placeholder of the inputfield. */
 	placeholder?: string;

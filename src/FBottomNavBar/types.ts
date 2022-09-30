@@ -3,9 +3,9 @@ import { FButtonProps } from "../FButton/types";
 import { FOnClickFunction } from "../global.types";
 
 export interface FBottomNavBarProps {
-	/** If `true`, the action button cannot be used. */
+	/** If `true`, the action button is **NOT** allowed to use. */
 	disableActionButton?: boolean;
-	/** If `true`, the leading button cannot be used. */
+	/** If `true`, the leading button is **NOT** allowed to use. */
 	disableLeadingButton?: boolean;
 	/** Label of the action button. */
 	actionButtonLabel?: string;

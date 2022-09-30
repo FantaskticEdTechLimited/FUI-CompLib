@@ -10,7 +10,7 @@ type FTabsContentType =
 export interface FTabsProps {
 	/** Content under corresponding tab. */
 	children: FTabsContentType;
-	/** If `true`, the tab cannot be used. */
+	/** If `true`, the tab is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** Leading components in the tab header. */
 	leadingComponents?: ReactNode;

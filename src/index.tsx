@@ -66,6 +66,9 @@ import {
 	FOnSubmitFunction,
 	FRWDMode,
 	FRwdSizeProps,
+	FOnHoverProperty,
+	FComponentType,
+	FComponentsType,
 } from "./global.types";
 import { FTextProps } from "./FText/types";
 import { FButtonTypes, FButtonProps, FButtonLabelProps } from "./FButton/types";
@@ -167,6 +170,9 @@ export {
 	FOnSubmitFunction,
 	FOnDataCallbackFunction,
 	FOnCallBackFuntion,
+	FOnHoverProperty,
 	FRWDMode,
 	FRwdSizeProps,
+	FComponentType,
+	FComponentsType,
 };

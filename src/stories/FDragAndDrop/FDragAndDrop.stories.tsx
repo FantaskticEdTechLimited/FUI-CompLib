@@ -1,20 +1,26 @@
 import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { FDragAndDrop } from "../../FDragAndDrop";
-import { FButton } from "../../FButton";
+import { FText } from "../../FText";
+import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
 
 export default {
 	title: "FUI-Complib/COMPONENTS/FDragAndDrop",
 	component: FDragAndDrop,
 	argTypes: {
 		data: { control: { disable: true } },
-		renderData: { control: { disable: true } },
+		children: { control: { disable: true } },
 		onUpdateData: { control: { disable: true } },
 		style: { control: { disable: true } },
 		className: { control: { disable: true } },
+		contentContainerStyle: { control: { disable: true } },
+		contentContainerClassName: { control: { disable: true } },
 		indicatorProps: { control: { disable: true } },
-		leadingComponents: { control: { disable: true } },
-		actionComponents: { control: { disable: true } },
+		customDnDButton: { control: { disable: true } },
+		dndButtonProps: { control: { disable: true } },
+		indicatorTarget: { defaultValue: "container" },
+		dndButtonPosition: { defaultValue: "left" },
 	},
 } as ComponentMeta<typeof FDragAndDrop>;
 
@@ -26,15 +32,33 @@ const Template: ComponentStory<typeof FDragAndDrop> = (args) => {
 	]);
 
 	return (
-		<FDragAndDrop
-			{...args}
-			data={dataList}
-			renderData={(data: string, index: number) => {
-				return <FButton key={index} type="Outline" label={data} />;
+		<div
+			style={{
+				display: "flex",
+				flexDirection: "column",
+				rowGap: "8px",
+				width: "300px",
 			}}
-			onUpdateData={(data: string[]) => setDataList(data)}
-			style={{ marginBottom: "8px", width: "100px" }}
-		/>
+		>
+			<FDragAndDrop
+				{...args}
+				data={dataList}
+				onUpdateData={(data: string[]) => setDataList(data)}
+				children={(data: string, index: number) => (
+					<FText
+						font={FFontTypes.Large_Text()}
+						color={
+							data === "Apple"
+								? FColorTypes.FSecondaryColors.RED.LM
+								: data === "Banana"
+								? FColorTypes.FSecondaryColors.YELLOW.LM
+								: FColorTypes.FSecondaryColors.ORANGE.LM
+						}
+						children={index + ". " + data}
+					/>
+				)}
+			/>
+		</div>
 	);
 };
 

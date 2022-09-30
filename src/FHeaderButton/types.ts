@@ -19,7 +19,7 @@ export interface FHeaderButtonProps {
 	iconStrokeColor?: string;
 	/** Stroke width of the icon. */
 	iconStrokeWidth?: string | number;
-	/** If `true`, the header button cannot be used. */
+	/** If `true`, the header button is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** If `true`, it will disable auto resize the button based on screenWidth
 	 * and use `size` field to control the button size. */

@@ -1,5 +1,5 @@
 export interface FScrollBarStyleProps {
-	/** If `true`, the scroll bar style cannot be used. */
+	/** If `true`, the scroll bar style is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** Width of the scroll bar. */
 	width?: number | string;
