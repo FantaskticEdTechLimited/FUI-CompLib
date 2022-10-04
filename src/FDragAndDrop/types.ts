@@ -7,7 +7,11 @@ type FDnDIndicatorTarget = "container" | "contentContainer";
 
 type FDnDButtonPosition = "left" | "right";
 
-type FDnDReturnChildrenProps<T> = (data: T, index?: number) => JSX.Element;
+type FDnDReturnChildrenProps<T> = (
+	data: T,
+	index?: number,
+	disabled?: boolean
+) => JSX.Element;
 
 export type ExtendedFDragAndDropProps = Omit<
 	FDragAndDropProps<any>,
@@ -51,7 +55,7 @@ export interface FDragAndDropProps<T> {
 	/** Properties of the indicator. */
 	indicatorProps?: FDnDIndicatorProps;
 	/** Properties of the default _DnD_ button.
-	 * 
+	 *
 	 * It does **NOT** work if there is a custom _DnD_ button. */
 	dndButtonProps?: FDnDButtonProps;
 	/** Custom _DnD_ button. */
