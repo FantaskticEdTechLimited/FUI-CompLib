@@ -1,7 +1,10 @@
 import { CSSProperties, ReactNode } from "react";
 import { FDnDButtonProps } from "./FDnDButton/types";
 import { FDnDIndicatorProps } from "./FDnDIndicator/types";
-import { FOnHoverProperty, FOnSubmitFunction } from "../global.types";
+import {
+	FOnHoverProperty,
+	FOnSubmitFunction, 
+} from "../global.types";
 
 type FDnDIndicatorTarget = "container" | "contentContainer";
 

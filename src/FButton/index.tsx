@@ -6,7 +6,7 @@ import { FButtonProps } from "./types";
 
 /** `<FButton />` is a customized `Button` component.
  *
- * The default type is `"Primary"`. 
+ * The default type is `"Primary"`.
  *
  * Props: `FButtonProps`.
  *
@@ -18,6 +18,7 @@ export const FButton = ({
 	...props
 }: FButtonProps) => {
 	const [isHover, setIsHover] = useState<boolean>(false);
+	const index = props.index;
 	const param: Partial<FButtonProps> = {
 		label: label,
 		type: type,
@@ -27,11 +28,12 @@ export const FButton = ({
 
 	return (
 		<div
-			style={props.style && props.style(isHover)}
+			key={index}
+			style={props.style && props.style(isHover, index)}
 			className={
 				styles.FButtonContainer(param, isHover) +
 				" " +
-				(props.className && props.className(isHover))
+				(props.className && props.className(isHover, index))
 			}
 			onClick={() => (disabled ? undefined : props.onClick && props.onClick())}
 			onMouseEnter={() => setIsHover(true)}
@@ -48,8 +50,10 @@ export const FButton = ({
 							? FUseColor({ colorName: "Main" })
 							: FUseColor({ colorName: "Black" })
 					}
-					style={props.labelStyle && props.labelStyle(isHover)}
-					className={props.labelClassName && props.labelClassName(isHover)}
+					style={props.labelStyle && props.labelStyle(isHover, index)}
+					className={
+						props.labelClassName && props.labelClassName(isHover, index)
+					}
 					children={label}
 					{...props.labelProps}
 				/>

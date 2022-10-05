@@ -60,6 +60,7 @@ import {
 // import types
 import {
 	Nullable,
+	NumericStringType,
 	FOnCallBackFuntion,
 	FOnClickFunction,
 	FOnDataCallbackFunction,
@@ -166,6 +167,7 @@ export {
 	// global types
 	// =====================
 	Nullable,
+	NumericStringType,
 	FOnClickFunction,
 	FOnSubmitFunction,
 	FOnDataCallbackFunction,

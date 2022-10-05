@@ -5,6 +5,8 @@ import { FSVGIconProps } from "./FSVGIcon/types";
 
 export type Nullable<T> = T | null;
 
+export type NumericStringType = number | string;
+
 export type FOnClickFunction = () => void;
 
 export type FOnSubmitFunction<T> =
@@ -19,7 +21,10 @@ export type FOnDataCallbackFunction<T, C> = (
 export type FOnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 
 /** For className and style of component that contains hover effect. */
-export type FOnHoverProperty<T> = (isHover?: boolean) => T;
+export type FOnHoverProperty<T> = (
+	isHover?: boolean,
+	index?: NumericStringType
+) => T;
 
 export type FComponentType =
 	| ReactElement<FIconProps | FSVGIconProps>

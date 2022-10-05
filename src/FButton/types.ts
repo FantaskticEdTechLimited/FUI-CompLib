@@ -5,6 +5,7 @@ import {
 	FComponentType,
 	FOnClickFunction,
 	FOnHoverProperty,
+	NumericStringType,
 } from "../global.types";
 
 export type FButtonTypes = "Primary" | "Secondary" | "Outline" | "Text";
@@ -22,6 +23,8 @@ export interface FButtonProps {
 	onClick?: FOnClickFunction;
 	/** Custom content without using `label` field. */
 	customChildren?: ReactNode;
+	/** Index (unique id) of the button. */
+	index?: NumericStringType;
 	/** Class name of the button label. */
 	labelClassName?: FOnHoverProperty<string>;
 	/** Style of the button label. */
