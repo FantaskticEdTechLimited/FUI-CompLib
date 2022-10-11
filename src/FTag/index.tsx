@@ -30,7 +30,7 @@ export const FTag = <T,>(props: FTagProps<T>) => {
 						<FIcon
 							size="small"
 							name={FIconNames.CLOSE}
-							strokeColor={mainThemeColor}
+							color={() => mainThemeColor}
 							onClick={() =>
 								props.disabled
 									? undefined

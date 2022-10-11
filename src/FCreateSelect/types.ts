@@ -29,7 +29,7 @@ export interface FCreateSelectProps<T> {
 	/**
 	 * Option can be compared with input.
 	 */
-	onCompareInputValue: (data: T, inputValue: string) => boolean;
+	onCompareInputValue: (data: T, value: string) => boolean;
 
 	// custom classNames / styles
 	containerClassName?: string;

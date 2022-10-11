@@ -5,7 +5,7 @@ import { FComponentType, FOnSubmitFunction } from "../global.types";
 
 export interface FEmailInputFieldProps {
 	/** Input email value. */
-	inputValue?: string;
+	value?: string;
 	/** If `true`, the email inputfield is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** Placeholder of the inputfield. */
@@ -15,18 +15,16 @@ export interface FEmailInputFieldProps {
 	/** If `true`, the input will be checked
 	 * whether it is in correct email type (with `@`). */
 	autoValidateEmail?: boolean;
+	/** If `true`, it will auto focus on the input area. */
+	autoFocus?: boolean;
 	/** Action event after pressing `Enter` key. */
 	onEnterPress?: (error?: boolean) => void;
 	/** Returns the input email value. */
-	renderInputValue?: FOnSubmitFunction<string>;
+	onInput?: FOnSubmitFunction<string>;
 	/** Leading component (header) of the inputfield. */
 	leadingComponent?: FComponentType;
 	/** action component (footer) of the inputfield. */
-	actionComponent?: FComponentType;
-	/** Class name of the email icon. */
-	emailIconClassName?: string;
-	/** Style of the email icon. */
-	emailIconStyle?: CSSProperties;
+	actionComponent?: FComponentType; 
 	/** Properties of the email icon. */
 	emailIconProps?: FIconProps;
 	/** Class name of the warning label. */
@@ -35,14 +33,14 @@ export interface FEmailInputFieldProps {
 	warningLabelStyle?: CSSProperties;
 	/** Properties of the warning label. */
 	warningLabelProps?: FTextProps;
-	/** Class name of the inputfield wrapper. */
+	/** Class name of the inputfield wrapper (with `warningLabel`). */
 	wrapperClassName?: string;
-	/** Style of the inputfield wrapper. */
+	/** Style of the inputfield wrapper (with `warningLabel`). */
 	wrapperStyle?: CSSProperties;
 	/** Class name of the inputfield container. */
-	containerClassName?: string;
+	className?: string;
 	/** Style of the inputfield container. */
-	containerStyle?: CSSProperties;
+	style?: CSSProperties;
 	/** Class name of the input area. */
 	inputAreaClassName?: string;
 	/** Style of the input area. */

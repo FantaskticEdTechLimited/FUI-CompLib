@@ -48,8 +48,8 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								name={FIconNames.MENU}
 								size="large"
 								onClick={() => setOpenSideBar(true)}
-								strokeColor={mainThemeColor}
-								className={styles.FTopNavBarContainer_MenuIcon()}
+								color={() => mainThemeColor}
+								className={() => styles.FTopNavBarContainer_MenuIcon()}
 								{...props.menuIconProps}
 							/>
 						)}
@@ -78,8 +78,8 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 								name={FIconNames.CLOSE}
 								size="large"
 								onClick={() => setOpenSideBar(false)}
-								strokeColor={mainThemeColor}
-								className={styles.FTopNavBarContainer_CloseIcon()}
+								color={() => mainThemeColor}
+								className={() => styles.FTopNavBarContainer_CloseIcon()}
 								{...props.closeIconProps}
 							/>
 							<div

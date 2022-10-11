@@ -1,11 +1,11 @@
 import { CSSProperties, ReactNode } from "react";
 import { FTextProps } from "../FText/types";
 import {
-	FComponentsType,
-	FComponentType,
 	FOnClickFunction,
-	FOnHoverProperty,
 	NumericStringType,
+	FOnHoverProperty,
+	FComponentType,
+	FComponentsType,
 } from "../global.types";
 
 export type FButtonTypes = "Primary" | "Secondary" | "Outline" | "Text";

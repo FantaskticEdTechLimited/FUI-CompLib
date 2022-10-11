@@ -6,7 +6,7 @@ import { FScrollBarStyle } from "../FScrollBarStyle";
 import { FText } from "../FText";
 import { FAutoConvertArray, FUseColor } from "..";
 
-export const FDropdown = <T,>(props: FDropdownProps<T>) => {
+export const FDropdown = <T extends unknown>(props: FDropdownProps<T>) => {
 	const hideSelectedOptions = props.hideSelectedOptions ?? true;
 	const pressCount = props.arrowKeyPressCount ?? 0;
 	const selectedOptionsArray = FAutoConvertArray(props.selectedOptions);
@@ -64,12 +64,8 @@ export const FDropdown = <T,>(props: FDropdownProps<T>) => {
 								font={FFontTypes.Text()}
 								color={
 									isSelected
-										? FUseColor({
-												colorName: "Grey",
-										  })
-										: FUseColor({
-												colorName: "Black",
-										  })
+										? FUseColor({ colorName: "Grey" })
+										: FUseColor({ colorName: "Black" })
 								}
 								style={props.optionTextStyle}
 								className={props.optionTextClassName}

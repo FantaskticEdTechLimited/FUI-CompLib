@@ -13,12 +13,6 @@ export interface FHeaderButtonProps {
 	type?: FHeaderButtonTypes;
 	/** Two different sizes. It is **only** active if `disableAutoResize` is `true`. */
 	size?: "small" | "large";
-	/** Stroke color of the icon.
-	 *
-	 * If need `hover` effect for the icon, use `isHover` field in `className`. */
-	iconStrokeColor?: string;
-	/** Stroke width of the icon. */
-	iconStrokeWidth?: string | number;
 	/** If `true`, the header button is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** If `true`, it will disable auto resize the button based on screenWidth

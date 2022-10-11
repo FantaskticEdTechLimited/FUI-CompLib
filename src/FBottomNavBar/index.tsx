@@ -1,12 +1,12 @@
 import { FBottomNavBarProps } from "./types";
 import * as styles from "./styles";
-import React from "react";
+import React from "react"; 
 import { FButton } from "..";
 
 /** `<FBottomNavBar />` is a bottom navigation bar,
  * which contains a leading button (left) and a action button (right) in a row.
  *
- * Props: `FBottomNavBarProps`. 
+ * Props: `FBottomNavBarProps`.
  */
 export const FBottomNavBar = ({
 	disableActionButton = false,
@@ -22,7 +22,9 @@ export const FBottomNavBar = ({
 			style={props.style}
 			className={styles.FBottomNavBarContainer + " " + props.className}
 		>
-			{props.customChildren ?? (
+			{props.customChildren ? (
+				props.customChildren
+			) : (
 				<>
 					<FButton
 						type={leadingButtonProps?.type}
@@ -31,7 +33,6 @@ export const FBottomNavBar = ({
 						onClick={() =>
 							disableLeadingButton ? () => {} : props.onLeadingButtonClick!()
 						}
-						style={leadingButtonProps?.style}
 						className={() =>
 							styles.FLeadingButtonDiv() + " " + leadingButtonProps?.className
 						}
@@ -44,7 +45,6 @@ export const FBottomNavBar = ({
 						onClick={() =>
 							disableActionButton ? () => {} : props.onActionButtonClick!()
 						}
-						style={actionButtonProps?.style}
 						className={() =>
 							styles.FActionButtonDiv() + " " + actionButtonProps?.className
 						}

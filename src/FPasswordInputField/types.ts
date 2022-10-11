@@ -9,17 +9,19 @@ import {
 
 export interface FPasswordInputFieldProps {
 	/** Input password value. */
-	inputValue?: string;
+	value?: string;
 	/** If `true`, the password inputfield is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** Placeholder of the inputfield. */
 	placeholder?: string;
 	/** If `true`, the input password will be shown. */
 	showPassword?: boolean;
+	/** If `true`, it will auto focus on the input area. */
+	autoFocus?: boolean;
 	/** Action event after pressing `Enter` key. */
 	onEnterPress?: FOnClickFunction;
 	/** Returns the input password value. */
-	renderInputValue?: FOnSubmitFunction<string>;
+	onInput?: FOnSubmitFunction<string>;
 	/** Leading component (header) of the inputfield. */
 	leadingComponent?: FComponentType;
 	/** action components (footer) of the inputfield. */
@@ -33,9 +35,9 @@ export interface FPasswordInputFieldProps {
 	/** Properties of the eye-off icon (hide password). */
 	eyeOffIconProps?: FPasswordInputFieldIconProps;
 	/** Class name of the container. */
-	containerClassName?: string;
+	className?: string;
 	/** Style of the container. */
-	containerStyle?: CSSProperties;
+	style?: CSSProperties;
 	/** Class name of the input area. */
 	inputAreaClassName?: string;
 	/** Style of the input area. */

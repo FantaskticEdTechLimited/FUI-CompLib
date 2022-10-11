@@ -3,7 +3,6 @@
 import { FText } from "./FText";
 import { FInputField } from "./FInputField";
 import { FButton } from "./FButton";
-import { FBottomNavBar } from "./FBottomNavBar";
 import { FPopUp } from "./FPopUp";
 import { FSwitchButton } from "./FSwitchButton";
 import { FCheckBox } from "./FCheckBox";
@@ -73,7 +72,6 @@ import {
 } from "./global.types";
 import { FTextProps } from "./FText/types";
 import { FButtonTypes, FButtonProps, FButtonLabelProps } from "./FButton/types";
-import { FBottomNavBarProps } from "./FBottomNavBar/types";
 import { FPasswordInputFieldIconProps } from "./FPasswordInputField/svg/types";
 import { FPasswordInputFieldProps } from "./FPasswordInputField/types";
 import { FScrollBarStyleProps } from "./FScrollBarStyle/types";
@@ -83,6 +81,9 @@ import { FTabPanelProps } from "./FTabsPanel/types";
 import { FHeaderButtonTypes, FHeaderButtonProps } from "./FHeaderButton/types";
 import { FDnDItemProps } from "./FDragAndDrop/FDnDItem/types";
 import { FDnDIndicatorProps } from "./FDragAndDrop/FDnDIndicator/types";
+import { FPopUpProps } from "./FPopUp/types";
+import { FBottomNavBar } from "./FBottomNavBar";
+import { FBottomNavBarProps } from "./FBottomNavBar/types";
 // =======================================================================
 
 export {
@@ -118,6 +119,7 @@ export {
 	FPasswordInputFieldProps,
 	FPasswordInputFieldIconProps,
 	FPopUp,
+	FPopUpProps,
 	FRadioButton,
 	FRWDNavBar,
 	FScrollableContentWrapper,

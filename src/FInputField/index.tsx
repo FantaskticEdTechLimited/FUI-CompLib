@@ -9,10 +9,11 @@ import { FScrollBarStyle, FText, FUseColor } from "..";
  * Props: `FInputFieldProps`.
  */
 export const FInputField = ({
-	inputValue = "",
+	value = "",
 	placeholder = "Input",
 	disabled = false,
 	multiline = false,
+	autoFocus = false,
 	...props
 }: FInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
@@ -22,6 +23,7 @@ export const FInputField = ({
 	const mainThemeColor = FUseColor({ colorName: "Main" });
 	const blackColor = FUseColor({ colorName: "Black" });
 	const greyColor = FUseColor({ colorName: "Grey" });
+	const hasWordCount = props.wordCount! > 0;
 
 	const param: Partial<FInputFieldProps> = {
 		disabled: disabled,
@@ -46,12 +48,15 @@ export const FInputField = ({
 		}
 	}, [isTriggered]);
 
+	useEffect(() => {
+		if (autoFocus && !disabled) setIsTriggered(true);
+		else setIsTriggered(false);
+	}, [autoFocus, disabled]);
+
 	return (
 		<div
-			style={props.containerStyle}
-			className={
-				styles.FInputFieldContainer(param) + " " + props.containerClassName
-			}
+			style={props.style}
+			className={styles.FInputFieldContainer() + " " + props.className}
 		>
 			<div
 				style={props.inputDivStyle}
@@ -65,7 +70,7 @@ export const FInputField = ({
 				}}
 				onBlur={() => {
 					setIsTriggered(false);
-					if (inputValue === undefined || inputValue === "") setIsFilled(false);
+					if (value === undefined || value === "") setIsFilled(false);
 					else setIsFilled(true);
 				}}
 			>
@@ -100,13 +105,12 @@ export const FInputField = ({
 							FScrollBarStyle({ ...props.scrollBarProps })
 						}
 						ref={textareaRef}
-						maxLength={props.wordCount ? props.wordCount : undefined}
-						value={inputValue}
+						maxLength={hasWordCount ? props.wordCount : undefined}
+						value={value}
 						placeholder={placeholder}
 						onChange={(event) => {
 							if (!disabled) {
-								props.renderInputValue &&
-									props.renderInputValue(event.target.value);
+								props.onInput && props.onInput(event.target.value);
 								handleTextareaHeight();
 								event.preventDefault();
 							}
@@ -125,13 +129,12 @@ export const FInputField = ({
 						}
 						type="text"
 						ref={inputRef}
-						maxLength={props.wordCount ? props.wordCount : undefined}
-						value={inputValue}
+						maxLength={hasWordCount ? props.wordCount : undefined}
+						value={value}
 						placeholder={placeholder}
 						onChange={(event) => {
 							if (!disabled) {
-								props.renderInputValue &&
-									props.renderInputValue(event.target.value);
+								props.onInput && props.onInput(event.target.value);
 							}
 						}}
 					/>
@@ -144,9 +147,7 @@ export const FInputField = ({
 				className={props.wordCountClassName}
 				{...props.wordCountProps}
 			>
-				{props.wordCount && props.wordCount > 0 && inputValue
-					? `${inputValue.length}/${props.wordCount}`
-					: ""}
+				{hasWordCount && value ? `${value.length}/${props.wordCount}` : ""}
 			</FText>
 		</div>
 	);

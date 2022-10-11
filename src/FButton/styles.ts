@@ -33,16 +33,4 @@ export const FButtonContainer = (props: FButtonProps, isHover: boolean) =>
 				? 0.4
 				: 1,
 		padding: "12px 16px",
-		$nest: {
-			div: {
-				color:
-					!props.disabled && isHover
-						? props.type === "Secondary" || props.type === "Outline"
-							? FUseColor({ colorName: "White" })
-							: props.type === "Text"
-							? FUseColor({ colorName: "Main" })
-							: undefined
-						: undefined,
-			},
-		},
 	});

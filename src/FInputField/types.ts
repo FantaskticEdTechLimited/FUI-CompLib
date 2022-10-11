@@ -5,7 +5,7 @@ import { FOnSubmitFunction } from "../global.types";
 
 export interface FInputFieldProps {
 	/** Input value. */
-	inputValue?: string;
+	value?: string;
 	/** If `true`, the inputfield is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** Placeholder of the inputfield. */
@@ -14,17 +14,19 @@ export interface FInputFieldProps {
 	label?: string;
 	/** If `true`, the inputfield can be expanded. */
 	multiline?: boolean;
-	/** Limit of the input word.
+	/** Limit of the input word. It **only** works for value > 0.
 	 *
-	 * If it is set as `30`, the maximum input will be **30** characters.
+	 * For example, if it is set as `30`, the maximum input will be **30** characters.
 	 */
 	wordCount?: number;
+	/** If `true`, it will auto focus on the input area. */
+	autoFocus?: boolean;
 	/** Returns the input value. */
-	renderInputValue?: FOnSubmitFunction<string>;
+	onInput?: FOnSubmitFunction<string>;
 	/** Class name of the inputfield container. */
-	containerClassName?: string;
+	className?: string;
 	/** Style of the inputfield container. */
-	containerStyle?: CSSProperties;
+	style?: CSSProperties;
 	/** Class name of the input area. */
 	inputAreaClassName?: string;
 	/** Style of the input area. */

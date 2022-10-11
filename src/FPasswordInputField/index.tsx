@@ -12,9 +12,10 @@ import { FUseColor } from "../utils";
  */
 export const FPasswordInputField = ({
 	placeholder = "Password",
-	inputValue = "",
+	value = "",
 	showPassword = false,
 	disabled = false,
+	autoFocus = false,
 	...props
 }: FPasswordInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
@@ -28,21 +29,26 @@ export const FPasswordInputField = ({
 	}, [isTriggered]);
 
 	useEffect(() => {
+		if (autoFocus && !disabled) setIsTriggered(true);
+		else setIsTriggered(false);
+	}, [autoFocus, disabled]);
+
+	useEffect(() => {
 		if (showPassword) setDisplayPassword(true);
 	}, [showPassword]);
 
 	return (
 		<div
-			style={props.containerStyle}
+			style={props.style}
 			className={
 				styles.FPasswordInputFieldContainer(isTriggered, isFilled, disabled) +
 				" " +
-				props.containerClassName
+				props.className
 			}
 			onClick={() => (disabled ? undefined : setIsTriggered(true))}
 			onBlur={() => {
 				setIsTriggered(false);
-				if (inputValue === undefined || inputValue === "") setIsFilled(false);
+				if (value === undefined || value === "") setIsFilled(false);
 				else setIsFilled(true);
 			}}
 		>
@@ -67,11 +73,10 @@ export const FPasswordInputField = ({
 				type={displayPassword ? "text" : "password"}
 				ref={passwordInputRef}
 				placeholder={placeholder}
-				value={inputValue}
+				value={value}
 				onChange={(event) => {
 					if (!disabled) {
-						props.renderInputValue &&
-							props.renderInputValue(event.target.value);
+						props.onInput && props.onInput(event.target.value);
 					}
 				}}
 				onKeyDown={(event) => {

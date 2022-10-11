@@ -25,7 +25,7 @@ export const SearchIcon = (props: SearchIconProps) => {
 				stroke={
 					props.isTriggered
 						? mainThemeColor
-						: props.inputValue && props.inputValue.length > 0
+						: props.value && props.value.length > 0
 						? blackColor
 						: greyColor
 				}
@@ -38,7 +38,7 @@ export const SearchIcon = (props: SearchIconProps) => {
 				stroke={
 					props.isTriggered
 						? mainThemeColor
-						: props.inputValue && props.inputValue.length > 0
+						: props.value && props.value.length > 0
 						? blackColor
 						: greyColor
 				}

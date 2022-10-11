@@ -1343,18 +1343,18 @@
   resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-colorlib/3.2.1/ec0faed63f041bb6f49ef10a74435367632917ce818f588109dea3e72bd7f2c5#f0615bcf7be370fb5ee95ae901259c6f0888c651"
   integrity sha512-9qAfK/G3e8F7afYnkOA+U5i8F2VC/xPnI07ebAG82qtzUrzw5iZbv/ac8LLZhYvVDhkoxU22eKBrQLPoMB33rw==
 
-"@fantaskticedtechlimited/fui-fontlib@^1.1.0":
-  version "1.1.0"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-fontlib/1.1.0/492b8bab15ab55c0037ea8a0026eb770b6299c38fc4274252d0e9c3029824b63#e109d2859fc5ce3ad52d41f84d1549552be2a496"
-  integrity sha512-0kf69VqoKDpIOgo3T8kf1B9amApESBcEhJWgirEeQEuCDSbyzpcHOBy3Jm2gjNLMl5L4aFZ1wb3WC0LQODXFGw==
+"@fantaskticedtechlimited/fui-fontlib@^1.2.0":
+  version "1.2.0"
+  resolved "https://npm.pkg.github.com/download/@FantaskticEdTechLimited/fui-fontlib/1.2.0/f965c342485af1f6c6fe41708d5dc6249479e526#f965c342485af1f6c6fe41708d5dc6249479e526"
+  integrity sha512-FadnOdeuNT03L8GsQ+6YOu06TuylpHekfAvmRXmo0mPTCeEUxyjUr7Nx2h1vQxOy4x5Nnika9hRg9c70CeGIaQ==
   dependencies:
     "@types/webfontloader" "^1.6.34"
     webfontloader "^1.6.28"
 
-"@fantaskticedtechlimited/fui-iconlib@^1.0.5":
-  version "1.0.5"
-  resolved "https://npm.pkg.github.com/download/@fantaskticedtechlimited/fui-iconlib/1.0.5/69e8095ed2312abf8bbb16df62c97b854df32711cc6b090ea4957becd9654f5c#022e2759b394f58cc0763dd2cf6f1f7c45057a8f"
-  integrity sha512-5d9wHJl2TK9yu2A85zFhEEYNtJB4tZPoSNLqlvfdxvvFwHYi6xuEjwEp6FUImIF8jEHlwyILFXPnGLtCdeLLWw==
+"@fantaskticedtechlimited/fui-iconlib@^1.2.1":
+  version "1.2.1"
+  resolved "https://npm.pkg.github.com/download/@FantaskticEdTechLimited/fui-iconlib/1.2.1/dde359629d0526f9cfbf20ceacecee37a3a440dc#dde359629d0526f9cfbf20ceacecee37a3a440dc"
+  integrity sha512-8eHJ3FEy3uOK/QYpiyZwKmbY/U+HHe9fQAghtJ2K6n7RCw1d/lfeASF0b9tUfZmossg1akwhsW/EukVBLvYjWQ==
   dependencies:
     "@fantaskticedtechlimited/fui-colorlib" "^3.2.1"
     typestyle "^2.3.0"

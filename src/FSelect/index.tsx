@@ -129,7 +129,7 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 				) : !props.selectedOptions ? (
 					<FIcon
 						name={FIconNames.RANKING}
-						strokeColor={openDropdown ? blackColor : bgLightColor}
+						color={() => (openDropdown ? blackColor : bgLightColor)}
 						size="small"
 						onClick={() =>
 							props.disabled ? undefined : setOpenDropdown(!openDropdown)
@@ -141,7 +141,7 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 					props.selectedOptions && (
 						<FIcon
 							name={FIconNames.CLOSE}
-							strokeColor={openDropdown ? blackColor : bgLightColor}
+							color={() => (openDropdown ? blackColor : bgLightColor)}
 							size="small"
 							onClick={handleClearSelectedOption}
 							{...props.clearIconProps}

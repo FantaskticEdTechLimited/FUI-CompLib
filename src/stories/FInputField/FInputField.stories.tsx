@@ -7,13 +7,13 @@ export default {
 	component: FInputField,
 	argTypes: {
 		/** In real case, if disabled, the input value is still shown but no input is allowed. */
-		inputValue: { control: "text", if: { arg: "disabled", truthy: false } },
-		renderInputValue: { control: { disable: true } },
-		containerStyle: {
+		value: { control: "text", if: { arg: "disabled", truthy: false } },
+		onInput: { control: { disable: true } },
+		style: {
 			defaultValue: { width: "300px" },
 			control: { disable: true },
 		},
-		containerClassName: { control: { disable: true } },
+		className: { control: { disable: true } },
 		inputAreaStyle: { control: { disable: true } },
 		inputAreaClassName: { control: { disable: true } },
 		inputDivClassName: { control: { disable: true } },

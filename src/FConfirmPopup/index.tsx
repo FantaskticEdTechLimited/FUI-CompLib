@@ -1,61 +1,91 @@
-import { ConfirmPopUpProps } from "./types";
-import * as styles from "./styles";
-import { FBottomNavBar, FPopUp, FText, FUseColor, FUseStateSafe } from "..";
+import { FConfirmPopUpProps } from "./types";
+import { styles } from "./styles";
+import {
+	FBottomNavBar,
+	FBottomNavBarProps,
+	FPopUp,
+	FText,
+	FUseColor,
+	FUseStateSafe,
+} from "..";
 import React from "react";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 
-/**
- * A kind of FPopUp that mainly contains a header and a bottom navigation bar (i.e. FBottomNavBar).
+/** `<FConfirmPopUp />` is a `<PopUp />` component
+ * which contains a header (`title`, `subtitle`) and a bottom nav bar (`<FBottomNavBar />`)
+ * to submit data to backend.
+ *
+ * Props: `FConfirmPopUpProps`
  */
-export const FConfirmPopUp = (props: ConfirmPopUpProps) => {
+export const FConfirmPopUp = ({
+	disableBottomBar = false,
+	disableCloseWhenClickOutside = false,
+	...props
+}: FConfirmPopUpProps) => {
 	const [isLoading, setIsLoading] = FUseStateSafe(false);
+	const FPopUpParams: Partial<FConfirmPopUpProps> = {
+		disableCloseWhenClickOutside: disableCloseWhenClickOutside,
+		overlayClassName: props.overlayClassName,
+		overlayStyle: props.overlayStyle,
+		style: props.style,
+		scrollBarProps: props.scrollBarProps,
+	};
+	const bottomBarProps: FBottomNavBarProps = {
+		actionButtonLabel: "Confirm",
+		...props.bottomBarProps,
+	};
 
 	const handleActionButtonClick = async () => {
 		setIsLoading(true);
-		props.onActionButtonClick && (await props.onActionButtonClick());
+		bottomBarProps?.onActionButtonClick &&
+			(await bottomBarProps?.onActionButtonClick());
 		setIsLoading(false);
 	};
 
 	const handleLeadingButtonClick = async () => {
-		props.onLeadingButtonClick && (await props.onLeadingButtonClick());
+		bottomBarProps?.onLeadingButtonClick &&
+			(await bottomBarProps?.onLeadingButtonClick());
 	};
+
 	return (
 		<FPopUp
-			{...props}
-			onClose={props.isDisableCloseWhenClickOutside ? () => {} : props.onClose}
+			{...FPopUpParams}
+			onClose={disableCloseWhenClickOutside ? undefined : props.onClose}
+			className={styles.FConfirmPopUp_Container + " " + props.className}
 		>
-			{/* header */}
-			<div className={styles.functionalPopupTitleDiv}>
+			<div
+				style={props.headerStyle}
+				className={styles.FConfirmPopUp_HeaderDiv + " " + props.headerClassName}
+			>
 				<FText
 					font={FFontTypes.Title()}
-					maxRows={2}
+					maxRows={1}
+					overflowHidden
 					children={props.title}
 					{...props.titleProps}
 				/>
 				{props.subtitle && (
 					<FText
 						font={FFontTypes.Text()}
-						color={FUseColor({
-							colorName: "Grey",
-						})}
+						color={FUseColor({ colorName: "Grey" })}
+						maxRows={2}
+						overflowHidden
 						children={props.subtitle}
 						{...props.subtitleProps}
 					/>
 				)}
 			</div>
-
-			{/* content */}
-			{props.children && props.children}
-
-			{/* Footer */}
-			{!props.isDisableBottomNavigation && (
+			{props.children}
+			{!disableBottomBar && (
 				<FBottomNavBar
-					leadingButtonLabel="Cancel"
-					actionButtonLabel={isLoading ? "Loading" : "Confirm"}
+					leadingButtonLabel={bottomBarProps.leadingButtonLabel}
+					actionButtonLabel={
+						isLoading ? "Loading" : bottomBarProps.actionButtonLabel
+					}
 					disableActionButton={isLoading}
 					onLeadingButtonClick={handleLeadingButtonClick}
 					onActionButtonClick={handleActionButtonClick}
-					{...props.FBottomNavigationProps}
+					{...bottomBarProps}
 				/>
 			)}
 		</FPopUp>

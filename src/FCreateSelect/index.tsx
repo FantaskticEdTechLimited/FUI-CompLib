@@ -18,8 +18,8 @@ export const FCreateSelect = <T,>(props: FCreateSelectProps<T>) => {
 		return <div>Data(s) and Multi mismatch</div>;
 	}
 
-	const handleCreateAndAutoFocus = async (inputValue: string) => {
-		props.onCreate && (await props.onCreate(inputValue));
+	const handleCreateAndAutoFocus = async (value: string) => {
+		props.onCreate && (await props.onCreate(value));
 		selectRef.current && (selectRef.current as any).focus();
 	};
 
@@ -96,18 +96,18 @@ export const FCreateSelect = <T,>(props: FCreateSelectProps<T>) => {
 			}}
 			options={props.options}
 			value={props.value}
-			filterOption={(option, inputValue) => {
+			filterOption={(option, value) => {
 				// default hided selected Options
 
 				// if no input, options will not be filter
-				if (!inputValue || inputValue === null) {
+				if (!value || value === null) {
 					return true;
 				}
 
 				// if input = option value, is create new option
 				if (!props.isDisableCreate) {
 					// isDisableCreate will make create option hidden
-					// if (option.value === inputValue) {
+					// if (option.value === value) {
 					// 	return true
 					// }
 					const isNew = (option.data as any).__isNew__;
@@ -122,7 +122,7 @@ export const FCreateSelect = <T,>(props: FCreateSelectProps<T>) => {
 					}
 				}
 				try {
-					const match = props.onCompareInputValue(option.data, inputValue);
+					const match = props.onCompareInputValue(option.data, value);
 					return match;
 				} catch (error) {
 					console.error("FCreateSelect Error: ", error);

@@ -1,7 +1,14 @@
-import { style } from "typestyle";
+import { stylesheet } from "typestyle";
 
-export const functionalPopupTitleDiv = style({
-	display: "flex",
-	flexDirection: "column",
-	rowGap: "12px",
+export const styles = stylesheet({
+	FConfirmPopUp_Container: {
+		height: "85%",
+		width: "90%", 
+		justifyContent: "space-between"
+	},
+	FConfirmPopUp_HeaderDiv: {
+		display: "flex",
+		flexDirection: "column",
+		rowGap: "12px",
+	},
 });

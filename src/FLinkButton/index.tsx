@@ -7,19 +7,18 @@ import { FLinkButtonProps } from "./types";
 
 export const FLinkButton = (props: FLinkButtonProps) => {
 	const isSelected = props.pathIsSelected;
+	const index = props.index;
 	const [isHover, setIsHover] = useState<boolean>(false);
 	const mainThemeColor = FUseColor({ colorName: "Main" });
-	const blackColor = FUseColor({
-		colorName: "Black",
-	});
+	const blackColor = FUseColor({ colorName: "Black" });
 
 	return (
 		<Link
-			style={props.style && props.style(isHover)}
+			style={props.style && props.style(isHover, index)}
 			className={
 				styles.FLinkButtonContainer(isSelected!, props) +
 				" " +
-				(props.className && props.className(isHover))
+				(props.className && props.className(isHover, index))
 			}
 			to={props.pathLink!}
 			onClick={() =>
@@ -33,13 +32,17 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 				<>
 					{props.leadingComponents ?? props.leadingIcon ? (
 						<FIcon
-							strokeColor={isSelected ? mainThemeColor : blackColor}
+							color={() => (isSelected ? mainThemeColor : blackColor)}
 							{...props.leadingIcon}
 						/>
 					) : undefined}
 					<FText
-						style={props.labelStyle && props.labelStyle()}
-						className={styles.FLinkButtonLabel + " " + props.labelClassName}
+						style={props.labelStyle && props.labelStyle(isHover, index)}
+						className={
+							styles.FLinkButtonLabel +
+							" " +
+							(props.labelClassName && props.labelClassName(isHover, index))
+						}
 						color={isSelected ? mainThemeColor : blackColor}
 						children={props.label}
 						{...props.labelProps}
@@ -50,7 +53,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 								<FIcon
 									name={FIconNames.ARROW_DOWN}
 									size="small"
-									strokeColor={isSelected ? mainThemeColor : blackColor}
+									color={() => (isSelected ? mainThemeColor : blackColor)}
 									{...props.actionIcon}
 								/>
 						  )}

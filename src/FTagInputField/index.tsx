@@ -47,15 +47,15 @@ export const FTagInputField = <T extends unknown>(
 	useEffect(() => {
 		let tempFilteredTagData: any[] = [];
 		if (!props.disableFilteredTags) {
-			if (props.tagData && props.inputValue && props.inputValue.length > 0) {
+			if (props.tagData && props.value && props.value.length > 0) {
 				props.tagData.map((tag: any) => {
 					if (props.selectedTags) {
 						if (props.selectedTags.length === 0) {
-							if (tag.includes(props.inputValue)) {
+							if (tag.includes(props.value)) {
 								tempFilteredTagData.push(tag);
 							}
 						} else {
-							if (tag.includes(props.inputValue)) {
+							if (tag.includes(props.value)) {
 								props.selectedTags.map((selectedTag: any, i: number) => {
 									if (
 										tag !== selectedTag &&
@@ -74,7 +74,7 @@ export const FTagInputField = <T extends unknown>(
 				});
 				// no matter there are selectedTag tags
 				if (props.selectedTags) {
-					if (!checkDataExist(props.selectedTags, props.inputValue)) {
+					if (!checkDataExist(props.selectedTags, props.value)) {
 						tempFilteredTagData.push(NewTagHintLabel);
 						props.renderFilteredTagResult &&
 							props.renderFilteredTagResult({ new: true });
@@ -91,21 +91,20 @@ export const FTagInputField = <T extends unknown>(
 	}, [
 		props.disableFilteredTags,
 		props.tagData,
-		props.inputValue,
+		props.value,
 		props.selectedTags,
 	]);
 
 	useEffect(() => {
-		if (arrowKeyPressCount > 0 && inputRef.current && props.inputValue) {
-			inputRef.current.selectionEnd = props.inputValue.length;
-			inputRef.current.selectionStart = props.inputValue.length;
+		if (arrowKeyPressCount > 0 && inputRef.current && props.value) {
+			inputRef.current.selectionEnd = props.value.length;
+			inputRef.current.selectionStart = props.value.length;
 		}
 	}, [arrowKeyPressCount]);
 
 	useEffect(() => {
-		if (props.inputValue && props.inputValue.length > 0)
-			setArrowKeyPressCount(0);
-	}, [props.inputValue]);
+		if (props.value && props.value.length > 0) setArrowKeyPressCount(0);
+	}, [props.value]);
 
 	return (
 		<div
@@ -178,7 +177,7 @@ export const FTagInputField = <T extends unknown>(
 						}
 						type="text"
 						ref={inputRef}
-						value={props.inputValue ?? ""}
+						value={props.value ?? ""}
 						placeholder={props.placeholder ?? "Input Tags"}
 						onKeyDown={(event: any) => {
 							if (event.key === "ArrowDown") {
@@ -217,51 +216,50 @@ export const FTagInputField = <T extends unknown>(
 									if (
 										props.selectedTags &&
 										props.selectedTags.length > 0 &&
-										props.inputValue &&
-										props.inputValue.length > 0
+										props.value &&
+										props.value.length > 0
 									) {
 										props.selectedTags.map((selectedTag: any, i: number) => {
-											if (props.inputValue === selectedTag) bool = true;
+											if (props.value === selectedTag) bool = true;
 											if (
 												!bool &&
 												props.selectedTags &&
 												i + 1 >= props.selectedTags.length &&
-												props.inputValue !== selectedTag &&
-												props.inputValue !== ExitsedTagHintLabel &&
-												props.inputValue !== NewTagHintLabel
+												props.value !== selectedTag &&
+												props.value !== ExitsedTagHintLabel &&
+												props.value !== NewTagHintLabel
 											) {
-												props.onTagCreate &&
-													props.onTagCreate(props.inputValue!);
-												props.renderInputValue && props.renderInputValue("");
+												props.onTagCreate && props.onTagCreate(props.value!);
+												props.onInput && props.onInput("");
 											}
 										});
 									} else {
 										if (
-											props.inputValue !== ExitsedTagHintLabel &&
-											props.inputValue !== NewTagHintLabel
+											props.value !== ExitsedTagHintLabel &&
+											props.value !== NewTagHintLabel
 										) {
-											props.onTagCreate && props.onTagCreate(props.inputValue!);
-											props.renderInputValue && props.renderInputValue("");
+											props.onTagCreate && props.onTagCreate(props.value!);
+											props.onInput && props.onInput("");
 										}
 									}
 								} else {
 									// use dropdown with arrow keys
 									if (
 										!props.disableFilteredTags &&
-										props.inputValue &&
-										props.inputValue.length > 0 &&
+										props.value &&
+										props.value.length > 0 &&
 										arrowKeySelectedOption !== ExitsedTagHintLabel &&
 										arrowKeySelectedOption !== NewTagHintLabel &&
 										props.onTagCreate
 									) {
 										props.onTagCreate(arrowKeySelectedOption);
-										props.renderInputValue && props.renderInputValue("");
+										props.onInput && props.onInput("");
 									} else {
 										if (
-											props.inputValue &&
-											props.inputValue.length > 0 &&
-											props.inputValue !== ExitsedTagHintLabel &&
-											props.inputValue !== NewTagHintLabel &&
+											props.value &&
+											props.value.length > 0 &&
+											props.value !== ExitsedTagHintLabel &&
+											props.value !== NewTagHintLabel &&
 											props.selectedTags &&
 											props.selectedTags.length > 0 &&
 											arrowKeySelectedOption !== ExitsedTagHintLabel
@@ -272,13 +270,13 @@ export const FTagInputField = <T extends unknown>(
 													!bool &&
 													props.selectedTags &&
 													i + 1 >= props.selectedTags.length &&
-													props.inputValue !== selectedTag &&
+													props.value !== selectedTag &&
 													props.onTagCreate
 												) {
 													if (arrowKeySelectedOption === NewTagHintLabel)
-														props.onTagCreate(props.inputValue!);
+														props.onTagCreate(props.value!);
 													else props.onTagCreate(arrowKeySelectedOption);
-													props.renderInputValue && props.renderInputValue("");
+													props.onInput && props.onInput("");
 												}
 											});
 									}
@@ -286,22 +284,19 @@ export const FTagInputField = <T extends unknown>(
 							}
 						}}
 						onChange={(event: any) => {
-							props.renderInputValue &&
-								props.renderInputValue(event.target.value);
+							props.onInput && props.onInput(event.target.value);
 						}}
 					/>
-					{props.inputValue && props.inputValue.length > 0 && (
+					{props.value && props.value.length > 0 && (
 						<FIcon
 							size="small"
 							name={FIconNames.CLOSE}
-							onClick={() =>
-								props.renderInputValue && props.renderInputValue("")
-							}
+							onClick={() => props.onInput && props.onInput("")}
 							{...props.clearIconProps}
 						/>
 					)}
 				</div>
-				{props.inputValue && props.inputValue.length > 0 && (
+				{props.value && props.value.length > 0 && (
 					<div
 						className={styles.FTagInputFieldDropdownContainer(
 							inputContainerRef
@@ -320,14 +315,14 @@ export const FTagInputField = <T extends unknown>(
 										// if (
 										// 	!props.disableFilteredTags &&
 										// 	option !== ExitsedTagHintLabel &&
-										// 	props.inputValue !== NewTagHintLabel &&
-										// 	props.inputValue !== ExitsedTagHintLabel
+										// 	props.value !== NewTagHintLabel &&
+										// 	props.value !== ExitsedTagHintLabel
 										// ) {
 										// 	if (option === NewTagHintLabel)
 										// 		props.onTagCreate &&
-										// 			props.onTagCreate(props.inputValue!);
+										// 			props.onTagCreate(props.value!);
 										// 	else props.onTagCreate && props.onTagCreate(option);
-										// 	props.renderInputValue && props.renderInputValue("");
+										// 	props.onInput && props.onInput("");
 										// } else {
 										// 	if (
 										// 		!selected &&
@@ -335,7 +330,7 @@ export const FTagInputField = <T extends unknown>(
 										// 		option !== NewTagHintLabel
 										// 	) {
 										// 		props.onTagCreate && props.onTagCreate(option);
-										// 		props.renderInputValue && props.renderInputValue("");
+										// 		props.onInput && props.onInput("");
 										// 	}
 										// }
 										setIsTriggered(true);

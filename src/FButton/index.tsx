@@ -1,8 +1,9 @@
 import * as styles from "./styles";
 import React, { useState } from "react";
-import { FText, FUseColor } from "..";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FButtonProps } from "./types";
+import { FText } from "../FText";
+import { FUseColor } from "../utils";
 
 /** `<FButton />` is a customized `Button` component.
  *
@@ -44,7 +45,11 @@ export const FButton = ({
 				<FText
 					font={FFontTypes.Text()}
 					color={
-						type === "Primary"
+						!disabled && isHover
+							? type === "Text"
+								? FUseColor({ colorName: "Main" })
+								: FUseColor({ colorName: "White" })
+							: type === "Primary"
 							? FUseColor({ colorName: "White" })
 							: type === "Outline" || type === "Secondary"
 							? FUseColor({ colorName: "Main" })

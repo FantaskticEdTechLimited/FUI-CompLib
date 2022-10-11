@@ -4,7 +4,7 @@ import { FOnClickFunction } from "../../global.types";
 
 export interface SearchIconProps {
 	isTriggered: boolean;
-	inputValue: string;
+	value: string;
 	className?: string;
 	style?: CSSProperties;
 }

@@ -3,11 +3,11 @@ import { FInputFieldProps } from "./types";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FUseColor } from "..";
 
-export const FInputFieldContainer = (props: FInputFieldProps) =>
+export const FInputFieldContainer = (hasWordCount?: boolean) =>
 	style({
 		display: "flex",
 		flexDirection: "column",
-		rowGap: props.wordCount ? "4px" : 0,
+		rowGap: hasWordCount ? "4px" : 0,
 		width: "100%",
 	});
 

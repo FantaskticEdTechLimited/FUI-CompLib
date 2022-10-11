@@ -23,7 +23,7 @@ export const FSearchBar = (props: FSearchBarProps) => {
 		>
 			<SearchIcon
 				isTriggered={isTriggered}
-				inputValue={props.inputValue!}
+				value={props.value!}
 				className={props.searchIconClassName}
 				style={props.searchIconStyle}
 			/>
@@ -34,17 +34,17 @@ export const FSearchBar = (props: FSearchBarProps) => {
 				}
 				type="text"
 				ref={inputRef}
-				value={props.inputValue}
+				value={props.value}
 				placeholder={props.placeholder ?? "Search"}
 				onChange={(event: any) =>
-					props.renderInputValue && props.renderInputValue(event.target.value)
+					props.onInput && props.onInput(event.target.value)
 				}
 			/>
-			{props.inputValue && props.inputValue.length > 0 && (
+			{props.value && props.value.length > 0 && (
 				<ClearIcon
 					className={props.clearIconClassName}
 					style={props.clearIconStyle}
-					onClick={() => props.renderInputValue && props.renderInputValue("")}
+					onClick={() => props.onInput && props.onInput("")}
 				/>
 			)}
 		</div>

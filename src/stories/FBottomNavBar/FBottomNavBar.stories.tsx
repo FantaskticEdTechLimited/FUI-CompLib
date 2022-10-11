@@ -1,7 +1,7 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { FBottomNavBar } from "../../FBottomNavBar";
 import { action } from "@storybook/addon-actions";
+import { FBottomNavBar } from "../../FBottomNavBar";
 
 export default {
 	title: "FUI-Complib/COMPONENTS/FBottomNavBar",

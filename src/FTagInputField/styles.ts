@@ -67,7 +67,7 @@ export const FTagInputFieldInputAreaDiv = (props: FTagInputFieldProps<any>) => {
 		backgroundColor: whiteColor,
 		border: "none",
 		caretColor: FUseColor({ colorName: "Main" }),
-		color: props.inputValue ? blackColor : greyColor,
+		color: props.value ? blackColor : greyColor,
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",

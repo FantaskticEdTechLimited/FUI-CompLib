@@ -29,8 +29,8 @@ export interface FTagInputFieldProps<T> {
 	selectedTags?: T[];
 	placeholder?: string;
 	// for tag input
-	inputValue?: string;
-	renderInputValue?: (v: string) => void;
+	value?: string;
+	onInput?: (v: string) => void;
 	// user can design own hint labels (new tag, existed tag warning)
 	tagHintLabels?: FDropdownHintLabelsProps;
 	// render filtered tag result whether the tag is new or existed

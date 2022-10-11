@@ -108,7 +108,9 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 				onMouseLeave={() => setIsHover(false)}
 			>
 				{showDnDButtonOnLeft &&
-					(customDnDButton ?? (
+					(customDnDButton ? (
+						customDnDButton
+					) : (
 						<div ref={dragItemRef}>
 							<FDnDButton {...FDndButtonProps} />
 						</div>
@@ -131,7 +133,9 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 					{showBottomIndicatorOnContent && BottomIndicator}
 				</div>
 				{showDnDButtonOnRight &&
-					(customDnDButton ?? (
+					(customDnDButton ? (
+						customDnDButton
+					) : (
 						<div ref={dragItemRef}>
 							<FDnDButton {...FDndButtonProps} />
 						</div>
@@ -151,10 +155,10 @@ export default DropTarget(
 			component: FDnDItemInstance
 		) {
 			if (!props.disabled || !props.disableDndAction) {
-				if (!component) return null;
-
 				const dragTargetIndex = monitor.getItem<FDnDItemDropObject>().index;
 				const dropTargetIndex = props.index;
+
+				if (!component) return null;
 
 				if (dragTargetIndex === dropTargetIndex) return;
 
