@@ -1,12 +1,16 @@
-import React from "react";
-import { ClearIconProps } from "./types";
-import * as styles from "./styles";
-import { FUseColor } from "../..";
+import React, { SVGProps } from "react";
+import { FSearchBarClearIconProps } from "./types";
+import { styles } from "./styles";
+import { FReturnColor } from "../..";
 
-export const ClearIcon = (props: ClearIconProps) => {
-	const greyColor = FUseColor({
-		colorName: "Grey",
-	});
+export const ClearIcon = (props: FSearchBarClearIconProps) => {
+	const pathProps: SVGProps<SVGPathElement> = {
+		stroke: FReturnColor({ color: "Grey" }),
+		strokeWidth: "1.2",
+		strokeLinecap: "round",
+		strokeLinejoin: "round",
+		...props.pathProps,
+	};
 
 	return (
 		<svg
@@ -17,20 +21,8 @@ export const ClearIcon = (props: ClearIconProps) => {
 			xmlns="http://www.w3.org/2000/svg"
 			onClick={() => props.onClick()}
 		>
-			<path
-				d="M13.5 4.5L4.5 13.5"
-				stroke={greyColor}
-				strokeWidth="1.2"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
-			<path
-				d="M4.5 4.5L13.5 13.5"
-				stroke={greyColor}
-				strokeWidth="1.2"
-				strokeLinecap="round"
-				strokeLinejoin="round"
-			/>
+			<path d="M13.5 4.5L4.5 13.5" {...pathProps} />
+			<path d="M4.5 4.5L13.5 13.5" {...pathProps} />
 		</svg>
 	);
 };

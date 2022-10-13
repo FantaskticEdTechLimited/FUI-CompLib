@@ -26,12 +26,12 @@ export const CustomRowsWithOverflow = Template.bind({});
 
 Example.args = {
 	font: FFontTypes.Small_Title(),
-	color: FColorTypes.FPrimaryColors.BLACK.LM,
+	color: () => FColorTypes.FPrimaryColors.BLACK.LM,
 } as FTextProps;
 
 CustomColorAndFont.args = {
 	font: FFontTypes.Text(),
-	color: FColorTypes.FThemeColors.MAIN.LM,
+	color: () => FColorTypes.FThemeColors.MAIN.LM,
 	children: "The color and font of text are changed.",
 } as FTextProps;
 

@@ -1,16 +1,16 @@
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 
-export const FSearchBarContainer = (isTriggered: boolean) =>
+export const FSearchBar_Container = (isTriggered: boolean) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FUseColor({ colorName: "Sub" }),
+		backgroundColor: FReturnColor({ color: "Sub" }),
 		border:
-			"2px solid " + (isTriggered ? FUseColor({ colorName: "Main" }) : "none"),
+			"2px solid " + (isTriggered ? FReturnColor({ color: "Main" }) : "none"),
 		borderRadius: "4px",
 		boxSizing: "border-box",
-		caretColor: FUseColor({ colorName: "Main" }),
+		caretColor: FReturnColor({ color: "Main" }),
 		columnGap: "8px",
 		cursor: "text",
 		display: "flex",
@@ -19,13 +19,11 @@ export const FSearchBarContainer = (isTriggered: boolean) =>
 		width: "100%",
 	});
 
-export const FSearchBarInputAreaDiv = () => {
-	return style({
+export const FSearchBar_InputAreaDiv = () =>
+	style({
 		backgroundColor: "inherit",
 		border: "none",
-		color: FUseColor({
-			colorName: "Black",
-		}),
+		color: FReturnColor({ color: "Black" }),
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
@@ -34,10 +32,7 @@ export const FSearchBarInputAreaDiv = () => {
 		width: "100%",
 		$nest: {
 			"&::placeholder": {
-				color: FUseColor({
-					colorName: "Grey",
-				}),
+				color: FReturnColor({ color: "Grey" }),
 			},
 		},
 	});
-};

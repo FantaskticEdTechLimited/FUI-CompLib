@@ -1,8 +1,8 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
-import { FButton } from "../../FButton";
 import { FButtonProps, FButtonTypes } from "../../FButton/types";
+import { FButton } from "../../FButton";
 
 export default {
 	title: "FUI-Complib/COMPONENTS/FButton",
@@ -15,12 +15,11 @@ export default {
 		},
 		className: { control: { disable: true } },
 		labelProps: { control: { disable: true } },
-		labelStyle: { control: { disable: true } },
-		labelClassName: { control: { disable: true } },
 		customChildren: { control: { disable: true } },
 		leadingComponents: { control: { disable: true } },
 		actionComponents: { control: { disable: true } },
 		onClick: { control: { disable: true } },
+		index: { control: { disable: true } },
 	},
 } as ComponentMeta<typeof FButton>;
 

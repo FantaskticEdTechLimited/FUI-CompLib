@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 import { FScrollBarStyleProps } from "./types";
 
 /** `FScrollBarStyle` is not a component,
@@ -10,11 +10,11 @@ import { FScrollBarStyleProps } from "./types";
  *
  *  */
 export const FScrollBarStyle = (props?: FScrollBarStyleProps) => {
-	const greyColor = FUseColor({
-		colorName: "Grey",
+	const greyColor = FReturnColor({
+		color: "Grey",
 	});
-	const darkColor = FUseColor({
-		colorName: "Dark",
+	const darkColor = FReturnColor({
+		color: "Dark",
 	});
 
 	return style({

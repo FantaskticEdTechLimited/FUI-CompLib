@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { FPopUpProps } from "./types";
 import * as styles from "./styles";
 import { FScrollBarStyle } from "../FScrollBarStyle";
-import { FUseScreenSize } from "../utils";
+import { FReturnScreenSize } from "../utils/FReturnScreenSize";
 
 /** `<FPopUp />` is a component which pops an extra smaller window
  *  for any content to display or input.
@@ -14,7 +14,7 @@ export const FPopUp = ({
 	...props
 }: FPopUpProps) => {
 	const PopupRef = useRef<HTMLDivElement>(null);
-	const [width, height] = FUseScreenSize();
+	const [width, height] = FReturnScreenSize();
 
 	const handleClickOutside = async (event: any) => {
 		if (disableCloseWhenClickOutside) return;

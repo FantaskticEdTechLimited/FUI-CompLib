@@ -1,10 +1,6 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties } from "react";
-import {
-	FComponentType,
-	FOnClickFunction,
-	FRwdSizeProps,
-} from "../global.types";
+import { FComponentType, FOnClickFunction } from "../global.types";
 
 export type FHeaderButtonTypes = "Back" | "Close" | "More";
 
@@ -15,15 +11,10 @@ export interface FHeaderButtonProps {
 	size?: "small" | "large";
 	/** If `true`, the header button is **NOT** allowed to use. */
 	disabled?: boolean;
-	/** If `true`, it will disable auto resize the button based on screenWidth
-	 * and use `size` field to control the button size. */
-	disableAutoResize?: boolean;
 	/** Content of the header button. */
 	children?: FComponentType;
 	/** Click action event of the header button. */
 	onClick?: FOnClickFunction;
-	/** Configures rwd size based on the device width. */
-	configRwdSize?: FRwdSizeProps;
 	/** Properties of the icon. */
 	iconProps?: FIconProps;
 	/** Class name of the header button. */

@@ -11,7 +11,6 @@ export const FHeaderButton = ({
 	size = "large",
 	type = "Back",
 	disabled = false,
-	disableAutoResize = true,
 	...props
 }: FHeaderButtonProps) => {
 	const [isHover, setIsHover] = useState<boolean>(false);
@@ -19,7 +18,6 @@ export const FHeaderButton = ({
 		size: size,
 		type: type,
 		disabled: disabled,
-		disableAutoResize: disableAutoResize,
 		...props,
 	};
 

@@ -1,9 +1,9 @@
 import { ReactNode, CSSProperties } from "react";
 import { FButtonProps } from "../FButton/types";
+import { FCustomTabButtonProps } from "../FTabs/types";
 import {
 	FComponentsType,
 	FComponentType,
-	CustomTabButtonProps,
 	FOnClickFunction,
 } from "../global.types";
 
@@ -24,13 +24,13 @@ export interface FTabPanelProps {
 	disabled?: boolean;
 	onClick?: FOnClickFunction;
 	/** Render user custom tab button. */
-	renderCustomizedTabButton?: CustomTabButtonProps;
-	/** Properties with `style` and `className` fields of the tab button. */
+	customTabButton?: FCustomTabButtonProps;
+	/** Properties of the tab button. */
 	tabButtonProps?: FButtonProps;
 	/** Control re-render case. Default is `true`. */
 	isRenderOnSelected?: boolean;
-	/** Style to change the tab panel style. */
+	/** Style of the tab panel. */
 	style?: CSSProperties;
-	/** Class name to change the tab panel style. */
+	/** Class name of the tab panel. */
 	className?: string;
 }

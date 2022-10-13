@@ -1,29 +1,29 @@
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { CSSProperties, ReactNode } from "react";
+import { CSSProperties } from "react";
 import { FTextProps } from "../FText/types";
-import { FOnSubmitFunction } from "../global.types";
+import { FComponentType, FOnSubmitFunction } from "../global.types";
 
 export interface FTagProps<T> {
-	tag: T;
-	children?: ReactNode;
+	/** If `true`, the tag is **NOT** be able to use. */
 	disabled?: boolean;
+	/** Label to show the tag text. */
 	label?: string;
+	/** Tag data. */
+	tag: T;
+	/** Click action event of the tag. */
 	onClick?: FOnSubmitFunction<T>;
+	/** Delete action event of the tag. It will remove the selected tag. */
 	onDelete?: FOnSubmitFunction<T>;
-
-	// user can design own action icon or comp, e.g. tick icon
-	actionComponents?: ReactNode;
-	// user can create own delete icon style
+	/** Custom leading component. */
+	leadingComponent?: FComponentType;
+	/** Custom action component instead of the default delete icon. */
+	actionComponent?: FComponentType;
+	/** Properties of the delete icon. */
 	deleteIconProps?: FIconProps;
-	// user can design own leading icon or comp, e.g. avator
-	leadingComponents?: ReactNode;
-
-	// css style of FTag
-	className?: string;
-	style?: CSSProperties;
-
-	// css style of FTag label
-	labelClassName?: string;
-	labelStyle?: CSSProperties;
+	/** Properties of the label. */
 	labelProps?: FTextProps;
+	/** Class name of the tag. */
+	className?: string;
+	/** Style of the tag. */
+	style?: CSSProperties;
 }

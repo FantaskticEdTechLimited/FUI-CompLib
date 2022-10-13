@@ -1,7 +1,7 @@
 import { style } from "typestyle";
 import { FInputFieldProps } from "./types";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 
 export const FInputFieldContainer = (hasWordCount?: boolean) =>
 	style({
@@ -17,17 +17,17 @@ export const FInputFieldDiv = (
 	isFilled: boolean
 ) =>
 	style({
-		backgroundColor: FUseColor({ colorName: "White" }),
+		backgroundColor: FReturnColor({ color: "White" }),
 		borderRadius: "8px",
 		border:
 			"1.6px solid " +
 			(isTriggered
-				? FUseColor({ colorName: "Main" })
+				? FReturnColor({ color: "Main" })
 				: isFilled
-				? FUseColor({ colorName: "Black" })
-				: FUseColor({ colorName: "BG Light" })),
+				? FReturnColor({ color: "Black" })
+				: FReturnColor({ color: "BG Light" })),
 		boxSizing: "border-box",
-		caretColor: FUseColor({ colorName: "Main" }),
+		caretColor: FReturnColor({ color: "Main" }),
 		cursor: props.disabled ? "not-allowed" : "text",
 		display: "flex",
 		flexDirection: "column",
@@ -42,9 +42,9 @@ export const FInputFieldInputAreaDiv = (
 	state: boolean
 ) =>
 	style({
-		backgroundColor: FUseColor({ colorName: "White" }),
+		backgroundColor: FReturnColor({ color: "White" }),
 		border: "none",
-		color: FUseColor({ colorName: "Black" }),
+		color: FReturnColor({ color: "Black" }),
 		display: state ? "block" : "none",
 		font: props.multiline ? FFontTypes.Small_Title() : FFontTypes.Large_Text(),
 		outline: "none",
@@ -56,6 +56,6 @@ export const FInputFieldInputAreaDiv = (
 		wordBreak: "break-all",
 		cursor: props.disabled ? "not-allowed" : "text",
 		$nest: {
-			"&::placeholder": { color: FUseColor({ colorName: "BG Light" }) },
+			"&::placeholder": { color: FReturnColor({ color: "Grey" }) },
 		},
 	});

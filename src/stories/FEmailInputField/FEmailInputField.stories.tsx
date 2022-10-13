@@ -12,8 +12,6 @@ export default {
 		onEnterPress: { control: { disable: true } },
 		wrapperClassName: { control: { disable: true } },
 		wrapperStyle: { control: { disable: true } },
-		warninglabelClassName: { control: { disable: true } },
-		warningLabelStyle: { control: { disable: true } },
 		warningLabelProps: { control: { disable: true } },
 		style: {
 			defaultValue: { width: "300px" },

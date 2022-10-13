@@ -1,5 +1,5 @@
 import { style, stylesheet } from "typestyle";
-import { FUseColor } from "../../utils";
+import { FReturnColor } from "../../utils/FReturnColor";
 
 export const styles = stylesheet({
 	FDnDItem_WithIndicator_Container: {
@@ -31,9 +31,9 @@ export const FDnDItem_Default_Container = (
 		cursor: disabled ? "not-allowed" : "pointer",
 		borderRadius: "4px",
 		border: isTargetOnContainer
-			? "2px solid " + FUseColor({ colorName: "Stroke Grey" })
+			? "2px solid " + FReturnColor({ color: "Stroke Grey" })
 			: undefined,
-		backgroundColor: FUseColor({
-			colorName: isHover ? "BG Light" : "White",
+		backgroundColor: FReturnColor({
+			color: isHover ? "BG Light" : "White",
 		}),
 	});

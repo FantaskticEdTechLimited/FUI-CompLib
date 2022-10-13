@@ -1,7 +1,7 @@
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import React from "react";
-import { FScrollableContainer } from ".";
+import { FScrollableContainer } from "../../FScrollableContainer";
 import { FText } from "../../FText";
 
 export default {
@@ -12,14 +12,24 @@ export default {
 	},
 } as ComponentMeta<typeof FScrollableContainer>;
 
-const Template: ComponentStory<typeof FScrollableContainer> = (args) => (
-	<FScrollableContainer {...args}>
-		<FText
-			font={FFontTypes.Large_Text()}
-			style={{ width: args.horizontal ? "1200px" : "100%" }}
-			children={`This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle. This paragraph is with FScrollBarStyle.`}
-		/>
-	</FScrollableContainer>
-);
+const Template: ComponentStory<typeof FScrollableContainer> = (args) => {
+	const horizontal = args.horizontal;
+
+	return (
+		<FScrollableContainer
+			style={{
+				width: horizontal ? "100%" : "500px",
+				height: horizontal ? "120px" : "100px",
+			}}
+			{...args}
+		>
+			<FText
+				font={FFontTypes.Large_Text()}
+				style={() => ({ width: horizontal ? "1200px" : "100%" })}
+				children={`This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle(). This paragraph is testing with FScrollBarStyle().`}
+			/>
+		</FScrollableContainer>
+	);
+};
 
 export const Example = Template.bind({});

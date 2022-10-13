@@ -1,9 +1,9 @@
 import { style } from "typestyle";
 import { FTextProps } from "./types";
 
-export const FTextContainer = (props: Partial<FTextProps>) =>
+export const FTextContainer = (props: FTextProps) =>
 	style({
-		color: props.color,
+		color: props.color && props.color(),
 		font: props.font,
 		overflow: props.overflowHidden ? "hidden" : "visible",
 		textOverflow: "ellipsis",

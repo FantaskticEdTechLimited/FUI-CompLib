@@ -4,22 +4,16 @@ import {
 	FIconProps,
 } from "@fantaskticedtechlimited/fui-iconlib";
 import React from "react";
-import { FRwdModeHandler, FUseColor } from "..";
-import { FRWDMode } from "../global.types";
+import { FReturnColor } from "..";
 import { FHeaderButtonProps } from "./types";
 
 export const handleFHeaderButton = (props: FHeaderButtonProps) => {
-	const rwdMode = FRwdModeHandler(props.configRwdSize);
-	const mainThemeColor = FUseColor({ colorName: "Main" });
+	const mainThemeColor = FReturnColor({ color: "Main" });
 	const iconProps: Partial<FIconProps> = {
 		disabled: props.disabled,
-		size: props.disableAutoResize
-			? props.size
-			: rwdMode === FRWDMode.MOBILE
-			? "small"
-			: "large",
+		size: props.size,
 		color: (isHover) =>
-			isHover ? FUseColor({ colorName: "White" }) : mainThemeColor,
+			isHover ? FReturnColor({ color: "White" }) : mainThemeColor,
 		...props.iconProps,
 	};
 

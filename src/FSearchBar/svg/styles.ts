@@ -1,14 +1,15 @@
-import { style } from "typestyle";
+import { stylesheet } from "typestyle";
 
-export const SearchIconDiv = style({
-	height: "18px",
-	overflow: "visible",
-	width: "18px",
-});
-
-export const ClearIconDiv = style({
-	cursor: "pointer",
-	height: "20px",
-	overflow: "visible",
-	width: "20px",
+export const styles = stylesheet({
+	SearchIconDiv: {
+		height: "18px",
+		overflow: "visible",
+		width: "18px",
+	},
+	ClearIconDiv: {
+		cursor: "pointer",
+		height: "20px",
+		overflow: "visible",
+		width: "20px",
+	},
 });

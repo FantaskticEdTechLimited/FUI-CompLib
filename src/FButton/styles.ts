@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 import { FButtonProps } from "./types";
 
 export const FButtonContainer = (props: FButtonProps, isHover: boolean) =>
@@ -9,16 +9,16 @@ export const FButtonContainer = (props: FButtonProps, isHover: boolean) =>
 			!props.disabled && isHover
 				? props.type === "Text"
 					? undefined
-					: FUseColor({ colorName: "Main" })
+					: FReturnColor({ color: "Main" })
 				: props.type === "Primary"
-				? FUseColor({ colorName: "Main" })
+				? FReturnColor({ color: "Main" })
 				: props.type === "Secondary"
-				? FUseColor({ colorName: "Sub" })
-				: FUseColor({ colorName: "White" }),
+				? FReturnColor({ color: "Sub" })
+				: FReturnColor({ color: "White" }),
 		borderRadius: "4px",
 		border:
 			props.type === "Outline"
-				? "2px solid " + FUseColor({ colorName: "Main" })
+				? "2px solid " + FReturnColor({ color: "Main" })
 				: "none",
 		cursor: props.disabled ? "not-allowed" : "pointer",
 		display: "flex",

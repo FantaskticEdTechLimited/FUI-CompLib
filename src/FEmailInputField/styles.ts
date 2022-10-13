@@ -1,6 +1,6 @@
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 
 export const FEmailInputFieldWrapper = (isError: boolean, disabled: boolean) =>
 	style({
@@ -17,38 +17,28 @@ export const FEmailInputFieldContainer = (
 ) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FUseColor({
-			colorName: "White",
-		}),
+		backgroundColor: FReturnColor({ color: "White" }),
 		borderRadius: "8px",
 		border:
 			"2px solid " +
 			(isTriggered
-				? FUseColor({ colorName: "Main" })
+				? FReturnColor({ color: "Main" })
 				: isFilled
-				? FUseColor({
-						colorName: "Black",
-				  })
-				: FUseColor({
-						colorName: "BG Light",
-				  })),
+				? FReturnColor({ color: "Black" })
+				: FReturnColor({ color: "BG Light" })),
 		boxSizing: "border-box",
-		caretColor: FUseColor({ colorName: "Main" }),
+		caretColor: FReturnColor({ color: "Main" }),
 		columnGap: "8px",
 		display: "flex",
 		flexDirection: "row",
 		padding: "12px",
 	});
 
-export const FEmailInputFieldInputAreaDiv = () => {
-	return style({
-		backgroundColor: FUseColor({
-			colorName: "White",
-		}),
+export const FEmailInputFieldInputAreaDiv = () =>
+	style({
+		backgroundColor: FReturnColor({ color: "White" }),
 		border: "none",
-		color: FUseColor({
-			colorName: "Black",
-		}),
+		color: FReturnColor({ color: "Black" }),
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
@@ -57,11 +47,8 @@ export const FEmailInputFieldInputAreaDiv = () => {
 		width: "100%",
 		$nest: {
 			"&::placeholder": {
-				color: FUseColor({
-					colorName: "Grey",
-				}),
+				color: FReturnColor({ color: "Grey" }),
 				font: FFontTypes.Large_Text(),
 			},
 		},
 	});
-};

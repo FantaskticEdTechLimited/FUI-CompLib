@@ -1,11 +1,11 @@
 import { CSSProperties, ReactNode } from "react";
 import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { FRWDMode } from "../global.types";
+import { FComponentsType, FComponentType, FRWDMode } from "../global.types";
 import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
 
 export type OverlayEnterSide = "left" | "right";
 
-export interface FSideNavBarProps {
+export interface FRWDNavBarProps {
 	/**
 	 * responsive mode of the side bar
 	 */
@@ -53,7 +53,7 @@ export interface FSideNavBarProps {
 	/**
 	 * whether there is a logo on the side and top bar
 	 */
-	logo?: ReactNode;
+	logo?: FComponentType;
 	/**
 	 * whether there is a need for a divider under the logo box on the side bar.
 	 */
@@ -85,11 +85,11 @@ export interface FSideNavBarProps {
 	/**
 	 * leading components of top nav bar
 	 */
-	topBarLeadingComponents?: ReactNode;
+	topBarLeadingComponents?: FComponentType | FComponentsType;
 	/**
 	 * action components of top nav bar
 	 */
-	topBarActionComponents?: ReactNode;
+	topBarActionComponents?: FComponentType | FComponentsType;
 	/**
 	 * properties of scroll bar
 	 */

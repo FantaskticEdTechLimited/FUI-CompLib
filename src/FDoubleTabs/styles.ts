@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { FOverrideStyle, FUseColor } from "..";
+import { FOverrideStyle, FReturnColor } from "..";
 
 export const FDoubleTabs_Wrapper = (disabled: boolean) =>
 	style({
@@ -20,9 +20,8 @@ export const FDoubleTabs_Header = style({
 	width: "fit-content",
 });
 
-export const FDoubleTabs_TabsContainer = () => {
-	const color = FUseColor({ colorName: "Sub" });
-	return style({
+export const FDoubleTabs_TabsContainer = () =>
+	style({
 		display: "flex",
 		flex: 1,
 		flexDirection: "row",
@@ -30,11 +29,10 @@ export const FDoubleTabs_TabsContainer = () => {
 		columnGap: "4px",
 		boxSizing: "border-box",
 		padding: "4px",
-		backgroundColor: color,
+		backgroundColor: FReturnColor({ color: "Sub" }),
 		boxShadow: "inset 0 0 2px rgba(0, 0, 0, 0.04)",
 		borderRadius: "8px",
 	});
-};
 
 export const FDoubleTabs_TabButton_Container = (isSelected: boolean) =>
 	style({

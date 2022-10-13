@@ -1,11 +1,15 @@
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
 import { FTabPanelProps } from "../FTabsPanel/types";
-import { CustomTabButtonProps } from "../global.types";
 
 type FTabsContentType =
 	| ReactElement<FTabPanelProps>
 	| Array<ReactElement<FTabPanelProps>>;
+
+export type FCustomTabButtonProps = (
+	isSelected: boolean,
+	buttonProps: FButtonProps
+) => ReactNode;
 
 export interface FTabsProps {
 	/** Content under corresponding tab. */
@@ -17,7 +21,7 @@ export interface FTabsProps {
 	/** Action components in the tab header. */
 	actionComponents?: ReactNode;
 	/** Render user custom tab button. */
-	renderCustomizedTabButton?: CustomTabButtonProps;
+	customTabButton?: FCustomTabButtonProps;
 	/** Class name of the wrapper. */
 	wrapperClassName?: string;
 	/** Style of the wrapper. */
@@ -30,6 +34,6 @@ export interface FTabsProps {
 	tabContainerClassName?: string;
 	/** Style of the tab button. */
 	tabContainerStyle?: CSSProperties;
-	/** Properties with `style` and `className` fields of the tab button. */
+	/** Properties of the tab button. */
 	tabButtonProps?: FButtonProps;
 }

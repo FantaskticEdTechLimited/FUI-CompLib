@@ -1,142 +1,244 @@
 // =======================================================================
 // import components
-import { FText } from "./FText";
-import { FInputField } from "./FInputField";
+import { FBottomNavBar } from "./FBottomNavBar";
 import { FButton } from "./FButton";
-import { FPopUp } from "./FPopUp";
-import { FSwitchButton } from "./FSwitchButton";
 import { FCheckBox } from "./FCheckBox";
-import { FRadioButton } from "./FRadioButton";
-import { FSearchBar } from "./FSearchBar";
-import { FSVGIcon } from "./FSVGIcon";
-import { FScrollBarStyle } from "./FScrollBarStyle";
-import { FRWDNavBar } from "./FRWDNavBar";
-import { FSelect } from "./FSelect";
+import { FConfirmPopUp } from "./FConfirmPopUp";
+import { FDivider } from "./FDivider";
+import { FDoubleTabs } from "./FDoubleTabs";
+import { FDoubleTabsPanel } from "./FDoubleTabsPanel";
+import { FDragAndDrop } from "./FDragAndDrop";
 import { FDropdown } from "./FDropdown";
-import { FLinkButton } from "./FLinkButton";
-import { FTag } from "./FTag";
-import { FTagInputField } from "./FTagInputField";
-import { FHeaderButton } from "./FHeaderButton";
 import { FEmailInputField } from "./FEmailInputField";
+import { FForm } from "./FForm";
+import { FHeaderButton } from "./FHeaderButton";
+import { FInputField } from "./FInputField";
+import { FInputSelect } from "./FInputSelect";
+import { FLinkButton } from "./FLinkButton";
+import { FMoreActionPopUp } from "./FMoreActionPopUp";
+import { FNoData } from "./FNoData";
 import { FPasswordInputField } from "./FPasswordInputField";
+import { FPopUp } from "./FPopUp";
+import { FRadioButton } from "./FRadioButton";
+import { FRWDNavBar } from "./FRWDNavBar";
+import { FScrollableContainer } from "./FScrollableContainer";
+import { FScrollBarStyle } from "./FScrollBarStyle";
+import { FSearchBar } from "./FSearchBar";
+import { FSelect } from "./FSelect";
+import { FSVGIcon } from "./FSVGIcon";
+import { FSwitchButton } from "./FSwitchButton";
 import { FTabs } from "./FTabs";
 import { FTabsPanel } from "./FTabsPanel";
-import { FDragAndDrop } from "./FDragAndDrop";
-import { FNoData } from "./FNoData";
-import { FForm } from "./FForm";
-import { FMoreActionPopUp } from "./FMoreActionPopUp";
-import { FDoubleTabs } from "./FDoubleTabs";
-import { FScrollableContentWrapper } from "./FScrollableContentWrapper";
-import { FDivider } from "./FDivider";
-import { FCreateSelect } from "./FCreateSelect";
-import { FConfirmPopUp } from "./FConfirmPopUp";
+import { FTag } from "./FTag";
+import { FTagInputField } from "./FTagInputField";
+import { FText } from "./FText";
+// =======================================================================
+// import utils
+import { FCheckDefaultIsDarkMode } from "./utils/FCheckDefaultIsDarkMode";
+import { FCheckIsDarkThemeMode } from "./utils/FCheckIsDarkThemeMode";
+import { FCheckIsToday } from "./utils/FCheckIsToday";
+import { FCountDownTimer } from "./utils/FCountDownTimer";
+import { FCountTimer } from "./utils/FCountTimer";
+import { FFirstCharUppercase } from "./utils/FFirstCharUppercase";
+import { FOverrideStyle } from "./utils/FOverrideStyle";
+import { FReturnArray } from "./utils/FReturnArray";
+import { FReturnColor } from "./utils/FReturnColor";
+import { FReturnDate } from "./utils/FReturnDate";
+import { FReturnRWDMode } from "./utils/FReturnRWDMode";
+import { FReturnScreenSize } from "./utils/FReturnScreenSize";
+import { FScrollTopHandler } from "./utils/FScrollTopHandler";
+import { FSideBarHandler } from "./utils/FSideBarHandler";
+import { FSingleToDoubleDigit } from "./utils/FSingleToDoubleDigit";
+import { FTimer } from "./utils/FTimer";
+import { FUseStateSafe } from "./utils/FUseStateSafe";
+// =======================================================================
+// import component Props
+import { FBottomNavBarProps } from "./FBottomNavBar/types";
+import { FButtonProps } from "./FButton/types";
+import { FCheckBoxProps } from "./FCheckBox/types";
+import { FConfirmPopUpProps } from "./FConfirmPopUp/types";
+import { FDividerProps } from "./FDivider/types";
+import { FDoubleTabsProps } from "./FDoubleTabs/types";
+import { FDoubleTabsPanelProps } from "./FDoubleTabsPanel/types";
+import { FDnDIndicatorProps } from "./FDragAndDrop/FDnDIndicator/types";
+import { FDnDItemProps } from "./FDragAndDrop/FDnDItem/types";
+import { FDragAndDropProps } from "./FDragAndDrop/types";
+import { FDropdownProps } from "./FDropdown/types";
+import { FEmailInputFieldProps } from "./FEmailInputField/types";
+import { FFormProps } from "./FForm/types";
+import { FHeaderButtonProps } from "./FHeaderButton/types";
+import { FInputFieldProps } from "./FInputField/types";
+import { FInputSelectProps } from "./FInputSelect/types";
+import { FLinkButtonProps } from "./FLinkButton/types";
+import { FNoDataProps } from "./FNoData/types";
+import { FPasswordInputFieldIconProps } from "./FPasswordInputField/svg/types";
+import { FPasswordInputFieldProps } from "./FPasswordInputField/types";
+import { FPopUpProps } from "./FPopUp/types";
+import { FRadioButtonProps } from "./FRadioButton/types";
+import { FRWDNavBarProps } from "./FRWDNavBar/types";
+import { FScrollableContainerProps } from "./FScrollableContainer/types";
+import { FScrollBarStyleProps } from "./FScrollBarStyle/types";
+import { FSearchBarProps } from "./FSearchBar/types";
+import {
+	FSearchBarClearIconProps,
+	FSearchBarSearchIconProps,
+} from "./FSearchBar/svg/types";
+import { FSelectProps } from "./FSelect/types";
+import { FSVGIconProps } from "./FSVGIcon/types";
+import { FSwitchButtonProps } from "./FSwitchButton/types";
+import { FTabsProps } from "./FTabs/types";
+import { FTabPanelProps } from "./FTabsPanel/types";
+import { FTagProps } from "./FTag/types";
+import {
+	FTagInputFieldProps,
+	FTagInputFieldTagHintLabelsProps,
+} from "./FTagInputField/types";
+import { FTextProps } from "./FText/types";
+// =======================================================================
+// import utils Props
+import { FRWDSizeProps } from "./utils/FReturnRWDMode/types";
+// =======================================================================
+// import component Types
+import { FButtonTypes } from "./FButton/types";
+import { FHeaderButtonTypes } from "./FHeaderButton/types";
+// =======================================================================
+// import global Types
+import {
+	FComponentsType,
+	FComponentType,
+	FOnCallBackFuntion,
+	FOnClickFunction,
+	FOnDataCallbackFunction,
+	FOnHoverProperty,
+	FOnSubmitFunction,
+	FRWDMode,
+	Nullable,
+	NumericStringType,
+} from "./global.types";
 // =======================================================================
 // import theme
 import { WithFUIThemeContext, FUseTheme } from "./FThemeContext";
 import { FTheme, FThemeColors, FThemeMode } from "./FThemeContext/types";
-// =======================================================================
-// import utils
-import {
-	FSideBarHandler,
-	FUseScreenSize,
-	FAutoConvertArray,
-	FScrollTopHandler,
-	FUseStateSafe,
-	FRwdModeHandler,
-	FOverrideStyle,
-	FCheckDefaultIsDarkMode,
-	FCheckIsDarkMode,
-	FUseColor,
-	FFirstLetterUppercase,
-	FSingleDigitConverter,
-	FTimer,
-	FCountTimer,
-	FDateTimer,
-	FCountDownTimer,
-	FCheckIsToday,
-} from "./utils";
-// =======================================================================
-// import types
-import {
-	Nullable,
-	NumericStringType,
-	FOnCallBackFuntion,
-	FOnClickFunction,
-	FOnDataCallbackFunction,
-	FOnSubmitFunction,
-	FRWDMode,
-	FRwdSizeProps,
-	FOnHoverProperty,
-	FComponentType,
-	FComponentsType,
-} from "./global.types";
-import { FTextProps } from "./FText/types";
-import { FButtonTypes, FButtonProps, FButtonLabelProps } from "./FButton/types";
-import { FPasswordInputFieldIconProps } from "./FPasswordInputField/svg/types";
-import { FPasswordInputFieldProps } from "./FPasswordInputField/types";
-import { FScrollBarStyleProps } from "./FScrollBarStyle/types";
-import { FDragAndDropProps } from "./FDragAndDrop/types";
-import { FTabsProps } from "./FTabs/types";
-import { FTabPanelProps } from "./FTabsPanel/types";
-import { FHeaderButtonTypes, FHeaderButtonProps } from "./FHeaderButton/types";
-import { FDnDItemProps } from "./FDragAndDrop/FDnDItem/types";
-import { FDnDIndicatorProps } from "./FDragAndDrop/FDnDIndicator/types";
-import { FPopUpProps } from "./FPopUp/types";
-import { FBottomNavBar } from "./FBottomNavBar";
-import { FBottomNavBarProps } from "./FBottomNavBar/types";
-// =======================================================================
 
 export {
 	// =====================
-	// components (w/types)
+	// components
 	// =====================
 	FBottomNavBar,
-	FBottomNavBarProps,
 	FButton,
-	FButtonTypes,
-	FButtonProps,
-	FButtonLabelProps,
 	FCheckBox,
 	FConfirmPopUp,
-	FCreateSelect,
 	FDivider,
 	FDragAndDrop,
-	FDragAndDropProps,
-	FDnDItemProps,
-	FDnDIndicatorProps,
 	FDoubleTabs,
+	FDoubleTabsPanel,
 	FDropdown,
 	FEmailInputField,
 	FForm,
 	FHeaderButton,
-	FHeaderButtonTypes,
-	FHeaderButtonProps,
 	FInputField,
+	FInputSelect,
 	FLinkButton,
 	FMoreActionPopUp,
 	FNoData,
 	FPasswordInputField,
-	FPasswordInputFieldProps,
-	FPasswordInputFieldIconProps,
 	FPopUp,
-	FPopUpProps,
 	FRadioButton,
 	FRWDNavBar,
-	FScrollableContentWrapper,
+	FScrollableContainer,
 	FScrollBarStyle,
-	FScrollBarStyleProps,
 	FSearchBar,
 	FSelect,
 	FSVGIcon,
 	FSwitchButton,
 	FTabs,
-	FTabsProps,
 	FTabsPanel,
-	FTabPanelProps,
 	FTag,
 	FTagInputField,
 	FText,
+	// =====================
+	// utils functions
+	// =====================
+	FCheckDefaultIsDarkMode,
+	FCheckIsDarkThemeMode,
+	FCheckIsToday,
+	FCountDownTimer,
+	FCountTimer,
+	FFirstCharUppercase,
+	FOverrideStyle,
+	FReturnArray,
+	FReturnColor,
+	FReturnDate,
+	FReturnRWDMode,
+	FReturnScreenSize,
+	FSingleToDoubleDigit,
+	FTimer,
+	FUseStateSafe,
+	// may be deprecated later
+	FScrollTopHandler,
+	FSideBarHandler,
+	// =====================
+	// component Props
+	// =====================
+	FBottomNavBarProps,
+	FButtonProps,
+	FCheckBoxProps,
+	FConfirmPopUpProps,
+	FDividerProps,
+	FDnDIndicatorProps,
+	FDnDItemProps,
+	FDragAndDropProps,
+	FDoubleTabsProps,
+	FDoubleTabsPanelProps,
+	FDropdownProps,
+	FEmailInputFieldProps,
+	FFormProps,
+	FHeaderButtonProps,
+	FInputFieldProps,
+	FInputSelectProps,
+	FLinkButtonProps,
+	FNoDataProps,
+	FPasswordInputFieldIconProps,
+	FPasswordInputFieldProps,
+	FPopUpProps,
+	FRadioButtonProps,
+	FRWDNavBarProps,
+	FScrollableContainerProps,
+	FScrollBarStyleProps,
+	FSearchBarProps,
+	FSearchBarClearIconProps,
+	FSearchBarSearchIconProps,
+	FSelectProps,
+	FSVGIconProps,
+	FSwitchButtonProps,
+	FTabsProps,
+	FTabPanelProps,
+	FTagProps,
+	FTagInputFieldProps,
+	FTagInputFieldTagHintLabelsProps,
 	FTextProps,
+	// =====================
+	// utils Props
+	// =====================
+	FRWDSizeProps,
+	// =====================
+	// component Types
+	// =====================
+	FButtonTypes,
+	FHeaderButtonTypes,
+	// =====================
+	// global Types
+	// =====================
+	FComponentType,
+	FComponentsType,
+	FOnCallBackFuntion,
+	FOnClickFunction,
+	FOnDataCallbackFunction,
+	FOnHoverProperty,
+	FOnSubmitFunction,
+	FRWDMode,
+	Nullable,
+	NumericStringType,
 	// =====================
 	// theme
 	// =====================
@@ -145,38 +247,4 @@ export {
 	FTheme,
 	FThemeColors,
 	FThemeMode,
-	// =====================
-	// utils functions
-	// =====================
-	FUseScreenSize,
-	FSideBarHandler,
-	FAutoConvertArray,
-	FScrollTopHandler,
-	FUseStateSafe,
-	FRwdModeHandler,
-	FOverrideStyle,
-	FCheckDefaultIsDarkMode,
-	FCheckIsDarkMode,
-	FUseColor,
-	FFirstLetterUppercase,
-	FTimer,
-	FSingleDigitConverter,
-	FCountTimer,
-	FDateTimer,
-	FCountDownTimer,
-	FCheckIsToday,
-	// =====================
-	// global types
-	// =====================
-	Nullable,
-	NumericStringType,
-	FOnClickFunction,
-	FOnSubmitFunction,
-	FOnDataCallbackFunction,
-	FOnCallBackFuntion,
-	FOnHoverProperty,
-	FRWDMode,
-	FRwdSizeProps,
-	FComponentType,
-	FComponentsType,
 };

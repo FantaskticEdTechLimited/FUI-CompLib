@@ -4,24 +4,27 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import React from "react";
 import { FScrollBarStyle } from "../FScrollBarStyle";
 import { FText } from "../FText";
-import { FAutoConvertArray, FUseColor } from "..";
+import { FReturnArray, FReturnColor } from "..";
 
+/**
+ * `<FDropdown />` is a component which returns a dropdown menu listing options.
+ *
+ * Props: `FDropdownProps`.
+ */
 export const FDropdown = <T extends unknown>(props: FDropdownProps<T>) => {
 	const hideSelectedOptions = props.hideSelectedOptions ?? true;
 	const pressCount = props.arrowKeyPressCount ?? 0;
-	const selectedOptionsArray = FAutoConvertArray(props.selectedOptions);
+	const selectedOptionsArray = FReturnArray(props.selectedOptions);
 
 	return (
 		<div
-			style={props.dropdownContainerStyle}
+			style={props.style}
 			className={
 				styles.FDropdownContainer() +
 				" " +
-				props.dropdownContainerClassName +
+				props.className +
 				" " +
-				FScrollBarStyle({
-					...props.scrollBarProps,
-				})
+				FScrollBarStyle({ ...props.scrollBarProps })
 			}
 		>
 			{props.options.map((option: T, index: number) => {
@@ -57,27 +60,25 @@ export const FDropdown = <T extends unknown>(props: FDropdownProps<T>) => {
 							props.onSelect && props.onSelect(option);
 						}}
 					>
-						{props.renderCustomizedOption ? (
-							props.renderCustomizedOption(option, isSelected!)
+						{props.customOption ? (
+							props.customOption(option, isSelected!)
 						) : (
 							<FText
 								font={FFontTypes.Text()}
-								color={
+								color={() =>
 									isSelected
-										? FUseColor({ colorName: "Grey" })
-										: FUseColor({ colorName: "Black" })
+										? FReturnColor({ color: "Grey" })
+										: FReturnColor({ color: "Black" })
 								}
-								style={props.optionTextStyle}
-								className={props.optionTextClassName}
 								{...(option !== null
 									? props.optionTextProps
-									: props.emptyOptionTextProps)}
+									: props.warningLabelProps)}
 							>
 								{props.renderOptionNameOnly
 									? props.renderOptionNameOnly(option)
 									: isString
 									? (option as unknown as string)
-									: props.emptyOptionHintLabel ?? "No option data"}
+									: props.warningLabel ?? "No option data"}
 							</FText>
 						)}
 					</div>

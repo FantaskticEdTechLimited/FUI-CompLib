@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { FButtonProps } from "./types";
 import { FText } from "../FText";
-import { FUseColor } from "../utils";
+import { FReturnColor } from "../utils/FReturnColor";
 
 /** `<FButton />` is a customized `Button` component.
  *
@@ -44,20 +44,16 @@ export const FButton = ({
 			{props.customChildren ?? (
 				<FText
 					font={FFontTypes.Text()}
-					color={
+					color={() =>
 						!disabled && isHover
 							? type === "Text"
-								? FUseColor({ colorName: "Main" })
-								: FUseColor({ colorName: "White" })
+								? FReturnColor({ color: "Main" })
+								: FReturnColor({ color: "White" })
 							: type === "Primary"
-							? FUseColor({ colorName: "White" })
+							? FReturnColor({ color: "White" })
 							: type === "Outline" || type === "Secondary"
-							? FUseColor({ colorName: "Main" })
-							: FUseColor({ colorName: "Black" })
-					}
-					style={props.labelStyle && props.labelStyle(isHover, index)}
-					className={
-						props.labelClassName && props.labelClassName(isHover, index)
+							? FReturnColor({ color: "Main" })
+							: FReturnColor({ color: "Black" })
 					}
 					children={label}
 					{...props.labelProps}

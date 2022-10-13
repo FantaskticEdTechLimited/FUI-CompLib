@@ -1,11 +1,10 @@
 import { style } from "typestyle";
-import { FRadioButtonProps } from "./types";
 
-export const FRadioButtonDiv = (props: FRadioButtonProps) =>
+export const FRadioButtonDiv = (disabled?: boolean) =>
 	style({
-		cursor: props.disabled ? "not-allowed" : "pointer",
+		cursor: disabled ? "not-allowed" : "pointer",
 		height: "24px",
-		opacity: props.disabled ? 0.4 : 1,
+		opacity: disabled ? 0.4 : 1,
 		overflow: "visible",
 		width: "24px",
 	});

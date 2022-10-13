@@ -47,7 +47,7 @@ const Template: ComponentStory<typeof FDragAndDrop> = (args) => {
 				children={(data: string, index: number) => (
 					<FText
 						font={FFontTypes.Large_Text()}
-						color={
+						color={() =>
 							data === "Apple"
 								? FColorTypes.FSecondaryColors.RED.LM
 								: data === "Banana"

@@ -18,7 +18,7 @@ export default {
 		leadingComponents: { control: { disable: true } },
 		actionComponents: { control: { disable: true } },
 		tabButtonProps: { control: { disable: true } },
-		renderCustomizedTabButton: { control: { disable: true } },
+		customTabButton: { control: { disable: true } },
 		children: { control: { disable: true } },
 	},
 } as ComponentMeta<typeof FTabs>;

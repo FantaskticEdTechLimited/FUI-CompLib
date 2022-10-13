@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import * as styles from "./styles";
 import { FInputFieldProps } from "./types";
-import { FScrollBarStyle, FText, FUseColor } from "..";
+import { FScrollBarStyle, FText, FReturnColor } from "..";
 
 /** `<FInputField />` is a component for `<input />` or `<textarea />`.
  *
@@ -20,9 +20,9 @@ export const FInputField = ({
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
-	const mainThemeColor = FUseColor({ colorName: "Main" });
-	const blackColor = FUseColor({ colorName: "Black" });
-	const greyColor = FUseColor({ colorName: "Grey" });
+	const mainThemeColor = FReturnColor({ color: "Main" });
+	const blackColor = FReturnColor({ color: "Black" });
+	const greyColor = FReturnColor({ color: "Grey" });
 	const hasWordCount = props.wordCount! > 0;
 
 	const param: Partial<FInputFieldProps> = {
@@ -81,11 +81,9 @@ export const FInputField = ({
 								? FFontTypes.Text()
 								: FFontTypes.Large_Text()
 						}
-						color={
+						color={() =>
 							isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor
 						}
-						style={props.labelStyle}
-						className={props.labelClassName}
 						{...props.labelProps}
 					>
 						{props.label}
@@ -142,9 +140,10 @@ export const FInputField = ({
 			</div>
 			<FText
 				font={FFontTypes.Text()}
-				color={isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor}
-				style={{ textAlign: "right", ...props.wordCountStyle }}
-				className={props.wordCountClassName}
+				color={() =>
+					isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor
+				}
+				style={() => ({ textAlign: "right", ...props.wordCountProps?.style })}
 				{...props.wordCountProps}
 			>
 				{hasWordCount && value ? `${value.length}/${props.wordCount}` : ""}

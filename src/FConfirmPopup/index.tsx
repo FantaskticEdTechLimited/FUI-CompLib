@@ -5,7 +5,7 @@ import {
 	FBottomNavBarProps,
 	FPopUp,
 	FText,
-	FUseColor,
+	FReturnColor,
 	FUseStateSafe,
 } from "..";
 import React from "react";
@@ -67,7 +67,7 @@ export const FConfirmPopUp = ({
 				{props.subtitle && (
 					<FText
 						font={FFontTypes.Text()}
-						color={FUseColor({ colorName: "Grey" })}
+						color={() => FReturnColor({ color: "Grey" })}
 						maxRows={2}
 						overflowHidden
 						children={props.subtitle}

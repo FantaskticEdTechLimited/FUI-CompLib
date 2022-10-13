@@ -1,62 +1,41 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
-import { FSVGIconProps } from "../FSVGIcon/types";
+import { FDoubleTabsPanelProps } from "../FDoubleTabsPanel/types";
 
-export interface FDoubleTabsPanelProps {
-	label?: string;
-	tabButtonLeadingComponents?: (
-		isSelected: boolean
-	) => ReactElement<FIconProps | FSVGIconProps> | ReactNode;
-	tabButtonActionComponents?: (
-		isSelected: boolean
-	) => ReactElement<FIconProps | FSVGIconProps> | ReactNode;
-	children?: ReactNode;
-	disabled?: boolean;
-	// user design own tab independently
-	renderCustomizedTabButton?: (
-		isSelected: boolean,
-		tabButtonProps: FButtonProps
-	) => ReactNode;
-	/**
-	 * Properties (including style and className) of the tab button.
-	 */
-	tabButtonProps?: FButtonProps;
-
-	// control rerender
-	isRenderOnSelected?: boolean;
-}
-
-// type ModifiedTabButtonClassName = Pick<FButtonProps, "className">;
-// type ModifiedTabButtonProps = Omit<FButtonProps, "className">;
+type FDoubleTabsContentType =
+	| ReactElement<FDoubleTabsPanelProps>
+	| Array<ReactElement<FDoubleTabsPanelProps>>;
 
 export interface FDoubleTabsProps {
-	children?: Array<ReactElement<FDoubleTabsPanelProps>>;
+	/** Content under corresponding tab. */
+	children?: FDoubleTabsContentType;
+	/** If `true`, the tab is **NOT** allowed to use. */
 	disabled?: boolean;
-	// leading components in the header
+	/** Leading components in the tab header. */
 	leadingComponents?: ReactNode;
-	// action components in the header
+	/** Action components in the tab header. */
 	actionComponents?: ReactNode;
-	// user design own tab in general
-	renderCustomizedTabButton?: (
+	/** Render user custom tab button. */
+	customTabButton?: (
 		isSelected: boolean,
 		tabButtonProps: FButtonProps
 	) => ReactNode;
-
-	// css style of FDoubleTabs wrapper
+	/** Class name of the wrapper. */
 	wrapperClassName?: string;
+	/** Style of the wrapper. */
 	wrapperStyle?: CSSProperties;
-
-	// css style of FDoubleTabs header
+	/** Class name of the tab header. */
 	headerClassName?: string;
+	/** Style of the tab header. */
 	headerStyle?: CSSProperties;
-
-	// css style of FDoubleTabs tab container
+	/** Class name of the tab button. */
 	tabContainerClassName?: string;
+	/** Style of the tab button. */
 	tabContainerStyle?: CSSProperties;
-
-	/**
-	 * Properties (including style and className) of the tab button.
-	 */
+	/** Properties of the tab button. */
 	tabButtonProps?: FButtonProps;
+	/** Style of the tab panel. */
+	style?: CSSProperties;
+	/** Class name of the tab panel. */
+	className?: string;
 }

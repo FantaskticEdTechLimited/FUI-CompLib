@@ -1,11 +1,11 @@
-import { style } from "typestyle";     
-import { FSVGIconProps } from "./types";
+import { style } from "typestyle";
 
-export const FSVGIconDiv = (props: FSVGIconProps) => style({
-    alignItems: "center",    
-    cursor: props.disabled ? "not-allowed" : "pointer",
-    display: "flex",
-    opacity: props.disabled ? 0.4 : 1,
-    overflow: "visible",
-    width: "fit-content"
-})
+export const FSVGIconDiv = (disabled?: boolean) =>
+	style({
+		alignItems: "center",
+		cursor: disabled ? "not-allowed" : "pointer",
+		display: "flex",
+		opacity: disabled ? 0.4 : 1,
+		overflow: "visible",
+		width: "fit-content",
+	});

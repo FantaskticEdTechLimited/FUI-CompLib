@@ -1,11 +1,10 @@
 import { style } from "typestyle";
-import { FCheckBoxProps } from "./types";
 
-export const FCheckBoxDiv = (props: FCheckBoxProps) =>
+export const FCheckBoxDiv = (disabled?: boolean) =>
 	style({
-		cursor: props.disabled ? "not-allowed" : "pointer",
-		height: "24px",
-		opacity: props.disabled ? 0.4 : 1,
-		overflow: "visible",
 		width: "24px",
+		height: "24px",
+		cursor: disabled ? "not-allowed" : "pointer",
+		opacity: disabled ? 0.7 : 1,
+		overflow: "visible",
 	});

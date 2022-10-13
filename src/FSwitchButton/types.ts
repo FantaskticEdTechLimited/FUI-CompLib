@@ -1,24 +1,26 @@
-import { CSSProperties } from "react";
-import { FOnClickFunction } from "../global.types";
+import { CSSProperties, SVGProps } from "react";
+import { FOnClickFunction, FOnHoverProperty } from "../global.types";
+
+export type FSwitchButtonCircleProps = Pick<
+	SVGProps<SVGCircleElement>,
+	"stroke" | "strokeWidth" | "fill" | "cx" | "cy" | "r"
+>;
 
 export interface FSwitchButtonProps {
+	/** If `true`, the switch button is checked. */
 	checked?: boolean;
+	/** If `true`, the switch button is **NOT** able to use. */
 	disabled?: boolean;
+	/** Click action event of the switch button. */
 	onClick?: FOnClickFunction;
-
-	// css style of FSwitchButton container
-	containerClassName?: string;
-	containerStyle?: CSSProperties;
-
-	// css style of FSwitchButton svg
-	svgClassName?: string;
-	svgStyle?: CSSProperties;
-
-	// css style of FSwitchButton circle
-	circleColor?: string;
-	circleBorderColor?: string;
-	circleStrokeWidth?: number | string;
-	circleCx?: number | string;
-	circleCy?: number | string;
-	circleR?: number | string;
+	/** Class name of the switch button. */
+	className?: FOnHoverProperty<string>;
+	/** Style of the switch button. */
+	style?: FOnHoverProperty<CSSProperties>;
+	/** Class name of the svg container. */
+	svgClassName?: FOnHoverProperty<string>;
+	/** Style of the svg container. */
+	svgStyle?: FOnHoverProperty<CSSProperties>;
+	/** Properties of the circle icon. */
+	circleProps?: FSwitchButtonCircleProps;
 }

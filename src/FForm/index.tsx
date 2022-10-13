@@ -1,8 +1,8 @@
-import React from "react"; 
+import React from "react";
 import { FBottomNavBar } from "../FBottomNavBar";
 import { FBottomNavBarProps } from "../FBottomNavBar/types";
 import { FScrollBarStyle } from "../FScrollBarStyle";
-import { FUseStateSafe } from "../utils";
+import { FUseStateSafe } from "../utils/FUseStateSafe";
 import { styles } from "./styles";
 import { FFormProps } from "./types";
 

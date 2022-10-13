@@ -4,11 +4,11 @@ import React, { useEffect, useRef, useState } from "react";
 import { LockIcon } from "./svg/LockIcon";
 import { EyeIcon } from "./svg/EyeIcon";
 import { EyeOffIcon } from "./svg/EyeOffIcon";
-import { FUseColor } from "../utils";
+import { FReturnColor } from "../utils/FReturnColor";
 
-/** `<FPasswordInputField />` is an `Input` component for password only.
+/** `<FPasswordInputField />` is a component for _password input_ only.
  *
- * Props: `FPasswordInputFieldProps`.
+ * Props: `FPasswordInputFieldProps`. 
  */
 export const FPasswordInputField = ({
 	placeholder = "Password",
@@ -56,8 +56,8 @@ export const FPasswordInputField = ({
 				<LockIcon
 					strokeColor={
 						isTriggered
-							? FUseColor({ colorName: "Main" })
-							: FUseColor({ colorName: "Black" })
+							? FReturnColor({ color: "Main" })
+							: FReturnColor({ color: "Black" })
 					}
 					disabled={disabled}
 					{...props.lockIconProps}

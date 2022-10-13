@@ -35,16 +35,8 @@ export interface FInputFieldProps {
 	inputDivClassName?: string;
 	/** Style of the inputfield (**with `label`**). */
 	inputDivStyle?: CSSProperties;
-	/** Class name of the label. */
-	labelClassName?: string;
-	/** Style of the label. */
-	labelStyle?: CSSProperties;
 	/** Properties of the label. */
 	labelProps?: FTextProps;
-	/** Class name of the word count text. */
-	wordCountClassName?: string;
-	/** Style of the word count text. */
-	wordCountStyle?: CSSProperties;
 	/** Properties of the word count text. */
 	wordCountProps?: FTextProps;
 	/** Properties of the scrollbar. */

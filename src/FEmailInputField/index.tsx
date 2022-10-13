@@ -3,9 +3,9 @@ import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./styles";
 import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FText, FUseColor } from "..";
+import { FText, FReturnColor } from "..";
 
-/** `<FEmailInputField />` is an `Input` component for email only.
+/** `<FEmailInputField />` is a component for _email input_ only.
  *
  * Props: `FEmailInputFieldProps`.
  */
@@ -87,8 +87,8 @@ export const FEmailInputField = ({
 						name={FIconNames.EMAIL}
 						color={() =>
 							isTriggered
-								? FUseColor({ colorName: "Main" })
-								: FUseColor({ colorName: "Black" })
+								? FReturnColor({ color: "Main" })
+								: FReturnColor({ color: "Black" })
 						}
 						{...props.emailIconProps}
 					/>
@@ -124,10 +124,8 @@ export const FEmailInputField = ({
 			{isError && (
 				<FText
 					font={FFontTypes.Text()}
-					color={FUseColor({ colorName: "Red" })}
+					color={() => FReturnColor({ color: "Red" })}
 					children={warningLabel}
-					style={props.warningLabelStyle}
-					className={props.warninglabelClassName}
 					{...props.warningLabelProps}
 				/>
 			)}

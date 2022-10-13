@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 import { FHeaderButtonProps } from "./types";
 
 export const FHeaderButtonContainer = (
@@ -11,8 +11,8 @@ export const FHeaderButtonContainer = (
 		alignItems: "center",
 		width: "fit-content",
 		backgroundColor: isHover
-			? FUseColor({ colorName: "Main" })
-			: FUseColor({ colorName: "Sub" }),
+			? FReturnColor({ color: "Main" })
+			: FReturnColor({ color: "Sub" }),
 		borderRadius: "4px",
 		boxSizing: "border-box",
 		padding: "8px",

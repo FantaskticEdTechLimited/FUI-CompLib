@@ -1,10 +1,21 @@
 import React, { useEffect, useRef, useState } from "react";
-import * as styles from "./styles";
+import { FSearchBar_Container, FSearchBar_InputAreaDiv } from "./styles";
 import { ClearIcon } from "./svg/ClearIcon";
 import { SearchIcon } from "./svg/SearchIcon";
 import { FSearchBarProps } from "./types";
 
-export const FSearchBar = (props: FSearchBarProps) => {
+/**
+ * `<FSearchBar />` is a component for search input.
+ *
+ * _May add dropdown component for searching in the future_.
+ *
+ * Props: `FSearchBarProps`.
+ */
+export const FSearchBar = ({
+	placeholder = "Search",
+	value = "",
+	...props
+}: FSearchBarProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 
@@ -14,37 +25,31 @@ export const FSearchBar = (props: FSearchBarProps) => {
 
 	return (
 		<div
-			style={props.containerStyle}
-			className={
-				styles.FSearchBarContainer(isTriggered) + " " + props.containerClassName
-			}
+			style={props.style}
+			className={FSearchBar_Container(isTriggered) + " " + props.className}
 			onClick={() => setIsTriggered(true)}
 			onBlur={() => setIsTriggered(false)}
 		>
 			<SearchIcon
 				isTriggered={isTriggered}
-				value={props.value!}
-				className={props.searchIconClassName}
-				style={props.searchIconStyle}
+				value={value}
+				{...props.searchIconProps}
 			/>
 			<input
-				style={props.inputAreaStyle}
-				className={
-					styles.FSearchBarInputAreaDiv() + " " + props.inputAreaClassName
-				}
+				style={props.inputStyle}
+				className={FSearchBar_InputAreaDiv() + " " + props.inputClassName}
 				type="text"
 				ref={inputRef}
-				value={props.value}
-				placeholder={props.placeholder ?? "Search"}
+				value={value}
+				placeholder={placeholder}
 				onChange={(event: any) =>
 					props.onInput && props.onInput(event.target.value)
 				}
 			/>
-			{props.value && props.value.length > 0 && (
+			{value?.length > 0 && (
 				<ClearIcon
-					className={props.clearIconClassName}
-					style={props.clearIconStyle}
 					onClick={() => props.onInput && props.onInput("")}
+					{...props.clearIconProps}
 				/>
 			)}
 		</div>

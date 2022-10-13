@@ -22,11 +22,11 @@ export interface FBottomNavBarProps {
 	onLeadingButtonClick?: FOnClickFunction;
 	/** Custom content of the bottom nav bar. */
 	customChildren?: ReactNode;
-	/** Properties with `style` and `className` fields of the action button.
+	/** Properties of the action button.
 	 *
 	 * Default action button type is `'Primary'`. */
 	actionButtonProps?: ModifiedFButtonProps;
-	/** Properties with `style` and `className` fields of the leading button.
+	/** Properties of the leading button.
 	 *
 	 * Default leading button type is `'Secondary'`. */
 	leadingButtonProps?: ModifiedFButtonProps;

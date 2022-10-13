@@ -26,11 +26,7 @@ export interface FEmailInputFieldProps {
 	/** action component (footer) of the inputfield. */
 	actionComponent?: FComponentType; 
 	/** Properties of the email icon. */
-	emailIconProps?: FIconProps;
-	/** Class name of the warning label. */
-	warninglabelClassName?: string;
-	/** Style of the warning label. */
-	warningLabelStyle?: CSSProperties;
+	emailIconProps?: FIconProps; 
 	/** Properties of the warning label. */
 	warningLabelProps?: FTextProps;
 	/** Class name of the inputfield wrapper (with `warningLabel`). */

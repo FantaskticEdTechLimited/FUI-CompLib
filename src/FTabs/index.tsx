@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FAutoConvertArray, FButton } from "..";
+import { FReturnArray, FButton } from "..";
 import { FButtonProps } from "../FButton/types";
 import * as styles from "./styles";
 import { FTabsProps } from "./types";
@@ -39,7 +39,7 @@ export const FTabs = ({ disabled = false, ...props }: FTabsProps) => {
 						styles.FTabsTabContainer + " " + props.tabContainerClassName
 					}
 				>
-					{FAutoConvertArray(props.children).map((tab, index) => {
+					{FReturnArray(props.children).map((tab, index) => {
 						let isSelect = tabIndex === index ? true : false;
 						let buttonProps: FButtonProps = {
 							...defaultButtonProps,
@@ -56,10 +56,10 @@ export const FTabs = ({ disabled = false, ...props }: FTabsProps) => {
 							...tab.props.tabButtonProps,
 						};
 
-						return tab.props.renderCustomizedTabButton ? (
-							tab.props.renderCustomizedTabButton(isSelect, buttonProps)
-						) : props.renderCustomizedTabButton ? (
-							props.renderCustomizedTabButton(isSelect, buttonProps)
+						return tab.props.customTabButton ? (
+							tab.props.customTabButton(isSelect, buttonProps)
+						) : props.customTabButton ? (
+							props.customTabButton(isSelect, buttonProps)
 						) : (
 							<FButton
 								key={index}
@@ -73,7 +73,7 @@ export const FTabs = ({ disabled = false, ...props }: FTabsProps) => {
 				{props.actionComponents}
 			</div>
 			{/* panel under the corresponding tab */}
-			{FAutoConvertArray(props.children).map((panel, index) => {
+			{FReturnArray(props.children).map((panel, index) => {
 				const panelProps = panel.props;
 				if (panelProps.isRenderOnSelected) {
 					if (index === tabIndex)
