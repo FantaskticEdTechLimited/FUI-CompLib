@@ -42,10 +42,15 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 						/>
 					) : undefined}
 					<FText
-						style={() => ({ flexGrow: 1, ...props.labelProps?.style })}
+						style={() => ({
+							flexGrow: 1,
+							...(props.labelProps &&
+								props.labelProps(isHover) &&
+								props.labelProps(isHover).style),
+						})}
 						color={() => (isSelected ? mainThemeColor : blackColor)}
 						children={props.label}
-						{...props.labelProps}
+						{...(props.labelProps && props.labelProps(isHover))}
 					/>
 					{props.actionComponents
 						? props.actionComponents

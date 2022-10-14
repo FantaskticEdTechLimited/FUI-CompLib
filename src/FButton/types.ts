@@ -1,4 +1,4 @@
-import { CSSProperties, ReactNode } from "react"; 
+import { CSSProperties, ReactNode } from "react";
 import { FTextProps } from "../FText/types";
 import {
 	FOnClickFunction,
@@ -8,7 +8,7 @@ import {
 	FComponentsType,
 } from "../global.types";
 
-export type FButtonTypes = "Primary" | "Secondary" | "Outline" | "Text"; 
+export type FButtonTypes = "Primary" | "Secondary" | "Outline" | "Text";
 
 export interface FButtonProps {
 	/** Four different button types. */
@@ -22,9 +22,9 @@ export interface FButtonProps {
 	/** Custom content without using `label` field. */
 	customChildren?: ReactNode;
 	/** Index (unique id) of the button. */
-	index?: NumericStringType; 
+	index?: NumericStringType;
 	/** Properties of label. */
-	labelProps?: FTextProps;
+	labelProps?: FOnHoverProperty<FTextProps>;
 	/** Custom leading component (header) of the button. */
 	leadingComponents?: FComponentType | FComponentsType;
 	/** Custom action component (footer) of the button. */

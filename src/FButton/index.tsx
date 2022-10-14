@@ -56,7 +56,7 @@ export const FButton = ({
 							: FReturnColor({ color: "Black" })
 					}
 					children={label}
-					{...props.labelProps}
+					{...(props.labelProps && props.labelProps(isHover))}
 				/>
 			)}
 			{props.actionComponents}

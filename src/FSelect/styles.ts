@@ -10,7 +10,10 @@ export const styles = stylesheet({
 	},
 });
 
-export const FSelectContainer = (props: FSelectContainerStyleProps<any>) =>
+export const FSelectContainer = (
+	props: FSelectContainerStyleProps<any>,
+	isHover?: boolean
+) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FReturnColor({ color: "White" }),
@@ -19,6 +22,10 @@ export const FSelectContainer = (props: FSelectContainerStyleProps<any>) =>
 			(props.isClicked
 				? FReturnColor({ color: "Main" })
 				: props.selectedOptions
+				? isHover
+					? FReturnColor({ color: "Main" })
+					: FReturnColor({ color: "Black" })
+				: isHover
 				? FReturnColor({ color: "Black" })
 				: FReturnColor({ color: "BG Light" })),
 		borderRadius: "4px",

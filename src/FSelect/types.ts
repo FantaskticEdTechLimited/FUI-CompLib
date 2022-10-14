@@ -2,7 +2,11 @@ import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FDropdownProps } from "../FDropdown/types";
 import { FTextProps } from "../FText/types";
-import { FComponentType, FOnClickFunction } from "../global.types";
+import {
+	FComponentType,
+	FOnClickFunction,
+	FOnHoverProperty,
+} from "../global.types";
 
 export interface FSelectContainerStyleProps<T> {
 	isClicked: boolean;
@@ -52,7 +56,7 @@ export interface FSelectProps<T> {
 	 */
 	customDropdown?: ReactElement<FDropdownProps<T>>;
 	/** Properties of the label. */
-	labelProps?: FTextProps;
+	labelProps?: FOnHoverProperty<FTextProps>;
 	/** Properties of the selected option. */
 	selectedOptionProps?: FTextProps;
 	/** Class name of the select component wrapper (with _Dropdown_). */
@@ -60,9 +64,9 @@ export interface FSelectProps<T> {
 	/** Style of the select component wrapper (with _Dropdown_). */
 	wrapperStyle?: CSSProperties;
 	/** Class name of the select component container. */
-	className?: string;
+	className?: FOnHoverProperty<string>;
 	/** Style of the select component container. */
-	style?: CSSProperties;
+	style?: FOnHoverProperty<CSSProperties>;
 	/** Class name of the select component content container. */
 	contentContainerClassName?: string;
 	/** Style of the select component content container. */

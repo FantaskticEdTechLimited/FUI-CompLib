@@ -69,11 +69,7 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 										tab.props.tabButtonActionComponents(isSelect),
 									disabled: props.disabled ?? tab.props.disabled,
 									onClick: () => setTabIndex(index),
-									labelProps: {
-										font:
-											props.tabButtonProps?.labelProps?.font ??
-											FFontTypes.Large_Text(),
-									},
+									labelProps: () => ({ font: FFontTypes.Large_Text() }),
 									className: () =>
 										styles.FDoubleTabs_TabButton_Container(isSelect),
 									...tab.props.tabButtonProps,

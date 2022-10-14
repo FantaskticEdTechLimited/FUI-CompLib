@@ -25,10 +25,12 @@ export const FSelect = <T,>({
 	showLabelOnly = false,
 	...props
 }: FSelectProps<T>) => {
+	const [isHover, setIsHover] = useState<boolean>(false);
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
 	const FSelectWithDropdownRef = useRef<HTMLDivElement>(null);
 	const blackColor = FReturnColor({ color: "Black" });
 	const greyColor = FReturnColor({ color: "Grey" });
+	const mainThemeColor = FReturnColor({ color: "Main" });
 
 	const selectorStyleProps: FSelectContainerStyleProps<T> = {
 		isClicked: openDropdown,
@@ -64,20 +66,22 @@ export const FSelect = <T,>({
 	const DefaultSelector = (selectedOption: T | null) => {
 		return (
 			<>
-				{/* label */}
 				<FText
 					font={FFontTypes.Text()}
 					color={() =>
 						openDropdown
-							? FReturnColor({ color: "Main" })
+							? mainThemeColor
 							: selectedOption
+							? isHover
+								? mainThemeColor
+								: blackColor
+							: isHover
 							? blackColor
 							: greyColor
 					}
 					children={label}
-					{...props.labelProps}
+					{...(props.labelProps && props.labelProps(isHover))}
 				/>
-				{/* Content or placeHolder */}
 				<FText
 					font={FFontTypes.Large_Text()}
 					color={() => (selectedOption === null ? greyColor : blackColor)}
@@ -104,8 +108,14 @@ export const FSelect = <T,>({
 			ref={FSelectWithDropdownRef}
 		>
 			<div
-				style={props.style}
-				className={FSelectContainer(selectorStyleProps) + " " + props.className}
+				style={props.style && props.style(isHover)}
+				className={
+					FSelectContainer(selectorStyleProps, isHover) +
+					" " +
+					(props.className && props.className(isHover))
+				}
+				onMouseEnter={() => setIsHover(true)}
+				onMouseLeave={() => setIsHover(false)}
 			>
 				<div
 					style={props.contentContainerStyle}
