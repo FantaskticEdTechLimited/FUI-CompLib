@@ -17,6 +17,7 @@ import { FInputSelect } from "./FInputSelect";
 import { FLinkButton } from "./FLinkButton";
 import { FMoreActionPopUp } from "./FMoreActionPopUp";
 import { FNoData } from "./FNoData";
+import { FNumberInputField } from "./FNumberInputField";
 import { FPasswordInputField } from "./FPasswordInputField";
 import { FPopUp } from "./FPopUp";
 import { FRadioButton } from "./FRadioButton";
@@ -71,6 +72,7 @@ import { FInputFieldProps } from "./FInputField/types";
 import { FInputSelectProps } from "./FInputSelect/types";
 import { FLinkButtonProps } from "./FLinkButton/types";
 import { FNoDataProps } from "./FNoData/types";
+import { FNumberInputFieldProps } from "./FNumberInputField/types";
 import { FPasswordInputFieldIconProps } from "./FPasswordInputField/svg/types";
 import { FPasswordInputFieldProps } from "./FPasswordInputField/types";
 import { FPopUpProps } from "./FPopUp/types";
@@ -141,6 +143,7 @@ export {
 	FLinkButton,
 	FMoreActionPopUp,
 	FNoData,
+	FNumberInputField,
 	FPasswordInputField,
 	FPopUp,
 	FRadioButton,
@@ -198,6 +201,7 @@ export {
 	FInputSelectProps,
 	FLinkButtonProps,
 	FNoDataProps,
+	FNumberInputFieldProps,
 	FPasswordInputFieldIconProps,
 	FPasswordInputFieldProps,
 	FPopUpProps,

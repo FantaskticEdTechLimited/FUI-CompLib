@@ -1,5 +1,15 @@
 ### ChangeLog
 
+# v4.1.0
+
+- added `FNumberInputField`.
+
+- pause to update _storybook_.
+
+# v4.0.1
+
+- fixed _hover_ effect issues on `labelProps` of `FButton` and `FSelect`.
+
 # v4.0.0
 
 - deprecated `FMoreActionPopUp`
