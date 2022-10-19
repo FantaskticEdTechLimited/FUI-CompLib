@@ -42,6 +42,7 @@ import { FCountDownTimer } from "./utils/FCountDownTimer";
 import { FCountTimer } from "./utils/FCountTimer";
 import { FFirstCharUppercase } from "./utils/FFirstCharUppercase";
 import { FOverrideStyle } from "./utils/FOverrideStyle";
+import { FRemoveTypeName } from "./utils/FRemoveTypeName";
 import { FReturnArray } from "./utils/FReturnArray";
 import { FReturnColor } from "./utils/FReturnColor";
 import { FReturnDate } from "./utils/FReturnDate";
@@ -169,6 +170,7 @@ export {
 	FCountTimer,
 	FFirstCharUppercase,
 	FOverrideStyle,
+	FRemoveTypeName,
 	FReturnArray,
 	FReturnColor,
 	FReturnDate,

@@ -3,7 +3,7 @@ import { FReturnScreenSize } from "../FReturnScreenSize";
 import { FRWDSizeProps } from "./types";
 
 /**
- * Returns current device type based on the input width range.
+ * Returns current device type based on the input width.
  */
 export const FReturnRWDMode = (props?: FRWDSizeProps) => {
 	const [width] = FReturnScreenSize();

@@ -1,5 +1,15 @@
 ### ChangeLog
 
+# v4.1.1 - v4.1.2
+
+- added `FRemoveTypeName` function.
+
+- modified _types_ of `FDoubleTabsPanel`and `FTabsPanel` components:
+
+  - `label` changed to _optional_ field
+
+- modified `FReturnRWDMode`.
+
 # v4.1.0
 
 - added `FNumberInputField`.

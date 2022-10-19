@@ -8,9 +8,11 @@ import {
 } from "../global.types";
 
 export interface FTabPanelProps {
-	/** **Required**. Label for the tab button. */
-	label: string;
-	/** **Required**. Content of the tab panel under corresponding tab button. */
+	/** If `true`, the tab panel is **NOT** allowed to use. */
+	disabled?: boolean;
+	/** Label for the _default_ tab button. */
+	label?: string;
+	/** Content of the tab panel under corresponding tab button. */
 	children: ReactNode;
 	/** Leading components in the tab button. */
 	tabLeadingComponents?: (
@@ -20,8 +22,7 @@ export interface FTabPanelProps {
 	tabActionConmponents?: (
 		isSelected: boolean
 	) => FComponentType | FComponentsType;
-	/** If `true`, the tab panel is **NOT** allowed to use. */
-	disabled?: boolean;
+	/** Click action event of the _default_ tab button */
 	onClick?: FOnClickFunction;
 	/** Render user custom tab button. */
 	customTabButton?: FCustomTabButtonProps;
