@@ -1,4 +1,5 @@
 import { CSSProperties } from "react";
+import { FOnClickFunction } from "../global.types";
 import {
 	FSearchBarClearIconProps,
 	FSearchBarSearchIconProps,
@@ -19,6 +20,10 @@ export interface FSearchBarProps {
 	value: string;
 	/** Returns the input value. */
 	onInput: (data: string) => void;
+	/** Click action event of the input. */
+	onClick?: FOnClickFunction;
+	/** Click outside action event of the input. */
+	onBlur?: FOnClickFunction;
 	/** Class name of the search bar. */
 	className?: FSearchBarInputState<string>;
 	/** Style of the search bar. */

@@ -1,5 +1,13 @@
 ### ChangeLog
 
+# v4.1.10
+
+- add _onBlur_ field in `FSearchBar`.
+
+# v4.1.9
+
+- add _onClick_ field in `FSearchBar`.
+
 # v4.1.4 - v4.1.8
 
 - modified _state_ in `FSearchBar`.

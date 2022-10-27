@@ -38,8 +38,12 @@ export const FSearchBar = ({
 				" " +
 				(props.className && props.className(inputState))
 			}
-			onClick={() => setIsTriggered(true)}
+			onClick={() => {
+				props.onClick && props.onClick();
+				setIsTriggered(true);
+			}}
 			onBlur={() => {
+				props.onBlur && props.onBlur();
 				setIsTriggered(false);
 				if (value === undefined || value === "") setIsFilled(false);
 				else setIsFilled(true);
