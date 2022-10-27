@@ -1,26 +1,27 @@
 import { CSSProperties, SVGProps } from "react";
 import { FOnClickFunction } from "../../global.types";
+import { FSearchBarInputState, InputStateProps } from "../types";
 
 export interface FSearchBarSearchIconProps {
-	/** Trigger status of the search icon. */
-	isTriggered: boolean;
+	/** Status of the search icon. */
+	state?: InputStateProps;
 	/** Search input value. */
-	value: string;
+	value?: string;
 	/** Class name of the search icon. */
-	className?: string;
+	className?: FSearchBarInputState<string>;
 	/** Style of the search icon. */
-	style?: CSSProperties;
+	style?: FSearchBarInputState<CSSProperties>;
 	/** Path properties of the search icon. */
-	pathProps?: SVGProps<SVGPathElement>;
+	pathProps?: FSearchBarInputState<SVGProps<SVGPathElement>>;
 }
 
 export interface FSearchBarClearIconProps {
 	/** Click action event of the clear icon. */
 	onClick: FOnClickFunction;
 	/** Class name of the clear icon. */
-	className?: string;
+	className?: FSearchBarInputState<string>;
 	/** Style of the clear icon. */
-	style?: CSSProperties;
+	style?: FSearchBarInputState<CSSProperties>;
 	/** Path properties of the clear icon. */
-	pathProps?: SVGProps<SVGPathElement>;
+	pathProps?: FSearchBarInputState<SVGProps<SVGPathElement>>;
 }

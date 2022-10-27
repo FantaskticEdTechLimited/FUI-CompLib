@@ -1,6 +1,6 @@
 ### ChangeLog
 
-# v4.1.4
+# v4.1.4 - v4.1.8
 
 - modified _state_ in `FSearchBar`.
 

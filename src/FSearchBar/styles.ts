@@ -1,14 +1,20 @@
 import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
 import { FReturnColor } from "..";
+import { InputStateProps } from "./types";
 
-export const FSearchBar_Container = (isTriggered: boolean, isFilled: boolean) =>
+export const FSearchBar_Container = (state: InputStateProps) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FReturnColor({ color: "White" }),
 		border:
-			"2px solid " +
-			(isTriggered || isFilled ? FReturnColor({ color: "Main" }) : "none"),
+			"1.6px solid " +
+			FReturnColor({
+				color:
+					state.isHover || state.isTriggered || state.isFilled
+						? "Main"
+						: "Stroke Grey",
+			}),
 		borderRadius: "4px",
 		boxSizing: "border-box",
 		caretColor: FReturnColor({ color: "Main" }),

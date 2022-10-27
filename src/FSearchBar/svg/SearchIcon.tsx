@@ -4,15 +4,17 @@ import { styles } from "./styles";
 import { FReturnColor } from "../..";
 
 export const SearchIcon = (props: FSearchBarSearchIconProps) => {
+	const state = props.state;
 	const mainThemeColor = FReturnColor({ color: "Main" });
 	const greyColor = FReturnColor({ color: "Grey" });
 	const blackColor = FReturnColor({ color: "Black" });
 	const pathProps: SVGProps<SVGPathElement> = {
-		stroke: props.isTriggered
-			? mainThemeColor
-			: props.value && props.value.length > 0
-			? blackColor
-			: greyColor,
+		stroke:
+			state?.isHover || state?.isTriggered || state?.isFilled
+				? mainThemeColor
+				: props.value && props.value.length > 0
+				? blackColor
+				: greyColor,
 		strokeWidth: "1.2",
 		strokeLinecap: "round",
 		strokeLinejoin: "round",
@@ -21,8 +23,12 @@ export const SearchIcon = (props: FSearchBarSearchIconProps) => {
 
 	return (
 		<svg
-			style={props.style}
-			className={styles.SearchIconDiv + " " + props.className}
+			style={props.style && props.style(state!)}
+			className={
+				styles.SearchIconDiv +
+				" " +
+				(props.className && props.className(state!))
+			}
 			viewBox="0 0 18 18"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"

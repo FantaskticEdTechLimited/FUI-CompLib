@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { FSearchBar_Container, FSearchBar_InputAreaDiv } from "./styles";
 import { ClearIcon } from "./svg/ClearIcon";
 import { SearchIcon } from "./svg/SearchIcon";
-import { FSearchBarProps } from "./types";
+import { FSearchBarProps, InputStateProps } from "./types";
 
 /**
  * `<FSearchBar />` is a component for search input.
@@ -20,7 +20,7 @@ export const FSearchBar = ({
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
-	const inputState = {
+	const inputState: InputStateProps = {
 		isHover: isHover,
 		isTriggered: isTriggered,
 		isFilled: isFilled,
@@ -34,7 +34,7 @@ export const FSearchBar = ({
 		<div
 			style={props.style && props.style(inputState)}
 			className={
-				FSearchBar_Container(isTriggered, isFilled) +
+				FSearchBar_Container(inputState) +
 				" " +
 				(props.className && props.className(inputState))
 			}
@@ -47,11 +47,7 @@ export const FSearchBar = ({
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
-			<SearchIcon
-				isTriggered={isTriggered}
-				value={value}
-				{...props.searchIconProps}
-			/>
+			<SearchIcon state={inputState} value={value} {...props.searchIconProps} />
 			<input
 				style={props.inputStyle && props.inputStyle(inputState)}
 				className={

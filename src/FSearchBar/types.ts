@@ -4,11 +4,13 @@ import {
 	FSearchBarSearchIconProps,
 } from "./svg/types";
 
-export type FSearchBarInputState<T> = (state: {
-	isHover: boolean;
-	isTriggered: boolean;
-	isFilled: boolean;
-}) => T;
+export interface InputStateProps {
+	isHover?: boolean;
+	isTriggered?: boolean;
+	isFilled?: boolean;
+}
+
+export type FSearchBarInputState<T> = (state: InputStateProps) => T;
 
 export interface FSearchBarProps {
 	/** Placeholder of the input. */
