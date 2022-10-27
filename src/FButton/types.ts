@@ -2,7 +2,6 @@ import { CSSProperties, ReactNode } from "react";
 import { FTextProps } from "../FText/types";
 import {
 	FOnClickFunction,
-	NumericStringType,
 	FOnHoverProperty,
 	FComponentType,
 	FComponentsType,
@@ -21,8 +20,6 @@ export interface FButtonProps {
 	onClick?: FOnClickFunction;
 	/** Custom content without using `label` field. */
 	customChildren?: ReactNode;
-	/** Index (unique id) of the button. */
-	index?: NumericStringType;
 	/** Properties of label. */
 	labelProps?: FOnHoverProperty<FTextProps>;
 	/** Custom leading component (header) of the button. */

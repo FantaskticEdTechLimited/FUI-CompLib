@@ -1,20 +1,13 @@
 import { CSSProperties, ReactNode } from "react";
 import { FDnDButtonProps } from "./FDnDButton/types";
 import { FDnDIndicatorProps } from "./FDnDIndicator/types";
-import {
-	FOnHoverProperty,
-	FOnSubmitFunction, 
-} from "../global.types";
+import { FOnHoverProperty, FOnSubmitFunction } from "../global.types";
 
 type FDnDIndicatorTarget = "container" | "contentContainer";
 
 type FDnDButtonPosition = "left" | "right";
 
-type FDnDReturnChildrenProps<T> = (
-	data: T,
-	index?: number,
-	disabled?: boolean
-) => JSX.Element;
+type FDnDReturnChildrenProps<T> = (data: T, disabled?: boolean) => JSX.Element;
 
 export type ExtendedFDragAndDropProps = Omit<
 	FDragAndDropProps<any>,

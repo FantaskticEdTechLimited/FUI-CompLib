@@ -13,7 +13,7 @@ export const FReturnDate = (props: FReturnDateProps) => {
 	const day = FSingleToDoubleDigit(date.getDate());
 	const month = FSingleToDoubleDigit(date.getMonth() + 1);
 	const year = FSingleToDoubleDigit(date.getFullYear());
-	const weekday = FSingleToDoubleDigit(date.getDay());
+	const weekday = date.toDateString().slice(0, 3);
 	let hour = date.getHours();
 	let isPM = false;
 	if (hour >= 12) {
@@ -23,38 +23,10 @@ export const FReturnDate = (props: FReturnDateProps) => {
 	const minute = FSingleToDoubleDigit(date.getMinutes());
 	let finalResult = "";
 
-	const handleWeekday = () => {
-		let result = "";
-		switch (weekday) {
-			case "00":
-				result = "Sun";
-				break;
-			case "01":
-				result = "Mon";
-				break;
-			case "02":
-				result = "Tue";
-				break;
-			case "03":
-				result = "Wed";
-				break;
-			case "04":
-				result = "Thur";
-				break;
-			case "05":
-				result = "Fri";
-				break;
-			case "06":
-				result = "Sat";
-				break;
-		}
-		return result;
-	};
-
 	if (props.dateOnly) finalResult = day + "/" + month + "/" + year;
-	else if (props.weekdayOnly) finalResult = handleWeekday();
+	else if (props.weekdayOnly) finalResult = weekday;
 	else if (props.dateWithWeekdayOnly)
-		finalResult = day + "/" + month + "/" + year + " " + handleWeekday();
+		finalResult = day + "/" + month + "/" + year + " " + weekday;
 	else if (props.timeOnly)
 		finalResult =
 			FSingleToDoubleDigit(hour) + ":" + minute + " " + (isPM ? "PM" : "AM");
@@ -66,7 +38,7 @@ export const FReturnDate = (props: FReturnDateProps) => {
 			"/" +
 			year +
 			" " +
-			handleWeekday() +
+			weekday +
 			" " +
 			FSingleToDoubleDigit(hour) +
 			":" +

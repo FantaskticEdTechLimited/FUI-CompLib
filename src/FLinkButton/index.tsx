@@ -13,18 +13,17 @@ import { FLinkButtonProps } from "./types";
  */
 export const FLinkButton = (props: FLinkButtonProps) => {
 	const isSelected = props.pathIsSelected;
-	const index = props.index;
 	const [isHover, setIsHover] = useState<boolean>(false);
 	const mainThemeColor = FReturnColor({ color: "Main" });
 	const blackColor = FReturnColor({ color: "Black" });
 
 	return (
 		<Link
-			style={props.style && props.style(isHover, index)}
+			style={props.style && props.style(isHover)}
 			className={
 				FLinkButtonContainer(isSelected!, props) +
 				" " +
-				(props.className && props.className(isHover, index))
+				(props.className && props.className(isHover))
 			}
 			to={props.pathLink!}
 			onClick={() =>

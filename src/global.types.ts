@@ -19,14 +19,7 @@ export type FOnDataCallbackFunction<T, C> = (
 
 export type FOnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 
-/** For className and style of component that contains hover effect.
- *
- * The `index` param does **NOT** exist in all component props.
- */
-export type FOnHoverProperty<T> = (
-	isHover?: boolean,
-	index?: NumericStringType
-) => T;
+export type FOnHoverProperty<T> = (isHover?: boolean) => T;
 
 export type FComponentType =
 	| ReactElement<FIconProps | FSVGIconProps>

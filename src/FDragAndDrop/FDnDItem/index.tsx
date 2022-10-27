@@ -33,7 +33,6 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 		indicatorTarget,
 		indicatorPosition,
 		indicatorProps,
-		index,
 		style,
 		className,
 		contentContainerStyle,
@@ -98,11 +97,11 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 			{showTopIndicatorOnContainer && TopIndicator}
 			<div
 				ref={hoverItemRef}
-				style={style && style(isHover, index)}
+				style={style && style(isHover)}
 				className={
 					FDnDItem_Default_Container(disabled, isTargetOnContainer, isHover) +
 					" " +
-					(className && className(isHover, index))
+					(className && className(isHover))
 				}
 				onMouseEnter={() => setIsHover(true)}
 				onMouseLeave={() => setIsHover(false)}
@@ -118,14 +117,11 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 				<div className={styles.FDnDItem_WithIndicator_Container}>
 					{showTopIndicatorOnContent && TopIndicator}
 					<div
-						style={
-							contentContainerStyle && contentContainerStyle(isHover, index)
-						}
+						style={contentContainerStyle && contentContainerStyle(isHover)}
 						className={
 							styles.FDnDItem_ContentContainer +
 							" " +
-							(contentContainerClassName &&
-								contentContainerClassName(isHover, index))
+							(contentContainerClassName && contentContainerClassName(isHover))
 						}
 					>
 						{children}

@@ -44,7 +44,7 @@ const Template: ComponentStory<typeof FDragAndDrop> = (args) => {
 				{...args}
 				data={dataList}
 				onUpdateData={(data: string[]) => setDataList(data)}
-				children={(data: string, index: number) => (
+				children={(data: string) => (
 					<FText
 						font={FFontTypes.Large_Text()}
 						color={() =>
@@ -54,7 +54,7 @@ const Template: ComponentStory<typeof FDragAndDrop> = (args) => {
 								? FColorTypes.FSecondaryColors.YELLOW.LM
 								: FColorTypes.FSecondaryColors.ORANGE.LM
 						}
-						children={index + ". " + data}
+						children={data}
 					/>
 				)}
 			/>

@@ -1,5 +1,13 @@
 ### ChangeLog
 
+# v4.1.3
+
+- removed _index_ field from `FOnHoverProperty`.
+
+- modified _weekday_ in `FReturnDate`.
+
+- modified components: `FButton`, `FLinkButton`, `FDnDItem` and `FSearchBar`.
+
 # v4.1.1 - v4.1.2
 
 - added `FRemoveTypeName` function.

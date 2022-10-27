@@ -17,7 +17,7 @@ export default {
 } as ComponentMeta<typeof FSearchBar>;
 
 const Template: ComponentStory<typeof FSearchBar> = (args) => (
-	<FSearchBar {...args} style={{ width: "300px" }} />
+	<FSearchBar {...args} style={() => ({ width: "300px" })} />
 );
 
 export const Example = Template.bind({});

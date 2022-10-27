@@ -16,6 +16,7 @@ export const FSearchBar = ({
 	value = "",
 	...props
 }: FSearchBarProps) => {
+	const [isHover, setIsHover] = useState<boolean>(false);
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 
@@ -25,10 +26,16 @@ export const FSearchBar = ({
 
 	return (
 		<div
-			style={props.style}
-			className={FSearchBar_Container(isTriggered) + " " + props.className}
+			style={props.style && props.style(isHover, isTriggered)}
+			className={
+				FSearchBar_Container(isTriggered) +
+				" " +
+				(props.className && props.className(isHover, isTriggered))
+			}
 			onClick={() => setIsTriggered(true)}
 			onBlur={() => setIsTriggered(false)}
+			onMouseEnter={() => setIsHover(true)}
+			onMouseLeave={() => setIsHover(false)}
 		>
 			<SearchIcon
 				isTriggered={isTriggered}
@@ -36,19 +43,21 @@ export const FSearchBar = ({
 				{...props.searchIconProps}
 			/>
 			<input
-				style={props.inputStyle}
-				className={FSearchBar_InputAreaDiv() + " " + props.inputClassName}
+				style={props.inputStyle && props.inputStyle(isHover, isTriggered)}
+				className={
+					FSearchBar_InputAreaDiv() +
+					" " +
+					(props.inputClassName && props.inputClassName(isHover, isTriggered))
+				}
 				type="text"
 				ref={inputRef}
 				value={value}
 				placeholder={placeholder}
-				onChange={(event: any) =>
-					props.onInput && props.onInput(event.target.value)
-				}
+				onChange={(event: any) => props.onInput(event.target.value)}
 			/>
 			{value?.length > 0 && (
 				<ClearIcon
-					onClick={() => props.onInput && props.onInput("")}
+					onClick={() => props.onInput("")}
 					{...props.clearIconProps}
 				/>
 			)}

@@ -19,7 +19,6 @@ export const FButton = ({
 	...props
 }: FButtonProps) => {
 	const [isHover, setIsHover] = useState<boolean>(false);
-	const index = props.index;
 	const param: Partial<FButtonProps> = {
 		label: label,
 		type: type,
@@ -29,12 +28,11 @@ export const FButton = ({
 
 	return (
 		<div
-			key={index}
-			style={props.style && props.style(isHover, index)}
+			style={props.style && props.style(isHover)}
 			className={
 				styles.FButtonContainer(param, isHover) +
 				" " +
-				(props.className && props.className(isHover, index))
+				(props.className && props.className(isHover))
 			}
 			onClick={() => (disabled ? undefined : props.onClick && props.onClick())}
 			onMouseEnter={() => setIsHover(true)}
