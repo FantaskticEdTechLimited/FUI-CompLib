@@ -2,12 +2,13 @@ import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
 import { FReturnColor } from "..";
 
-export const FSearchBar_Container = (isTriggered: boolean) =>
+export const FSearchBar_Container = (isTriggered: boolean, isFilled: boolean) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FReturnColor({ color: "Sub" }),
+		backgroundColor: FReturnColor({ color: "White" }),
 		border:
-			"2px solid " + (isTriggered ? FReturnColor({ color: "Main" }) : "none"),
+			"2px solid " +
+			(isTriggered || isFilled ? FReturnColor({ color: "Main" }) : "none"),
 		borderRadius: "4px",
 		boxSizing: "border-box",
 		caretColor: FReturnColor({ color: "Main" }),

@@ -1,5 +1,9 @@
 ### ChangeLog
 
+# v4.1.4
+
+- modified _state_ in `FSearchBar`.
+
 # v4.1.3
 
 - removed _index_ field from `FOnHoverProperty`.

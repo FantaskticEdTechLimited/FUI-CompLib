@@ -4,10 +4,11 @@ import {
 	FSearchBarSearchIconProps,
 } from "./svg/types";
 
-export type FSearchBarRenderProperty<T> = (
-	isHover?: boolean,
-	isTriggered?: boolean
-) => T;
+export type FSearchBarInputState<T> = (state: {
+	isHover: boolean;
+	isTriggered: boolean;
+	isFilled: boolean;
+}) => T;
 
 export interface FSearchBarProps {
 	/** Placeholder of the input. */
@@ -17,15 +18,15 @@ export interface FSearchBarProps {
 	/** Returns the input value. */
 	onInput: (data: string) => void;
 	/** Class name of the search bar. */
-	className?: FSearchBarRenderProperty<string>;
+	className?: FSearchBarInputState<string>;
 	/** Style of the search bar. */
-	style?: FSearchBarRenderProperty<CSSProperties>;
+	style?: FSearchBarInputState<CSSProperties>;
 	/** Class name of the input. */
-	inputClassName?: FSearchBarRenderProperty<string>;
+	inputClassName?: FSearchBarInputState<string>;
 	/** Style of the input. */
-	inputStyle?: FSearchBarRenderProperty<CSSProperties>;
+	inputStyle?: FSearchBarInputState<CSSProperties>;
 	/** Properties of the clear icon. */
-	clearIconProps?: FSearchBarRenderProperty<FSearchBarClearIconProps>;
+	clearIconProps?: FSearchBarInputState<FSearchBarClearIconProps>;
 	/** Properties of the search icon. */
-	searchIconProps?: FSearchBarRenderProperty<FSearchBarSearchIconProps>;
+	searchIconProps?: FSearchBarInputState<FSearchBarSearchIconProps>;
 }
