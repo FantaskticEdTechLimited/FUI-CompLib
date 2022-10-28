@@ -1,6 +1,6 @@
 {
   "name": "@fantaskticedtechlimited/fui-complib",
-  "version": "4.1.10",
+  "version": "4.1.11",
   "description": "Fantasktic UI Component library",
   "main": "./lib/cjs/index.js",
   "module": "./lib/esm/index.js",
