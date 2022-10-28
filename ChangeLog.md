@@ -2,11 +2,15 @@
 
 # v4.1.10
 
-- add _onBlur_ field in `FSearchBar`.
+- modified `FRWDNavBar`: _onClick_ for `topBarActionComponents`.
+
+# v4.1.10
+
+- added _onBlur_ field in `FSearchBar`.
 
 # v4.1.9
 
-- add _onClick_ field in `FSearchBar`.
+- added _onClick_ field in `FSearchBar`.
 
 # v4.1.4 - v4.1.8
 
