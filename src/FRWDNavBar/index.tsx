@@ -51,7 +51,7 @@ export const FRWDNavBar = (props: FRWDNavBarProps) => {
 						{props.logo ?? props.topBarLeadingComponents}
 						{(
 							<div onClick={() => setOpenSideBar(true)}>
-								{props.topBarActionComponents}
+								{props.topBarCustomMenuIcon}
 							</div>
 						) ?? (
 							<FIcon
@@ -83,14 +83,20 @@ export const FRWDNavBar = (props: FRWDNavBarProps) => {
 							style={props.containerStyle}
 							ref={OpenedSideNavBarRef}
 						>
-							<FIcon
-								name={FIconNames.CLOSE}
-								size="large"
-								onClick={() => setOpenSideBar(false)}
-								color={() => mainThemeColor}
-								className={() => styles.FTopNavBarContainer_CloseIcon()}
-								{...props.closeIconProps}
-							/>
+							{props.topBarCustomCloseIcon ? (
+								<div onClick={() => setOpenSideBar(false)}>
+									{props.topBarCustomCloseIcon}
+								</div>
+							) : (
+								<FIcon
+									name={FIconNames.CLOSE}
+									size="large"
+									onClick={() => setOpenSideBar(false)}
+									color={() => mainThemeColor}
+									className={() => styles.FTopNavBarContainer_CloseIcon()}
+									{...props.closeIconProps}
+								/>
+							)}
 							<div
 								style={props.contentDivStyle}
 								className={

@@ -87,9 +87,13 @@ export interface FRWDNavBarProps {
 	 */
 	topBarLeadingComponents?: FComponentType | FComponentsType;
 	/**
-	 * action components of top nav bar
+	 * Custom menu icon button of top nav bar
 	 */
-	topBarActionComponents?: FComponentType | FComponentsType;
+	topBarCustomMenuIcon?: FComponentType;
+	/**
+	 * Custom close icon button of top nav bar
+	 */
+	topBarCustomCloseIcon?: FComponentType;
 	/**
 	 * properties of scroll bar
 	 */

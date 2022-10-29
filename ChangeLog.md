@@ -1,6 +1,13 @@
 ### ChangeLog
 
-# v4.1.10
+# v4.1.12
+
+- modified `FRWDNavBar` fields:
+
+  - renamed `topBarActionComponents` to `topBarCustomMenuIcon`.
+  - added `topBarCustomCloseIcon`.
+
+# v4.1.11
 
 - modified `FRWDNavBar`: _onClick_ for `topBarActionComponents`.
 
