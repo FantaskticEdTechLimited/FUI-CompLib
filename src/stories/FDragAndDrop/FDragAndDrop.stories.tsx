@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { FDragAndDrop } from "../../FDragAndDrop";
 import { FText } from "../../FText";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
+import { FColorTypes } from "@innoplus-studio/fui-colorlib";
 
 export default {
 	title: "FUI-Complib/COMPONENTS/FDragAndDrop",

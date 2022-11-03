@@ -1,6 +1,6 @@
 import * as styles from "./styles";
 import React, { useState } from "react";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FButtonProps } from "./types";
 import { FText } from "../FText";
 import { FReturnColor } from "../utils/FReturnColor";

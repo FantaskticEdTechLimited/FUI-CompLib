@@ -1,8 +1,4 @@
-import {
-	FIcon,
-	FIconNames,
-	FIconProps,
-} from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames, FIconProps } from "@innoplus-studio/fui-iconlib";
 import React from "react";
 import { FReturnColor } from "..";
 import { FHeaderButtonProps } from "./types";

@@ -1,5 +1,13 @@
 ### ChangeLog
 
+# v5.0.0
+
+- BREAKING CHANGE: change the github organisation name to `innoplus-studio`.
+
+- added properties for custom menu icon and close icon of `FRWDNavBar`:
+  
+    - `topBarCustomMenuIconProps` and `topBarCustomCloseIconProps`.
+
 # v4.1.12
 
 - modified `FRWDNavBar` fields:

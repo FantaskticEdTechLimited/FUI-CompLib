@@ -9,7 +9,7 @@ import {
 	FUseStateSafe,
 } from "..";
 import React from "react";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 
 /** `<FConfirmPopUp />` is a `<PopUp />` component
  * which contains a header (`title`, `subtitle`) and a bottom nav bar (`<FBottomNavBar />`)

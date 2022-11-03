@@ -2,13 +2,13 @@ import { FTagProps } from "./types";
 import { FTagContainer } from "./styles";
 import React from "react";
 import { FText, FReturnColor } from "..";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 
 /**
  * `<FTag />` is a component to show a tag
  * with a default remove icon (_works with `onDelete`_).
- * 
+ *
  * Props: `FTagProps`.
  */
 export const FTag = <T,>(props: FTagProps<T>) => {

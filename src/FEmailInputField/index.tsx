@@ -1,8 +1,8 @@
 import { FEmailInputFieldProps } from "./types";
 import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./styles";
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FText, FReturnColor } from "..";
 
 /** `<FEmailInputField />` is a component for _email input_ only.

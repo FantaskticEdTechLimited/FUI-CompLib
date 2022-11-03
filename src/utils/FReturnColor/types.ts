@@ -1,4 +1,4 @@
-import { FColorNames } from "@fantaskticedtechlimited/fui-colorlib";
+import { FColorNames } from "@innoplus-studio/fui-colorlib";
 
 export interface FReturnColorProps {
 	/** Normal color in _light_ mode. */

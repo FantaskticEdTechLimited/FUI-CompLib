@@ -1,4 +1,4 @@
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FColorTypes } from "@innoplus-studio/fui-colorlib";
 import React, {
 	createContext,
 	ElementType,

@@ -1,4 +1,4 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { style } from "typestyle";
 import { SpecifiedClassNames } from "./types";
 import { FReturnColor } from "..";

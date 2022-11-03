@@ -2,8 +2,8 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { FText } from "../../FText";
 import { FTextProps } from "../../FText/types";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FColorTypes } from "@fantaskticedtechlimited/fui-colorlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
+import { FColorTypes } from "@innoplus-studio/fui-colorlib";
 
 export default {
 	title: "FUI-Complib/COMPONENTS/FText",

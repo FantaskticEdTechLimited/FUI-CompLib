@@ -1,4 +1,4 @@
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FText, FReturnColor } from "..";

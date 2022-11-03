@@ -1,4 +1,4 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
 import { CSSProperties } from "react";
 import { FTextProps } from "../FText/types";
 import { FComponentType, FOnSubmitFunction } from "../global.types";

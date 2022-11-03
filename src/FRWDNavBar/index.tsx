@@ -1,4 +1,4 @@
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 import React from "react";
 import { useState, useEffect, useRef, Fragment } from "react";
 import { FReturnColor, FScrollBarStyle } from "..";
@@ -50,7 +50,10 @@ export const FRWDNavBar = (props: FRWDNavBarProps) => {
 					>
 						{props.logo ?? props.topBarLeadingComponents}
 						{(
-							<div onClick={() => setOpenSideBar(true)}>
+							<div
+								onClick={() => setOpenSideBar(true)}
+								{...props.topBarCustomMenuIconProps}
+							>
 								{props.topBarCustomMenuIcon}
 							</div>
 						) ?? (
@@ -84,7 +87,11 @@ export const FRWDNavBar = (props: FRWDNavBarProps) => {
 							ref={OpenedSideNavBarRef}
 						>
 							{props.topBarCustomCloseIcon ? (
-								<div onClick={() => setOpenSideBar(false)}>
+								<div
+									style={{ alignSelf: "flex-end" }}
+									onClick={() => setOpenSideBar(false)}
+									{...props.topBarCustomCloseIconProps}
+								>
 									{props.topBarCustomCloseIcon}
 								</div>
 							) : (

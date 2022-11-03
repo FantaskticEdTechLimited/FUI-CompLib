@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import * as styles from "./styles";
 import { FInputFieldProps } from "./types";
 import { FScrollBarStyle, FText, FReturnColor } from "..";

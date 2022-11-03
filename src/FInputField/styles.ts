@@ -1,6 +1,6 @@
 import { style } from "typestyle";
 import { FInputFieldProps } from "./types";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FReturnColor } from "..";
 
 export const FInputFieldContainer = (hasWordCount?: boolean) =>

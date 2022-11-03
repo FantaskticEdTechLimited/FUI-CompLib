@@ -1,4 +1,4 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
 import { FButtonProps } from "../FButton/types";
 
 export interface FLinkButtonProps extends FButtonProps {

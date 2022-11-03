@@ -1,4 +1,4 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
 import { CSSProperties, ReactElement } from "react";
 import { FDropdownProps } from "../FDropdown/types";
 import { FScrollBarStyleProps } from "../FScrollBarStyle/types";

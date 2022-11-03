@@ -1,4 +1,4 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import React from "react";
 import { FScrollableContainer } from "../../FScrollableContainer";

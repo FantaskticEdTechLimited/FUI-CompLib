@@ -1,6 +1,6 @@
 import { FDropdownOptionDivProps, FDropdownProps } from "./types";
 import * as styles from "./styles";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import React from "react";
 import { FScrollBarStyle } from "../FScrollBarStyle";
 import { FText } from "../FText";

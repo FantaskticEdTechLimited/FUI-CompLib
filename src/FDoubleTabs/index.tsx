@@ -1,6 +1,6 @@
 import { FDoubleTabsProps } from "./types";
 import * as styles from "./styles";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { useEffect, useState } from "react";
 import React from "react";
 import { FButtonProps } from "../FButton/types";

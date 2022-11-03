@@ -5,7 +5,7 @@
 // import { CTACloseIcon } from "./svg";
 // import React from "react";
 // import { FPopUp, FSVGIcon, FText, FReturnColor } from "..";
-// import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+// import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 
 /** _Deprecated (from v4.0.0)_. */
 export const FMoreActionPopUp = () => {};

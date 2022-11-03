@@ -1,9 +1,20 @@
 import { CSSProperties, ReactNode } from "react";
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { FComponentsType, FComponentType, FRWDMode } from "../global.types";
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
+import {
+	FComponentsType,
+	FComponentType,
+	FOnClickFunction,
+	FRWDMode,
+} from "../global.types";
 import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
 
 export type OverlayEnterSide = "left" | "right";
+
+export interface CustomIconButtonProps {
+	style?: CSSProperties;
+	className?: string;
+	onClick?: FOnClickFunction;
+}
 
 export interface FRWDNavBarProps {
 	/**
@@ -91,9 +102,17 @@ export interface FRWDNavBarProps {
 	 */
 	topBarCustomMenuIcon?: FComponentType;
 	/**
+	 * Props of custom menu icon button of top nav bar
+	 */
+	topBarCustomMenuIconProps?: CustomIconButtonProps;
+	/**
 	 * Custom close icon button of top nav bar
 	 */
 	topBarCustomCloseIcon?: FComponentType;
+	/**
+	 * Props of custom close icon button of top nav bar
+	 */
+	topBarCustomCloseIconProps?: CustomIconButtonProps;
 	/**
 	 * properties of scroll bar
 	 */

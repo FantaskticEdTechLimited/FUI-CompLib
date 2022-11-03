@@ -1,4 +1,4 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { RefObject } from "react";
 import { style, stylesheet } from "typestyle";
 import { FOverrideStyle, FReturnColor } from "..";

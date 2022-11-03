@@ -1,4 +1,4 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
 import { CSSProperties } from "react";
 import { FTextProps } from "../FText/types";
 import { FComponentType, FOnSubmitFunction } from "../global.types";
@@ -24,9 +24,9 @@ export interface FEmailInputFieldProps {
 	/** Leading component (header) of the inputfield. */
 	leadingComponent?: FComponentType;
 	/** action component (footer) of the inputfield. */
-	actionComponent?: FComponentType; 
+	actionComponent?: FComponentType;
 	/** Properties of the email icon. */
-	emailIconProps?: FIconProps; 
+	emailIconProps?: FIconProps;
 	/** Properties of the warning label. */
 	warningLabelProps?: FTextProps;
 	/** Class name of the inputfield wrapper (with `warningLabel`). */

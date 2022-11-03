@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FReturnColor } from "../utils/FReturnColor";
 
 export const FNumberInputFieldDiv = (

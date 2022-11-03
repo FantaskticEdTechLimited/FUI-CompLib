@@ -1,4 +1,4 @@
-// import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+// import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 // import React from "react";
 // import { FText, FReturnColor } from "../..";
 // import * as styles from "./styles";

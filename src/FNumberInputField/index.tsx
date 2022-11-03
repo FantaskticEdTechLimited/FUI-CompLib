@@ -1,4 +1,4 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import React, { useState, useRef, useEffect } from "react";
 import { FText } from "../FText";
 import { FReturnColor } from "../utils/FReturnColor";

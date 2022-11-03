@@ -1,5 +1,5 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
 import { FText, FDropdown, FReturnColor } from "..";
 import {

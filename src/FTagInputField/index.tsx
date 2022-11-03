@@ -10,9 +10,9 @@ import {
 } from "./styles";
 import { FTag } from "../FTag";
 import { useEffect, useRef, useState } from "react";
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 import { FDropdown } from "../FDropdown";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import React from "react";
 import { FScrollBarStyle, FText, FReturnColor } from "..";
 

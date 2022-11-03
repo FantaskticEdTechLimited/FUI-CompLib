@@ -1,4 +1,4 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
 import { ReactElement, ReactNode } from "react";
 import { FSVGIconProps } from "./FSVGIcon/types";
 

@@ -2,7 +2,7 @@ import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { FTabs } from "../../FTabs";
 import { FTabsPanel } from "../../FTabsPanel";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FText } from "../../FText";
 
 export default {
