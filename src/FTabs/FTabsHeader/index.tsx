@@ -20,6 +20,10 @@ export const FTabsHeader = (props: FTabsHeaderProps) => {
 		>
 			{panelProps.map((p) => {
 				const isSelected = controller.tabKey === p.tabKey;
+				const labelColor = (isHover?: boolean) =>
+					FReturnColor({
+						color: isSelected || isHover ? "Main" : "Grey",
+					});
 
 				return (
 					<FButton
@@ -28,10 +32,8 @@ export const FTabsHeader = (props: FTabsHeaderProps) => {
 						type={isSelected ? "Secondary" : "Text"}
 						label={p.label}
 						labelProps={(isHover) => ({
-							color: () =>
-								FReturnColor({
-									color: isSelected || isHover ? "Main" : "Grey",
-								}),
+							color: () => labelColor(isHover),
+							...props.tabButtonProps?.labelProps,
 						})}
 						onClick={() => controller.setTabKey(p.tabKey)}
 						{...props.tabButtonProps}
