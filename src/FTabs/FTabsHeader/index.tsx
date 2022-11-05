@@ -1,7 +1,6 @@
 import React from "react";
 import { FButton } from "../../FButton";
 import { FScrollBarStyle } from "../../FScrollBarStyle";
-import { FReturnColor } from "../../utils/FReturnColor";
 import { FTabsHeader_Button_Div, styles } from "./styles";
 import { FTabsHeaderProps } from "./types";
 
@@ -20,10 +19,6 @@ export const FTabsHeader = (props: FTabsHeaderProps) => {
 		>
 			{panelProps.map((p) => {
 				const isSelected = controller.tabKey === p.tabKey;
-				const labelColor = (isHover?: boolean) =>
-					FReturnColor({
-						color: isSelected || isHover ? "Main" : "Grey",
-					});
 
 				return (
 					<FButton
@@ -31,12 +26,8 @@ export const FTabsHeader = (props: FTabsHeaderProps) => {
 						className={(isHover) => FTabsHeader_Button_Div(isHover)}
 						type={isSelected ? "Secondary" : "Text"}
 						label={p.label}
-						labelProps={(isHover) => ({
-							color: () => labelColor(isHover),
-							...props.tabButtonProps?.labelProps,
-						})}
 						onClick={() => controller.setTabKey(p.tabKey)}
-						{...props.tabButtonProps}
+						{...(props.tabButtonProps && props.tabButtonProps(isSelected))}
 					/>
 				);
 			})}

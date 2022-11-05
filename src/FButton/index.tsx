@@ -28,6 +28,16 @@ export const FButton = ({
 	const mainThemeColor = FReturnColor({ color: "Main" });
 	const whiteColor = FReturnColor({ color: "White" });
 	const blackColor = FReturnColor({ color: "Black" });
+	const labelColor =
+		!disabled && isHover
+			? type === "Text"
+				? mainThemeColor
+				: whiteColor
+			: type === "Primary"
+			? whiteColor
+			: type === "Outline" || type === "Secondary"
+			? mainThemeColor
+			: blackColor;
 
 	return (
 		<div
@@ -47,17 +57,7 @@ export const FButton = ({
 			) : (
 				<FText
 					font={FFontTypes.Text()}
-					color={() =>
-						!disabled && isHover
-							? type === "Text"
-								? mainThemeColor
-								: whiteColor
-							: type === "Primary"
-							? whiteColor
-							: type === "Outline" || type === "Secondary"
-							? mainThemeColor
-							: blackColor
-					}
+					color={() => labelColor}
 					children={label}
 					{...(props.labelProps && props.labelProps(isHover))}
 				/>

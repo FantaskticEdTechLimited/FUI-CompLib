@@ -13,6 +13,8 @@ export interface FTabsProps {
 	disableHeader?: boolean;
 	/** Style of the default tab header. */
 	headerStyle?: CSSProperties;
+	/** Class name of the default tab header. */
 	headerClassName?: string;
-	tabButtonProps?: FButtonProps;
+	/** Properties of the tab button of the default tab header. */
+	tabButtonProps?: (isSelected?: boolean) => FButtonProps;
 }

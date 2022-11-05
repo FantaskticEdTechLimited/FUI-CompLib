@@ -8,5 +8,5 @@ export interface FTabsHeaderProps {
 	panelProps: FTabsPanelProps[];
 	style?: CSSProperties;
 	className?: string;
-	tabButtonProps?: FButtonProps;
+	tabButtonProps?: (isSelected?: boolean) => FButtonProps;
 }

@@ -1,5 +1,13 @@
 ### ChangeLog
 
+# v5.1.2
+
+- fix:
+
+  - remove _labelProps_ and add _isSelected_ field to _tabButtonProps_ of tab button of `FTabsHeader`
+  - update _tabButtonProps_ of `FTabsProps`
+  - update _labelColor_ of `FButton`
+
 # v5.1.1
 
 - fix: label color issue of tab button of `FTabsHeader`.
