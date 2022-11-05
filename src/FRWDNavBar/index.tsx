@@ -88,7 +88,6 @@ export const FRWDNavBar = (props: FRWDNavBarProps) => {
 						>
 							{props.topBarCustomCloseIcon ? (
 								<div
-									style={{ alignSelf: "flex-end" }}
 									onClick={() => setOpenSideBar(false)}
 									{...props.topBarCustomCloseIconProps}
 								>

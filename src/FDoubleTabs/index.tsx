@@ -16,8 +16,8 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 	let defaultTabButtonProps: FButtonProps = {
 		type: "Primary",
 		label: "",
-		leadingComponents: [],
-		actionComponents: [],
+		leadingComponents: () => [],
+		actionComponents: () => [],
 		disabled: props.disabled ?? false,
 		onClick: () => setTabIndex(0),
 		style: props.tabButtonProps?.style,
@@ -61,10 +61,10 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 										tab.props.label ?? index === 0
 											? "Double Tab 1"
 											: "Double Tab 2",
-									leadingComponents:
+									leadingComponents: () =>
 										tab.props.tabButtonLeadingComponents &&
 										tab.props.tabButtonLeadingComponents(isSelect),
-									actionComponents:
+									actionComponents: () =>
 										tab.props.tabButtonActionComponents &&
 										tab.props.tabButtonActionComponents(isSelect),
 									disabled: props.disabled ?? tab.props.disabled,
@@ -75,11 +75,7 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 									...tab.props.tabButtonProps,
 								};
 
-								return tab.props.customTabButton ? (
-									tab.props.customTabButton(isSelect, tabButtonProps)
-								) : props.customTabButton ? (
-									props.customTabButton(isSelect, tabButtonProps)
-								) : (
+								return (
 									<FButton
 										key={index}
 										{...tabButtonProps}

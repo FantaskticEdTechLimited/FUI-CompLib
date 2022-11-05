@@ -29,7 +29,9 @@ import { FSelect } from "./FSelect";
 import { FSVGIcon } from "./FSVGIcon";
 import { FSwitchButton } from "./FSwitchButton";
 import { FTabs } from "./FTabs";
-import { FTabsPanel } from "./FTabsPanel";
+import { FTabsController } from "./FTabs/FTabsController";
+import { FTabsHeader } from "./FTabs/FTabsHeader";
+import { FTabsPanel } from "./FTabs/FTabsPanel";
 import { FTag } from "./FTag";
 import { FTagInputField } from "./FTagInputField";
 import { FText } from "./FText";
@@ -90,7 +92,9 @@ import { FSelectProps } from "./FSelect/types";
 import { FSVGIconProps } from "./FSVGIcon/types";
 import { FSwitchButtonProps } from "./FSwitchButton/types";
 import { FTabsProps } from "./FTabs/types";
-import { FTabPanelProps } from "./FTabsPanel/types";
+import { FTabsControllerProps } from "./FTabs/FTabsController/types";
+import { FTabsHeaderProps } from "./FTabs/FTabsHeader/types";
+import { FTabsPanelProps } from "./FTabs/FTabsPanel/types";
 import { FTagProps } from "./FTag/types";
 import {
 	FTagInputFieldProps,
@@ -156,6 +160,8 @@ export {
 	FSVGIcon,
 	FSwitchButton,
 	FTabs,
+	FTabsController,
+	FTabsHeader,
 	FTabsPanel,
 	FTag,
 	FTagInputField,
@@ -218,7 +224,9 @@ export {
 	FSVGIconProps,
 	FSwitchButtonProps,
 	FTabsProps,
-	FTabPanelProps,
+	FTabsControllerProps,
+	FTabsHeaderProps,
+	FTabsPanelProps,
 	FTagProps,
 	FTagInputFieldProps,
 	FTagInputFieldTagHintLabelsProps,

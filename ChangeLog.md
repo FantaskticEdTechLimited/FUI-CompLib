@@ -1,12 +1,22 @@
 ### ChangeLog
 
+# v5.1.0
+
+- feat: add new version of `FTabs`, with `FTabsController`, `FTabsHeader`, `FTabsPanel`.
+
+- fix:
+
+  - color issue of `FButton`,
+  - props of `FDoubleTabs` and `FDoubleTabsPanel`,
+  - close icon of `FRWDNavBar`.
+
 # v5.0.0
 
 - BREAKING CHANGE: change the github organisation name to `innoplus-studio`.
 
-- added properties for custom menu icon and close icon of `FRWDNavBar`:
-  
-    - `topBarCustomMenuIconProps` and `topBarCustomCloseIconProps`.
+- feat: add properties for custom menu icon and close icon of `FRWDNavBar`:
+
+  - `topBarCustomMenuIconProps` and `topBarCustomCloseIconProps`.
 
 # v4.1.12
 

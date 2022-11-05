@@ -1,6 +1,5 @@
 import { CSSProperties, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
-import { FCustomTabButtonProps } from "../FTabs/types";
 import { FComponentsType, FComponentType } from "../global.types";
 
 export interface FDoubleTabsPanelProps {
@@ -21,8 +20,6 @@ export interface FDoubleTabsPanelProps {
 	tabButtonActionComponents?: (
 		isSelected: boolean
 	) => FComponentType | FComponentsType;
-	/** Custom tab button. */
-	customTabButton?: FCustomTabButtonProps;
 	/** Properties of the tab button. */
 	tabButtonProps?: FButtonProps;
 	/** Control re-render case. Default is `true`. */

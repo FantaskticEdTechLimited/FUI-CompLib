@@ -19,13 +19,13 @@ export interface FButtonProps {
 	/** Click action event of the button. */
 	onClick?: FOnClickFunction;
 	/** Custom content without using `label` field. */
-	customChildren?: ReactNode;
+	customChildren?: FOnHoverProperty<ReactNode>;
 	/** Properties of label. */
 	labelProps?: FOnHoverProperty<FTextProps>;
 	/** Custom leading component (header) of the button. */
-	leadingComponents?: FComponentType | FComponentsType;
+	leadingComponents?: FOnHoverProperty<FComponentType | FComponentsType>;
 	/** Custom action component (footer) of the button. */
-	actionComponents?: FComponentType | FComponentsType;
+	actionComponents?: FOnHoverProperty<FComponentType | FComponentsType>;
 	/** Class name of the button. */
 	className?: FOnHoverProperty<string>;
 	/** Style of the button. */

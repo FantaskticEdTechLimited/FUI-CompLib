@@ -25,6 +25,9 @@ export const FButton = ({
 		disabled: disabled,
 		...props,
 	};
+	const mainThemeColor = FReturnColor({ color: "Main" });
+	const whiteColor = FReturnColor({ color: "White" });
+	const blackColor = FReturnColor({ color: "Black" });
 
 	return (
 		<div
@@ -38,26 +41,28 @@ export const FButton = ({
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
-			{props.leadingComponents}
-			{props.customChildren ?? (
+			{props.leadingComponents && props.leadingComponents(isHover)}
+			{props.customChildren ? (
+				props.customChildren(isHover)
+			) : (
 				<FText
 					font={FFontTypes.Text()}
 					color={() =>
 						!disabled && isHover
 							? type === "Text"
-								? FReturnColor({ color: "Main" })
-								: FReturnColor({ color: "White" })
+								? mainThemeColor
+								: whiteColor
 							: type === "Primary"
-							? FReturnColor({ color: "White" })
+							? whiteColor
 							: type === "Outline" || type === "Secondary"
-							? FReturnColor({ color: "Main" })
-							: FReturnColor({ color: "Black" })
+							? mainThemeColor
+							: blackColor
 					}
 					children={label}
 					{...(props.labelProps && props.labelProps(isHover))}
 				/>
 			)}
-			{props.actionComponents}
+			{props.actionComponents && props.actionComponents(isHover)}
 		</div>
 	);
 };
