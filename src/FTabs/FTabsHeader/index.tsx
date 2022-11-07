@@ -1,11 +1,12 @@
 import React from "react";
-import { FButton } from "../../FButton";
 import { FScrollBarStyle } from "../../FScrollBarStyle";
-import { FTabsHeader_Button_Div, styles } from "./styles";
+import { FTabsButton } from "./FTabsButton";
+import { styles } from "./styles";
 import { FTabsHeaderProps } from "./types";
 
 export const FTabsHeader = (props: FTabsHeaderProps) => {
 	const { controller, panelProps } = props;
+
 	return (
 		<div
 			style={props.style}
@@ -18,16 +19,17 @@ export const FTabsHeader = (props: FTabsHeaderProps) => {
 			}
 		>
 			{panelProps.map((p) => {
-				const isSelected = controller.tabKey === p.tabKey;
+				const isSelected = controller.tabsKey === p.tabsKey;
 
 				return (
-					<FButton
-						key={p.tabKey}
-						className={(isHover) => FTabsHeader_Button_Div(isHover)}
-						type={isSelected ? "Secondary" : "Text"}
+					<FTabsButton
+						key={p.tabsKey}
 						label={p.label}
-						onClick={() => controller.setTabKey(p.tabKey)}
-						{...(props.tabButtonProps && props.tabButtonProps(isSelected))}
+						isSelected={isSelected}
+						onClick={() => controller.setTabsKey(p.tabsKey)}
+						style={props.tabsButtonStyle}
+						className={props.tabsButtonClassName}
+						labelProps={props.tabsButtonLabelProps}
 					/>
 				);
 			})}

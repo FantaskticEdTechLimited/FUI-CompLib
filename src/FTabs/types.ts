@@ -1,5 +1,5 @@
 import { CSSProperties, ReactElement } from "react";
-import { FButtonProps } from "../FButton/types";
+import { FTextProps } from "../FText/types";
 import { FTabsControllerProps } from "./FTabsController/types";
 import { FTabsPanelProps } from "./FTabsPanel/types";
 
@@ -7,14 +7,14 @@ export interface FTabsProps {
 	children:
 		| Array<ReactElement<FTabsPanelProps>>
 		| ReactElement<FTabsPanelProps>;
-	/** To control the tab header and panel content instead of the default controller. */
+	/** To control the tabs header and panel content instead of the default controller. */
 	controller?: FTabsControllerProps;
-	/** If `true`, the default tab header list is **NOT** able to use. */
+	/** If `true`, the default tabs header list is **NOT** able to use. */
 	disableHeader?: boolean;
-	/** Style of the default tab header. */
+	/** Style of the default tabs header. */
 	headerStyle?: CSSProperties;
-	/** Class name of the default tab header. */
+	/** Class name of the default tabs header. */
 	headerClassName?: string;
-	/** Properties of the tab button of the default tab header. */
-	tabButtonProps?: (isSelected?: boolean) => FButtonProps;
+	/** Properties of the tabs button label of the default tab header. */
+	tabsButtonLabelProps?: FTextProps;
 }

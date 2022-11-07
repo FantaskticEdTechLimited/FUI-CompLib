@@ -1,15 +1,4 @@
-import { style, stylesheet } from "typestyle";
-import { FOverrideStyle } from "../../utils/FOverrideStyle";
-import { FReturnColor } from "../../utils/FReturnColor";
-
-export const FTabsHeader_Button_Div = (isHover?: boolean) =>
-	style({
-		padding: FOverrideStyle("8px 16px"),
-		borderRadius: "8px",
-		backgroundColor: isHover
-			? FOverrideStyle(FReturnColor({ color: "Sub" }))
-			: undefined,
-	});
+import { stylesheet } from "typestyle";
 
 export const styles = stylesheet({
 	FTabsHeader_Container: {

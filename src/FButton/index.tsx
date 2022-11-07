@@ -1,9 +1,9 @@
-import * as styles from "./styles";
 import React, { useState } from "react";
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FButtonProps } from "./types";
 import { FText } from "../FText";
 import { FReturnColor } from "../utils/FReturnColor";
+import { FButtonContainer } from "./styles";
 
 /** `<FButton />` is a customized `Button` component.
  *
@@ -43,7 +43,7 @@ export const FButton = ({
 		<div
 			style={props.style && props.style(isHover)}
 			className={
-				styles.FButtonContainer(param, isHover) +
+				FButtonContainer(param, isHover) +
 				" " +
 				(props.className && props.className(isHover))
 			}

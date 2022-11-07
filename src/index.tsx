@@ -29,6 +29,7 @@ import { FSelect } from "./FSelect";
 import { FSVGIcon } from "./FSVGIcon";
 import { FSwitchButton } from "./FSwitchButton";
 import { FTabs } from "./FTabs";
+import { FTabsButton } from "./FTabs/FTabsHeader/FTabsButton";
 import { FTabsController } from "./FTabs/FTabsController";
 import { FTabsHeader } from "./FTabs/FTabsHeader";
 import { FTabsPanel } from "./FTabs/FTabsPanel";
@@ -92,6 +93,7 @@ import { FSelectProps } from "./FSelect/types";
 import { FSVGIconProps } from "./FSVGIcon/types";
 import { FSwitchButtonProps } from "./FSwitchButton/types";
 import { FTabsProps } from "./FTabs/types";
+import { FTabsButtonProps } from "./FTabs/FTabsHeader/FTabsButton/types";
 import { FTabsControllerProps } from "./FTabs/FTabsController/types";
 import { FTabsHeaderProps } from "./FTabs/FTabsHeader/types";
 import { FTabsPanelProps } from "./FTabs/FTabsPanel/types";
@@ -160,6 +162,7 @@ export {
 	FSVGIcon,
 	FSwitchButton,
 	FTabs,
+	FTabsButton,
 	FTabsController,
 	FTabsHeader,
 	FTabsPanel,
@@ -224,6 +227,7 @@ export {
 	FSVGIconProps,
 	FSwitchButtonProps,
 	FTabsProps,
+	FTabsButtonProps,
 	FTabsControllerProps,
 	FTabsHeaderProps,
 	FTabsPanelProps,

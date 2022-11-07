@@ -24,8 +24,8 @@ export const FTabs = (props: FTabsProps) => {
 	const panelProps = panels.map((p) => p.props);
 
 	useEffect(() => {
-		if (controller.tabKey === "" && panelProps.length > 0) {
-			controller.setTabKey(panelProps[0].tabKey);
+		if (controller.tabsKey === "" && panelProps.length > 0) {
+			controller.setTabsKey(panelProps[0].tabsKey);
 		}
 	}, [panelProps, controller]);
 
@@ -37,12 +37,12 @@ export const FTabs = (props: FTabsProps) => {
 					className={props.headerClassName}
 					controller={controller}
 					panelProps={panelProps}
-					tabButtonProps={props.tabButtonProps}
+					tabsButtonLabelProps={props.tabsButtonLabelProps}
 				/>
 			)}
 			{panels.map((e) => {
-				const { tabKey } = e.props;
-				if (tabKey === controller.tabKey) return e;
+				const { tabsKey } = e.props;
+				if (tabsKey === controller.tabsKey) return e;
 				return undefined;
 			})}
 		</div>
