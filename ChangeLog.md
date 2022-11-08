@@ -1,5 +1,9 @@
 ### ChangeLog
 
+# v5.2.0
+
+- feat: add _style_ and _className_ fields for `FTabsPanel`.
+
 # v5.1.3 - 5.1.6
 
 - feat: add `FTabsButton` with `FTabsButtonProps`.
