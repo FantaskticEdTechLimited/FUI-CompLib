@@ -1,5 +1,11 @@
 ### ChangeLog
 
+# v5.2.1 - 5.2.2
+
+- feat: add _style_ and _className_ fields for `FTabs`.
+
+- fix: _style_ issue on `FTabs` and `FTabsPanel`.
+
 # v5.2.0
 
 - feat: add _style_ and _className_ fields for `FTabsPanel`.

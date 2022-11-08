@@ -11,6 +11,10 @@ export interface FTabsProps {
 	controller?: FTabsControllerProps;
 	/** If `true`, the default tabs header list is **NOT** able to use. */
 	disableHeader?: boolean;
+	/** Style of the tabs container. */
+	style?: CSSProperties;
+	/** Class name of the tabs container. */
+	className?: string;
 	/** Style of the default tabs header. */
 	headerStyle?: CSSProperties;
 	/** Class name of the default tabs header. */

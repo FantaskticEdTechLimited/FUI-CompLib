@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { useEffect, useMemo } from "react";
 import { FReturnArray } from "../utils/FReturnArray";
 import { FTabsController } from "./FTabsController";
@@ -10,6 +10,8 @@ export const FTabs = (props: FTabsProps) => {
 		children,
 		controller: remoteController,
 		disableHeader = false,
+		style,
+		className,
 	} = props;
 	const panels = FReturnArray(children);
 	const localTabController = FTabsController();
@@ -30,7 +32,7 @@ export const FTabs = (props: FTabsProps) => {
 	}, [panelProps, controller]);
 
 	return (
-		<div>
+		<div style={style} className={className}>
 			{!disableHeader && (
 				<FTabsHeader
 					style={props.headerStyle}
@@ -42,7 +44,8 @@ export const FTabs = (props: FTabsProps) => {
 			)}
 			{panels.map((e) => {
 				const { tabsKey } = e.props;
-				if (tabsKey === controller.tabsKey) return e;
+				if (tabsKey === controller.tabsKey)
+					return <Fragment key={tabsKey}>{e}</Fragment>;
 				return undefined;
 			})}
 		</div>
