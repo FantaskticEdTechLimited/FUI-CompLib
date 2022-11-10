@@ -1,7 +1,7 @@
 import { CSSProperties } from "react";
 import { FTabsControllerProps } from "../FTabsController/types";
 import { FTabsPanelProps } from "../FTabsPanel/types";
-import { FTabsButtonProps } from "./FTabsButton/types";
+import { ModifiedFTabsButtonProps } from "./FTabsButton/types";
 
 export interface FTabsHeaderProps {
 	/** Controls the header and tab button using the remote controller. */
@@ -13,5 +13,5 @@ export interface FTabsHeaderProps {
 	/** Class name of the tabs header. */
 	className?: string;
 	/** Properties of the tabs button. */
-	tabsButtonProps?: FTabsButtonProps;
+	tabsButtonProps?: ModifiedFTabsButtonProps;
 }

@@ -1,5 +1,9 @@
 ### ChangeLog
 
+# v5.3.1
+
+- fix: typing of `FTabsButtonProps` on `FTabsHeader` and `FTabs`.
+
 # v5.3.0
 
 - feat: add status property of `FTabsButton`.

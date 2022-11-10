@@ -28,3 +28,8 @@ export interface FTabsButtonProps {
 	/** Custom action component of the tabs button. */
 	actionComponent?: FTabsButtonRenderProps<ReactNode>;
 }
+
+export type ModifiedFTabsButtonProps = Omit<
+	FTabsButtonProps,
+	"label" | "isSelected" | "onClick"
+>;

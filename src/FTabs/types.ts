@@ -1,6 +1,6 @@
-import { CSSProperties, ReactElement } from "react"; 
+import { CSSProperties, ReactElement } from "react";
 import { FTabsControllerProps } from "./FTabsController/types";
-import { FTabsButtonProps } from "./FTabsHeader/FTabsButton/types";
+import { ModifiedFTabsButtonProps } from "./FTabsHeader/FTabsButton/types";
 import { FTabsPanelProps } from "./FTabsPanel/types";
 
 export interface FTabsProps {
@@ -19,6 +19,6 @@ export interface FTabsProps {
 	headerStyle?: CSSProperties;
 	/** Class name of the default tabs header. */
 	headerClassName?: string;
-	/** Properties of the tabs button label of the default tab header. */
-	tabsButtonProps?: FTabsButtonProps;
+	/** Properties of the tabs button of the default tab header. */
+	tabsButtonProps?: ModifiedFTabsButtonProps;
 }
