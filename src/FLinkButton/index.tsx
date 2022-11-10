@@ -32,9 +32,13 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
-			{props.customChildren ?? (
+			{props.customChildren ? (
+				props.customChildren(isHover)
+			) : (
 				<>
-					{props.leadingComponents ?? props.leadingIconProps ? (
+					{props.leadingComponents ? (
+						props.leadingComponents(isHover)
+					) : props.leadingIconProps ? (
 						<FIcon
 							color={() => (isSelected ? mainThemeColor : blackColor)}
 							{...props.leadingIconProps}
@@ -52,7 +56,7 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 						{...(props.labelProps && props.labelProps(isHover))}
 					/>
 					{props.actionComponents
-						? props.actionComponents
+						? props.actionComponents(isHover)
 						: props.containsRouteChildren && (
 								<FIcon
 									name={FIconNames.ARROW_DOWN}

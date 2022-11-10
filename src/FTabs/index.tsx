@@ -12,6 +12,7 @@ export const FTabs = (props: FTabsProps) => {
 		disableHeader = false,
 		style,
 		className,
+		tabsButtonProps,
 	} = props;
 	const panels = FReturnArray(children);
 	const localTabController = FTabsController();
@@ -39,7 +40,7 @@ export const FTabs = (props: FTabsProps) => {
 					className={props.headerClassName}
 					controller={controller}
 					panelProps={panelProps}
-					tabsButtonLabelProps={props.tabsButtonLabelProps}
+					tabsButtonProps={tabsButtonProps}
 				/>
 			)}
 			{panels.map((e) => {

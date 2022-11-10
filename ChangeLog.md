@@ -1,5 +1,11 @@
 ### ChangeLog
 
+# v5.3.0
+
+- feat: add status property of `FTabsButton`.
+
+- fix: issue on `FLinkButton`.
+
 # v5.2.1 - 5.2.2
 
 - feat: add _style_ and _className_ fields for `FTabs`.

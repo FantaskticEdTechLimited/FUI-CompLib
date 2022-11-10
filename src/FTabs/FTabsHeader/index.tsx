@@ -5,17 +5,13 @@ import { styles } from "./styles";
 import { FTabsHeaderProps } from "./types";
 
 export const FTabsHeader = (props: FTabsHeaderProps) => {
-	const { controller, panelProps } = props;
+	const { controller, panelProps, style, className, tabsButtonProps } = props;
 
 	return (
 		<div
-			style={props.style}
+			style={style}
 			className={
-				styles.FTabsHeader_Container +
-				" " +
-				FScrollBarStyle() +
-				" " +
-				props.className
+				styles.FTabsHeader_Container + " " + FScrollBarStyle() + " " + className
 			}
 		>
 			{panelProps.map((p) => {
@@ -27,9 +23,7 @@ export const FTabsHeader = (props: FTabsHeaderProps) => {
 						label={p.label}
 						isSelected={isSelected}
 						onClick={() => controller.setTabsKey(p.tabsKey)}
-						style={props.tabsButtonStyle}
-						className={props.tabsButtonClassName}
-						labelProps={props.tabsButtonLabelProps}
+						{...tabsButtonProps}
 					/>
 				);
 			})}

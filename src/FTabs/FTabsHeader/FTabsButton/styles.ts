@@ -4,6 +4,8 @@ import { FReturnColor } from "../../../utils/FReturnColor";
 export const FTabsButton_Div = (isSelected: boolean, isHover?: boolean) =>
 	style({
 		display: "flex",
+		flexDirection: "row",
+		alignItems: "center",
 		boxSizing: "border-box",
 		padding: "6px 12px",
 		borderRadius: "8px",
