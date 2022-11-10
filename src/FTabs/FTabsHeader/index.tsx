@@ -20,6 +20,7 @@ export const FTabsHeader = (props: FTabsHeaderProps) => {
 				return (
 					<FTabsButton
 						key={p.tabsKey}
+						tabsKey={p.tabsKey}
 						label={p.label}
 						isSelected={isSelected}
 						onClick={() => controller.setTabsKey(p.tabsKey)}

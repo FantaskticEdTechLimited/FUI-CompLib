@@ -1,5 +1,13 @@
 ### ChangeLog
 
+# v5.4.1
+
+- fix: remove _tabsKey_ in `ModifiedFTabsButtonProps`.
+
+# v5.4.0
+
+- feat: add _tabsKey_ in `FTabsButtonProps` for component render need.
+
 # v5.3.1
 
 - fix: typing of `FTabsButtonProps` on `FTabsHeader` and `FTabs`.

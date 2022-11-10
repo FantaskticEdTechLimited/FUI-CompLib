@@ -6,10 +6,11 @@ import { FTabsButtonProps } from "./types";
 
 export const FTabsButton = (props: FTabsButtonProps) => {
 	const [isHover, setIsHover] = useState<boolean>(false);
-	const { isSelected, leadingComponent, actionComponent } = props;
+	const { isSelected, tabsKey, leadingComponent, actionComponent } = props;
 	const status = {
 		isSelected: isSelected,
 		isHover: isHover,
+		tabsKey: tabsKey,
 	};
 
 	return (

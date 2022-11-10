@@ -5,12 +5,16 @@ import { FOnClickFunction } from "../../../global.types";
 export type FTabsButtonRenderProps<T> = ({
 	isSelected,
 	isHover,
+	tabsKey,
 }: {
 	isSelected: boolean;
-	isHover?: boolean;
+	isHover: boolean;
+	tabsKey: string;
 }) => T;
 
 export interface FTabsButtonProps {
+	/** Key value of the tabs button. */
+	tabsKey: string;
 	/** Label text of the tabs button. */
 	label: string;
 	/** If `true`, the tabs button is selected. */
@@ -31,5 +35,5 @@ export interface FTabsButtonProps {
 
 export type ModifiedFTabsButtonProps = Omit<
 	FTabsButtonProps,
-	"label" | "isSelected" | "onClick"
+	"tabsKey" | "label" | "isSelected" | "onClick"
 >;
