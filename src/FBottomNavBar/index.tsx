@@ -1,53 +1,54 @@
 import { FBottomNavBarProps } from "./types";
 import * as styles from "./styles";
-import React from "react";
+import React from "react"; 
 import { FButton } from "..";
-import { FButtonTypes } from "../FButton/types";
 
-/**
- * A bar at the bottom containing two buttons (one left: leading button; one right: action button).
+/** `<FBottomNavBar />` is a bottom navigation bar,
+ * which contains a leading button (left) and a action button (right) in a row.
+ *
+ * Props: `FBottomNavBarProps`.
  */
-export const FBottomNavBar = (props: FBottomNavBarProps) => {
+export const FBottomNavBar = ({
+	disableActionButton = false,
+	disableLeadingButton = false,
+	actionButtonLabel = "Next",
+	leadingButtonLabel = "Cancel",
+	actionButtonProps = { type: "Primary" },
+	leadingButtonProps = { type: "Secondary" },
+	...props
+}: FBottomNavBarProps) => {
 	return (
 		<div
 			style={props.style}
 			className={styles.FBottomNavBarContainer + " " + props.className}
 		>
-			{props.children ?? (
+			{props.customChildren ? (
+				props.customChildren
+			) : (
 				<>
 					<FButton
-						type={props.leadingButtonProps?.type ?? FButtonTypes.SECONDARY}
-						disabled={props.disableLeadingButton}
-						label={props.leadingButtonLabel ?? "Cancel"}
+						type={leadingButtonProps?.type}
+						disabled={disableLeadingButton}
+						label={leadingButtonLabel}
 						onClick={() =>
-							props.disableLeadingButton
-								? () => {}
-								: props.onLeadingButtonClick!()
+							disableLeadingButton ? () => {} : props.onLeadingButtonClick!()
 						}
-						style={props.leadingButtonProps?.style}
 						className={() =>
-							styles.FLeadingButtonDiv(props.disableActionButton!) +
-							" " +
-							props.leadingButtonProps?.className
+							styles.FLeadingButtonDiv() + " " + leadingButtonProps?.className
 						}
-						{...props.leadingButtonProps}
+						{...leadingButtonProps}
 					/>
 					<FButton
-						type={props.actionButtonProps?.type ?? FButtonTypes.PRIMARY}
-						disabled={props.disableActionButton}
-						label={props.actionButtonLabel ?? "Next"}
+						type={actionButtonProps?.type}
+						disabled={disableActionButton}
+						label={actionButtonLabel}
 						onClick={() =>
-							props.disableActionButton
-								? () => {}
-								: props.onActionButtonClick!()
+							disableActionButton ? () => {} : props.onActionButtonClick!()
 						}
-						style={props.actionButtonProps?.style}
 						className={() =>
-							styles.FActionButtonDiv(props.disableActionButton!) +
-							" " +
-							props.actionButtonProps?.className
+							styles.FActionButtonDiv() + " " + actionButtonProps?.className
 						}
-						{...props.actionButtonProps}
+						{...actionButtonProps}
 					/>
 				</>
 			)}

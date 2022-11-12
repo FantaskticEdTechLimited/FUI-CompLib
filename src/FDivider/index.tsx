@@ -1,14 +1,18 @@
 import React from "react";
-import * as styles from "./styles";
+import { FDivider_Container } from "./styles";
 import { FDividerProps } from "./types";
 
+/**
+ * `<FDivider />` is a component
+ * which returns a horizontal (by default) or vertical divider.
+ *
+ * Props: `FDividerProps`.
+ */
 export const FDivider = (props: FDividerProps) => {
 	return (
 		<div
 			style={props.style}
-			className={
-				styles.FDivider_Container(props.vertical!) + " " + props.className
-			}
+			className={FDivider_Container(props.vertical!) + " " + props.className}
 		/>
 	);
 };

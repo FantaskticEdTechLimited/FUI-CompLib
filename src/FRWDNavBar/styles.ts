@@ -1,10 +1,10 @@
 import { style } from "typestyle";
-import { FCheckIsDarkMode, FUseColor } from "..";
+import { FCheckIsDarkThemeMode, FReturnColor } from "..";
 import { FRWDMode } from "../global.types";
-import { FSideNavBarProps } from "./types";
+import { FRWDNavBarProps } from "./types";
 
 export const FHiddenSideBarOverlay = (
-	props: FSideNavBarProps,
+	props: FRWDNavBarProps,
 	isOpen: boolean
 ) =>
 	style({
@@ -12,9 +12,7 @@ export const FHiddenSideBarOverlay = (
 		marginTop: 0,
 		height: "100vh",
 		backgroundColor:
-			FUseColor({
-				colorName: "Dark",
-			}) + FCheckIsDarkMode()
+			FReturnColor({ color: "Dark" }) + FCheckIsDarkThemeMode()
 				? undefined
 				: "66",
 		display: props.visible && isOpen ? "flex" : "none",
@@ -26,11 +24,10 @@ export const FHiddenSideBarOverlay = (
 		overflow: "hidden",
 	});
 
-export const FHiddenSideBarContainer = () => {
-	const color = FUseColor({ colorName: "Main" });
-	return style({
+export const FHiddenSideBarContainer = () =>
+	style({
 		width: "240px",
-		backgroundColor: color,
+		backgroundColor: FReturnColor({ color: "Main" }),
 		boxSizing: "border-box",
 		height: "inherit",
 		display: "flex",
@@ -39,14 +36,12 @@ export const FHiddenSideBarContainer = () => {
 		padding: "11.2px 16px",
 		boxShadow: "0 0 8px rgba(72, 63, 226, 0.16)",
 	});
-};
 
-export const FNormalSideNavBarContainer = () => {
-	const color = FUseColor({ colorName: "Main" });
-	return style({
+export const FNormalSideNavBarContainer = () =>
+	style({
 		height: "100vh",
 		width: "240px",
-		backgroundColor: color,
+		backgroundColor: FReturnColor({ color: "Main" }),
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "flex-start",
@@ -56,7 +51,6 @@ export const FNormalSideNavBarContainer = () => {
 		padding: "11.2px 16px",
 		boxShadow: "0 0 8px rgba(72, 63, 226, 0.16)",
 	});
-};
 
 export const FSideNavBar_ContentDiv = style({
 	width: "100%",
@@ -69,15 +63,11 @@ export const FSideNavBar_ContentDiv = style({
 	flexDirection: "column",
 });
 
-export const FTopNavBarContainer = (props: FSideNavBarProps) =>
+export const FTopNavBarContainer = (props: FRWDNavBarProps) =>
 	style({
-		backgroundColor: FUseColor({ colorName: "Main" }),
-		border:
-			"1px solid " +
-			FUseColor({
-				colorName: "BG Light",
-			}),
-		boxShadow: "0 0 8px " + FUseColor({ colorName: "Sub" }),
+		backgroundColor: FReturnColor({ color: "Main" }),
+		border: "1px solid " + FReturnColor({ color: "BG Light" }),
+		boxShadow: "0 0 8px " + FReturnColor({ color: "Sub" }),
 		boxSizing: "border-box",
 		display: props.visible ? "flex" : "none",
 		flexDirection: "row",
@@ -88,30 +78,23 @@ export const FTopNavBarContainer = (props: FSideNavBarProps) =>
 		zIndex: 15,
 	});
 
-export const FTopNavBarContainer_MenuIcon = () => {
-	const color = FUseColor({ colorName: "Sub" });
-	return style({
+export const FTopNavBarContainer_MenuIcon = () =>
+	style({
 		borderRadius: "4px",
-		backgroundColor: color,
+		backgroundColor: FReturnColor({ color: "Sub" }),
 		padding: "4px",
 	});
-};
 
-export const FTopNavBarContainer_CloseIcon = () => {
-	const color = FUseColor({ colorName: "Sub" });
-	return style({
+export const FTopNavBarContainer_CloseIcon = () =>
+	style({
 		borderRadius: "4px",
-		backgroundColor: color,
+		backgroundColor: FReturnColor({ color: "Sub" }),
 		padding: "4px",
 		alignSelf: "flex-end",
 	});
-};
 
-export const Divider = () => {
-	return style({
+export const Divider = () =>
+	style({
 		height: "2px",
-		backgroundColor: FUseColor({
-			colorName: "White",
-		}),
+		backgroundColor: FReturnColor({ color: "White" }),
 	});
-};

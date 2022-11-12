@@ -1,53 +1,48 @@
 import { CSSProperties, ReactNode } from "react";
-import { FScrollBarProps } from "../FScrollBar/types";
-import { FTextProps } from "../FText/types"; 
-
-export interface FDropdownProps<T> {
-	options:T[];
-	onSelect: (data: T) => void;
-	// selected option or options
-	selectedOptions?: T | T[] | null;
-	hideSelectedOptions?: boolean;
-	// warning label for empty options in FDropdown
-	emptyOptionHintLabel?: string;
-
-	// press count of arrow key on FTagInputField
-	arrowKeyPressCount?: number;
-	// render hightlighted option where arrow key is selected
-	renderArrowKeySelectedOption?: (data: T) => void;
-
-	// user declare own method to compare selected option with option
-	onOptionCompare?: (dataA: T ,dataB: T) => boolean;
-
-	// display the option with user own method
-	renderCustomizedOption?: (data: T, isSelected: boolean) => ReactNode;
-	// display the option with option name only
-	renderOptionNameOnly?: (data: T) => string;
-
-	// css style of FDropdown container
-	dropdownContainerClassName?: string;
-	dropdownContainerStyle?: CSSProperties;
-
-	// css style of FDropdown option div
-	optionDivClassName?: string;
-	optionDivStyle?: CSSProperties;
-
-	// css style of FDropdown option text
-	optionTextClassName?: string;
-	optionTextStyle?: CSSProperties;
-	optionTextProps?: FTextProps;
-
-	// css style of FDropdown empty option text
-	emptyOptionTextClassName?: string;
-	emptyOptionTextStyle?: CSSProperties;
-	emptyOptionTextProps?: FTextProps;
-
-	scrollBarProps?: FScrollBarProps;
-}
+import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
+import { FTextProps } from "../FText/types";
+import { FOnSubmitFunction } from "../global.types";
 
 export interface FDropdownOptionDivProps {
 	pressCount: number;
 	index: number;
 	isSelected: boolean;
 	props: FDropdownProps<any>;
+}
+
+export interface FDropdownProps<T> {
+	/** Options data. */
+	options: T[];
+	/** Select action event of the dropdown. */
+	onSelect: FOnSubmitFunction<T>;
+	/** Options that are selected. */
+	selectedOptions?: T | T[] | null;
+	/** If `true`, the selected options will be hidden. */
+	hideSelectedOptions?: boolean;
+	/** Warning label for empty options. */
+	warningLabel?: string;
+	/** Press count of arrow keys. */
+	arrowKeyPressCount?: number;
+	/** Returns hightlighted option where arrow key is selected. */
+	renderArrowKeySelectedOption?: FOnSubmitFunction<T>;
+	/** Custom method to compare selected option with listed option. */
+	onOptionCompare?: (dataA: T, dataB: T) => boolean;
+	/** Returns custom option. */
+	customOption?: (data: T, isSelected: boolean) => ReactNode;
+	/** Shows the listed option name **only**. */
+	renderOptionNameOnly?: (data: T) => string;
+	/** Class name of the dropdown container. */
+	className?: string;
+	/** Style of the dropdown container. */
+	style?: CSSProperties;
+	/** Class name of the option div. */
+	optionDivClassName?: string;
+	/** Style of the option div. */
+	optionDivStyle?: CSSProperties;
+	/** Properties of the option text. */
+	optionTextProps?: FTextProps;
+	/** Properties of the warning label. */
+	warningLabelProps?: FTextProps;
+	/** Properties of the scroll bar. */
+	scrollBarProps?: FScrollBarStyleProps;
 }

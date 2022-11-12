@@ -1,23 +1,27 @@
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { FText, FUseColor } from "..";
-import * as styles from "./styles";
+import { FText, FReturnColor } from "..";
+import { FLinkButtonContainer } from "./styles";
 import { FLinkButtonProps } from "./types";
 
+/**
+ * `<FLinkButton />` is a `FButton` component
+ * which can link with another route when clicked.
+ *
+ * Props: `FLinkButtonProps`.
+ */
 export const FLinkButton = (props: FLinkButtonProps) => {
 	const isSelected = props.pathIsSelected;
 	const [isHover, setIsHover] = useState<boolean>(false);
-	const mainThemeColor = FUseColor({ colorName: "Main" });
-	const blackColor = FUseColor({
-		colorName: "Black",
-	});
+	const mainThemeColor = FReturnColor({ color: "Main" });
+	const blackColor = FReturnColor({ color: "Black" });
 
 	return (
 		<Link
 			style={props.style && props.style(isHover)}
 			className={
-				styles.FLinkButtonContainer(isSelected!, props) +
+				FLinkButtonContainer(isSelected!, props) +
 				" " +
 				(props.className && props.className(isHover))
 			}
@@ -25,33 +29,40 @@ export const FLinkButton = (props: FLinkButtonProps) => {
 			onClick={() =>
 				props.disabled ? () => {} : props.onClick && props.onClick()
 			}
-			// Added hover effect for className and style
 			onMouseEnter={() => setIsHover(true)}
 			onMouseLeave={() => setIsHover(false)}
 		>
-			{props.customChildren ?? (
+			{props.customChildren ? (
+				props.customChildren(isHover)
+			) : (
 				<>
-					{props.leadingComponents ?? props.leadingIcon ? (
+					{props.leadingComponents ? (
+						props.leadingComponents(isHover)
+					) : props.leadingIconProps ? (
 						<FIcon
-							strokeColor={isSelected ? mainThemeColor : blackColor}
-							{...props.leadingIcon}
+							color={() => (isSelected ? mainThemeColor : blackColor)}
+							{...props.leadingIconProps}
 						/>
 					) : undefined}
 					<FText
-						style={props.labelStyle && props.labelStyle()}
-						className={styles.FLinkButtonLabel + " " + props.labelClassName}
-						color={isSelected ? mainThemeColor : blackColor}
+						style={() => ({
+							flexGrow: 1,
+							...(props.labelProps &&
+								props.labelProps(isHover) &&
+								props.labelProps(isHover).style),
+						})}
+						color={() => (isSelected ? mainThemeColor : blackColor)}
 						children={props.label}
-						{...props.labelProps}
+						{...(props.labelProps && props.labelProps(isHover))}
 					/>
 					{props.actionComponents
-						? props.actionComponents
+						? props.actionComponents(isHover)
 						: props.containsRouteChildren && (
 								<FIcon
 									name={FIconNames.ARROW_DOWN}
 									size="small"
-									strokeColor={isSelected ? mainThemeColor : blackColor}
-									{...props.actionIcon}
+									color={() => (isSelected ? mainThemeColor : blackColor)}
+									{...props.actionIconProps}
 								/>
 						  )}
 				</>

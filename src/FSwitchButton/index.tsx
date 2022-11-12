@@ -1,24 +1,34 @@
-import React from "react";
-import { FUseColor } from "..";
-import * as styles from "./styles";
+import React, { useState } from "react";
+import { FReturnColor } from "..";
+import { FSwitchButtonDiv } from "./styles";
 import { FSwitchButtonProps } from "./types";
 
-export const FSwitchButton = (props: FSwitchButtonProps) => {
-	const checked = props.checked ?? true; // default checked
-
+/**
+ * `<FSwitchButton />` is a component which returns a button for toggle action.
+ *
+ * Props: `FSwitchButtonProps`.
+ */
+export const FSwitchButton = ({
+	checked = true,
+	disabled = false,
+	...props
+}: FSwitchButtonProps) => {
+	const [isHover, setIsHover] = useState<boolean>(false);
 	return (
 		<div
-			style={props.containerStyle}
+			style={props.style && props.style(isHover)}
 			className={
-				styles.FSwitchButtonDiv(props, checked) + " " + props.containerClassName
+				FSwitchButtonDiv(checked, disabled) +
+				" " +
+				(props.className && props.className(isHover))
 			}
-			onClick={() =>
-				props.disabled ? undefined : props.onClick && props.onClick()
-			}
+			onClick={() => (disabled ? undefined : props.onClick && props.onClick())}
+			onMouseEnter={() => setIsHover(true)}
+			onMouseLeave={() => setIsHover(false)}
 		>
 			<svg
-				style={props.svgStyle}
-				className={props.svgClassName}
+				style={props.svgStyle && props.svgStyle(isHover)}
+				className={props.svgClassName && props.svgClassName(isHover)}
 				width="18"
 				height="18"
 				overflow="visible"
@@ -27,22 +37,13 @@ export const FSwitchButton = (props: FSwitchButtonProps) => {
 				xmlns="http://www.w3.org/2000/svg"
 			>
 				<circle
-					cx={props.circleCx ?? "9"}
-					cy={props.circleCy ?? "9"}
-					r={props.circleR ?? "9"}
-					fill={
-						props.circleColor ??
-						FUseColor({
-							colorName: "White",
-						})
-					}
-					stroke={
-						props.circleBorderColor ??
-						FUseColor({
-							colorName: "Grey",
-						})
-					}
-					strokeWidth={props.circleStrokeWidth ?? "1.2"}
+					cx="9"
+					cy="9"
+					r="9"
+					fill={FReturnColor({ color: "White" })}
+					stroke={FReturnColor({ color: "Grey" })}
+					strokeWidth="1.2"
+					{...props.circleProps}
 				/>
 			</svg>
 		</div>

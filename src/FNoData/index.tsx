@@ -1,13 +1,16 @@
 import React from "react";
 import { FText } from "..";
-import * as styles from "./styles";
+import { styles } from "./styles";
 import { noDataIcon } from "./svg";
 import { FNoDataProps } from "./types";
 
 export const FNoData = (props: FNoDataProps) => {
 	return (
-		<div className={styles.emptyDataWarningDiv}>
-			{noDataIcon}
+		<div
+			style={props.style}
+			className={styles.FNoData_Container + " " + props.className}
+		>
+			{props.icon ?? noDataIcon}
 			<FText children={props.description ?? "No data"} />
 		</div>
 	);

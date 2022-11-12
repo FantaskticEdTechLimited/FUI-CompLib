@@ -1,46 +1,46 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { RefObject } from "react";
-import { style } from "typestyle";
-import { FOverrideStyle, FUseColor } from "..";
+import { style, stylesheet } from "typestyle";
+import { FOverrideStyle, FReturnColor } from "..";
 import { FTagInputFieldProps } from "./types";
 
-export const FTagInputFieldContainer = (props: FTagInputFieldProps<any>) =>
+export const styles = stylesheet({
+	FTagInputFieldWrapper: {
+		display: "flex",
+		flexDirection: "column",
+		width: "fit-content",
+	},
+});
+
+export const FTagInputFieldWrapper = (props: FTagInputFieldProps<any>) =>
 	style({
-		alignItems: props.flexColumn ? "normal" : "center",
-		backgroundColor: FUseColor({
-			colorName: "White",
-		}),
+		alignItems: props.vertical ? "normal" : "center",
+		backgroundColor: FReturnColor({ color: "White" }),
 		columnGap:
-			props.renderCustomizedTagComponents ||
+			props.customTagComponent ||
 			(props.selectedTags && props.selectedTags.length > 0)
 				? "8px"
 				: 0,
 		display: "flex",
-		flexDirection: props.flexColumn ? "column" : "row",
-		overflowX: props.flexColumn ? "hidden" : "auto",
-		overflowY: props.flexColumn ? "auto" : "hidden",
+		flexDirection: props.vertical ? "column" : "row",
+		overflowX: props.vertical ? "hidden" : "auto",
+		overflowY: props.vertical ? "auto" : "hidden",
 		padding: "12px",
-		rowGap: props.flexColumn ? "8px" : 0,
+		rowGap: props.vertical ? "8px" : 0,
 	});
 
-export const FTagInputFieldTagsDisplayDiv = (column: boolean) =>
+export const FTagInputFieldTagsDisplayDiv = (vertical?: boolean) =>
 	style({
 		display: "flex",
-		flexWrap: column ? "wrap" : "nowrap",
+		flexWrap: vertical ? "wrap" : "nowrap",
 		columnGap: "8px",
 		rowGap: "8px",
 	});
 
-export const FTagInputFieldWrapper = style({
-	display: "flex",
-	flexDirection: "column",
-	width: "fit-content",
-});
-
 export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
 	style({
-		backgroundColor: FUseColor({
-			colorName: "White",
+		backgroundColor: FReturnColor({
+			color: "White",
 		}),
 		display: "flex",
 		columnGap: "8px",
@@ -49,34 +49,24 @@ export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
 		width: "inherit",
 		borderBottom:
 			"2px solid " +
-			(isTriggered ? FUseColor({ colorName: "Main" }) : "transparent"),
+			(isTriggered ? FReturnColor({ color: "Main" }) : "transparent"),
 	});
 
-export const FTagInputFieldInputAreaDiv = (props: FTagInputFieldProps<any>) => {
-	const greyColor = FUseColor({
-		colorName: "Grey",
-	});
-	const blackColor = FUseColor({
-		colorName: "Black",
-	});
-	const whiteColor = FUseColor({
-		colorName: "White",
-	});
-
+export const FTagInputFieldInputDiv = (value?: string) => {
 	return style({
-		backgroundColor: whiteColor,
+		backgroundColor: FReturnColor({ color: "White" }),
 		border: "none",
-		caretColor: FUseColor({ colorName: "Main" }),
-		color: props.inputValue ? blackColor : greyColor,
+		caretColor: FReturnColor({ color: "Main" }),
+		color: value
+			? FReturnColor({ color: "Black" })
+			: FReturnColor({ color: "Grey" }),
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
 		padding: 0,
 		resize: "none",
 		$nest: {
-			"&::placeholder": {
-				color: greyColor,
-			},
+			"&::placeholder": { color: FReturnColor({ color: "Grey" }) },
 		},
 	});
 };
@@ -96,15 +86,9 @@ export const FTagInputFieldDropdownOptionDiv = (
 	isNew: boolean,
 	isExisted: boolean
 ) => {
-	const greyColor = FUseColor({
-		colorName: "Grey",
-	});
-	const redColor = FUseColor({
-		colorName: "Red",
-	});
-	const blackColor = FUseColor({
-		colorName: "Black",
-	});
+	const greyColor = FReturnColor({ color: "Grey" });
+	const redColor = FReturnColor({ color: "Red" });
+	const blackColor = FReturnColor({ color: "Black" });
 
 	return style({
 		font: FFontTypes.Large_Text(),
@@ -117,13 +101,13 @@ export const FTagInputFieldDropdownOptionDiv = (
 		textAlign: "left",
 		$nest: {
 			"&:hover": {
-				backgroundColor: FUseColor({ colorName: "Sub" }),
+				backgroundColor: FReturnColor({ color: "Sub" }),
 				color:
 					isNew || isSelected
 						? FOverrideStyle(greyColor)
 						: isExisted
 						? FOverrideStyle(redColor)
-						: FUseColor({ colorName: "Main" }),
+						: FReturnColor({ color: "Main" }),
 			},
 		},
 	});

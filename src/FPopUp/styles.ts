@@ -1,11 +1,9 @@
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 
 export const FPopUpOverlay = () => {
 	return style({
-		backgroundColor: FUseColor({
-			colorName: "Dark",
-		}),
+		backgroundColor: FReturnColor({ color: "Dark" }),
 		height: "100vh",
 		width: "100%",
 		top: 0,
@@ -25,14 +23,8 @@ export const FPopUpContainer = (screenWidth: number, screenHeight: number) =>
 		rowGap: "24px",
 		maxWidth: screenWidth,
 		maxHeight: screenHeight,
-		backgroundColor: FUseColor({
-			colorName: "White",
-		}),
-		border:
-			"1px solid " +
-			FUseColor({
-				colorName: "BG Light",
-			}),
+		backgroundColor: FReturnColor({ color: "White" }),
+		border: "1px solid " + FReturnColor({ color: "BG Light" }),
 		borderRadius: "8px",
 		boxSizing: "border-box",
 		padding: "24px",

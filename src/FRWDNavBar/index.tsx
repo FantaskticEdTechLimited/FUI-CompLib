@@ -1,15 +1,21 @@
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 import React from "react";
 import { useState, useEffect, useRef, Fragment } from "react";
-import { FScrollBarStyle, FUseColor } from "..";
+import { FReturnColor, FScrollBarStyle } from "..";
 import { FRWDMode } from "../global.types";
 import * as styles from "./styles";
-import { FSideNavBarProps } from "./types";
+import { FRWDNavBarProps } from "./types";
 
-export const FRWDNavBar = (props: FSideNavBarProps) => {
+/**
+ * `<FRWDNavBar />` is a component
+ * which returns a side or top navigation bar based on the RWD mode.
+ *
+ * Props: `FRWDNavBarProps`.
+ */
+export const FRWDNavBar = (props: FRWDNavBarProps) => {
 	const [openSideBar, setOpenSideBar] = useState<boolean>(false);
 	const OpenedSideNavBarRef = useRef<HTMLDivElement>(null);
-	const mainThemeColor = FUseColor({ colorName: "Main" });
+	const mainThemeColor = FReturnColor({ color: "Main" });
 
 	const handleClickOutside = (event: any) => {
 		if (
@@ -33,7 +39,7 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 	return (
 		<>
 			{/* Mobile Mode */}
-			{props.rwdMode !== FRWDMode.FULL ? (
+			{props.rwdMode !== FRWDMode.PC ? (
 				<Fragment>
 					{/* Top Bar */}
 					<div
@@ -43,13 +49,20 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 						}
 					>
 						{props.logo ?? props.topBarLeadingComponents}
-						{props.topBarActionComponents ?? (
+						{ props.topBarCustomMenuIcon ?
+						(
+							<div
+								onClick={() => setOpenSideBar(true)}
+								{...props.topBarCustomMenuIconProps}
+							>
+								{props.topBarCustomMenuIcon}
+							</div>
+						) : (
 							<FIcon
 								name={FIconNames.MENU}
-								size="large"
 								onClick={() => setOpenSideBar(true)}
-								strokeColor={mainThemeColor}
-								className={styles.FTopNavBarContainer_MenuIcon()}
+								color={() => mainThemeColor}
+								className={() => styles.FTopNavBarContainer_MenuIcon()}
 								{...props.menuIconProps}
 							/>
 						)}
@@ -74,14 +87,23 @@ export const FRWDNavBar = (props: FSideNavBarProps) => {
 							style={props.containerStyle}
 							ref={OpenedSideNavBarRef}
 						>
-							<FIcon
-								name={FIconNames.CLOSE}
-								size="large"
-								onClick={() => setOpenSideBar(false)}
-								strokeColor={mainThemeColor}
-								className={styles.FTopNavBarContainer_CloseIcon()}
-								{...props.closeIconProps}
-							/>
+							{props.topBarCustomCloseIcon ? (
+								<div
+									onClick={() => setOpenSideBar(false)}
+									{...props.topBarCustomCloseIconProps}
+								>
+									{props.topBarCustomCloseIcon}
+								</div>
+							) : (
+								<FIcon
+									name={FIconNames.CLOSE}
+									size="large"
+									onClick={() => setOpenSideBar(false)}
+									color={() => mainThemeColor}
+									className={() => styles.FTopNavBarContainer_CloseIcon()}
+									{...props.closeIconProps}
+								/>
+							)}
 							<div
 								style={props.contentDivStyle}
 								className={

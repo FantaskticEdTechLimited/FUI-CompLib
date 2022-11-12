@@ -1,12 +1,30 @@
 import React, { useEffect, useRef, useState } from "react";
-import * as styles from "./styles";
+import { FSearchBar_Container, FSearchBar_InputAreaDiv } from "./styles";
 import { ClearIcon } from "./svg/ClearIcon";
 import { SearchIcon } from "./svg/SearchIcon";
-import { FSearchBarProps } from "./types";
+import { FSearchBarProps, InputStateProps } from "./types";
 
-export const FSearchBar = (props: FSearchBarProps) => {
+/**
+ * `<FSearchBar />` is a component for search input.
+ *
+ * _May add dropdown component for searching in the future_.
+ *
+ * Props: `FSearchBarProps`.
+ */
+export const FSearchBar = ({
+	placeholder = "Search",
+	value = "",
+	...props
+}: FSearchBarProps) => {
+	const [isHover, setIsHover] = useState<boolean>(false);
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
+	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
+	const inputState: InputStateProps = {
+		isHover: isHover,
+		isTriggered: isTriggered,
+		isFilled: isFilled,
+	};
 
 	useEffect(() => {
 		if (isTriggered && inputRef.current) inputRef.current.focus();
@@ -14,37 +32,43 @@ export const FSearchBar = (props: FSearchBarProps) => {
 
 	return (
 		<div
-			style={props.containerStyle}
+			style={props.style && props.style(inputState)}
 			className={
-				styles.FSearchBarContainer(isTriggered) + " " + props.containerClassName
+				FSearchBar_Container(inputState) +
+				" " +
+				(props.className && props.className(inputState))
 			}
-			onClick={() => setIsTriggered(true)}
-			onBlur={() => setIsTriggered(false)}
+			onClick={() => {
+				props.onClick && props.onClick();
+				setIsTriggered(true);
+			}}
+			onBlur={() => {
+				props.onBlur && props.onBlur();
+				setIsTriggered(false);
+				if (value === undefined || value === "") setIsFilled(false);
+				else setIsFilled(true);
+			}}
+			onMouseEnter={() => setIsHover(true)}
+			onMouseLeave={() => setIsHover(false)}
 		>
-			<SearchIcon
-				isTriggered={isTriggered}
-				inputValue={props.inputValue!}
-				className={props.searchIconClassName}
-				style={props.searchIconStyle}
-			/>
+			<SearchIcon state={inputState} value={value} {...props.searchIconProps} />
 			<input
-				style={props.inputAreaStyle}
+				style={props.inputStyle && props.inputStyle(inputState)}
 				className={
-					styles.FSearchBarInputAreaDiv() + " " + props.inputAreaClassName
+					FSearchBar_InputAreaDiv() +
+					" " +
+					(props.inputClassName && props.inputClassName(inputState))
 				}
 				type="text"
 				ref={inputRef}
-				value={props.inputValue}
-				placeholder={props.placeholder ?? "Search"}
-				onChange={(event: any) =>
-					props.renderInputValue && props.renderInputValue(event.target.value)
-				}
+				value={value}
+				placeholder={placeholder}
+				onChange={(event: any) => props.onInput(event.target.value)}
 			/>
-			{props.inputValue && props.inputValue.length > 0 && (
+			{value?.length > 0 && (
 				<ClearIcon
-					className={props.clearIconClassName}
-					style={props.clearIconStyle}
-					onClick={() => props.renderInputValue && props.renderInputValue("")}
+					onClick={() => props.onInput("")}
+					{...props.clearIconProps}
 				/>
 			)}
 		</div>

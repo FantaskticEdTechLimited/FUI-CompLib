@@ -1,16 +1,10 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
 import { style } from "typestyle";
-import { FUseColor } from "..";
 import { FTextProps } from "./types";
 
 export const FTextContainer = (props: FTextProps) =>
 	style({
-		color:
-			props.color ??
-			FUseColor({
-				colorName: "Black",
-			}),
-		font: props.font ?? FFontTypes.Small_Title(),
+		color: props.color && props.color(),
+		font: props.font,
 		overflow: props.overflowHidden ? "hidden" : "visible",
 		textOverflow: "ellipsis",
 		whiteSpace: "pre-wrap",

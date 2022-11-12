@@ -1,40 +1,61 @@
 import React from "react";
-import { FBottomNavBar, FUseStateSafe } from "..";
-import * as styles from "./styles";
+import { FBottomNavBar } from "../FBottomNavBar";
+import { FBottomNavBarProps } from "../FBottomNavBar/types";
+import { FScrollBarStyle } from "../FScrollBarStyle";
+import { FUseStateSafe } from "../utils/FUseStateSafe";
+import { styles } from "./styles";
 import { FFormProps } from "./types";
 
+/** `<FForm />` is a component for data input on a form.
+ *
+ * Props: `FFormProps`
+ */
 export const FForm = (props: FFormProps) => {
 	const [isLoading, setIsLoading] = FUseStateSafe(false);
+	const bottomBarProps: FBottomNavBarProps = {
+		leadingButtonLabel: "Cancel",
+		actionButtonLabel: "Submit",
+		...props.bottomBarProps,
+	};
+
 	const handleActionButtonClick = async () => {
 		setIsLoading(true);
 		props.onSubmit && (await props.onSubmit());
 		setIsLoading(false);
 	};
+
 	const handleLeadingButtonClick = async () => {
 		props.onClose && (await props.onClose());
 	};
+
 	return (
 		<div
-			className={styles.FForm_Container + " " + props.containerClassName}
-			style={props.containerStyle}
+			className={
+				styles.FForm_Container + " " + FScrollBarStyle() + " " + props.className
+			}
+			style={props.style}
 		>
-			{/* content */}
 			<div
 				style={props.contentContainerStyle}
 				className={
-					styles.FForm_Content_Container + " " + props.contentContainerClassName
+					styles.FForm_Content_Container +
+					" " +
+					FScrollBarStyle() +
+					" " +
+					props.contentContainerClassName
 				}
 			>
 				{props.children}
 			</div>
-			{/* Footer */}
 			<FBottomNavBar
-				leadingButtonLabel="Cancel"
-				actionButtonLabel={isLoading ? "Loading" : "Submit"}
+				leadingButtonLabel={bottomBarProps.leadingButtonLabel}
+				actionButtonLabel={
+					isLoading ? "Loading" : bottomBarProps.actionButtonLabel
+				}
 				disableActionButton={isLoading}
 				onLeadingButtonClick={handleLeadingButtonClick}
 				onActionButtonClick={handleActionButtonClick}
-				{...props.FBottomNavigationProps}
+				{...bottomBarProps}
 			/>
 		</div>
 	);

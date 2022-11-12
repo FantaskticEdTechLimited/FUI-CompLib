@@ -1,11 +1,11 @@
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 import { FTagProps } from "./types";
 
 export const FTagContainer = (props: FTagProps<any>) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FUseColor({ colorName: "Sub" }),
+		backgroundColor: FReturnColor({ color: "Sub" }),
 		borderRadius: "2px",
 		boxSizing: "border-box",
 		columnGap: "4px",
@@ -15,7 +15,4 @@ export const FTagContainer = (props: FTagProps<any>) =>
 		padding: "4px 8px",
 		width: "fit-content",
 	});
-
-export const FTagLabel = style({
-	flexGrow: 1,
-});
+ 

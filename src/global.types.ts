@@ -1,4 +1,10 @@
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
+import { ReactElement, ReactNode } from "react";
+import { FSVGIconProps } from "./FSVGIcon/types";
+
 export type Nullable<T> = T | null;
+
+export type NumericStringType = number | string;
 
 export type FOnClickFunction = () => void;
 
@@ -13,24 +19,16 @@ export type FOnDataCallbackFunction<T, C> = (
 
 export type FOnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 
-/**
- * for different device types:
- *
- * Full = PC, Tablet = tablet/pad, Mobile = phone.
- */
+export type FOnHoverProperty<T> = (isHover?: boolean) => T;
+
+export type FComponentType =
+	| ReactElement<FIconProps | FSVGIconProps>
+	| ReactNode;
+
+export type FComponentsType = Array<FComponentType>;
+
 export enum FRWDMode {
-	// Full means PC device
-	FULL = "FULL",
+	PC = "PC",
 	TABLET = "TABLET",
 	MOBILE = "MOBILE",
-}
-
-/**
- * for responsive device based on provided width
- */
-export interface FRwdSizeProps {
-	// under this mobileWidth, RWDMode = Mobile
-	mobileWidth?: number;
-	// over this desktopWidth, RWDMode = Desktop (FULL)
-	desktopWidth?: number;
 }

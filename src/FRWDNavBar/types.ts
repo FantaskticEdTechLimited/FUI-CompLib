@@ -1,11 +1,22 @@
 import { CSSProperties, ReactNode } from "react";
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { FRWDMode } from "../global.types";
-import { FScrollBarProps } from "../FScrollBar/types";
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
+import {
+	FComponentsType,
+	FComponentType,
+	FOnClickFunction,
+	FRWDMode,
+} from "../global.types";
+import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
 
 export type OverlayEnterSide = "left" | "right";
 
-export interface FSideNavBarProps {
+export interface CustomIconButtonProps {
+	style?: CSSProperties;
+	className?: string;
+	onClick?: FOnClickFunction;
+}
+
+export interface FRWDNavBarProps {
 	/**
 	 * responsive mode of the side bar
 	 */
@@ -53,7 +64,7 @@ export interface FSideNavBarProps {
 	/**
 	 * whether there is a logo on the side and top bar
 	 */
-	logo?: ReactNode;
+	logo?: FComponentType;
 	/**
 	 * whether there is a need for a divider under the logo box on the side bar.
 	 */
@@ -85,13 +96,25 @@ export interface FSideNavBarProps {
 	/**
 	 * leading components of top nav bar
 	 */
-	topBarLeadingComponents?: ReactNode;
+	topBarLeadingComponents?: FComponentType | FComponentsType;
 	/**
-	 * action components of top nav bar
+	 * Custom menu icon button of top nav bar
 	 */
-	topBarActionComponents?: ReactNode;
+	topBarCustomMenuIcon?: FComponentType;
+	/**
+	 * Props of custom menu icon button of top nav bar
+	 */
+	topBarCustomMenuIconProps?: CustomIconButtonProps;
+	/**
+	 * Custom close icon button of top nav bar
+	 */
+	topBarCustomCloseIcon?: FComponentType;
+	/**
+	 * Props of custom close icon button of top nav bar
+	 */
+	topBarCustomCloseIconProps?: CustomIconButtonProps;
 	/**
 	 * properties of scroll bar
 	 */
-	scrollBarProps?: FScrollBarProps;
+	scrollBarProps?: FScrollBarStyleProps;
 }

@@ -1,25 +1,16 @@
-import { style } from "typestyle"; 
-import { FUseColor } from "..";
-import { FSwitchButtonProps } from "./types";
+import { style } from "typestyle";
+import { FReturnColor } from "..";
 
-export const FSwitchButtonDiv = (props: FSwitchButtonProps, checked: boolean) =>
+export const FSwitchButtonDiv = (checked?: boolean, disabled?: boolean) =>
 	style({
 		alignItems: "center",
-		backgroundColor: checked
-			? FUseColor({
-					colorName: "Green",
-			  })
-			: undefined,
+		backgroundColor: checked ? FReturnColor({ color: "Green" }) : undefined,
 		border:
 			"2px solid " +
-			(checked
-				? "rgba(10, 10, 12, 0.08)"
-				: FUseColor({
-						colorName: "Grey",
-				  })),
+			(checked ? "rgba(10, 10, 12, 0.08)" : FReturnColor({ color: "Grey" })),
 		borderRadius: 24,
 		boxSizing: "border-box",
-		cursor: props.disabled ? "not-allowed" : "pointer",
+		cursor: disabled ? "not-allowed" : "pointer",
 		display: "flex",
 		height: "24px",
 		padding: "2px 4px",

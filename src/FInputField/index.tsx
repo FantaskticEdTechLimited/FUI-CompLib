@@ -1,21 +1,35 @@
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import React, { useState, useEffect, useRef } from "react";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import * as styles from "./styles";
 import { FInputFieldProps } from "./types";
-import { FScrollBarStyle, FText, FUseColor } from "..";
+import { FScrollBarStyle, FText, FReturnColor } from "..";
 
-export const FInputField = (props: FInputFieldProps) => {
+/** `<FInputField />` is a component for `<input />` or `<textarea />`.
+ *
+ * Props: `FInputFieldProps`.
+ */
+export const FInputField = ({
+	value = "",
+	placeholder = "Input",
+	disabled = false,
+	multiline = false,
+	autoFocus = false,
+	...props
+}: FInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
 	const textareaRef = useRef<HTMLTextAreaElement>(null);
-	const mainThemeColor = FUseColor({ colorName: "Main" });
-	const blackColor = FUseColor({
-		colorName: "Black",
-	});
-	const greyColor = FUseColor({
-		colorName: "Grey",
-	});
+	const mainThemeColor = FReturnColor({ color: "Main" });
+	const blackColor = FReturnColor({ color: "Black" });
+	const greyColor = FReturnColor({ color: "Grey" });
+	const hasWordCount = props.wordCount! > 0;
+
+	const param: Partial<FInputFieldProps> = {
+		disabled: disabled,
+		multiline: multiline,
+		...props,
+	};
 
 	const handleTextareaHeight = () => {
 		if (textareaRef && textareaRef.current) {
@@ -26,40 +40,37 @@ export const FInputField = (props: FInputFieldProps) => {
 		}
 	};
 
-	useLayoutEffect(() => {
-		if (props.inputValue && props.inputValue.length > 0) {
-			handleTextareaHeight();
-			setIsTriggered(true);
-		}
-	}, [props.inputValue]);
-
 	useEffect(() => {
 		if (isTriggered && inputRef.current) inputRef.current.focus();
-		if (isTriggered && textareaRef.current) textareaRef.current.focus();
-		handleTextareaHeight();
+		if (isTriggered && textareaRef.current) {
+			textareaRef.current.focus();
+			handleTextareaHeight();
+		}
 	}, [isTriggered]);
+
+	useEffect(() => {
+		if (autoFocus && !disabled) setIsTriggered(true);
+		else setIsTriggered(false);
+	}, [autoFocus, disabled]);
 
 	return (
 		<div
-			style={props.containerStyle}
-			className={
-				styles.FInputFieldContainer(props) + " " + props.containerClassName
-			}
+			style={props.style}
+			className={styles.FInputFieldContainer() + " " + props.className}
 		>
 			<div
 				style={props.inputDivStyle}
 				className={
-					styles.FInputFieldDiv(props, isTriggered, isFilled) +
+					styles.FInputFieldDiv(param, isTriggered, isFilled) +
 					" " +
 					props.inputDivClassName
 				}
 				onClick={() => {
-					if (!props.disabled) setIsTriggered(true);
+					if (!disabled) setIsTriggered(true);
 				}}
 				onBlur={() => {
 					setIsTriggered(false);
-					if (props.inputValue === undefined || props.inputValue === "")
-						setIsFilled(false);
+					if (value === undefined || value === "") setIsFilled(false);
 					else setIsFilled(true);
 				}}
 			>
@@ -70,40 +81,37 @@ export const FInputField = (props: FInputFieldProps) => {
 								? FFontTypes.Text()
 								: FFontTypes.Large_Text()
 						}
-						color={
+						color={() =>
 							isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor
 						}
-						style={props.labelStyle}
-						className={props.labelClassName}
 						{...props.labelProps}
 					>
 						{props.label}
 					</FText>
 				)}
-				{props.multiline ? (
+				{multiline ? (
 					<textarea
 						style={props.inputAreaStyle}
 						className={
 							styles.FInputFieldInputAreaDiv(
-								props,
+								param,
 								isTriggered || isFilled || props.label === undefined
 							) +
 							" " +
 							props.inputAreaClassName +
 							" " +
-							FScrollBarStyle({
-								...props.scrollBarProps,
-							})
+							FScrollBarStyle({ ...props.scrollBarProps })
 						}
 						ref={textareaRef}
-						maxLength={props.wordCount ? props.wordCount : undefined}
-						value={props.inputValue ?? ""}
-						placeholder={props.placeholder ?? "Input"}
-						onChange={(event: any) => {
-							props.renderInputValue &&
-								props.renderInputValue(event.target.value);
-							handleTextareaHeight();
-							event.preventDefault();
+						maxLength={hasWordCount ? props.wordCount : undefined}
+						value={value}
+						placeholder={placeholder}
+						onChange={(event) => {
+							if (!disabled) {
+								props.onInput && props.onInput(event.target.value);
+								handleTextareaHeight();
+								event.preventDefault();
+							}
 						}}
 					/>
 				) : (
@@ -111,7 +119,7 @@ export const FInputField = (props: FInputFieldProps) => {
 						style={props.inputAreaStyle}
 						className={
 							styles.FInputFieldInputAreaDiv(
-								props,
+								param,
 								isTriggered || isFilled || props.label === undefined
 							) +
 							" " +
@@ -119,28 +127,26 @@ export const FInputField = (props: FInputFieldProps) => {
 						}
 						type="text"
 						ref={inputRef}
-						maxLength={props.wordCount ? props.wordCount : undefined}
-						value={props.inputValue ?? ""}
-						placeholder={props.placeholder ?? "Input"}
-						onChange={(event: any) =>
-							props.renderInputValue &&
-							props.renderInputValue(event.target.value)
-						}
+						maxLength={hasWordCount ? props.wordCount : undefined}
+						value={value}
+						placeholder={placeholder}
+						onChange={(event) => {
+							if (!disabled) {
+								props.onInput && props.onInput(event.target.value);
+							}
+						}}
 					/>
 				)}
 			</div>
 			<FText
 				font={FFontTypes.Text()}
-				color={isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor}
-				style={props.wordCountStyle}
-				className={
-					styles.FInputFieldWordCountDiv + " " + props.wordCountClassName
+				color={() =>
+					isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor
 				}
+				style={() => ({ textAlign: "right", ...props.wordCountProps?.style })}
 				{...props.wordCountProps}
 			>
-				{props.wordCount && props.wordCount > 0 && props.inputValue
-					? `${props.inputValue.length}/${props.wordCount}`
-					: ""}
+				{hasWordCount && value ? `${value.length}/${props.wordCount}` : ""}
 			</FText>
 		</div>
 	);

@@ -1,17 +1,13 @@
 import React from "react";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 import { FCheckBoxProps } from "./types";
 
 export const handleFCheckBox = (props: FCheckBoxProps) => {
-	const mainThemeColor = FUseColor({ colorName: "Main" });
-	const whiteColor = FUseColor({
-		colorName: "White",
-	});
-	const bgLightColor = FUseColor({
-		colorName: "BG Light",
-	});
+	const mainThemeColor = FReturnColor({ color: "Main" });
+	const whiteColor = FReturnColor({ color: "White" });
+	const bgLightColor = FReturnColor({ color: "BG Light" });
 
-	switch (props.variant) {
+	switch (props.type) {
 		case "round":
 			return props.checked ? (
 				<>
@@ -81,6 +77,6 @@ export const handleFCheckBox = (props: FCheckBoxProps) => {
 				</>
 			);
 		default:
-			return <> </>;
+			return <></>;
 	}
 };

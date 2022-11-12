@@ -1,62 +1,88 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
 import { CSSProperties, ReactElement, ReactNode } from "react";
 import { FDropdownProps } from "../FDropdown/types";
 import { FTextProps } from "../FText/types";
-import { FOnClickFunction } from "../global.types";
-
-export interface FSelectProps<T> {
-	options: T[];
-	onSelect: (data: T) => void;
-	selectedOptions: T | null;
-	disabled?: boolean;
-	label?: string;
-	// show label only when no selectedOption or no placeholder
-	showLabelOnly?: boolean;
-	placeholder?: string;
-	onClear?: FOnClickFunction;
-
-	// display the selected option with user own method
-	renderCustomizedSelectedOption?: (data: T) => ReactNode;
-	renderCustomizedOption?: (data: T) => ReactNode;
-	// display the selected option with selected option name only
-	renderSelectedOptionNameOnly?: (data: T) => string;
-	renderOptionNameOnly?: (data: T) => string;
-
-	clearIconProps?: FIconProps;
-	dropdownArrowIconProps?: FIconProps;
-	iconComponent?: ReactNode;
-	dropdownProps?: FDropdownProps<T>; // Omit<FDropdownProps<any>, "options" | "onSelect">;
-	dropdownComponent?: ReactElement<FDropdownProps<any>>;
-
-	// css style of FSelect label
-	labelClassName?: string;
-	labelStyle?: CSSProperties;
-	labelProps?: FTextProps;
-
-	// css style of selected option text
-	selectedOptionClassName?: string;
-	selectedOptionStyle?: CSSProperties;
-	selectedOptionProps?: FTextProps;
-
-	// css style of FSelect container
-	selectorContainerClassName?: string;
-	selectorContainerStyle?: CSSProperties;
-
-	// css style of FSelect content div
-	contentDivClassName?: string;
-	contentDivStyle?: CSSProperties;
-
-	// css style of FSelect wrapper (with dropdown)
-	wrapperClassName?: string;
-	wrapperStyle?: CSSProperties;
-
-	// css style of FDropdown container
-	dropdownContainerClassName?: string;
-	dropdownContainerStyle?: CSSProperties;
-}
+import {
+	FComponentType,
+	FOnClickFunction,
+	FOnHoverProperty,
+} from "../global.types";
 
 export interface FSelectContainerStyleProps<T> {
 	isClicked: boolean;
 	disabled: boolean;
 	selectedOptions: T | null;
+}
+
+export interface FSelectProps<T> {
+	/** Options data. */
+	options: T[];
+	/** Select action event of the options. */
+	onSelect: (data: T) => void;
+	/** Options that are selected. */
+	selectedOptions: T | null;
+	/** If `true`, the select component is **NOT** able to use. */
+	disabled?: boolean;
+	/** Label at the header of the select component. */
+	label?: string;
+	/** If `true`, it will **only** show the label
+	 * (_without `placeholder` or `selectedOptions`_).
+	 */
+	showLabelOnly?: boolean;
+	/** Placeholder of the select component. */
+	placeholder?: string;
+	/** Clear action event of the select component. */
+	onClear?: FOnClickFunction;
+	/** Returns custom selected option. */
+	customSelectedOption?: (data: T) => ReactNode;
+	/** Returns custom option. */
+	customOption?: (data: T) => ReactNode;
+	/** Shows the selected option name **only**. */
+	renderSelectedOptionNameOnly?: (data: T) => string;
+	/** Shows the listed option name **only**. */
+	renderOptionNameOnly?: (data: T) => string;
+	/** Properties of the clear icon which **only** works when `onClear` is used. */
+	clearIconProps?: FIconProps;
+	/** Properties of the action icon, i.e. the dropdown arrow icon. */
+	arrowIconProps?: FIconProps;
+	/** Returns custom clear icon. */
+	customClearIcon?: FComponentType;
+	/** Returns custom dropdown arrow icon. */
+	customArrowIcon?: FComponentType;
+	/** Properties of the dropdown. */
+	dropdownProps?: FDropdownProps<T>;
+	/** Returns custom dropdown inside the dropdown wrapper,
+	 * which mainly controls the position and visibility of the dropdown.
+	 */
+	customDropdown?: ReactElement<FDropdownProps<T>>;
+	/** Properties of the label. */
+	labelProps?: FOnHoverProperty<FTextProps>;
+	/** Properties of the selected option. */
+	selectedOptionProps?: FTextProps;
+	/** Class name of the select component wrapper (with _Dropdown_). */
+	wrapperClassName?: string;
+	/** Style of the select component wrapper (with _Dropdown_). */
+	wrapperStyle?: CSSProperties;
+	/** Class name of the select component container. */
+	className?: FOnHoverProperty<string>;
+	/** Style of the select component container. */
+	style?: FOnHoverProperty<CSSProperties>;
+	/** Class name of the select component content container. */
+	contentContainerClassName?: string;
+	/** Style of the select component content container. */
+	contentContainerStyle?: CSSProperties;
+	/** Class name of the dropdown wrapper
+	 * which mainly controls the position and visibility of the dropdown.
+	 *
+	 * You can change the style of dropdown itself
+	 * using `className` in `dropdownProps`.
+	 */
+	dropdownWrapperClassName?: string;
+	/** Style of the dropdown wrapper
+	 * which mainly controls the position and visibility of the dropdown.
+	 *
+	 * You can change the style of dropdown itself
+	 * using `style` in `dropdownProps`.
+	 */
+	dropdownWrapperStyle?: CSSProperties;
 }

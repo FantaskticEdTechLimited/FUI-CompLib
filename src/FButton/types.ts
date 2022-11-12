@@ -1,56 +1,33 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { CSSProperties, Key, ReactElement, ReactNode } from "react";
-import { FSVGIconProps } from "../FSVGIcon/types";
+import { CSSProperties, ReactNode } from "react";
 import { FTextProps } from "../FText/types";
-import { FOnClickFunction } from "../global.types";
+import {
+	FOnClickFunction,
+	FOnHoverProperty,
+	FComponentType,
+	FComponentsType,
+} from "../global.types";
 
-export enum FButtonTypes {
-	PRIMARY = "Primary",
-	OUTLINE = "Outline",
-	SECONDARY = "Secondary",
-	TEXT = "Text",
-}
-
-type ComponentsType = ReactElement<FIconProps | FSVGIconProps> | ReactNode;
+export type FButtonTypes = "Primary" | "Secondary" | "Outline" | "Text";
 
 export interface FButtonProps {
-	key?: Key;
+	/** Four different button types. */
 	type?: FButtonTypes;
-	customChildren?: ReactNode;
+	/** If `true`, the button cannot have action event. */
 	disabled?: boolean;
+	/** Text content of button. */
 	label?: string;
+	/** Click action event of the button. */
 	onClick?: FOnClickFunction;
-	labelClassName?: (isHover?: boolean) => string;
-	labelStyle?: (isHover?: boolean) => CSSProperties;
-	labelProps?: Omit<FTextProps, "style" | "className">;
-	leadingComponents?: ComponentsType | Array<ComponentsType>;
-	actionComponents?: ComponentsType | Array<ComponentsType>;
-	/**
-	 * Example of using hover effect for className:
-	 *
-	 * _assume using **typeStyle**_
-	 *
-	 * `export const ButtonDiv = (isHover: boolean) => style({ `
-	 *
-	 * `     backgroundColor: isHover ? "white" : undefined`
-	 *
-	 * `})`
-	 *
-	 * `<FButton className={(isHover) => styles.ButtonDiv(isHover!)} />`
-	 */
-	className?: (isHover?: boolean) => string;
-	/**
-	 * Example of using inline style with hover state:
-	 *
-	 * `const buttonStyle = (hover?: boolean) => {`
-	 *
-	 * `	return {backgroundColor: hover ? "red" : "green"};`
-	 *
-	 * `};`
-	 *
-	 * `<FButton style={buttonStyle} />;`
-	 *
-	 * Without hover effect, e.g. `<FButton style={()=>({ padding: "4px" })}`
-	 */
-	style?: (isHover?: boolean) => CSSProperties;
+	/** Custom content without using `label` field. */
+	customChildren?: FOnHoverProperty<ReactNode>;
+	/** Properties of label. */
+	labelProps?: FOnHoverProperty<FTextProps>;
+	/** Custom leading component (header) of the button. */
+	leadingComponents?: FOnHoverProperty<FComponentType | FComponentsType>;
+	/** Custom action component (footer) of the button. */
+	actionComponents?: FOnHoverProperty<FComponentType | FComponentsType>;
+	/** Class name of the button. */
+	className?: FOnHoverProperty<string>;
+	/** Style of the button. */
+	style?: FOnHoverProperty<CSSProperties>;
 }

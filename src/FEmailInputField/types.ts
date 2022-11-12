@@ -1,37 +1,44 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { CSSProperties, ReactElement } from "react";
-import { FSVGIconProps } from "../FSVGIcon/types";
-import { FTextProps } from "../FText/types"; 
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
+import { CSSProperties } from "react";
+import { FTextProps } from "../FText/types";
+import { FComponentType, FOnSubmitFunction } from "../global.types";
 
 export interface FEmailInputFieldProps {
-	inputValue?: string;
-	renderInputValue?: (data: string) => void;
-	placeholder?: string;
+	/** Input email value. */
+	value?: string;
+	/** If `true`, the email inputfield is **NOT** allowed to use. */
 	disabled?: boolean;
-	// to check whether the input is in email type, e.g. @
-	checkInput?: boolean;
-	// action after pressing Enter key
-	onEnterPress?: (error?: boolean) => void;
-
-	iconComponent?: ReactElement<FSVGIconProps | FIconProps>;
-	// css style of email icon
-	iconClassName?: string;
-	iconStyle?: CSSProperties;
-	iconProps?: FIconProps;
-
+	/** Placeholder of the inputfield. */
+	placeholder?: string;
+	/** Label for the warning hints. */
 	warningLabel?: string;
-	// css style of warning label
-	warninglabelClassName?: string;
-	warningLabelStyle?: CSSProperties;
+	/** If `true`, the input will be checked
+	 * whether it is in correct email type (with `@`). */
+	autoValidateEmail?: boolean;
+	/** If `true`, it will auto focus on the input area. */
+	autoFocus?: boolean;
+	/** Action event after pressing `Enter` key. */
+	onEnterPress?: (error?: boolean) => void;
+	/** Returns the input email value. */
+	onInput?: FOnSubmitFunction<string>;
+	/** Leading component (header) of the inputfield. */
+	leadingComponent?: FComponentType;
+	/** action component (footer) of the inputfield. */
+	actionComponent?: FComponentType;
+	/** Properties of the email icon. */
+	emailIconProps?: FIconProps;
+	/** Properties of the warning label. */
 	warningLabelProps?: FTextProps;
-
-	// css style of FEmailInputField wrapper
+	/** Class name of the inputfield wrapper (with `warningLabel`). */
 	wrapperClassName?: string;
+	/** Style of the inputfield wrapper (with `warningLabel`). */
 	wrapperStyle?: CSSProperties;
-	// css style of FEmailInputField container
-	containerClassName?: string;
-	containerStyle?: CSSProperties;
-	// css style of FEmailInputField input area
-	inputAreaClassName?: string
-	inputAreaStyle?: CSSProperties 
+	/** Class name of the inputfield container. */
+	className?: string;
+	/** Style of the inputfield container. */
+	style?: CSSProperties;
+	/** Class name of the input area. */
+	inputAreaClassName?: string;
+	/** Style of the input area. */
+	inputAreaStyle?: CSSProperties;
 }

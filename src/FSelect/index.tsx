@@ -1,22 +1,36 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 import React, { useEffect, useRef, useState } from "react";
-import { FText, FDropdown, FUseColor } from "..";
-import * as styles from "./styles";
+import { FText, FDropdown, FReturnColor } from "..";
+import {
+	styles,
+	FSelectContainer,
+	FSelectContentDiv,
+	FSelectDropdownWrapper,
+} from "./styles";
 import { FSelectContainerStyleProps, FSelectProps } from "./types";
 
-export const FSelect = <T,>(props: FSelectProps<T>) => {
+/**
+ * `<FSelect />` is a component to show a button container for options selection.
+ * After clicking it, a `dropdown` with a list of data will be shown.
+ *
+ * _Caution: Input is **NOT** allowed for this select component._
+ * You should use `FInputSelect` instead.
+ *
+ * Props: `FSelectProps`.
+ */
+export const FSelect = <T,>({
+	label = "Title",
+	placeholder = "Select an option",
+	showLabelOnly = false,
+	...props
+}: FSelectProps<T>) => {
+	const [isHover, setIsHover] = useState<boolean>(false);
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
 	const FSelectWithDropdownRef = useRef<HTMLDivElement>(null);
-	const blackColor = FUseColor({
-		colorName: "Black",
-	});
-	const greyColor = FUseColor({
-		colorName: "Grey",
-	});
-	const bgLightColor = FUseColor({
-		colorName: "BG Light",
-	});
+	const blackColor = FReturnColor({ color: "Black" });
+	const greyColor = FReturnColor({ color: "Grey" });
+	const mainThemeColor = FReturnColor({ color: "Main" });
 
 	const selectorStyleProps: FSelectContainerStyleProps<T> = {
 		isClicked: openDropdown,
@@ -24,7 +38,6 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 		selectedOptions: props.selectedOptions,
 	};
 
-	const placeHolder = props.placeholder ?? "Select an option";
 	const handleSelectedOption = async (_selectedOption: any) => {
 		await props.onSelect(_selectedOption);
 		setOpenDropdown(false);
@@ -53,37 +66,31 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 	const DefaultSelector = (selectedOption: T | null) => {
 		return (
 			<>
-				{/* label */}
 				<FText
 					font={FFontTypes.Text()}
-					color={
+					color={() =>
 						openDropdown
-							? FUseColor({ colorName: "Main" })
+							? mainThemeColor
 							: selectedOption
+							? isHover
+								? mainThemeColor
+								: blackColor
+							: isHover
 							? blackColor
 							: greyColor
 					}
-					children={props.label ?? "Title"}
-					style={props.labelStyle}
-					className={props.labelClassName}
-					{...props.labelProps}
+					children={label}
+					{...(props.labelProps && props.labelProps(isHover))}
 				/>
-				{/* Content or placeHolder */}
 				<FText
 					font={FFontTypes.Large_Text()}
-					color={selectedOption === null ? greyColor : blackColor}
-					style={props.selectedOptionStyle}
-					className={
-						styles.FSelectSelectedOptionDiv +
-						" " +
-						props.selectedOptionClassName
-					}
+					color={() => (selectedOption === null ? greyColor : blackColor)}
 					{...props.selectedOptionProps}
 				>
 					{selectedOption === null
-						? props.showLabelOnly
+						? showLabelOnly
 							? ""
-							: placeHolder
+							: placeholder
 						: props.renderSelectedOptionNameOnly
 						? props.renderSelectedOptionNameOnly(selectedOption)
 						: props.renderOptionNameOnly
@@ -93,6 +100,7 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 			</>
 		);
 	};
+
 	return (
 		<div
 			style={props.wrapperStyle}
@@ -100,75 +108,77 @@ export const FSelect = <T,>(props: FSelectProps<T>) => {
 			ref={FSelectWithDropdownRef}
 		>
 			<div
-				style={props.selectorContainerStyle}
+				style={props.style && props.style(isHover)}
 				className={
-					styles.FSelectContainer(selectorStyleProps) +
+					FSelectContainer(selectorStyleProps, isHover) +
 					" " +
-					props.selectorContainerClassName
+					(props.className && props.className(isHover))
 				}
+				onMouseEnter={() => setIsHover(true)}
+				onMouseLeave={() => setIsHover(false)}
 			>
 				<div
-					style={props.contentDivStyle}
+					style={props.contentContainerStyle}
 					className={
-						styles.FSelectContentDiv(props) + " " + props.contentDivClassName
+						FSelectContentDiv(showLabelOnly) +
+						" " +
+						props.contentContainerClassName
 					}
 					onClick={() =>
 						props.disabled ? undefined : setOpenDropdown(!openDropdown)
 					}
 				>
 					{props.selectedOptions !== null
-						? props.renderCustomizedSelectedOption
-							? props.renderCustomizedSelectedOption(props.selectedOptions)
-							: props.renderCustomizedOption
-							? props.renderCustomizedOption(props.selectedOptions)
+						? props.customSelectedOption
+							? props.customSelectedOption(props.selectedOptions)
+							: props.customOption
+							? props.customOption(props.selectedOptions)
 							: DefaultSelector(props.selectedOptions)
 						: DefaultSelector(null)}
 				</div>
-				{props.iconComponent ? (
-					props.iconComponent
-				) : !props.selectedOptions ? (
-					<FIcon
-						name={FIconNames.RANKING}
-						strokeColor={openDropdown ? blackColor : bgLightColor}
-						size="small"
-						onClick={() =>
-							props.disabled ? undefined : setOpenDropdown(!openDropdown)
-						}
-						{...props.dropdownArrowIconProps}
-					/>
-				) : (
-					props.onClear &&
-					props.selectedOptions && (
-						<FIcon
-							name={FIconNames.CLOSE}
-							strokeColor={openDropdown ? blackColor : bgLightColor}
-							size="small"
-							onClick={handleClearSelectedOption}
-							{...props.clearIconProps}
-						/>
-					)
-				)}
+				{!props.selectedOptions
+					? props.customArrowIcon ?? (
+							<FIcon
+								name={FIconNames.RANKING}
+								color={(isHover) =>
+									isHover ? blackColor : openDropdown ? blackColor : greyColor
+								}
+								size="small"
+								onClick={() =>
+									props.disabled ? undefined : setOpenDropdown(!openDropdown)
+								}
+								{...props.arrowIconProps}
+							/>
+					  )
+					: props.onClear &&
+					  props.selectedOptions &&
+					  (props.customClearIcon ?? (
+							<FIcon
+								name={FIconNames.CLOSE}
+								color={(isHover) =>
+									isHover ? blackColor : openDropdown ? blackColor : greyColor
+								}
+								size="small"
+								onClick={handleClearSelectedOption}
+								{...props.clearIconProps}
+							/>
+					  ))}
 			</div>
 			{openDropdown && (
 				<div
-					style={props.dropdownContainerStyle}
+					style={props.dropdownWrapperStyle}
 					className={
-						styles.FSelectDropdownContainer(
-							FSelectWithDropdownRef,
-							openDropdown
-						) +
+						FSelectDropdownWrapper(FSelectWithDropdownRef, openDropdown) +
 						" " +
-						props.dropdownContainerClassName
+						props.dropdownWrapperClassName
 					}
 				>
-					{props.dropdownComponent ?? (
+					{props.customDropdown ?? (
 						<FDropdown
 							options={props.options}
 							selectedOptions={props.selectedOptions}
 							onSelect={handleSelectedOption}
-							dropdownContainerClassName={props.dropdownContainerClassName}
-							dropdownContainerStyle={props.dropdownContainerStyle}
-							renderCustomizedOption={props.renderCustomizedOption}
+							customOption={props.customOption}
 							renderOptionNameOnly={props.renderOptionNameOnly}
 							{...props.dropdownProps}
 						/>

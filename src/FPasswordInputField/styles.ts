@@ -1,6 +1,6 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 
 export const FPasswordInputFieldContainer = (
 	isTriggered: boolean,
@@ -18,14 +18,10 @@ export const FPasswordInputFieldContainer = (
 		border:
 			"2px solid " +
 			(isTriggered
-				? FUseColor({ colorName: "Main" })
+				? FReturnColor({ color: "Main" })
 				: isFilled
-				? FUseColor({
-						colorName: "Black",
-				  })
-				: FUseColor({
-						colorName: "BG Light",
-				  })),
+				? FReturnColor({ color: "Black" })
+				: FReturnColor({ color: "BG Light" })),
 		opacity: disabled ? 0.4 : 1,
 		cursor: disabled ? "not-allowed" : "text",
 	});
@@ -34,9 +30,7 @@ export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>
 	style({
 		backgroundColor: "inherit",
 		border: "none",
-		color: FUseColor({
-			colorName: "Black",
-		}),
+		color: FReturnColor({ color: "Black" }),
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
@@ -46,9 +40,7 @@ export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>
 		cursor: disabled ? "not-allowed" : "text",
 		$nest: {
 			"&::placeholder": {
-				color: FUseColor({
-					colorName: "Grey",
-				}),
+				color: FReturnColor({ color: "Grey" }),
 				font: FFontTypes.Large_Text(),
 			},
 		},

@@ -1,16 +1,23 @@
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
+import { InputStateProps } from "./types";
 
-export const FSearchBarContainer = (isTriggered: boolean) =>
+export const FSearchBar_Container = (state: InputStateProps) =>
 	style({
 		alignItems: "center",
-		backgroundColor: FUseColor({ colorName: "Sub" }),
+		backgroundColor: FReturnColor({ color: "White" }),
 		border:
-			"2px solid " + (isTriggered ? FUseColor({ colorName: "Main" }) : "none"),
+			"1.6px solid " +
+			FReturnColor({
+				color:
+					state.isHover || state.isTriggered || state.isFilled
+						? "Main"
+						: "Stroke Grey",
+			}),
 		borderRadius: "4px",
 		boxSizing: "border-box",
-		caretColor: FUseColor({ colorName: "Main" }),
+		caretColor: FReturnColor({ color: "Main" }),
 		columnGap: "8px",
 		cursor: "text",
 		display: "flex",
@@ -19,13 +26,11 @@ export const FSearchBarContainer = (isTriggered: boolean) =>
 		width: "100%",
 	});
 
-export const FSearchBarInputAreaDiv = () => {
-	return style({
+export const FSearchBar_InputAreaDiv = () =>
+	style({
 		backgroundColor: "inherit",
 		border: "none",
-		color: FUseColor({
-			colorName: "Black",
-		}),
+		color: FReturnColor({ color: "Black" }),
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflow: "hidden",
@@ -34,10 +39,7 @@ export const FSearchBarInputAreaDiv = () => {
 		width: "100%",
 		$nest: {
 			"&::placeholder": {
-				color: FUseColor({
-					colorName: "Grey",
-				}),
+				color: FReturnColor({ color: "Grey" }),
 			},
 		},
 	});
-};

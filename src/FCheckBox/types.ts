@@ -1,19 +1,31 @@
 import { CSSProperties } from "react";
-import { FOnClickFunction } from "../global.types";
+import {
+	FOnClickFunction,
+	FOnHoverProperty,
+	NumericStringType,
+} from "../global.types";
+
+export type FCheckBoxType = "round" | "square";
 
 export interface FCheckBoxProps {
+	/** Two different types of the checkbox. */
+	type: FCheckBoxType;
+	/** Check status of the checkbox. */
 	checked: boolean;
-	onClick: FOnClickFunction;
-	variant: "round" | "square";
+	/** If `true`, the checkbox is **NOT** able to use. */
 	disabled?: boolean;
-
-	// css style of FCheckBox container
-	containerClassName?: string;
-	containerStyle?: CSSProperties;
-
-	// css style of FCheckBox svg path
+	/** Border color of the checkbox. */
 	borderColor?: string;
+	/** Background color of the checkbox. */
 	fillColor?: string;
+	/** Icon stroke color of the checkbox. */
 	iconColor?: string;
-	strokeWidth?: number | string;
+	/** Stroke width of the checkbox. */
+	strokeWidth?: NumericStringType;
+	/** Click action event of the checkbox. */
+	onClick: FOnClickFunction;
+	/** Class name of the checkbox. */
+	className?: FOnHoverProperty<string>;
+	/** Style of the checkbox. */
+	style?: FOnHoverProperty<CSSProperties>;
 }

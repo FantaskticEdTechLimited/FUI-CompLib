@@ -1,11 +1,23 @@
 import { FEmailInputFieldProps } from "./types";
 import React, { useEffect, useRef, useState } from "react";
 import * as styles from "./styles";
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
-import { FText, FUseColor } from "..";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
+import { FText, FReturnColor } from "..";
 
-export const FEmailInputField = (props: FEmailInputFieldProps) => {
+/** `<FEmailInputField />` is a component for _email input_ only.
+ *
+ * Props: `FEmailInputFieldProps`.
+ */
+export const FEmailInputField = ({
+	placeholder = "Your Email",
+	value = "",
+	disabled = false,
+	warningLabel = "Error: Input is missing an '@'.",
+	autoValidateEmail = true,
+	autoFocus = false,
+	...props
+}: FEmailInputFieldProps) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const [enterPress, setEnterPressed] = useState<boolean>(false);
@@ -16,10 +28,15 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 		if (isTriggered && emailInputRef.current) emailInputRef.current.focus();
 	}, [isTriggered]);
 
-	// check input is of email type
 	useEffect(() => {
-		if (props.inputValue && props.inputValue.length > 0 && enterPress) {
-			if (props.inputValue.includes("@")) {
+		if (autoFocus && !disabled) setIsTriggered(true);
+		else setIsTriggered(false);
+	}, [autoFocus, disabled]);
+
+	/** Check email type if autoValidateEmail and pressing `Enter` key */
+	useEffect(() => {
+		if (value && value.length > 0 && enterPress) {
+			if (value.includes("@")) {
 				setIsError(false);
 				props.onEnterPress && props.onEnterPress(false);
 			} else {
@@ -27,45 +44,53 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 				props.onEnterPress && props.onEnterPress(true);
 			}
 		}
-	}, [props.inputValue, enterPress]);
+	}, [value, enterPress]);
+
+	/** Check email type if autoValidateEmail without pressing `Enter` key */
+	useEffect(() => {
+		if (!isTriggered && isFilled && autoValidateEmail) {
+			if (value.includes("@")) {
+				setIsError(false);
+				props.onEnterPress && props.onEnterPress(false);
+			} else {
+				setIsError(true);
+				props.onEnterPress && props.onEnterPress(true);
+			}
+		}
+	}, [value, isTriggered, isFilled, autoValidateEmail]);
 
 	return (
 		<div
 			style={props.wrapperStyle}
 			className={
-				styles.FEmailInputFieldWrapper(isError, props.disabled!) +
+				styles.FEmailInputFieldWrapper(isError, disabled!) +
 				" " +
 				props.wrapperClassName
 			}
 		>
 			<div
-				style={props.containerStyle}
+				style={props.style}
 				className={
 					styles.FEmailInputFieldContainer(isTriggered, isFilled) +
 					" " +
-					props.containerClassName
+					props.className
 				}
-				onClick={() => (props.disabled ? undefined : setIsTriggered(true))}
+				onClick={() => (disabled ? undefined : setIsTriggered(true))}
 				onBlur={() => {
 					setIsTriggered(false);
-					if (props.inputValue === undefined || props.inputValue === "")
-						setIsFilled(false);
+					if (value === undefined || value === "") setIsFilled(false);
 					else setIsFilled(true);
 				}}
 			>
-				{props.iconComponent ?? (
+				{props.leadingComponent ?? (
 					<FIcon
 						name={FIconNames.EMAIL}
-						strokeColor={
+						color={() =>
 							isTriggered
-								? FUseColor({ colorName: "Main" })
-								: FUseColor({
-										colorName: "Black",
-								  })
+								? FReturnColor({ color: "Main" })
+								: FReturnColor({ color: "Black" })
 						}
-						style={props.iconStyle}
-						className={props.iconClassName}
-						{...props.iconProps}
+						{...props.emailIconProps}
 					/>
 				)}
 				<input
@@ -75,37 +100,32 @@ export const FEmailInputField = (props: FEmailInputFieldProps) => {
 						" " +
 						props.inputAreaClassName
 					}
-					type={props.checkInput || props.disabled ? "text" : "email"}
+					type={autoValidateEmail || disabled ? "text" : "email"}
 					ref={emailInputRef}
-					value={props.inputValue ?? ""}
-					placeholder={props.placeholder ?? "Your Email"}
-					onChange={(event: any) => {
-						if (!props.disabled) {
+					value={value}
+					placeholder={placeholder}
+					onChange={(event) => {
+						if (!disabled) {
 							setEnterPressed(false);
-							setIsError(false);
-							props.renderInputValue &&
-								props.renderInputValue(event.target.value);
+							props.onInput && props.onInput(event.target.value);
 						}
 					}}
-					onKeyDown={(event: any) => {
+					onKeyDown={(event) => {
 						if (event.key === "Enter") {
-							if (!props.disabled) {
-								if (props.checkInput) setEnterPressed(true);
+							if (!disabled) {
+								if (autoValidateEmail) setEnterPressed(true);
 								else props.onEnterPress && props.onEnterPress();
 							}
 						}
 					}}
 				/>
+				{props.actionComponent}
 			</div>
 			{isError && (
 				<FText
 					font={FFontTypes.Text()}
-					color={FUseColor({
-						colorName: "Red",
-					})}
-					children={props.warningLabel ?? "Error: Input is missing an '@'."}
-					style={props.warningLabelStyle}
-					className={props.warninglabelClassName}
+					color={() => FReturnColor({ color: "Red" })}
+					children={warningLabel}
 					{...props.warningLabelProps}
 				/>
 			)}

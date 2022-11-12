@@ -1,59 +1,25 @@
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames, FIconProps } from "@innoplus-studio/fui-iconlib";
 import React from "react";
-import { FRwdModeHandler, FUseColor } from "..";
-import { FRWDMode } from "../global.types";
-import { FHeaderButtonProps, FHeaderButtonTypes } from "./types";
+import { FReturnColor } from "..";
+import { FHeaderButtonProps } from "./types";
 
 export const handleFHeaderButton = (props: FHeaderButtonProps) => {
-	const rwdMode = FRwdModeHandler(props.configureRwdSize);
-	const mainThemeColor = FUseColor({ colorName: "Main" });
+	const mainThemeColor = FReturnColor({ color: "Main" });
+	const iconProps: Partial<FIconProps> = {
+		disabled: props.disabled,
+		size: props.size,
+		color: (isHover) =>
+			isHover ? FReturnColor({ color: "White" }) : mainThemeColor,
+		...props.iconProps,
+	};
 
 	switch (props.type) {
-		case FHeaderButtonTypes.BACK:
-			return (
-				<FIcon
-					name={FIconNames.LEFT_ARROW}
-					disabled={props.disabled}
-					size={
-						props.disableAutoResize
-							? props.size
-							: rwdMode === FRWDMode.MOBILE
-							? "small"
-							: "large"
-					}
-					strokeColor={props.iconStrokeColor ?? mainThemeColor}
-				/>
-			);
-		case FHeaderButtonTypes.CLOSE:
-			return (
-				<FIcon
-					name={FIconNames.CLOSE}
-					disabled={props.disabled}
-					size={
-						props.disableAutoResize
-							? props.size
-							: rwdMode === FRWDMode.MOBILE
-							? "small"
-							: "large"
-					}
-					strokeColor={props.iconStrokeColor ?? mainThemeColor}
-				/>
-			);
-		case FHeaderButtonTypes.MORE:
-			return (
-				<FIcon
-					name={FIconNames.MORE}
-					disabled={props.disabled}
-					size={
-						props.disableAutoResize
-							? props.size
-							: rwdMode === FRWDMode.MOBILE
-							? "small"
-							: "large"
-					}
-					strokeColor={props.iconStrokeColor ?? mainThemeColor}
-				/>
-			);
+		case "Back":
+			return <FIcon name={FIconNames.LEFT_ARROW} {...iconProps} />;
+		case "Close":
+			return <FIcon name={FIconNames.CLOSE} {...iconProps} />;
+		case "More":
+			return <FIcon name={FIconNames.MORE} {...iconProps} />;
 		default:
 			return <></>;
 	}

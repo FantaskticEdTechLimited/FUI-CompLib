@@ -1,5 +1,5 @@
 import { style } from "typestyle";
-import { FUseColor } from "..";
+import { FReturnColor } from "..";
 import { FLinkButtonProps } from "./types";
 
 export const FLinkButtonContainer = (
@@ -9,9 +9,9 @@ export const FLinkButtonContainer = (
 	style({
 		alignItems: "center",
 		backgroundColor: isSelected
-			? FUseColor({ colorName: "Main" })
-			: FUseColor({
-					colorName: "White",
+			? FReturnColor({ color: "Main" })
+			: FReturnColor({
+					color: "White",
 			  }),
 		border: "none",
 		borderRadius: "4px",
@@ -23,7 +23,4 @@ export const FLinkButtonContainer = (
 		padding: "12px 12px",
 		textDecoration: "none",
 	});
-
-export const FLinkButtonLabel = style({
-	flexGrow: 1,
-});
+ 

@@ -1,36 +1,24 @@
-import { FIconProps } from "@fantaskticedtechlimited/fui-iconlib";
-import { CSSProperties, ReactElement } from "react";
-import { FOnClickFunction, FRwdSizeProps } from "../global.types";
-import { FSVGIconProps } from "../FSVGIcon/types";
+import { FIconProps } from "@innoplus-studio/fui-iconlib";
+import { CSSProperties } from "react";
+import { FComponentType, FOnClickFunction } from "../global.types";
 
-export enum FHeaderButtonTypes {
-	BACK = "Back",
-	CLOSE = "Close",
-	MORE = "More",
-}
+export type FHeaderButtonTypes = "Back" | "Close" | "More";
 
 export interface FHeaderButtonProps {
+	/** Three different header button types. */
 	type?: FHeaderButtonTypes;
-	children?: ReactElement<FSVGIconProps | FIconProps>;
-	disabled?: boolean;
-	onClick?: FOnClickFunction;
-	/**
-	 *	To disable auto resize the button based on screenWidth
-	 *
-	 *	Then can use `size` to control the button size
-	 */
-	disableAutoResize?: boolean;
-	// change rwd size
-	configureRwdSize?: FRwdSizeProps;
-	// size is only active when disableAutoResize
+	/** Two different sizes. It is **only** active if `disableAutoResize` is `true`. */
 	size?: "small" | "large";
-	/**
-	 * If need hover effect for stroke color,
-	 * use `className` with `isHover` param.
-	 */
-	iconStrokeColor?: string;
-	iconStrokeWidth?: string | number;
-	// same usage of FButton
+	/** If `true`, the header button is **NOT** allowed to use. */
+	disabled?: boolean;
+	/** Content of the header button. */
+	children?: FComponentType;
+	/** Click action event of the header button. */
+	onClick?: FOnClickFunction;
+	/** Properties of the icon. */
+	iconProps?: FIconProps;
+	/** Class name of the header button. */
 	className?: (isHover?: boolean) => string;
+	/** Style of the header button. */
 	style?: (isHover?: boolean) => CSSProperties;
 }

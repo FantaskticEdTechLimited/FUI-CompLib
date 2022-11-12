@@ -1,43 +1,60 @@
 import { FTagInputFieldProps } from "./types";
-import * as styles from "./styles";
+import {
+	styles,
+	FTagInputFieldWrapper,
+	FTagInputFieldDropdownContainer,
+	FTagInputFieldDropdownOptionDiv,
+	FTagInputFieldInputDiv,
+	FTagInputFieldInputContainer,
+	FTagInputFieldTagsDisplayDiv,
+} from "./styles";
 import { FTag } from "../FTag";
 import { useEffect, useRef, useState } from "react";
-import { FIcon, FIconNames } from "@fantaskticedtechlimited/fui-iconlib";
+import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 import { FDropdown } from "../FDropdown";
-import { FFontTypes } from "@fantaskticedtechlimited/fui-fontlib";
+import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import React from "react";
-import { FScrollBarStyle, FText, FUseColor } from "..";
+import { FScrollBarStyle, FText, FReturnColor } from "..";
 
-export const FTagInputField = <T extends unknown>(
-	props: FTagInputFieldProps<T>
-) => {
+/**
+ * `<FTagInputField />` is a component for _tag input_ only.
+ *
+ * Props: `FTagInputFieldProps`.
+ */
+export const FTagInputField = <T extends unknown>({
+	disableDropdown = false,
+	disableFilteredTags = false,
+	disabled = false,
+	placeholder = "Input Tags",
+	value = "",
+	vertical = false,
+	...props
+}: FTagInputFieldProps<T>) => {
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [filteredTagData, setFilteredTagData] = useState<any[]>([]);
 	const [arrowKeyPressCount, setArrowKeyPressCount] = useState<number>(0);
 	const [arrowKeySelectedOption, setArrowKeySelectedOption] =
 		useState<string>("");
-
-	// Ref
 	const inputRef = useRef<HTMLInputElement>(null);
 	const inputContainerRef = useRef<HTMLDivElement>(null);
-
-	// const value
-	const NewTagHintLabel =
-		(props.tagHintLabels && props.tagHintLabels.newTagHintLabel) ??
-		"Create this tag";
-	const ExitsedTagHintLabel =
-		(props.tagHintLabels && props.tagHintLabels.existedTagHintLabel) ??
+	const newTagHintLabel =
+		(props.tagHintLabels && props.tagHintLabels.newTag) ?? "Create this tag";
+	const selectedTagHintLabel =
+		(props.tagHintLabels && props.tagHintLabels.selectedTag) ??
 		"Error: Tag already exists.";
-	const isExisted = filteredTagData[0] === ExitsedTagHintLabel;
+	const isExisted = filteredTagData[0] === selectedTagHintLabel;
+	const param: Partial<FTagInputFieldProps<T>> = {
+		disableDropdown: disableDropdown,
+		disableFilteredTags: disableFilteredTags,
+		disabled: disabled,
+		placeholder: placeholder,
+		value: value,
+		vertical: vertical,
+		...props,
+	};
 
-	// compare method
 	const checkDataExist = (datas: T[], newData: string) => {
 		return datas.includes(newData as T);
-		// return datas.find((e) => {
-		// 	props.onTagCompare ? props.onTagCompare(e, newData) : e === newData;
-		// })
-		// 	? true
-		// 	: false;
 	};
 
 	useEffect(() => {
@@ -46,16 +63,16 @@ export const FTagInputField = <T extends unknown>(
 
 	useEffect(() => {
 		let tempFilteredTagData: any[] = [];
-		if (!props.disableFilteredTags) {
-			if (props.tagData && props.inputValue && props.inputValue.length > 0) {
-				props.tagData.map((tag: any) => {
+		if (!disableFilteredTags) {
+			if (props.data && value && value.length > 0) {
+				props.data.map((tag: any) => {
 					if (props.selectedTags) {
 						if (props.selectedTags.length === 0) {
-							if (tag.includes(props.inputValue)) {
+							if (tag.includes(value)) {
 								tempFilteredTagData.push(tag);
 							}
 						} else {
-							if (tag.includes(props.inputValue)) {
+							if (tag.includes(value)) {
 								props.selectedTags.map((selectedTag: any, i: number) => {
 									if (
 										tag !== selectedTag &&
@@ -72,74 +89,65 @@ export const FTagInputField = <T extends unknown>(
 						}
 					}
 				});
-				// no matter there are selectedTag tags
 				if (props.selectedTags) {
-					if (!checkDataExist(props.selectedTags, props.inputValue)) {
-						tempFilteredTagData.push(NewTagHintLabel);
+					if (!checkDataExist(props.selectedTags, value)) {
+						tempFilteredTagData.push(newTagHintLabel);
 						props.renderFilteredTagResult &&
-							props.renderFilteredTagResult({ new: true });
+							props.renderFilteredTagResult(true);
 					} else {
 						tempFilteredTagData = [];
-						tempFilteredTagData.push(ExitsedTagHintLabel);
+						tempFilteredTagData.push(selectedTagHintLabel);
 						props.renderFilteredTagResult &&
-							props.renderFilteredTagResult({ existed: true });
+							props.renderFilteredTagResult(false);
 					}
 				}
 			}
 			setFilteredTagData(tempFilteredTagData);
 		}
-	}, [
-		props.disableFilteredTags,
-		props.tagData,
-		props.inputValue,
-		props.selectedTags,
-	]);
+	}, [disableFilteredTags, props.data, value, props.selectedTags]);
 
 	useEffect(() => {
-		if (arrowKeyPressCount > 0 && inputRef.current && props.inputValue) {
-			inputRef.current.selectionEnd = props.inputValue.length;
-			inputRef.current.selectionStart = props.inputValue.length;
+		if (arrowKeyPressCount > 0 && inputRef.current && value) {
+			inputRef.current.selectionEnd = value.length;
+			inputRef.current.selectionStart = value.length;
 		}
 	}, [arrowKeyPressCount]);
 
 	useEffect(() => {
-		if (props.inputValue && props.inputValue.length > 0)
-			setArrowKeyPressCount(0);
-	}, [props.inputValue]);
+		if (value && value.length > 0) setArrowKeyPressCount(0);
+	}, [value]);
 
 	return (
 		<div
-			style={props.containerStyle}
+			style={props.style}
 			className={
-				styles.FTagInputFieldContainer(props) +
+				FTagInputFieldWrapper(param) +
 				" " +
-				props.containerClassName +
+				props.className +
 				" " +
-				FScrollBarStyle({
-					...props.scrollBarProps,
-				})
+				FScrollBarStyle({ ...props.scrollBarProps })
 			}
 		>
 			<div
 				style={props.tagsDisplayDivStyle}
 				className={
-					styles.FTagInputFieldTagsDisplayDiv(props.flexColumn!) +
+					FTagInputFieldTagsDisplayDiv(vertical) +
 					" " +
 					props.tagsDisplayDivClassName
 				}
 			>
-				{props.renderCustomizedTagComponents
-					? props.renderCustomizedTagComponents
+				{props.customTagComponent
+					? props.customTagComponent
 					: props.selectedTags &&
-					  props.selectedTags.map((selectedTag: any, i: number) => {
-							let tagId = selectedTag.id ?? i.toString();
+					  props.selectedTags.map((selectedTag, i) => {
+							let tagId = (selectedTag as any).id ?? i.toString();
 							return (
 								<FTag
 									key={i}
 									tag={selectedTag}
-									label={selectedTag}
-									labelStyle={{
-										whiteSpace: "nowrap",
+									label={(selectedTag as any).name}
+									labelProps={{
+										style: () => ({ whiteSpace: "nowrap" }),
 									}}
 									onDelete={() => props.onTagDelete && props.onTagDelete(tagId)}
 									{...props.tagProps}
@@ -156,12 +164,12 @@ export const FTagInputField = <T extends unknown>(
 				<div
 					style={props.inputContainerStyle}
 					className={
-						styles.FTagInputFieldInputContainer(isTriggered) +
+						FTagInputFieldInputContainer(isTriggered) +
 						" " +
 						props.inputContainerClassName
 					}
 					onClick={() => {
-						if (!props.disabled) {
+						if (!disabled) {
 							setArrowKeyPressCount(0);
 							setIsTriggered(true);
 						}
@@ -170,23 +178,18 @@ export const FTagInputField = <T extends unknown>(
 					ref={inputContainerRef}
 				>
 					<input
-						style={props.inputAreaStyle}
+						style={props.inputDivStyle}
 						className={
-							styles.FTagInputFieldInputAreaDiv(props) +
-							" " +
-							props.inputAreaClassName
+							FTagInputFieldInputDiv(value) + " " + props.inputDivClassName
 						}
 						type="text"
 						ref={inputRef}
-						value={props.inputValue ?? ""}
-						placeholder={props.placeholder ?? "Input Tags"}
+						value={value}
+						placeholder={placeholder}
 						onKeyDown={(event: any) => {
 							if (event.key === "ArrowDown") {
-								if (props.disableFilteredTags) {
-									if (
-										props.tagData &&
-										arrowKeyPressCount + 1 > props.tagData.length
-									)
+								if (disableFilteredTags) {
+									if (props.data && arrowKeyPressCount + 1 > props.data.length)
 										setArrowKeyPressCount(1);
 									else setArrowKeyPressCount(arrowKeyPressCount + 1);
 								} else {
@@ -199,9 +202,9 @@ export const FTagInputField = <T extends unknown>(
 								}
 							}
 							if (event.key === "ArrowUp") {
-								if (props.disableFilteredTags) {
-									if (props.tagData && arrowKeyPressCount - 1 <= 0)
-										setArrowKeyPressCount(props.tagData.length);
+								if (disableFilteredTags) {
+									if (props.data && arrowKeyPressCount - 1 <= 0)
+										setArrowKeyPressCount(props.data.length);
 									else setArrowKeyPressCount(arrowKeyPressCount - 1);
 								} else {
 									if (filteredTagData && arrowKeyPressCount - 1 <= 0)
@@ -213,58 +216,55 @@ export const FTagInputField = <T extends unknown>(
 							if (event.key === "Enter") {
 								let bool = false;
 								if (arrowKeyPressCount === 0) {
-									// does not use dropdown
 									if (
 										props.selectedTags &&
 										props.selectedTags.length > 0 &&
-										props.inputValue &&
-										props.inputValue.length > 0
+										value &&
+										value.length > 0
 									) {
 										props.selectedTags.map((selectedTag: any, i: number) => {
-											if (props.inputValue === selectedTag) bool = true;
+											if (value === selectedTag) bool = true;
 											if (
 												!bool &&
 												props.selectedTags &&
 												i + 1 >= props.selectedTags.length &&
-												props.inputValue !== selectedTag &&
-												props.inputValue !== ExitsedTagHintLabel &&
-												props.inputValue !== NewTagHintLabel
+												value !== selectedTag &&
+												value !== selectedTagHintLabel &&
+												value !== newTagHintLabel
 											) {
-												props.onTagCreate &&
-													props.onTagCreate(props.inputValue!);
-												props.renderInputValue && props.renderInputValue("");
+												props.onTagCreate && props.onTagCreate(value!);
+												props.onInput && props.onInput("");
 											}
 										});
 									} else {
 										if (
-											props.inputValue !== ExitsedTagHintLabel &&
-											props.inputValue !== NewTagHintLabel
+											value !== selectedTagHintLabel &&
+											value !== newTagHintLabel
 										) {
-											props.onTagCreate && props.onTagCreate(props.inputValue!);
-											props.renderInputValue && props.renderInputValue("");
+											props.onTagCreate && props.onTagCreate(value!);
+											props.onInput && props.onInput("");
 										}
 									}
 								} else {
-									// use dropdown with arrow keys
 									if (
-										!props.disableFilteredTags &&
-										props.inputValue &&
-										props.inputValue.length > 0 &&
-										arrowKeySelectedOption !== ExitsedTagHintLabel &&
-										arrowKeySelectedOption !== NewTagHintLabel &&
+										!disableFilteredTags &&
+										value &&
+										value.length > 0 &&
+										arrowKeySelectedOption !== selectedTagHintLabel &&
+										arrowKeySelectedOption !== newTagHintLabel &&
 										props.onTagCreate
 									) {
 										props.onTagCreate(arrowKeySelectedOption);
-										props.renderInputValue && props.renderInputValue("");
+										props.onInput && props.onInput("");
 									} else {
 										if (
-											props.inputValue &&
-											props.inputValue.length > 0 &&
-											props.inputValue !== ExitsedTagHintLabel &&
-											props.inputValue !== NewTagHintLabel &&
+											value &&
+											value.length > 0 &&
+											value !== selectedTagHintLabel &&
+											value !== newTagHintLabel &&
 											props.selectedTags &&
 											props.selectedTags.length > 0 &&
-											arrowKeySelectedOption !== ExitsedTagHintLabel
+											arrowKeySelectedOption !== selectedTagHintLabel
 										)
 											props.selectedTags.map((selectedTag: any, i: number) => {
 												if (arrowKeySelectedOption === selectedTag) bool = true;
@@ -272,13 +272,13 @@ export const FTagInputField = <T extends unknown>(
 													!bool &&
 													props.selectedTags &&
 													i + 1 >= props.selectedTags.length &&
-													props.inputValue !== selectedTag &&
+													value !== selectedTag &&
 													props.onTagCreate
 												) {
-													if (arrowKeySelectedOption === NewTagHintLabel)
-														props.onTagCreate(props.inputValue!);
+													if (arrowKeySelectedOption === newTagHintLabel)
+														props.onTagCreate(value!);
 													else props.onTagCreate(arrowKeySelectedOption);
-													props.renderInputValue && props.renderInputValue("");
+													props.onInput && props.onInput("");
 												}
 											});
 									}
@@ -286,93 +286,60 @@ export const FTagInputField = <T extends unknown>(
 							}
 						}}
 						onChange={(event: any) => {
-							props.renderInputValue &&
-								props.renderInputValue(event.target.value);
+							props.onInput && props.onInput(event.target.value);
 						}}
 					/>
-					{props.inputValue && props.inputValue.length > 0 && (
+					{value && value.length > 0 && (
 						<FIcon
 							size="small"
 							name={FIconNames.CLOSE}
-							onClick={() =>
-								props.renderInputValue && props.renderInputValue("")
-							}
+							onClick={() => props.onInput && props.onInput("")}
 							{...props.clearIconProps}
 						/>
 					)}
 				</div>
-				{props.inputValue && props.inputValue.length > 0 && (
-					<div
-						className={styles.FTagInputFieldDropdownContainer(
-							inputContainerRef
-						)}
-					>
-						{props.renderCustomizedDropdownComponent}
-						{!props.disableDropdown &&
-							!props.renderCustomizedDropdownComponent && (
-								<FDropdown
-									options={
-										props.disableFilteredTags ? props.tagData! : filteredTagData
-									}
-									selectedOptions={props.selectedTags}
-									onSelect={(option: any) => {
-										console.log("option", option);
-										// if (
-										// 	!props.disableFilteredTags &&
-										// 	option !== ExitsedTagHintLabel &&
-										// 	props.inputValue !== NewTagHintLabel &&
-										// 	props.inputValue !== ExitsedTagHintLabel
-										// ) {
-										// 	if (option === NewTagHintLabel)
-										// 		props.onTagCreate &&
-										// 			props.onTagCreate(props.inputValue!);
-										// 	else props.onTagCreate && props.onTagCreate(option);
-										// 	props.renderInputValue && props.renderInputValue("");
-										// } else {
-										// 	if (
-										// 		!selected &&
-										// 		option !== ExitsedTagHintLabel &&
-										// 		option !== NewTagHintLabel
-										// 	) {
-										// 		props.onTagCreate && props.onTagCreate(option);
-										// 		props.renderInputValue && props.renderInputValue("");
-										// 	}
-										// }
-										setIsTriggered(true);
-									}}
-									arrowKeyPressCount={arrowKeyPressCount}
-									hideSelectedOptions={!props.disableFilteredTags}
-									renderArrowKeySelectedOption={(option: any) => {
-										setTimeout(() => setArrowKeySelectedOption(option), 0);
-									}}
-									renderCustomizedOption={(option: any, selected: boolean) => (
-										<FText
-											font={FFontTypes.Large_Text()}
-											color={
-												option === NewTagHintLabel
-													? FUseColor({
-															colorName: "Grey",
-													  })
-													: option === ExitsedTagHintLabel
-													? FUseColor({
-															colorName: "Red",
-													  })
-													: FUseColor({
-															colorName: "Black",
-													  })
-											}
-											className={styles.FTagInputFieldDropdownOptionDiv(
-												selected,
-												option === NewTagHintLabel,
-												option === ExitsedTagHintLabel
-											)}
-										>
-											{option}
-										</FText>
-									)}
-									{...props.dropdownProps}
-								/>
-							)}
+				{value && value.length > 0 && (
+					<div className={FTagInputFieldDropdownContainer(inputContainerRef)}>
+						{!disableDropdown
+							? props.customDropdown ?? (
+									<FDropdown
+										options={
+											disableFilteredTags ? props.data! : filteredTagData
+										}
+										selectedOptions={props.selectedTags}
+										onSelect={(option: any) => {
+											setIsTriggered(true);
+											props.onTagCreate && props.onTagCreate(option);
+										}}
+										arrowKeyPressCount={arrowKeyPressCount}
+										hideSelectedOptions={!disableFilteredTags}
+										renderArrowKeySelectedOption={(option: any) => {
+											setTimeout(() => setArrowKeySelectedOption(option), 0);
+										}}
+										customOption={(option: any, selected: boolean) => (
+											<FText
+												font={FFontTypes.Large_Text()}
+												color={() =>
+													option === newTagHintLabel
+														? FReturnColor({ color: "Grey" })
+														: option === selectedTagHintLabel
+														? FReturnColor({ color: "Red" })
+														: FReturnColor({ color: "Black" })
+												}
+												className={() =>
+													FTagInputFieldDropdownOptionDiv(
+														selected,
+														option === newTagHintLabel,
+														option === selectedTagHintLabel
+													)
+												}
+												children={option}
+											/>
+										)}
+										{...props.dropdownProps}
+									/>
+							  )
+							: null}
 					</div>
 				)}
 			</div>
