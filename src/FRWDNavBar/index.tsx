@@ -49,14 +49,15 @@ export const FRWDNavBar = (props: FRWDNavBarProps) => {
 						}
 					>
 						{props.logo ?? props.topBarLeadingComponents}
-						{(
+						{ props.topBarCustomMenuIcon ?
+						(
 							<div
 								onClick={() => setOpenSideBar(true)}
 								{...props.topBarCustomMenuIconProps}
 							>
 								{props.topBarCustomMenuIcon}
 							</div>
-						) ?? (
+						) : (
 							<FIcon
 								name={FIconNames.MENU}
 								onClick={() => setOpenSideBar(true)}
