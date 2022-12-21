@@ -44,6 +44,7 @@ import { FCheckIsToday } from "./utils/FCheckIsToday";
 import { FCountDownTimer } from "./utils/FCountDownTimer";
 import { FCountTimer } from "./utils/FCountTimer";
 import { FFirstCharUppercase } from "./utils/FFirstCharUppercase";
+import { FJoinClassNames } from "./utils/FJoinClassNames";
 import { FOverrideStyle } from "./utils/FOverrideStyle";
 import { FRemoveTypeName } from "./utils/FRemoveTypeName";
 import { FReturnArray } from "./utils/FReturnArray";
@@ -178,6 +179,7 @@ export {
 	FCountDownTimer,
 	FCountTimer,
 	FFirstCharUppercase,
+	FJoinClassNames,
 	FOverrideStyle,
 	FRemoveTypeName,
 	FReturnArray,

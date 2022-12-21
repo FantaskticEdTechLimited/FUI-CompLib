@@ -1,11 +1,12 @@
-import { style } from "typestyle";
+import { style, stylesheet } from "typestyle";
 import { FCheckIsDarkThemeMode, FReturnColor } from "..";
 import { FRWDMode } from "../global.types";
-import { FRWDNavBarProps } from "./types";
+import { OverlayEnterSide } from "./types";
 
-export const FHiddenSideBarOverlay = (
-	props: FRWDNavBarProps,
-	isOpen: boolean
+export const hiddenSideBarOverlay = (
+	visible: boolean,
+	isOpen: boolean,
+	overlayEnterSide: OverlayEnterSide
 ) =>
 	style({
 		position: "fixed",
@@ -15,16 +16,15 @@ export const FHiddenSideBarOverlay = (
 			FReturnColor({ color: "Dark" }) + FCheckIsDarkThemeMode()
 				? undefined
 				: "66",
-		display: props.visible && isOpen ? "flex" : "none",
+		display: visible && isOpen ? "flex" : "none",
 		flexDirection: "row",
-		justifyContent:
-			props.overlayEnterSide === "left" ? "flex-start" : "flex-end",
+		justifyContent: overlayEnterSide === "left" ? "flex-start" : "flex-end",
 		width: isOpen ? "100vw" : undefined,
 		zIndex: 20,
 		overflow: "hidden",
 	});
 
-export const FHiddenSideBarContainer = () =>
+export const hiddenSideBarContainer = () =>
 	style({
 		width: "240px",
 		backgroundColor: FReturnColor({ color: "Main" }),
@@ -37,7 +37,7 @@ export const FHiddenSideBarContainer = () =>
 		boxShadow: "0 0 8px rgba(72, 63, 226, 0.16)",
 	});
 
-export const FNormalSideNavBarContainer = () =>
+export const sideBarContainer = () =>
 	style({
 		height: "100vh",
 		width: "240px",
@@ -52,40 +52,42 @@ export const FNormalSideNavBarContainer = () =>
 		boxShadow: "0 0 8px rgba(72, 63, 226, 0.16)",
 	});
 
-export const FSideNavBar_ContentDiv = style({
-	width: "100%",
-	flexGrow: 1,
-	boxSizing: "border-box",
-	overflowX: "hidden",
-	overflowY: "scroll",
-	zIndex: 20,
-	display: "flex",
-	flexDirection: "column",
+export const styles = stylesheet({
+	contentDiv: {
+		width: "100%",
+		flexGrow: 1,
+		boxSizing: "border-box",
+		overflowX: "hidden",
+		overflowY: "scroll",
+		zIndex: 20,
+		display: "flex",
+		flexDirection: "column",
+	},
 });
 
-export const FTopNavBarContainer = (props: FRWDNavBarProps) =>
+export const topBarContainer = (visible: boolean, rwdMode: FRWDMode) =>
 	style({
 		backgroundColor: FReturnColor({ color: "Main" }),
 		border: "1px solid " + FReturnColor({ color: "BG Light" }),
 		boxShadow: "0 0 8px " + FReturnColor({ color: "Sub" }),
 		boxSizing: "border-box",
-		display: props.visible ? "flex" : "none",
+		display: visible ? "flex" : "none",
 		flexDirection: "row",
 		justifyContent: "space-between",
 		alignItems: "center",
-		padding: props.rwdMode === FRWDMode.MOBILE ? "8px 16px" : "12px 24px",
+		padding: rwdMode === FRWDMode.MOBILE ? "8px 16px" : "12px 24px",
 		width: "100%",
 		zIndex: 15,
 	});
 
-export const FTopNavBarContainer_MenuIcon = () =>
+export const topBarMenuIcon = () =>
 	style({
 		borderRadius: "4px",
 		backgroundColor: FReturnColor({ color: "Sub" }),
 		padding: "4px",
 	});
 
-export const FTopNavBarContainer_CloseIcon = () =>
+export const topBarCloseIcon = () =>
 	style({
 		borderRadius: "4px",
 		backgroundColor: FReturnColor({ color: "Sub" }),
@@ -93,7 +95,7 @@ export const FTopNavBarContainer_CloseIcon = () =>
 		alignSelf: "flex-end",
 	});
 
-export const Divider = () =>
+export const dividerDiv = () =>
 	style({
 		height: "2px",
 		backgroundColor: FReturnColor({ color: "White" }),

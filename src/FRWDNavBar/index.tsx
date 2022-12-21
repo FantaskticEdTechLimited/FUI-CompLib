@@ -3,7 +3,17 @@ import React from "react";
 import { useState, useEffect, useRef, Fragment } from "react";
 import { FReturnColor, FScrollBarStyle } from "..";
 import { FRWDMode } from "../global.types";
-import * as styles from "./styles";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
+import {
+	styles,
+	topBarContainer,
+	topBarCloseIcon,
+	topBarMenuIcon,
+	hiddenSideBarContainer,
+	hiddenSideBarOverlay,
+	sideBarContainer,
+	dividerDiv,
+} from "./styles";
 import { FRWDNavBarProps } from "./types";
 
 /**
@@ -13,16 +23,43 @@ import { FRWDNavBarProps } from "./types";
  * Props: `FRWDNavBarProps`.
  */
 export const FRWDNavBar = (props: FRWDNavBarProps) => {
-	const [openSideBar, setOpenSideBar] = useState<boolean>(false);
-	const OpenedSideNavBarRef = useRef<HTMLDivElement>(null);
+	const {
+		rwdMode,
+		overlayEnterSide,
+		children,
+		visible,
+		forcedToClose,
+		overlayStyle,
+		overlayClassName,
+		dividerStyle,
+		dividerClassName,
+		needDivider,
+		containerStyle,
+		containerClassName,
+		contentDivStyle,
+		contentDivClassName,
+		topBarStyle,
+		topBarClassName,
+		topBarCustomCloseIcon,
+		topBarCustomCloseIconProps,
+		topBarCustomMenuIcon,
+		topBarCustomMenuIconProps,
+		topBarLeadingComponents,
+		logo,
+		menuIconProps,
+		closeIconProps,
+		scrollBarProps,
+	} = props;
+	const [isSideBarOpen, setIsSideBarOpen] = useState<boolean>(false);
+	const hiddenSideBarRef = useRef<HTMLDivElement>(null);
 	const mainThemeColor = FReturnColor({ color: "Main" });
 
 	const handleClickOutside = (event: any) => {
 		if (
-			OpenedSideNavBarRef.current &&
-			!OpenedSideNavBarRef.current.contains(event.target)
+			hiddenSideBarRef.current &&
+			!hiddenSideBarRef.current.contains(event.target)
 		)
-			setOpenSideBar(false);
+			setIsSideBarOpen(false);
 	};
 
 	useEffect(() => {
@@ -33,123 +70,113 @@ export const FRWDNavBar = (props: FRWDNavBarProps) => {
 	}, []);
 
 	useEffect(() => {
-		if (props.forcedToClose) setOpenSideBar(false);
-	}, [props.forcedToClose]);
+		if (forcedToClose) setIsSideBarOpen(false);
+	}, [forcedToClose]);
 
 	return (
 		<>
-			{/* Mobile Mode */}
-			{props.rwdMode !== FRWDMode.PC ? (
+			{rwdMode !== FRWDMode.PC ? (
 				<Fragment>
-					{/* Top Bar */}
 					<div
-						style={props.topBarStyle}
-						className={
-							styles.FTopNavBarContainer(props) + " " + props.topBarClassName
-						}
+						style={topBarStyle}
+						className={FJoinClassNames([
+							topBarContainer(visible, rwdMode),
+							topBarClassName,
+						])}
 					>
-						{props.logo ?? props.topBarLeadingComponents}
-						{ props.topBarCustomMenuIcon ?
-						(
+						{logo ?? topBarLeadingComponents}
+						{topBarCustomMenuIcon ? (
 							<div
-								onClick={() => setOpenSideBar(true)}
-								{...props.topBarCustomMenuIconProps}
+								onClick={() => setIsSideBarOpen(true)}
+								{...topBarCustomMenuIconProps}
 							>
-								{props.topBarCustomMenuIcon}
+								{topBarCustomMenuIcon}
 							</div>
 						) : (
 							<FIcon
 								name={FIconNames.MENU}
-								onClick={() => setOpenSideBar(true)}
+								onClick={() => setIsSideBarOpen(true)}
 								color={() => mainThemeColor}
-								className={() => styles.FTopNavBarContainer_MenuIcon()}
-								{...props.menuIconProps}
+								className={() => topBarMenuIcon()}
+								{...menuIconProps}
 							/>
 						)}
 					</div>
 
 					{/* Hidden SideBar */}
 					<div
-						style={props.overlayStyle}
-						className={
-							styles.FHiddenSideBarOverlay(props, openSideBar) +
-							" " +
-							props.overlayClassName
-						}
+						style={overlayStyle}
+						className={FJoinClassNames([
+							hiddenSideBarOverlay(visible, isSideBarOpen, overlayEnterSide),
+							overlayClassName,
+						])}
 					>
 						{/* Menu location controller */}
 						<div
-							className={
-								styles.FHiddenSideBarContainer() +
-								" " +
-								props.containerClassName
-							}
-							style={props.containerStyle}
-							ref={OpenedSideNavBarRef}
+							className={FJoinClassNames([
+								hiddenSideBarContainer(),
+								containerClassName,
+							])}
+							style={containerStyle}
+							ref={hiddenSideBarRef}
 						>
-							{props.topBarCustomCloseIcon ? (
+							{topBarCustomCloseIcon ? (
 								<div
-									onClick={() => setOpenSideBar(false)}
-									{...props.topBarCustomCloseIconProps}
+									onClick={() => setIsSideBarOpen(false)}
+									{...topBarCustomCloseIconProps}
 								>
-									{props.topBarCustomCloseIcon}
+									{topBarCustomCloseIcon}
 								</div>
 							) : (
 								<FIcon
 									name={FIconNames.CLOSE}
 									size="large"
-									onClick={() => setOpenSideBar(false)}
+									onClick={() => setIsSideBarOpen(false)}
 									color={() => mainThemeColor}
-									className={() => styles.FTopNavBarContainer_CloseIcon()}
-									{...props.closeIconProps}
+									className={() => topBarCloseIcon()}
+									{...closeIconProps}
 								/>
 							)}
 							<div
-								style={props.contentDivStyle}
-								className={
-									styles.FSideNavBar_ContentDiv +
-									" " +
-									props.contentDivClassName +
-									" " +
+								style={contentDivStyle}
+								className={FJoinClassNames([
+									styles.contentDiv,
+									contentDivClassName,
 									FScrollBarStyle({
-										...props.scrollBarProps,
-									})
-								}
+										...scrollBarProps,
+									}),
+								])}
 							>
-								{props.children}
+								{children}
 							</div>
 						</div>
 					</div>
 				</Fragment>
 			) : (
-				//  Normal SideBar
-				<Fragment>
-					<div
-						className={
-							styles.FNormalSideNavBarContainer() +
-							" " +
-							props.containerClassName
-						}
-						style={props.containerStyle}
-					>
-						{props.logo}
-						{props.needDivider && <div className={styles.Divider()} />}
+				<div
+					className={FJoinClassNames([sideBarContainer(), containerClassName])}
+					style={containerStyle}
+				>
+					{logo}
+					{needDivider && (
 						<div
-							className={
-								styles.FSideNavBar_ContentDiv +
-								" " +
-								props.contentDivClassName +
-								" " +
-								FScrollBarStyle({
-									...props.scrollBarProps,
-								})
-							}
-							style={props.contentDivStyle}
-						>
-							{props.children}
-						</div>
+							style={dividerStyle}
+							className={FJoinClassNames([dividerDiv(), dividerClassName])}
+						/>
+					)}
+					<div
+						className={FJoinClassNames([
+							styles.contentDiv,
+							contentDivClassName,
+							FScrollBarStyle({
+								...scrollBarProps,
+							}),
+						])}
+						style={contentDivStyle}
+					>
+						{children}
 					</div>
-				</Fragment>
+				</div>
 			)}
 		</>
 	);
