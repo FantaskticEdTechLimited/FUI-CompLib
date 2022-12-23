@@ -66,7 +66,8 @@ export const FSearchBar = (props: FSearchBarProps) => {
 			<input
 				style={inputStyle && inputStyle(inputState)}
 				className={FJoinClassNames([
-					(inputAreaDiv(), inputClassName && inputClassName(inputState)),
+					inputAreaDiv(),
+					inputClassName && inputClassName(inputState),
 				])}
 				type="text"
 				ref={inputRef}
