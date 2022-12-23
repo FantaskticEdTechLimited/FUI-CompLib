@@ -1,12 +1,13 @@
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
-import React, { useEffect, useRef, useState } from "react";
-import { FText, FDropdown, FReturnColor } from "..";
+import React, { useRef, useState } from "react";
+import { useHover, useOnClickOutside } from "usehooks-ts";
+import { FText, FDropdown, FReturnColor, FJoinClassNames } from "..";
 import {
 	styles,
-	FSelectContainer,
-	FSelectContentDiv,
-	FSelectDropdownWrapper,
+	selectContainer,
+	contentDiv,
+	selectDropdownWrapper,
 } from "./styles";
 import { FSelectContainerStyleProps, FSelectProps } from "./types";
 
@@ -19,56 +20,79 @@ import { FSelectContainerStyleProps, FSelectProps } from "./types";
  *
  * Props: `FSelectProps`.
  */
-export const FSelect = <T,>({
-	label = "Title",
-	placeholder = "Select an option",
-	showLabelOnly = false,
-	...props
-}: FSelectProps<T>) => {
-	const [isHover, setIsHover] = useState<boolean>(false);
+export const FSelect = <T,>(props: FSelectProps<T>) => {
+	const {
+		ref: ref,
+		label = "Title",
+		placeholder = "Select an option",
+		showLabelOnly = false,
+		disabled,
+		selectedOptions,
+		selectedOptionProps,
+		labelProps,
+		onSelect,
+		onClear,
+		options,
+		customOption,
+		renderOptionNameOnly,
+		renderSelectedOptionNameOnly,
+		style,
+		wrapperStyle,
+		dropdownWrapperStyle,
+		contentContainerStyle,
+		className,
+		wrapperClassName,
+		dropdownWrapperClassName,
+		contentContainerClassName,
+		dropdownProps,
+		arrowIconProps,
+		clearIconProps,
+		customArrowIcon,
+		customClearIcon,
+		customDropdown,
+		customSelectedOption,
+	} = props;
+
+	const hoverRef = useRef(null);
+	const isHover = useHover(hoverRef);
 	const [openDropdown, setOpenDropdown] = useState<boolean>(false);
-	const FSelectWithDropdownRef = useRef<HTMLDivElement>(null);
+	const withDropdownRef = useRef<HTMLDivElement>(null);
 	const blackColor = FReturnColor({ color: "Black" });
 	const greyColor = FReturnColor({ color: "Grey" });
 	const mainThemeColor = FReturnColor({ color: "Main" });
 
 	const selectorStyleProps: FSelectContainerStyleProps<T> = {
 		isClicked: openDropdown,
-		disabled: props.disabled!,
-		selectedOptions: props.selectedOptions,
+		disabled: disabled!,
+		selectedOptions: selectedOptions,
 	};
 
 	const handleSelectedOption = async (_selectedOption: any) => {
-		await props.onSelect(_selectedOption);
+		await onSelect(_selectedOption);
 		setOpenDropdown(false);
 	};
 
 	const handleClearSelectedOption = () => {
-		if (props.onClear) props.onClear();
+		if (onClear) onClear();
 		setOpenDropdown(false);
 	};
 
 	const handleClickOutside = (event: any) => {
 		if (
-			FSelectWithDropdownRef.current &&
-			!FSelectWithDropdownRef.current.contains(event.target)
+			withDropdownRef.current &&
+			!withDropdownRef.current.contains(event.target)
 		)
 			setOpenDropdown(false);
 	};
 
-	useEffect(() => {
-		window.addEventListener("mousedown", handleClickOutside);
-		return () => {
-			window.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, []);
+	useOnClickOutside(withDropdownRef, handleClickOutside);
 
 	const DefaultSelector = (selectedOption: T | null) => {
 		return (
 			<>
 				<FText
 					font={FFontTypes.Text()}
-					color={() =>
+					color={
 						openDropdown
 							? mainThemeColor
 							: selectedOption
@@ -80,21 +104,21 @@ export const FSelect = <T,>({
 							: greyColor
 					}
 					children={label}
-					{...(props.labelProps && props.labelProps(isHover))}
+					{...labelProps}
 				/>
 				<FText
 					font={FFontTypes.Large_Text()}
-					color={() => (selectedOption === null ? greyColor : blackColor)}
-					{...props.selectedOptionProps}
+					color={selectedOption === null ? greyColor : blackColor}
+					{...selectedOptionProps}
 				>
 					{selectedOption === null
 						? showLabelOnly
 							? ""
 							: placeholder
-						: props.renderSelectedOptionNameOnly
-						? props.renderSelectedOptionNameOnly(selectedOption)
-						: props.renderOptionNameOnly
-						? props.renderOptionNameOnly(selectedOption)
+						: renderSelectedOptionNameOnly
+						? renderSelectedOptionNameOnly(selectedOption)
+						: renderOptionNameOnly
+						? renderOptionNameOnly(selectedOption)
 						: (selectedOption as unknown as string)}
 				</FText>
 			</>
@@ -103,84 +127,85 @@ export const FSelect = <T,>({
 
 	return (
 		<div
-			style={props.wrapperStyle}
-			className={styles.FSelectWrapper + " " + props.wrapperClassName}
-			ref={FSelectWithDropdownRef}
+			style={wrapperStyle}
+			className={FJoinClassNames([styles.selectWrapper, wrapperClassName])}
+			ref={withDropdownRef}
 		>
 			<div
-				style={props.style && props.style(isHover)}
-				className={
-					FSelectContainer(selectorStyleProps, isHover) +
-					" " +
-					(props.className && props.className(isHover))
-				}
-				onMouseEnter={() => setIsHover(true)}
-				onMouseLeave={() => setIsHover(false)}
+				ref={ref ?? hoverRef}
+				style={style}
+				className={FJoinClassNames([
+					selectContainer(selectorStyleProps, isHover),
+					className,
+				])}
 			>
 				<div
-					style={props.contentContainerStyle}
-					className={
-						FSelectContentDiv(showLabelOnly) +
-						" " +
-						props.contentContainerClassName
-					}
+					style={contentContainerStyle}
+					className={FJoinClassNames([
+						contentDiv(showLabelOnly),
+						contentContainerClassName,
+					])}
 					onClick={() =>
-						props.disabled ? undefined : setOpenDropdown(!openDropdown)
+						disabled ? undefined : setOpenDropdown(!openDropdown)
 					}
 				>
-					{props.selectedOptions !== null
-						? props.customSelectedOption
-							? props.customSelectedOption(props.selectedOptions)
-							: props.customOption
-							? props.customOption(props.selectedOptions)
-							: DefaultSelector(props.selectedOptions)
+					{selectedOptions !== null
+						? customSelectedOption
+							? customSelectedOption(selectedOptions)
+							: customOption
+							? customOption(selectedOptions)
+							: DefaultSelector(selectedOptions)
 						: DefaultSelector(null)}
 				</div>
-				{!props.selectedOptions
-					? props.customArrowIcon ?? (
-							<FIcon
-								name={FIconNames.RANKING}
-								color={(isHover) =>
-									isHover ? blackColor : openDropdown ? blackColor : greyColor
-								}
-								size="small"
-								onClick={() =>
-									props.disabled ? undefined : setOpenDropdown(!openDropdown)
-								}
-								{...props.arrowIconProps}
-							/>
-					  )
-					: props.onClear &&
-					  props.selectedOptions &&
-					  (props.customClearIcon ?? (
-							<FIcon
-								name={FIconNames.CLOSE}
-								color={(isHover) =>
-									isHover ? blackColor : openDropdown ? blackColor : greyColor
-								}
-								size="small"
-								onClick={handleClearSelectedOption}
-								{...props.clearIconProps}
-							/>
-					  ))}
+				{!selectedOptions ? (
+					customArrowIcon ? (
+						customArrowIcon
+					) : (
+						<FIcon
+							name={FIconNames.RANKING}
+							color={(isHover) =>
+								isHover ? blackColor : openDropdown ? blackColor : greyColor
+							}
+							size="small"
+							onClick={() =>
+								disabled ? undefined : setOpenDropdown(!openDropdown)
+							}
+							{...arrowIconProps}
+						/>
+					)
+				) : (
+					onClear &&
+					selectedOptions &&
+					(customClearIcon ?? (
+						<FIcon
+							name={FIconNames.CLOSE}
+							color={(isHover) =>
+								isHover ? blackColor : openDropdown ? blackColor : greyColor
+							}
+							size="small"
+							onClick={handleClearSelectedOption}
+							{...clearIconProps}
+						/>
+					))
+				)}
 			</div>
 			{openDropdown && (
 				<div
-					style={props.dropdownWrapperStyle}
+					style={dropdownWrapperStyle}
 					className={
-						FSelectDropdownWrapper(FSelectWithDropdownRef, openDropdown) +
+						selectDropdownWrapper(withDropdownRef, openDropdown) +
 						" " +
-						props.dropdownWrapperClassName
+						dropdownWrapperClassName
 					}
 				>
-					{props.customDropdown ?? (
+					{customDropdown ?? (
 						<FDropdown
-							options={props.options}
-							selectedOptions={props.selectedOptions}
+							options={options}
+							selectedOptions={selectedOptions}
 							onSelect={handleSelectedOption}
-							customOption={props.customOption}
-							renderOptionNameOnly={props.renderOptionNameOnly}
-							{...props.dropdownProps}
+							customOption={customOption}
+							renderOptionNameOnly={renderOptionNameOnly}
+							{...dropdownProps}
 						/>
 					)}
 				</div>

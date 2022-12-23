@@ -1,7 +1,7 @@
-import { style } from "typestyle";
+import { style, stylesheet } from "typestyle";
 import { FOverrideStyle, FReturnColor } from "..";
 
-export const FDoubleTabs_Wrapper = (disabled: boolean) =>
+export const doubleTabsWrapper = (disabled: boolean) =>
 	style({
 		display: "flex",
 		flexDirection: "column",
@@ -12,15 +12,17 @@ export const FDoubleTabs_Wrapper = (disabled: boolean) =>
 		opacity: disabled ? 0.4 : 1,
 	});
 
-export const FDoubleTabs_Header = style({
-	display: "flex",
-	flexDirection: "row",
-	alignItems: "center",
-	alignSelf: "center",
-	width: "fit-content",
+export const styles = stylesheet({
+	doubleTabsHeader: {
+		display: "flex",
+		flexDirection: "row",
+		alignItems: "center",
+		alignSelf: "center",
+		width: "fit-content",
+	},
 });
 
-export const FDoubleTabs_TabsContainer = () =>
+export const doubleTabsTabContainer = () =>
 	style({
 		display: "flex",
 		flex: 1,
@@ -34,7 +36,7 @@ export const FDoubleTabs_TabsContainer = () =>
 		borderRadius: "8px",
 	});
 
-export const FDoubleTabs_TabButton_Container = (isSelected: boolean) =>
+export const doubleTabsTabButtonContainer = (isSelected: boolean) =>
 	style({
 		display: "flex",
 		justifyContent: "center",

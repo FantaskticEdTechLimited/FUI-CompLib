@@ -1,7 +1,7 @@
 import { style } from "typestyle";
 import { FReturnColor } from "..";
 
-export const FSwitchButtonDiv = (checked?: boolean, disabled?: boolean) =>
+export const buttonDiv = (checked?: boolean, disabled?: boolean) =>
 	style({
 		alignItems: "center",
 		backgroundColor: checked ? FReturnColor({ color: "Green" }) : undefined,

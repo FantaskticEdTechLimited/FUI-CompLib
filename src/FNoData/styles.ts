@@ -1,7 +1,7 @@
 import { stylesheet } from "typestyle";
 
 export const styles = stylesheet({
-	FNoData_Container: {
+	noDataContainer: {
 		flexGrow: 1,
 		alignItems: "center",
 		display: "flex",

@@ -1,9 +1,8 @@
 import { style } from "typestyle";
-import { FInputFieldProps } from "./types";
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FReturnColor } from "..";
 
-export const FInputFieldContainer = (hasWordCount?: boolean) =>
+export const inputFieldContainer = (hasWordCount?: boolean) =>
 	style({
 		display: "flex",
 		flexDirection: "column",
@@ -11,10 +10,11 @@ export const FInputFieldContainer = (hasWordCount?: boolean) =>
 		width: "100%",
 	});
 
-export const FInputFieldDiv = (
-	props: FInputFieldProps,
+export const inputFieldDiv = (
 	isTriggered: boolean,
-	isFilled: boolean
+	isFilled: boolean,
+	disabled: boolean,
+	multiline: boolean
 ) =>
 	style({
 		backgroundColor: FReturnColor({ color: "White" }),
@@ -28,25 +28,26 @@ export const FInputFieldDiv = (
 				: FReturnColor({ color: "BG Light" })),
 		boxSizing: "border-box",
 		caretColor: FReturnColor({ color: "Main" }),
-		cursor: props.disabled ? "not-allowed" : "text",
+		cursor: disabled ? "not-allowed" : "text",
 		display: "flex",
 		flexDirection: "column",
-		justifyContent: props.multiline ? undefined : "center",
-		minHeight: props.multiline ? "112px" : "56px",
+		justifyContent: multiline ? undefined : "center",
+		minHeight: multiline ? "112px" : "56px",
 		padding: isTriggered || isFilled ? "4px 4px 4px 12px" : "12px",
 		transition: "all 0.2s ease-in-out",
 	});
 
-export const FInputFieldInputAreaDiv = (
-	props: FInputFieldProps,
-	state: boolean
+export const inputAreaDiv = (
+	isShowDiv: boolean,
+	multiline: boolean,
+	disabled: boolean
 ) =>
 	style({
 		backgroundColor: FReturnColor({ color: "White" }),
 		border: "none",
 		color: FReturnColor({ color: "Black" }),
-		display: state ? "block" : "none",
-		font: props.multiline ? FFontTypes.Small_Title() : FFontTypes.Large_Text(),
+		display: isShowDiv ? "block" : "none",
+		font: multiline ? FFontTypes.Small_Title() : FFontTypes.Large_Text(),
 		outline: "none",
 		overflowX: "hidden",
 		overflowY: "auto",
@@ -54,7 +55,7 @@ export const FInputFieldInputAreaDiv = (
 		resize: "none",
 		width: "100%",
 		wordBreak: "break-all",
-		cursor: props.disabled ? "not-allowed" : "text",
+		cursor: disabled ? "not-allowed" : "text",
 		$nest: {
 			"&::placeholder": { color: FReturnColor({ color: "Grey" }) },
 		},

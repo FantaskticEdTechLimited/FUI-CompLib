@@ -1,21 +1,34 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
-import * as styles from "./styles";
+import { inputAreaDiv, inputFieldContainer, inputFieldDiv } from "./styles";
 import { FInputFieldProps } from "./types";
-import { FScrollBarStyle, FText, FReturnColor } from "..";
+import { FScrollBarStyle, FText, FReturnColor, FJoinClassNames } from "..";
 
 /** `<FInputField />` is a component for `<input />` or `<textarea />`.
  *
  * Props: `FInputFieldProps`.
  */
-export const FInputField = ({
-	value = "",
-	placeholder = "Input",
-	disabled = false,
-	multiline = false,
-	autoFocus = false,
-	...props
-}: FInputFieldProps) => {
+export const FInputField = (props: FInputFieldProps) => {
+	const {
+		value = "",
+		placeholder = "Input",
+		disabled = false,
+		multiline = false,
+		autoFocus = false,
+		wordCount,
+		label,
+		wordCountProps,
+		labelProps,
+		scrollBarProps,
+		style,
+		inputDivStyle,
+		inputAreaStyle,
+		className,
+		inputDivClassName,
+		inputAreaClassName,
+		onInput,
+	} = props;
+
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -23,13 +36,7 @@ export const FInputField = ({
 	const mainThemeColor = FReturnColor({ color: "Main" });
 	const blackColor = FReturnColor({ color: "Black" });
 	const greyColor = FReturnColor({ color: "Grey" });
-	const hasWordCount = props.wordCount! > 0;
-
-	const param: Partial<FInputFieldProps> = {
-		disabled: disabled,
-		multiline: multiline,
-		...props,
-	};
+	const hasWordCount = wordCount! > 0;
 
 	const handleTextareaHeight = () => {
 		if (textareaRef && textareaRef.current) {
@@ -55,16 +62,18 @@ export const FInputField = ({
 
 	return (
 		<div
-			style={props.style}
-			className={styles.FInputFieldContainer() + " " + props.className}
+			style={style}
+			className={FJoinClassNames([
+				inputFieldContainer(hasWordCount),
+				className,
+			])}
 		>
 			<div
-				style={props.inputDivStyle}
-				className={
-					styles.FInputFieldDiv(param, isTriggered, isFilled) +
-					" " +
-					props.inputDivClassName
-				}
+				style={inputDivStyle}
+				className={FJoinClassNames([
+					inputFieldDiv(isTriggered, isFilled, disabled, multiline),
+					inputDivClassName,
+				])}
 				onClick={() => {
 					if (!disabled) setIsTriggered(true);
 				}}
@@ -74,41 +83,40 @@ export const FInputField = ({
 					else setIsFilled(true);
 				}}
 			>
-				{props.label && (
+				{label && (
 					<FText
 						font={
 							isTriggered || isFilled
 								? FFontTypes.Text()
 								: FFontTypes.Large_Text()
 						}
-						color={() =>
+						color={
 							isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor
 						}
-						{...props.labelProps}
+						{...labelProps}
 					>
-						{props.label}
+						{label}
 					</FText>
 				)}
 				{multiline ? (
 					<textarea
-						style={props.inputAreaStyle}
-						className={
-							styles.FInputFieldInputAreaDiv(
-								param,
-								isTriggered || isFilled || props.label === undefined
-							) +
-							" " +
-							props.inputAreaClassName +
-							" " +
-							FScrollBarStyle({ ...props.scrollBarProps })
-						}
+						style={inputAreaStyle}
+						className={FJoinClassNames([
+							inputAreaDiv(
+								isTriggered || isFilled || label === undefined,
+								multiline,
+								disabled
+							),
+							inputAreaClassName,
+							FScrollBarStyle({ ...scrollBarProps }),
+						])}
 						ref={textareaRef}
-						maxLength={hasWordCount ? props.wordCount : undefined}
+						maxLength={hasWordCount ? wordCount : undefined}
 						value={value}
 						placeholder={placeholder}
 						onChange={(event) => {
 							if (!disabled) {
-								props.onInput && props.onInput(event.target.value);
+								onInput && onInput(event.target.value);
 								handleTextareaHeight();
 								event.preventDefault();
 							}
@@ -116,23 +124,23 @@ export const FInputField = ({
 					/>
 				) : (
 					<input
-						style={props.inputAreaStyle}
-						className={
-							styles.FInputFieldInputAreaDiv(
-								param,
-								isTriggered || isFilled || props.label === undefined
-							) +
-							" " +
-							props.inputAreaClassName
-						}
+						style={inputAreaStyle}
+						className={FJoinClassNames([
+							inputAreaDiv(
+								isTriggered || isFilled || label === undefined,
+								multiline,
+								disabled
+							),
+							inputAreaClassName,
+						])}
 						type="text"
 						ref={inputRef}
-						maxLength={hasWordCount ? props.wordCount : undefined}
+						maxLength={hasWordCount ? wordCount : undefined}
 						value={value}
 						placeholder={placeholder}
 						onChange={(event) => {
 							if (!disabled) {
-								props.onInput && props.onInput(event.target.value);
+								onInput && onInput(event.target.value);
 							}
 						}}
 					/>
@@ -140,13 +148,11 @@ export const FInputField = ({
 			</div>
 			<FText
 				font={FFontTypes.Text()}
-				color={() =>
-					isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor
-				}
-				style={() => ({ textAlign: "right", ...props.wordCountProps?.style })}
-				{...props.wordCountProps}
+				color={isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor}
+				style={{ textAlign: "right", ...wordCountProps?.style }}
+				{...wordCountProps}
 			>
-				{hasWordCount && value ? `${value.length}/${props.wordCount}` : ""}
+				{hasWordCount && value ? `${value.length}/${wordCount}` : ""}
 			</FText>
 		</div>
 	);

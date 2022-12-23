@@ -2,12 +2,12 @@ import { style, stylesheet } from "typestyle";
 import { FReturnColor } from "../../utils/FReturnColor";
 
 export const styles = stylesheet({
-	FDnDItem_WithIndicator_Container: {
+	withIndicatorContainer: {
 		width: "100%",
 		display: "flex",
 		flexDirection: "column",
 	},
-	FDnDItem_ContentContainer: {
+	contentContainer: {
 		flex: 1,
 		display: "flex",
 		flexDirection: "row",
@@ -16,7 +16,7 @@ export const styles = stylesheet({
 	},
 });
 
-export const FDnDItem_Default_Container = (
+export const defaultContainer = (
 	disabled?: boolean,
 	isTargetOnContainer?: boolean,
 	isHover?: boolean

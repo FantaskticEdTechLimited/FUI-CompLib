@@ -12,15 +12,19 @@ import { FDnDIndicatorPosition } from "./FDnDItem/types";
  *
  * Props: `FDragAndDropProps`.
  *   */
-export const FDragAndDrop = <T extends unknown>({
-	disabled = false,
-	disableDndAction = false,
-	showIndicator = true,
-	indicatorTarget = "container",
-	dndButtonPosition = "left",
-	showDndButton = true,
-	...props
-}: FDragAndDropProps<T>) => {
+export const FDragAndDrop = <T,>(props: FDragAndDropProps<T>) => {
+	const {
+		disabled = false,
+		disableDndAction = false,
+		isShowIndicator = true,
+		indicatorTarget = "container",
+		dndButtonPosition = "left",
+		isShowDndButton = true,
+		data: dataSource = [],
+		onUpdateData,
+		children,
+	} = props;
+
 	const [renderArray, setRenderArray] = useState<T[]>([]);
 	const [hoveredIndicatorIndex, setHoveredIndicatorIndex] =
 		useState<number>(-1);
@@ -30,10 +34,10 @@ export const FDragAndDrop = <T extends unknown>({
 	const params: Partial<FDragAndDropProps<T>> = {
 		disabled: disabled,
 		disableDndAction: disableDndAction,
-		showIndicator: showIndicator,
+		isShowIndicator,
 		indicatorTarget: indicatorTarget,
 		dndButtonPosition: dndButtonPosition,
-		showDndButton: showDndButton,
+		isShowDndButton,
 		...props,
 	};
 
@@ -41,7 +45,7 @@ export const FDragAndDrop = <T extends unknown>({
 		dragTargetIndex: number,
 		dropTargetIndex: number
 	) => {
-		let dataArray: T[] = props.data,
+		let dataArray: T[] = dataSource,
 			dragTargetCard: T | null = null;
 
 		// Drag down case
@@ -74,41 +78,40 @@ export const FDragAndDrop = <T extends unknown>({
 	/** For handling _DnD_ Card onDrop function */
 	useEffect(() => {
 		if (renderArray && renderArray.length > 0) {
-			props.onUpdateData && props.onUpdateData(renderArray);
+			onUpdateData && onUpdateData(renderArray);
 			setRenderArray([]);
 		}
 	}, [renderArray]);
 
 	return (
 		<DndProvider backend={HTML5Backend}>
-			{props.data &&
-				props.data.map((data, index) => {
-					const itemId = (data as any).id ?? index;
-					const isShowIndicator =
-						!disabled &&
-						showIndicator &&
-						index === hoveredIndicatorIndex &&
-						indicatorPosition !== undefined;
+			{dataSource.map((data, index) => {
+				const itemId = (data as any).id ?? index;
+				const _isShowIndicator =
+					!disabled &&
+					isShowIndicator &&
+					index === hoveredIndicatorIndex &&
+					indicatorPosition !== undefined;
 
-					return (
-						<FDnDItem
-							{...params}
-							key={itemId}
-							id={itemId}
-							index={index}
-							disabled={disabled}
-							children={props.children(data, disabled)}
-							onChildrenDrop={handleDnDItemDrop}
-							showIndicator={isShowIndicator}
-							indicatorTarget={indicatorTarget}
-							indicatorPosition={indicatorPosition}
-							renderIndicatorData={(index, pos) => {
-								setHoveredIndicatorIndex(index);
-								setIndicatorPosition(pos);
-							}}
-						/>
-					);
-				})}
+				return (
+					<FDnDItem
+						{...params}
+						key={itemId}
+						id={itemId}
+						index={index}
+						disabled={disabled}
+						children={children(data, disabled)}
+						onChildrenDrop={handleDnDItemDrop}
+						isShowIndicator={_isShowIndicator}
+						indicatorTarget={indicatorTarget}
+						indicatorPosition={indicatorPosition}
+						renderIndicatorData={(index, pos) => {
+							setHoveredIndicatorIndex(index);
+							setIndicatorPosition(pos);
+						}}
+					/>
+				);
+			})}
 		</DndProvider>
 	);
 };

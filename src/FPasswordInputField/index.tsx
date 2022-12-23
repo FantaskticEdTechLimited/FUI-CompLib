@@ -1,23 +1,36 @@
 import { FPasswordInputFieldProps } from "./types";
-import * as styles from "./styles";
+import { inputAreaDiv, inputFieldContainer } from "./styles";
 import React, { useEffect, useRef, useState } from "react";
 import { LockIcon } from "./svg/LockIcon";
 import { EyeIcon } from "./svg/EyeIcon";
 import { EyeOffIcon } from "./svg/EyeOffIcon";
 import { FReturnColor } from "../utils/FReturnColor";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
 
 /** `<FPasswordInputField />` is a component for _password input_ only.
  *
- * Props: `FPasswordInputFieldProps`. 
+ * Props: `FPasswordInputFieldProps`.
  */
-export const FPasswordInputField = ({
-	placeholder = "Password",
-	value = "",
-	showPassword = false,
-	disabled = false,
-	autoFocus = false,
-	...props
-}: FPasswordInputFieldProps) => {
+export const FPasswordInputField = (props: FPasswordInputFieldProps) => {
+	const {
+		placeholder = "Password",
+		value = "",
+		isShowPassword = false,
+		disabled = false,
+		autoFocus = false,
+		leadingComponent,
+		actionComponents,
+		onEnterPress,
+		onInput,
+		style,
+		inputAreaStyle,
+		className,
+		inputAreaClassName,
+		eyeIconProps,
+		lockIconProps,
+		eyeOffIconProps,
+	} = props;
+
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const [displayPassword, setDisplayPassword] = useState<boolean>(false);
@@ -34,17 +47,16 @@ export const FPasswordInputField = ({
 	}, [autoFocus, disabled]);
 
 	useEffect(() => {
-		if (showPassword) setDisplayPassword(true);
-	}, [showPassword]);
+		if (isShowPassword) setDisplayPassword(true);
+	}, [isShowPassword]);
 
 	return (
 		<div
-			style={props.style}
-			className={
-				styles.FPasswordInputFieldContainer(isTriggered, isFilled, disabled) +
-				" " +
-				props.className
-			}
+			style={style}
+			className={FJoinClassNames([
+				inputFieldContainer(isTriggered, isFilled, disabled),
+				className,
+			])}
 			onClick={() => (disabled ? undefined : setIsTriggered(true))}
 			onBlur={() => {
 				setIsTriggered(false);
@@ -52,7 +64,7 @@ export const FPasswordInputField = ({
 				else setIsFilled(true);
 			}}
 		>
-			{props.leadingComponent ?? (
+			{leadingComponent ?? (
 				<LockIcon
 					strokeColor={
 						isTriggered
@@ -60,41 +72,40 @@ export const FPasswordInputField = ({
 							: FReturnColor({ color: "Black" })
 					}
 					disabled={disabled}
-					{...props.lockIconProps}
+					{...lockIconProps}
 				/>
 			)}
 			<input
-				style={props.inputAreaStyle}
-				className={
-					styles.FPasswordInputFieldInputAreaDiv(disabled) +
-					" " +
-					props.inputAreaClassName
-				}
+				style={inputAreaStyle}
+				className={FJoinClassNames([
+					inputAreaDiv(disabled),
+					inputAreaClassName,
+				])}
 				type={displayPassword ? "text" : "password"}
 				ref={passwordInputRef}
 				placeholder={placeholder}
 				value={value}
 				onChange={(event) => {
 					if (!disabled) {
-						props.onInput && props.onInput(event.target.value);
+						onInput && onInput(event.target.value);
 					}
 				}}
 				onKeyDown={(event) => {
 					if (event.key === "Enter") {
-						!disabled && props.onEnterPress && props.onEnterPress();
+						!disabled && onEnterPress && onEnterPress();
 					}
 				}}
 			/>
-			{(props.actionComponents && props.actionComponents(displayPassword)) ??
+			{(actionComponents && actionComponents(displayPassword)) ??
 			displayPassword ? (
 				<EyeIcon
-					{...props.eyeIconProps}
+					{...eyeIconProps}
 					disabled={disabled}
 					onClick={() => (disabled ? undefined : setDisplayPassword(false))}
 				/>
 			) : (
 				<EyeOffIcon
-					{...props.eyeOffIconProps}
+					{...eyeOffIconProps}
 					disabled={disabled}
 					onClick={() => (disabled ? undefined : setDisplayPassword(true))}
 				/>

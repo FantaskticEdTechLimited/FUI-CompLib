@@ -1,13 +1,13 @@
-import { CSSProperties } from "react";
 import { FPasswordInputFieldIconProps } from "./svg/types";
 import {
 	FComponentsType,
 	FComponentType,
 	FOnClickFunction,
 	FOnSubmitFunction,
+	PropsWithCustomStyle,
 } from "../global.types";
 
-export interface FPasswordInputFieldProps {
+export type FPasswordInputFieldProps = PropsWithCustomStyle & {
 	/** Input password value. */
 	value?: string;
 	/** If `true`, the password inputfield is **NOT** allowed to use. */
@@ -15,7 +15,7 @@ export interface FPasswordInputFieldProps {
 	/** Placeholder of the inputfield. */
 	placeholder?: string;
 	/** If `true`, the input password will be shown. */
-	showPassword?: boolean;
+	isShowPassword?: boolean;
 	/** If `true`, it will auto focus on the input area. */
 	autoFocus?: boolean;
 	/** Action event after pressing `Enter` key. */
@@ -34,12 +34,8 @@ export interface FPasswordInputFieldProps {
 	eyeIconProps?: FPasswordInputFieldIconProps;
 	/** Properties of the eye-off icon (hide password). */
 	eyeOffIconProps?: FPasswordInputFieldIconProps;
-	/** Class name of the container. */
-	className?: string;
-	/** Style of the container. */
-	style?: CSSProperties;
 	/** Class name of the input area. */
-	inputAreaClassName?: string;
+	inputAreaClassName?: PropsWithCustomStyle["className"];
 	/** Style of the input area. */
-	inputAreaStyle?: CSSProperties;
-}
+	inputAreaStyle?: PropsWithCustomStyle["style"];
+};

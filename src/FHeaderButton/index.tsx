@@ -1,39 +1,40 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { FHeaderButtonProps } from "./types";
-import { handleFHeaderButton } from "./func";
-import { FHeaderButtonContainer } from "./styles";
+import { getIcon } from "./helper";
+import { buttonContainer } from "./styles";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
+import { useHover } from "usehooks-ts";
 
 /** `<FHeaderButton />` is a component to return an icon button on the header of a page.
  *
  * Props: `FHeaderButtonProps`.
  */
-export const FHeaderButton = ({
-	size = "large",
-	type = "Back",
-	disabled = false,
-	...props
-}: FHeaderButtonProps) => {
-	const [isHover, setIsHover] = useState<boolean>(false);
-	const param: Partial<FHeaderButtonProps> = {
-		size: size,
-		type: type,
-		disabled: disabled,
-		...props,
-	};
+export const FHeaderButton = (props: FHeaderButtonProps) => {
+	const {
+		ref: ref,
+		size = "large",
+		type = "back",
+		disabled = false,
+		style,
+		className,
+		onClick,
+		children,
+	} = props;
+	const hoverRef = useRef(null);
+	const isHover = useHover(hoverRef);
+	const icon = getIcon({ size, type, disabled });
 
 	return (
 		<div
-			style={props.style && props.style(isHover)}
-			className={
-				FHeaderButtonContainer(param, isHover) +
-				" " +
-				(props.className && props.className(isHover))
-			}
-			onClick={() => (disabled ? undefined : props.onClick && props.onClick())}
-			onMouseEnter={() => setIsHover(true)}
-			onMouseLeave={() => setIsHover(false)}
+			ref={ref ?? hoverRef}
+			style={style}
+			className={FJoinClassNames([
+				buttonContainer(disabled, isHover),
+				className,
+			])}
+			onClick={() => (disabled ? undefined : onClick && onClick())}
 		>
-			{props.children ? props.children : handleFHeaderButton(param)}
+			{children ? children : icon}
 		</div>
 	);
 };

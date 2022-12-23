@@ -1,7 +1,7 @@
 import { style } from "typestyle";
 import { FReturnColor } from "..";
 
-export const FPopUpOverlay = () => {
+export const popUpOverlay = () => {
 	return style({
 		backgroundColor: FReturnColor({ color: "Dark" }),
 		height: "100vh",
@@ -16,7 +16,7 @@ export const FPopUpOverlay = () => {
 	});
 };
 
-export const FPopUpContainer = (screenWidth: number, screenHeight: number) =>
+export const popUpContainer = (screenWidth: number, screenHeight: number) =>
 	style({
 		display: "flex",
 		flexDirection: "column",

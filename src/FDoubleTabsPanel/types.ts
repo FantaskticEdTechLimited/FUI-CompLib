@@ -1,8 +1,12 @@
-import { CSSProperties, ReactNode } from "react";
+import { ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
-import { FComponentsType, FComponentType } from "../global.types";
+import {
+	FComponentsType,
+	FComponentType,
+	PropsWithCustomStyle,
+} from "../global.types";
 
-export interface FDoubleTabsPanelProps {
+export type FDoubleTabsPanelProps = PropsWithCustomStyle & {
 	/** If `true`, the tab panel is **NOT** able to use. */
 	disabled?: boolean;
 	/** Content of the tab panel under corresponding tab button. */
@@ -24,8 +28,4 @@ export interface FDoubleTabsPanelProps {
 	tabButtonProps?: FButtonProps;
 	/** Control re-render case. Default is `true`. */
 	isRenderOnSelected?: boolean;
-	/** Style of the tab panel. */
-	style?: CSSProperties;
-	/** Class name of the tab panel. */
-	className?: string;
-}
+};

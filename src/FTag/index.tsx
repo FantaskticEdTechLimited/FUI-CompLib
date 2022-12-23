@@ -1,7 +1,7 @@
 import { FTagProps } from "./types";
-import { FTagContainer } from "./styles";
+import { tagContainer } from "./styles";
 import React from "react";
-import { FText, FReturnColor } from "..";
+import { FText, FReturnColor, FJoinClassNames } from "..";
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 
@@ -12,37 +12,45 @@ import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
  * Props: `FTagProps`.
  */
 export const FTag = <T,>(props: FTagProps<T>) => {
+	const {
+		style,
+		className,
+		disabled,
+		deleteIconProps,
+		onSubmit,
+		onDelete,
+		label,
+		labelProps,
+		leadingComponent,
+		actionComponent,
+		tag,
+	} = props;
 	const mainThemeColor = FReturnColor({ color: "Main" });
+
 	return (
 		<div
-			style={props.style}
-			className={FTagContainer(props) + " " + props.className}
-			onClick={() =>
-				props.disabled ? undefined : props.onClick && props.onClick(props.tag)
-			}
+			style={style}
+			className={FJoinClassNames([tagContainer(disabled), className])}
+			onClick={() => (disabled ? undefined : onSubmit && onSubmit(tag))}
 		>
-			{props.leadingComponent}
+			{leadingComponent}
 			<FText
 				font={FFontTypes.Text()}
-				color={() => mainThemeColor}
-				children={props.label}
-				{...props.labelProps}
+				color={mainThemeColor}
+				children={label}
+				{...labelProps}
 			/>
-			{props.actionComponent
-				? props.actionComponent
-				: props.onDelete && (
-						<FIcon
-							size="small"
-							name={FIconNames.CLOSE}
-							color={() => mainThemeColor}
-							onClick={() =>
-								props.disabled
-									? undefined
-									: props.onDelete && props.onDelete(props.tag)
-							}
-							{...props.deleteIconProps}
-						/>
-				  )}
+			{actionComponent ? (
+				actionComponent
+			) : onDelete ? (
+				<FIcon
+					size="small"
+					name={FIconNames.CLOSE}
+					color={() => mainThemeColor}
+					onClick={() => (disabled ? undefined : onDelete && onDelete(tag))}
+					{...deleteIconProps}
+				/>
+			) : null}
 		</div>
 	);
 };

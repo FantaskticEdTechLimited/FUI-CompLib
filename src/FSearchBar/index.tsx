@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import { FSearchBar_Container, FSearchBar_InputAreaDiv } from "./styles";
+import { useHover } from "usehooks-ts";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
+import { searchBarContainer, inputAreaDiv } from "./styles";
 import { ClearIcon } from "./svg/ClearIcon";
 import { SearchIcon } from "./svg/SearchIcon";
 import { FSearchBarProps, InputStateProps } from "./types";
@@ -11,12 +13,23 @@ import { FSearchBarProps, InputStateProps } from "./types";
  *
  * Props: `FSearchBarProps`.
  */
-export const FSearchBar = ({
-	placeholder = "Search",
-	value = "",
-	...props
-}: FSearchBarProps) => {
-	const [isHover, setIsHover] = useState<boolean>(false);
+export const FSearchBar = (props: FSearchBarProps) => {
+	const {
+		placeholder = "Search",
+		value = "",
+		style,
+		inputStyle,
+		className,
+		inputClassName,
+		clearIconProps,
+		searchIconProps,
+		onInput,
+		onBlur,
+		onClick,
+		ref: ref,
+	} = props;
+	const hoverRef = useRef(null);
+	const isHover = useHover(hoverRef);
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -32,44 +45,37 @@ export const FSearchBar = ({
 
 	return (
 		<div
-			style={props.style && props.style(inputState)}
-			className={
-				FSearchBar_Container(inputState) +
-				" " +
-				(props.className && props.className(inputState))
-			}
+			ref={ref ?? hoverRef}
+			style={style && style(inputState)}
+			className={FJoinClassNames([
+				searchBarContainer(inputState),
+				className && className(inputState),
+			])}
 			onClick={() => {
-				props.onClick && props.onClick();
+				onClick && onClick();
 				setIsTriggered(true);
 			}}
 			onBlur={() => {
-				props.onBlur && props.onBlur();
+				onBlur && onBlur();
 				setIsTriggered(false);
 				if (value === undefined || value === "") setIsFilled(false);
 				else setIsFilled(true);
 			}}
-			onMouseEnter={() => setIsHover(true)}
-			onMouseLeave={() => setIsHover(false)}
 		>
-			<SearchIcon state={inputState} value={value} {...props.searchIconProps} />
+			<SearchIcon state={inputState} value={value} {...searchIconProps} />
 			<input
-				style={props.inputStyle && props.inputStyle(inputState)}
-				className={
-					FSearchBar_InputAreaDiv() +
-					" " +
-					(props.inputClassName && props.inputClassName(inputState))
-				}
+				style={inputStyle && inputStyle(inputState)}
+				className={FJoinClassNames([
+					(inputAreaDiv(), inputClassName && inputClassName(inputState)),
+				])}
 				type="text"
 				ref={inputRef}
 				value={value}
 				placeholder={placeholder}
-				onChange={(event: any) => props.onInput(event.target.value)}
+				onChange={(event: any) => onInput(event.target.value)}
 			/>
 			{value?.length > 0 && (
-				<ClearIcon
-					onClick={() => props.onInput("")}
-					{...props.clearIconProps}
-				/>
+				<ClearIcon onClick={() => onInput("")} {...clearIconProps} />
 			)}
 		</div>
 	);

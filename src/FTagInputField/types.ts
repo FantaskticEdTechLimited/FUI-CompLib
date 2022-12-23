@@ -1,9 +1,9 @@
 import { FIconProps } from "@innoplus-studio/fui-iconlib";
-import { CSSProperties, ReactElement } from "react";
+import { ReactElement } from "react";
 import { FDropdownProps } from "../FDropdown/types";
 import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
 import { FTagProps } from "../FTag/types";
-import { FComponentType } from "../global.types";
+import { FComponentType, PropsWithCustomStyle } from "../global.types";
 
 export interface FTagInputFieldTagHintLabelsProps {
 	/** Hint label for new tags. */
@@ -12,7 +12,7 @@ export interface FTagInputFieldTagHintLabelsProps {
 	selectedTag?: string;
 }
 
-export interface FTagInputFieldProps<T> {
+export type FTagInputFieldProps<T = unknown> = PropsWithCustomStyle & {
 	/** If `true`, the dropdown will **NOT** be shown. */
 	disableDropdown?: boolean;
 	/** If `true`, the tags will **NOT** be filtered. */
@@ -49,26 +49,22 @@ export interface FTagInputFieldProps<T> {
 	dropdownProps?: FDropdownProps<T>;
 	/** Custom dropdown instead of the default one. */
 	customDropdown?: ReactElement<FDropdownProps<T>>;
-	/** Class name of the inputfield wrapper. */
-	className?: string;
-	/** Style of the inputfield wrapper. */
-	style?: CSSProperties;
 	/** Class name of the tags display div. */
-	tagsDisplayDivClassName?: string;
+	tagsDisplayDivClassName?: PropsWithCustomStyle["className"];
 	/** Style of the tags display div. */
-	tagsDisplayDivStyle?: CSSProperties;
+	tagsDisplayDivStyle?: PropsWithCustomStyle["style"];
 	/** Class name of the input wrapper (_with inputfield and dropdown_). */
-	inputWrapperClassName?: string;
+	inputWrapperClassName?: PropsWithCustomStyle["className"];
 	/** Style of the input wrapper (_with inputfield and dropdown_). */
-	inputWrapperStyle?: CSSProperties;
+	inputWrapperStyle?: PropsWithCustomStyle["style"];
 	/** Class name of the inputfield container (_with clear icon_). */
-	inputContainerClassName?: string;
+	inputContainerClassName?: PropsWithCustomStyle["className"];
 	/** Style of the inputfield container (_with clear icon_). */
-	inputContainerStyle?: CSSProperties;
+	inputContainerStyle?: PropsWithCustomStyle["style"];
 	/** Class name of the input area div. */
-	inputDivClassName?: string;
+	inputDivClassName?: PropsWithCustomStyle["className"];
 	/** Style of the input area div. */
-	inputDivStyle?: CSSProperties;
+	inputDivStyle?: PropsWithCustomStyle["style"];
 	/** Properties of the scroll bar. */
 	scrollBarProps?: FScrollBarStyleProps;
-}
+};

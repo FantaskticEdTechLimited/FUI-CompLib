@@ -1,13 +1,15 @@
 import React from "react";
+import { PropsWithCustomStyle } from "../../global.types";
+import { FJoinClassNames } from "../../utils/FJoinClassNames";
 import { styles } from "./styles";
-import { FDnDIndicatorProps } from "./types";
 
 /** A default horizontal indicator will be shown on top or bottom of the hovered item. */
-export const FDnDIndicator = (props: FDnDIndicatorProps) => {
+export const FDnDIndicator = (props: PropsWithCustomStyle) => {
+	const { style, className } = props;
 	return (
 		<div
-			style={props.style}
-			className={styles.FDnDIndicator_Container + " " + props.className}
+			style={style}
+			className={FJoinClassNames([styles.indicatorContainer, className])}
 		/>
 	);
 };

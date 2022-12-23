@@ -1,8 +1,9 @@
 import { useRef } from "react";
 import CreatableSelect from "react-select/creatable";
 import { FInputSelectProps } from "./types";
-import * as styles from "./styles";
+import { styles, clearIconContainer } from "./styles";
 import React from "react";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
 
 /**
  * `<FInputSelect />` is a component to show a button container for options selection.
@@ -14,81 +15,90 @@ import React from "react";
  *
  * Props: `FInputSelectProps`.
  */
-export const FInputSelect = <T extends unknown>({
-	isClearable = true,
-	isSearchable = true,
-	isDisableCreate = true,
-	isMulti = false,
-	disabled = false,
-	...props
-}: FInputSelectProps<T>) => {
+export const FInputSelect = <T,>(props: FInputSelectProps<T>) => {
+	const {
+		isClearable = true,
+		isSearchable = true,
+		isDisableCreate = true,
+		isMulti = false,
+		disabled = false,
+		isLoading,
+		placeholder,
+		value,
+		onCompareInputValue,
+		onSelect,
+		onClear,
+		onCreate,
+		onRemove,
+		options,
+		getOptionKey,
+		getOptionLabel,
+		styles: style,
+		clearIconClassName,
+		menuClassName,
+		componentClassName,
+		containerClassName,
+		contentContainerClassName,
+	} = props;
+
 	const selectRef = useRef(null);
-	const isArray = Array.isArray(props.value);
+	const isArray = Array.isArray(value);
 	if ((isArray && !isMulti) || (!isArray && isMulti)) {
 		return <div>Data(s) and Multi mismatch</div>;
 	}
 
 	const handleCreateAndAutoFocus = async (value: string) => {
-		props.onCreate && (await props.onCreate(value));
+		onCreate && (await onCreate(value));
 		selectRef.current && (selectRef.current as any).focus();
 	};
 
 	return (
 		<CreatableSelect
-			styles={props.styles}
-			className={
-				styles.FInputSelect_Container +
-				" " +
-				props.containerClassName +
-				" " +
-				styles.FInputSelect__Content_Container +
-				" " +
-				props.contentContainerClassName +
-				" " +
-				styles.FInputSelect_Menu_Wrapper +
-				" " +
-				props.menuClassName +
-				" " +
-				styles.FInputSelect__Component_Container +
-				" " +
-				props.componentClassName +
-				" " +
-				styles.FInputSelect__ClearIcon_Container() +
-				" " +
-				props.clearIconClassName
-			}
+			styles={style}
+			className={FJoinClassNames([
+				styles.inputSelectContainer,
+				containerClassName,
+				styles.contentContainer,
+				contentContainerClassName,
+				styles.menuWrapper,
+				menuClassName,
+				styles.componentContainer,
+				componentClassName,
+				clearIconContainer(),
+				clearIconClassName,
+			])}
 			ref={selectRef}
 			isMulti={isMulti}
-			isLoading={props.isLoading}
+			isLoading={isLoading}
 			isDisabled={disabled}
 			isClearable={isClearable}
 			isSearchable={isSearchable}
-			placeholder={props.placeholder}
+			placeholder={placeholder}
 			formatOptionLabel={(option) => {
 				const isNew = (option as any).__isNew__;
 				if (isNew) return (option as any).label;
-				return props.getOptionLabel(option);
+				return getOptionLabel(option);
 			}}
 			getOptionValue={(option) => {
 				const isNew = (option as any).__isNew__;
 				if (isNew) return (option as any).value;
-				return props.getOptionKey(option);
+				return getOptionKey(option);
 			}}
 			onChange={(singleValue, actionMethod) => {
 				switch (actionMethod.action) {
 					case "clear":
-						props.onClear && props.onClear();
+						onClear && onClear();
 						break;
 					case "select-option":
 						isMulti
-							? actionMethod.option && props.onSelect(actionMethod.option)
-							: singleValue && props.onSelect(singleValue as T);
+							? actionMethod.option && onSelect(actionMethod.option)
+							: singleValue && onSelect(singleValue as T);
 						break;
 					case "pop-value":
 					case "remove-value":
 						actionMethod.removedValue &&
-							props.onRemove &&
-							props.onRemove(actionMethod.removedValue);
+							onRemove &&
+							onRemove(actionMethod.removedValue);
 						break;
 					default:
 						break;
@@ -97,8 +107,8 @@ export const FInputSelect = <T extends unknown>({
 			onCreateOption={(input) => {
 				if (!isDisableCreate) handleCreateAndAutoFocus(input);
 			}}
-			options={props.options}
-			value={props.value}
+			options={options}
+			value={value}
 			filterOption={(option, value) => {
 				// if no input, options will not be filter
 				if (!value || value === null) return true;
@@ -112,7 +122,7 @@ export const FInputSelect = <T extends unknown>({
 					if (isNew) return false;
 				}
 				try {
-					const match = props.onCompareInputValue(option.data, value);
+					const match = onCompareInputValue(option.data, value);
 					return match;
 				} catch (error) {
 					console.error("FInputSelect Error: ", error);

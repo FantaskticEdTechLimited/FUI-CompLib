@@ -1,6 +1,7 @@
 import React from "react";
 import { FScrollBarStyle } from "../FScrollBarStyle";
-import { FScrollableContainer_Container } from "./styles";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
+import { scrollableContainer } from "./styles";
 import { FScrollableContainerProps } from "./types";
 
 /** `<FScrollableContainer />` is a container which is scrollable using `FScrollBarStyle`.
@@ -8,22 +9,19 @@ import { FScrollableContainerProps } from "./types";
  *
  * Props: `FScrollableContainerProps`.
  */
-export const FScrollableContainer = ({
-	horizontal = false,
-	...props
-}: FScrollableContainerProps) => {
+export const FScrollableContainer = (props: FScrollableContainerProps) => {
+	const { horizontal = false, style, className, children } = props;
+
 	return (
 		<div
-			style={props.style}
-			className={
-				FScrollableContainer_Container(horizontal) +
-				" " +
-				props.className +
-				" " +
-				FScrollBarStyle()
-			}
+			style={style}
+			className={FJoinClassNames([
+				scrollableContainer(horizontal),
+				className,
+				FScrollBarStyle(),
+			])}
 		>
-			{props.children}
+			{children}
 		</div>
 	);
 };

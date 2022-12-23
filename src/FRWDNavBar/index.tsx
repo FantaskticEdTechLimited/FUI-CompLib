@@ -1,6 +1,7 @@
 import { FIcon, FIconNames } from "@innoplus-studio/fui-iconlib";
 import React from "react";
 import { useState, useEffect, useRef, Fragment } from "react";
+import { useOnClickOutside } from "usehooks-ts";
 import { FReturnColor, FScrollBarStyle } from "..";
 import { FRWDMode } from "../global.types";
 import { FJoinClassNames } from "../utils/FJoinClassNames";
@@ -62,12 +63,7 @@ export const FRWDNavBar = (props: FRWDNavBarProps) => {
 			setIsSideBarOpen(false);
 	};
 
-	useEffect(() => {
-		window.addEventListener("mousedown", handleClickOutside);
-		return () => {
-			window.removeEventListener("mousedown", handleClickOutside);
-		};
-	}, []);
+	useOnClickOutside(hiddenSideBarRef, handleClickOutside);
 
 	useEffect(() => {
 		if (forcedToClose) setIsSideBarOpen(false);

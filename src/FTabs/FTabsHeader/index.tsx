@@ -1,5 +1,6 @@
 import React from "react";
 import { FScrollBarStyle } from "../../FScrollBarStyle";
+import { FJoinClassNames } from "../../utils/FJoinClassNames";
 import { FTabsButton } from "./FTabsButton";
 import { styles } from "./styles";
 import { FTabsHeaderProps } from "./types";
@@ -10,9 +11,11 @@ export const FTabsHeader = (props: FTabsHeaderProps) => {
 	return (
 		<div
 			style={style}
-			className={
-				styles.FTabsHeader_Container + " " + FScrollBarStyle() + " " + className
-			}
+			className={FJoinClassNames([
+				styles.headerContainer,
+				FScrollBarStyle(),
+				className,
+			])}
 		>
 			{panelProps.map((p) => {
 				const isSelected = controller.tabsKey === p.tabsKey;

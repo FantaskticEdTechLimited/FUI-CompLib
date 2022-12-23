@@ -1,8 +1,13 @@
 import { ReactNode } from "react";
 import { StylesConfig, GroupBase } from "react-select";
-import { FOnClickFunction, FOnSubmitFunction, NumericStringType } from "..";
+import {
+	FOnClickFunction,
+	FOnSubmitFunction,
+	NumericStringType,
+	PropsWithCustomStyle,
+} from "..";
 
-export interface FInputSelectProps<T> {
+export interface FInputSelectProps<T = unknown> {
 	/** Options data. */
 	options: T[];
 	/** Input value. */
@@ -36,15 +41,15 @@ export interface FInputSelectProps<T> {
 	/** Method that option can be compared with input. */
 	onCompareInputValue: (data: T, value: string) => boolean;
 	/** Class name of the select container. */
-	containerClassName?: string;
+	containerClassName?: PropsWithCustomStyle["className"];
 	/** Class name of the select content container. */
-	contentContainerClassName?: string;
+	contentContainerClassName?: PropsWithCustomStyle["className"];
 	/** Class name of the dropdown menu container. */
-	menuClassName?: string;
+	menuClassName?: PropsWithCustomStyle["className"];
 	/** Class name of the render component container. */
-	componentClassName?: string;
+	componentClassName?: PropsWithCustomStyle["className"];
 	/** Class name of the clear icon. */
-	clearIconClassName?: string;
+	clearIconClassName?: PropsWithCustomStyle["className"];
 	/** Style modifier methods (default type of `react-select`).
 	 *
 	 * Reference: https://react-select.com/styles

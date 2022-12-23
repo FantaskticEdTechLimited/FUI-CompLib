@@ -1,7 +1,6 @@
-import { CSSProperties, ReactNode } from "react";
+import { ReactNode } from "react";
 import { FDnDButtonProps } from "./FDnDButton/types";
-import { FDnDIndicatorProps } from "./FDnDIndicator/types";
-import { FOnHoverProperty, FOnSubmitFunction } from "../global.types";
+import { FOnSubmitFunction, PropsWithCustomStyle } from "../global.types";
 
 type FDnDIndicatorTarget = "container" | "contentContainer";
 
@@ -14,7 +13,7 @@ export type ExtendedFDragAndDropProps = Omit<
 	"data" | "onUpdateData" | "children"
 >;
 
-export interface FDragAndDropProps<T> {
+export type FDragAndDropProps<T = unknown> = PropsWithCustomStyle & {
 	/** If `true`, the _DnD_ component is **NOT** allowed to use.*/
 	disabled?: boolean;
 	/** If `true`, the _DnD_ action event is **NOT** allowed to use.*/
@@ -22,7 +21,7 @@ export interface FDragAndDropProps<T> {
 	/** If `true`, the indicator will be shown on the target chosen.
 	 *
 	 * It does **NOT** work if `disableDndAction` is `true`. */
-	showIndicator?: boolean;
+	isShowIndicator?: boolean;
 	/** The target that the indicator appears on.
 	 *
 	 * `container`: The indicator shows on the whole container including the _DnD_ button.
@@ -35,7 +34,7 @@ export interface FDragAndDropProps<T> {
 	/** If `true`, the _DnD_ button will be shown for action.
 	 *
 	 * It does **NOT** work if `disableDndAction` is `true`. */
-	showDndButton?: boolean;
+	isShowDndButton?: boolean;
 	/** Position of the _DnD_ button.
 	 *
 	 * It does **NOT** work if `disableDndAction` is `true`. */
@@ -49,19 +48,15 @@ export interface FDragAndDropProps<T> {
 	/** Content of the _DnD_ component. */
 	children: FDnDReturnChildrenProps<T>;
 	/** Properties of the indicator. */
-	indicatorProps?: FDnDIndicatorProps;
+	indicatorProps?: PropsWithCustomStyle;
 	/** Properties of the default _DnD_ button.
 	 *
 	 * It does **NOT** work if there is a custom _DnD_ button. */
 	dndButtonProps?: FDnDButtonProps;
 	/** Custom _DnD_ button. */
 	customDnDButton?: ReactNode;
-	/** Class name of the _DnD_ container. */
-	className?: FOnHoverProperty<string>;
-	/** Style of the _DnD_ container. */
-	style?: FOnHoverProperty<CSSProperties>;
 	/** Class name of the _DnD_ content container. */
-	contentContainerClassName?: FOnHoverProperty<string>;
+	contentContainerClassName?: PropsWithCustomStyle["className"];
 	/** Style of the _DnD_ content container. */
-	contentContainerStyle?: FOnHoverProperty<CSSProperties>;
-}
+	contentContainerStyle?: PropsWithCustomStyle["style"];
+};

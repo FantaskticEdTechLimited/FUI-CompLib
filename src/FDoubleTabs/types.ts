@@ -1,41 +1,31 @@
-import { CSSProperties, ReactElement, ReactNode } from "react";
+import { ReactElement, ReactNode } from "react";
 import { FButtonProps } from "../FButton/types";
 import { FDoubleTabsPanelProps } from "../FDoubleTabsPanel/types";
+import { PropsWithCustomStyle } from "../global.types";
 
-type FDoubleTabsContentType =
-	| ReactElement<FDoubleTabsPanelProps>
-	| Array<ReactElement<FDoubleTabsPanelProps>>;
-
-export interface FDoubleTabsProps {
+export type FDoubleTabsProps = {
 	/** Content under corresponding tab. */
-	children?: FDoubleTabsContentType;
+	children?:
+		| ReactElement<FDoubleTabsPanelProps>
+		| Array<ReactElement<FDoubleTabsPanelProps>>;
 	/** If `true`, the tab is **NOT** allowed to use. */
 	disabled?: boolean;
 	/** Leading components in the tab header. */
 	leadingComponents?: ReactNode;
 	/** Action components in the tab header. */
 	actionComponents?: ReactNode;
-	/** Render user custom tab button. */
-	customTabButton?: (
-		isSelected: boolean,
-		tabButtonProps: FButtonProps
-	) => ReactNode;
 	/** Class name of the wrapper. */
-	wrapperClassName?: string;
+	wrapperClassName?: PropsWithCustomStyle["className"];
 	/** Style of the wrapper. */
-	wrapperStyle?: CSSProperties;
+	wrapperStyle?: PropsWithCustomStyle["style"];
 	/** Class name of the tab header. */
-	headerClassName?: string;
+	headerClassName?: PropsWithCustomStyle["className"];
 	/** Style of the tab header. */
-	headerStyle?: CSSProperties;
+	headerStyle?: PropsWithCustomStyle["style"];
 	/** Class name of the tab button. */
-	tabContainerClassName?: string;
+	tabContainerClassName?: PropsWithCustomStyle["className"];
 	/** Style of the tab button. */
-	tabContainerStyle?: CSSProperties;
+	tabContainerStyle?: PropsWithCustomStyle["style"];
 	/** Properties of the tab button. */
 	tabButtonProps?: FButtonProps;
-	/** Style of the tab panel. */
-	style?: CSSProperties;
-	/** Class name of the tab panel. */
-	className?: string;
-}
+};

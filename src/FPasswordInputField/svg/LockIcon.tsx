@@ -1,14 +1,20 @@
 import React, { SVGProps } from "react";
 import { FPasswordInputFieldIconProps } from "./types";
-import { FPasswordInputFieldEyeIcon } from "./styles";
+import { eyeIcon } from "./styles";
+import { FJoinClassNames } from "../../utils/FJoinClassNames";
 
-export const LockIcon = ({
-	disabled = false,
-	...props
-}: FPasswordInputFieldIconProps) => {
+export const LockIcon = (props: FPasswordInputFieldIconProps) => {
+	const {
+		disabled = false,
+		style,
+		className,
+		strokeColor,
+		strokeWidth,
+	} = props;
+
 	const pathProps: SVGProps<SVGPathElement> = {
-		stroke: props.strokeColor,
-		strokeWidth: props.strokeWidth ?? "1.6",
+		stroke: strokeColor,
+		strokeWidth: strokeWidth ?? "1.6",
 		strokeLinecap: "round",
 		strokeLinejoin: "round",
 	};
@@ -20,8 +26,8 @@ export const LockIcon = ({
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			style={props.style}
-			className={FPasswordInputFieldEyeIcon(disabled) + " " + props.className}
+			style={style}
+			className={FJoinClassNames([eyeIcon(disabled), className])}
 		>
 			<path
 				d="M19 11H5C3.89543 11 3 11.8954 3 13V20C3 21.1046 3.89543 22 5 22H19C20.1046 22 21 21.1046 21 20V13C21 11.8954 20.1046 11 19 11Z"

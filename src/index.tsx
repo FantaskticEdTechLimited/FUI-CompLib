@@ -15,7 +15,6 @@ import { FHeaderButton } from "./FHeaderButton";
 import { FInputField } from "./FInputField";
 import { FInputSelect } from "./FInputSelect";
 import { FLinkButton } from "./FLinkButton";
-import { FMoreActionPopUp } from "./FMoreActionPopUp";
 import { FNoData } from "./FNoData";
 import { FNumberInputField } from "./FNumberInputField";
 import { FPasswordInputField } from "./FPasswordInputField";
@@ -43,7 +42,6 @@ import { FCheckIsDarkThemeMode } from "./utils/FCheckIsDarkThemeMode";
 import { FCheckIsToday } from "./utils/FCheckIsToday";
 import { FCountDownTimer } from "./utils/FCountDownTimer";
 import { FCountTimer } from "./utils/FCountTimer";
-import { FFirstCharUppercase } from "./utils/FFirstCharUppercase";
 import { FJoinClassNames } from "./utils/FJoinClassNames";
 import { FOverrideStyle } from "./utils/FOverrideStyle";
 import { FRemoveTypeName } from "./utils/FRemoveTypeName";
@@ -51,7 +49,6 @@ import { FReturnArray } from "./utils/FReturnArray";
 import { FReturnColor } from "./utils/FReturnColor";
 import { FReturnDate } from "./utils/FReturnDate";
 import { FReturnRWDMode } from "./utils/FReturnRWDMode";
-import { FReturnScreenSize } from "./utils/FReturnScreenSize";
 import { FScrollTopHandler } from "./utils/FScrollTopHandler";
 import { FSideBarHandler } from "./utils/FSideBarHandler";
 import { FSingleToDoubleDigit } from "./utils/FSingleToDoubleDigit";
@@ -66,7 +63,6 @@ import { FConfirmPopUpProps } from "./FConfirmPopUp/types";
 import { FDividerProps } from "./FDivider/types";
 import { FDoubleTabsProps } from "./FDoubleTabs/types";
 import { FDoubleTabsPanelProps } from "./FDoubleTabsPanel/types";
-import { FDnDIndicatorProps } from "./FDragAndDrop/FDnDIndicator/types";
 import { FDnDItemProps } from "./FDragAndDrop/FDnDItem/types";
 import { FDragAndDropProps } from "./FDragAndDrop/types";
 import { FDropdownProps } from "./FDropdown/types";
@@ -119,11 +115,11 @@ import {
 	FOnCallBackFuntion,
 	FOnClickFunction,
 	FOnDataCallbackFunction,
-	FOnHoverProperty,
 	FOnSubmitFunction,
 	FRWDMode,
 	Nullable,
 	NumericStringType,
+	PropsWithCustomStyle,
 } from "./global.types";
 // =======================================================================
 // import theme
@@ -149,7 +145,6 @@ export {
 	FInputField,
 	FInputSelect,
 	FLinkButton,
-	FMoreActionPopUp,
 	FNoData,
 	FNumberInputField,
 	FPasswordInputField,
@@ -178,7 +173,6 @@ export {
 	FCheckIsToday,
 	FCountDownTimer,
 	FCountTimer,
-	FFirstCharUppercase,
 	FJoinClassNames,
 	FOverrideStyle,
 	FRemoveTypeName,
@@ -186,7 +180,6 @@ export {
 	FReturnColor,
 	FReturnDate,
 	FReturnRWDMode,
-	FReturnScreenSize,
 	FSingleToDoubleDigit,
 	FTimer,
 	FUseStateSafe,
@@ -201,7 +194,6 @@ export {
 	FCheckBoxProps,
 	FConfirmPopUpProps,
 	FDividerProps,
-	FDnDIndicatorProps,
 	FDnDItemProps,
 	FDragAndDropProps,
 	FDoubleTabsProps,
@@ -254,11 +246,11 @@ export {
 	FOnCallBackFuntion,
 	FOnClickFunction,
 	FOnDataCallbackFunction,
-	FOnHoverProperty,
 	FOnSubmitFunction,
 	FRWDMode,
 	Nullable,
 	NumericStringType,
+	PropsWithCustomStyle,
 	// =====================
 	// theme
 	// =====================

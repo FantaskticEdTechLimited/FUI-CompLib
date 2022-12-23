@@ -2,7 +2,7 @@ import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { style } from "typestyle";
 import { FReturnColor } from "..";
 
-export const FEmailInputFieldWrapper = (isError: boolean, disabled: boolean) =>
+export const emailInputFieldWrapper = (isError: boolean, disabled: boolean) =>
 	style({
 		display: "flex",
 		flexDirection: "column",
@@ -11,7 +11,7 @@ export const FEmailInputFieldWrapper = (isError: boolean, disabled: boolean) =>
 		cursor: disabled ? "not-allowed" : "text",
 	});
 
-export const FEmailInputFieldContainer = (
+export const emailInputFieldContainer = (
 	isTriggered: boolean,
 	isFilled: boolean
 ) =>
@@ -34,7 +34,7 @@ export const FEmailInputFieldContainer = (
 		padding: "12px",
 	});
 
-export const FEmailInputFieldInputAreaDiv = () =>
+export const inputAreaDiv = () =>
 	style({
 		backgroundColor: FReturnColor({ color: "White" }),
 		border: "none",

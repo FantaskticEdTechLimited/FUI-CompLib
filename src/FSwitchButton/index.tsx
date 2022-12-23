@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import { FReturnColor } from "..";
-import { FSwitchButtonDiv } from "./styles";
+import React from "react";
+import { FJoinClassNames, FReturnColor } from "..";
+import { buttonDiv } from "./styles";
 import { FSwitchButtonProps } from "./types";
 
 /**
@@ -8,27 +8,31 @@ import { FSwitchButtonProps } from "./types";
  *
  * Props: `FSwitchButtonProps`.
  */
-export const FSwitchButton = ({
-	checked = true,
-	disabled = false,
-	...props
-}: FSwitchButtonProps) => {
-	const [isHover, setIsHover] = useState<boolean>(false);
+export const FSwitchButton = (props: FSwitchButtonProps) => {
+	const {
+		ref: hoverRef,
+		ref,
+		checked = true,
+		disabled = false,
+		style,
+		svgStyle,
+		className,
+		svgClassName,
+		onClick,
+		circleProps,
+	} = props;
+
 	return (
 		<div
-			style={props.style && props.style(isHover)}
-			className={
-				FSwitchButtonDiv(checked, disabled) +
-				" " +
-				(props.className && props.className(isHover))
-			}
-			onClick={() => (disabled ? undefined : props.onClick && props.onClick())}
-			onMouseEnter={() => setIsHover(true)}
-			onMouseLeave={() => setIsHover(false)}
+			ref={hoverRef}
+			style={style}
+			className={FJoinClassNames([buttonDiv(checked, disabled), className])}
+			onClick={() => (disabled ? undefined : onClick && onClick())}
 		>
 			<svg
-				style={props.svgStyle && props.svgStyle(isHover)}
-				className={props.svgClassName && props.svgClassName(isHover)}
+				ref={ref}
+				style={svgStyle}
+				className={svgClassName}
 				width="18"
 				height="18"
 				overflow="visible"
@@ -43,7 +47,7 @@ export const FSwitchButton = ({
 					fill={FReturnColor({ color: "White" })}
 					stroke={FReturnColor({ color: "Grey" })}
 					strokeWidth="1.2"
-					{...props.circleProps}
+					{...circleProps}
 				/>
 			</svg>
 		</div>

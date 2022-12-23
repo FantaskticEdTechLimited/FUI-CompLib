@@ -5,14 +5,14 @@ import { FOverrideStyle, FReturnColor } from "..";
 import { FTagInputFieldProps } from "./types";
 
 export const styles = stylesheet({
-	FTagInputFieldWrapper: {
+	inputWrapper: {
 		display: "flex",
 		flexDirection: "column",
 		width: "fit-content",
 	},
 });
 
-export const FTagInputFieldWrapper = (props: FTagInputFieldProps<any>) =>
+export const tagInputFieldWrapper = (props: FTagInputFieldProps<any>) =>
 	style({
 		alignItems: props.vertical ? "normal" : "center",
 		backgroundColor: FReturnColor({ color: "White" }),
@@ -29,7 +29,7 @@ export const FTagInputFieldWrapper = (props: FTagInputFieldProps<any>) =>
 		rowGap: props.vertical ? "8px" : 0,
 	});
 
-export const FTagInputFieldTagsDisplayDiv = (vertical?: boolean) =>
+export const tagsDisplayDiv = (vertical?: boolean) =>
 	style({
 		display: "flex",
 		flexWrap: vertical ? "wrap" : "nowrap",
@@ -37,11 +37,9 @@ export const FTagInputFieldTagsDisplayDiv = (vertical?: boolean) =>
 		rowGap: "8px",
 	});
 
-export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
+export const inputContainer = (isTriggered: boolean) =>
 	style({
-		backgroundColor: FReturnColor({
-			color: "White",
-		}),
+		backgroundColor: FReturnColor({ color: "White" }),
 		display: "flex",
 		columnGap: "8px",
 		justifyContent: "space-between",
@@ -52,7 +50,7 @@ export const FTagInputFieldInputContainer = (isTriggered: boolean) =>
 			(isTriggered ? FReturnColor({ color: "Main" }) : "transparent"),
 	});
 
-export const FTagInputFieldInputDiv = (value?: string) => {
+export const inputDiv = (value?: string) => {
 	return style({
 		backgroundColor: FReturnColor({ color: "White" }),
 		border: "none",
@@ -71,9 +69,7 @@ export const FTagInputFieldInputDiv = (value?: string) => {
 	});
 };
 
-export const FTagInputFieldDropdownContainer = (
-	ref: RefObject<HTMLDivElement>
-) =>
+export const dropdownContainer = (ref: RefObject<HTMLDivElement>) =>
 	style({
 		position: "absolute",
 		maxHeight: "320px",
@@ -81,7 +77,7 @@ export const FTagInputFieldDropdownContainer = (
 		marginTop: ref.current ? ref.current.offsetHeight + 10 : 0,
 	});
 
-export const FTagInputFieldDropdownOptionDiv = (
+export const dropdownOptionDiv = (
 	isSelected: boolean,
 	isNew: boolean,
 	isExisted: boolean

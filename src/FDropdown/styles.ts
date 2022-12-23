@@ -2,7 +2,7 @@ import { style } from "typestyle";
 import { FReturnColor } from "..";
 import { FDropdownOptionDivProps } from "./types";
 
-export const FDropdownContainer = () =>
+export const dropdownContainer = () =>
 	style({
 		maxHeight: "inherit",
 		boxSizing: "border-box",
@@ -17,7 +17,7 @@ export const FDropdownContainer = () =>
 		backgroundColor: FReturnColor({ color: "White" }),
 	});
 
-export const FDropdownOptionDiv = (stylesProps: FDropdownOptionDivProps) =>
+export const dropdownOptionDiv = (stylesProps: FDropdownOptionDivProps) =>
 	style({
 		backgroundColor:
 			stylesProps.pressCount - stylesProps.index === 1

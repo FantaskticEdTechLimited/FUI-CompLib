@@ -1,17 +1,26 @@
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import React, { useState, useRef, useEffect } from "react";
 import { FText } from "../FText";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
 import { FReturnColor } from "../utils/FReturnColor";
-import { FNumberInputFieldInputAreaDiv, FNumberInputFieldDiv } from "./styles";
+import { inputAreaDiv, inputFieldDiv } from "./styles";
 import { FNumberInputFieldProps } from "./types";
 
-export const FNumberInputField = ({
-	value = 0,
-	placeholder = "Input",
-	disabled = false,
-	autoFocus = false,
-	...props
-}: FNumberInputFieldProps) => {
+export const FNumberInputField = (props: FNumberInputFieldProps) => {
+	const {
+		value = 0,
+		placeholder = "Input",
+		disabled = false,
+		autoFocus = false,
+		label,
+		labelProps,
+		style,
+		className,
+		inputAreaStyle,
+		inputAreaClassName,
+		onInput,
+	} = props;
+
 	const [isTriggered, setIsTriggered] = useState<boolean>(false);
 	const [isFilled, setIsFilled] = useState<boolean>(false);
 	const inputRef = useRef<HTMLInputElement>(null);
@@ -30,12 +39,11 @@ export const FNumberInputField = ({
 
 	return (
 		<div
-			style={props.inputDivStyle}
-			className={
-				FNumberInputFieldDiv(isTriggered, isFilled, disabled) +
-				" " +
-				props.inputDivClassName
-			}
+			style={style}
+			className={FJoinClassNames([
+				inputFieldDiv(isTriggered, isFilled, disabled),
+				className,
+			])}
 			onClick={() => {
 				if (!disabled) setIsTriggered(true);
 			}}
@@ -45,38 +53,37 @@ export const FNumberInputField = ({
 				else setIsFilled(true);
 			}}
 		>
-			{props.label && (
+			{label && (
 				<FText
 					font={
 						isTriggered || isFilled
 							? FFontTypes.Text()
 							: FFontTypes.Large_Text()
 					}
-					color={() =>
+					color={
 						isTriggered ? mainThemeColor : isFilled ? blackColor : greyColor
 					}
-					{...props.labelProps}
+					{...labelProps}
 				>
-					{props.label}
+					{label}
 				</FText>
 			)}
 			<input
-				style={props.inputAreaStyle}
-				className={
-					FNumberInputFieldInputAreaDiv(
-						isTriggered || isFilled || props.label === undefined,
+				style={inputAreaStyle}
+				className={FJoinClassNames([
+					inputAreaDiv(
+						isTriggered || isFilled || label === undefined,
 						disabled
-					) +
-					" " +
-					props.inputAreaClassName
-				}
+					),
+					inputAreaClassName,
+				])}
 				type="number"
 				ref={inputRef}
 				value={value}
 				placeholder={placeholder}
 				onChange={(event) => {
 					if (!disabled) {
-						props.onInput && props.onInput(Number(event.target.value));
+						onInput && onInput(Number(event.target.value));
 					}
 				}}
 			/>

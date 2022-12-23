@@ -1,9 +1,12 @@
 import { FIconProps } from "@innoplus-studio/fui-iconlib";
-import { CSSProperties } from "react";
 import { FTextProps } from "../FText/types";
-import { FComponentType, FOnSubmitFunction } from "../global.types";
+import {
+	FComponentType,
+	FOnSubmitFunction,
+	PropsWithCustomStyle,
+} from "../global.types";
 
-export interface FEmailInputFieldProps {
+export type FEmailInputFieldProps = PropsWithCustomStyle & {
 	/** Input email value. */
 	value?: string;
 	/** If `true`, the email inputfield is **NOT** allowed to use. */
@@ -30,15 +33,11 @@ export interface FEmailInputFieldProps {
 	/** Properties of the warning label. */
 	warningLabelProps?: FTextProps;
 	/** Class name of the inputfield wrapper (with `warningLabel`). */
-	wrapperClassName?: string;
+	wrapperClassName?: PropsWithCustomStyle["className"];
 	/** Style of the inputfield wrapper (with `warningLabel`). */
-	wrapperStyle?: CSSProperties;
-	/** Class name of the inputfield container. */
-	className?: string;
-	/** Style of the inputfield container. */
-	style?: CSSProperties;
+	wrapperStyle?: PropsWithCustomStyle["style"];
 	/** Class name of the input area. */
-	inputAreaClassName?: string;
+	inputAreaClassName?: PropsWithCustomStyle["className"];
 	/** Style of the input area. */
-	inputAreaStyle?: CSSProperties;
-}
+	inputAreaStyle?: PropsWithCustomStyle["style"];
+};

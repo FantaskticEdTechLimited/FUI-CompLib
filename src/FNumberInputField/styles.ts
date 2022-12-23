@@ -2,7 +2,7 @@ import { style } from "typestyle";
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FReturnColor } from "../utils/FReturnColor";
 
-export const FNumberInputFieldDiv = (
+export const inputFieldDiv = (
 	isTriggered: boolean,
 	isFilled: boolean,
 	disabled?: boolean
@@ -29,15 +29,12 @@ export const FNumberInputFieldDiv = (
 		transition: "all 0.2s ease-in-out",
 	});
 
-export const FNumberInputFieldInputAreaDiv = (
-	state: boolean,
-	disabled?: boolean
-) =>
+export const inputAreaDiv = (isShowDiv: boolean, disabled?: boolean) =>
 	style({
 		backgroundColor: FReturnColor({ color: "White" }),
 		border: "none",
 		color: FReturnColor({ color: "Black" }),
-		display: state ? "block" : "none",
+		display: isShowDiv ? "block" : "none",
 		font: FFontTypes.Large_Text(),
 		outline: "none",
 		overflowX: "hidden",

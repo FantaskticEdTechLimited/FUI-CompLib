@@ -1,12 +1,12 @@
 import { stylesheet } from "typestyle";
 
 export const styles = stylesheet({
-	FConfirmPopUp_Container: {
+	popUpContainer: {
 		height: "85%",
-		width: "90%", 
-		justifyContent: "space-between"
+		width: "90%",
+		justifyContent: "space-between",
 	},
-	FConfirmPopUp_HeaderDiv: {
+	headerDiv: {
 		display: "flex",
 		flexDirection: "column",
 		rowGap: "12px",

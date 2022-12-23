@@ -1,9 +1,4 @@
-import React, {
-	forwardRef,
-	useImperativeHandle,
-	useRef,
-	useState,
-} from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import {
 	DropTargetMonitor,
 	DragSourceMonitor,
@@ -12,10 +7,12 @@ import {
 	DropTargetConnector,
 	DragSourceConnector,
 } from "react-dnd";
+import { useHover } from "usehooks-ts";
+import { FJoinClassNames } from "../../utils/FJoinClassNames";
 import { FDnDButton } from "../FDnDButton";
 import { FDnDButtonProps } from "../FDnDButton/types";
 import { FDnDIndicator } from "../FDnDIndicator";
-import { FDnDItem_Default_Container, styles } from "./styles";
+import { defaultContainer, styles } from "./styles";
 import {
 	FDnDItemProps,
 	FDnDItemInstance,
@@ -29,7 +26,7 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 	{
 		connectDragSource,
 		connectDropTarget,
-		showIndicator,
+		isShowIndicator,
 		indicatorTarget,
 		indicatorPosition,
 		indicatorProps,
@@ -42,29 +39,30 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 		dndButtonProps,
 		customDnDButton,
 		children,
-		showDndButton,
+		isShowDndButton,
 		disableDndAction,
+		ref: itemRef,
 	},
 	ref
 ) {
 	const dragItemRef = useRef<HTMLDivElement>(null);
 	const hoverItemRef = useRef<HTMLDivElement>(null);
-	const [isHover, setIsHover] = useState<boolean>(false);
+	const isHover = useHover(hoverItemRef);
 	const isTargetOnContainer = indicatorTarget === "container";
 	const isLeftDnDButton = dndButtonPosition === "left";
 	const isTopIndicator = indicatorPosition === "top";
-	const showTopIndicatorOnContainer =
-		showIndicator && isTargetOnContainer && isTopIndicator;
-	const showTopIndicatorOnContent =
-		showIndicator && !isTargetOnContainer && isTopIndicator;
-	const showBottomIndicatorOnContainer =
-		showIndicator && isTargetOnContainer && !isTopIndicator;
-	const showBottomIndicatorOnContent =
-		showIndicator && !isTargetOnContainer && !isTopIndicator;
-	const showDnDButtonOnLeft =
-		showDndButton && !disableDndAction && isLeftDnDButton;
-	const showDnDButtonOnRight =
-		showDndButton && !disableDndAction && !isLeftDnDButton;
+	const isShowTopIndicatorOnContainer =
+		isShowIndicator && isTargetOnContainer && isTopIndicator;
+	const isShowTopIndicatorOnContent =
+		isShowIndicator && !isTargetOnContainer && isTopIndicator;
+	const isShowBottomIndicatorOnContainer =
+		isShowIndicator && isTargetOnContainer && !isTopIndicator;
+	const isShowBottomIndicatorOnContent =
+		isShowIndicator && !isTargetOnContainer && !isTopIndicator;
+	const isShowDnDButtonOnLeft =
+		isShowDndButton && !disableDndAction && isLeftDnDButton;
+	const isShowDnDButtonOnRight =
+		isShowDndButton && !disableDndAction && !isLeftDnDButton;
 	const FDndButtonProps: FDnDButtonProps = {
 		disabled: disabled,
 		...dndButtonProps,
@@ -93,20 +91,17 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 	);
 
 	return (
-		<div className={styles.FDnDItem_WithIndicator_Container}>
-			{showTopIndicatorOnContainer && TopIndicator}
+		<div className={styles.withIndicatorContainer}>
+			{isShowTopIndicatorOnContainer && TopIndicator}
 			<div
-				ref={hoverItemRef}
-				style={style && style(isHover)}
-				className={
-					FDnDItem_Default_Container(disabled, isTargetOnContainer, isHover) +
-					" " +
-					(className && className(isHover))
-				}
-				onMouseEnter={() => setIsHover(true)}
-				onMouseLeave={() => setIsHover(false)}
+				ref={itemRef ?? hoverItemRef}
+				style={style}
+				className={FJoinClassNames([
+					defaultContainer(disabled, isTargetOnContainer, isHover),
+					className,
+				])}
 			>
-				{showDnDButtonOnLeft &&
+				{isShowDnDButtonOnLeft &&
 					(customDnDButton ? (
 						customDnDButton
 					) : (
@@ -114,21 +109,20 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 							<FDnDButton {...FDndButtonProps} />
 						</div>
 					))}
-				<div className={styles.FDnDItem_WithIndicator_Container}>
-					{showTopIndicatorOnContent && TopIndicator}
+				<div className={styles.withIndicatorContainer}>
+					{isShowTopIndicatorOnContent && TopIndicator}
 					<div
-						style={contentContainerStyle && contentContainerStyle(isHover)}
-						className={
-							styles.FDnDItem_ContentContainer +
-							" " +
-							(contentContainerClassName && contentContainerClassName(isHover))
-						}
+						style={contentContainerStyle}
+						className={FJoinClassNames([
+							styles.contentContainer,
+							contentContainerClassName,
+						])}
 					>
 						{children}
 					</div>
-					{showBottomIndicatorOnContent && BottomIndicator}
+					{isShowBottomIndicatorOnContent && BottomIndicator}
 				</div>
-				{showDnDButtonOnRight &&
+				{isShowDnDButtonOnRight &&
 					(customDnDButton ? (
 						customDnDButton
 					) : (
@@ -137,7 +131,7 @@ export const FDnDItem = forwardRef<HTMLDivElement, FDnDItemProps>(function Card(
 						</div>
 					))}
 			</div>
-			{showBottomIndicatorOnContainer && BottomIndicator}
+			{isShowBottomIndicatorOnContainer && BottomIndicator}
 		</div>
 	);
 });
@@ -150,16 +144,18 @@ export default DropTarget(
 			monitor: DropTargetMonitor,
 			component: FDnDItemInstance
 		) {
-			if (!props.disabled || !props.disableDndAction) {
+			const { disableDndAction, disabled, onChildrenDrop, index } = props;
+
+			if (!disabled || !disableDndAction) {
 				const dragTargetIndex = monitor.getItem<FDnDItemDropObject>().index;
-				const dropTargetIndex = props.index;
+				const dropTargetIndex = index;
 
 				if (!component) return null;
 
 				if (dragTargetIndex === dropTargetIndex) return;
 
 				// Time to actually perform the action
-				props.onChildrenDrop(dragTargetIndex, dropTargetIndex);
+				onChildrenDrop(dragTargetIndex, dropTargetIndex);
 
 				// Note: we're mutating the monitor item here!
 				// Generally it's better to avoid mutations,
@@ -172,18 +168,18 @@ export default DropTarget(
 		},
 
 		hover(props: FDnDItemProps, monitor: DropTargetMonitor) {
-			if (!props.disabled || !props.disableDndAction) {
+			const { disableDndAction, disabled, renderIndicatorData, index } = props;
+
+			if (!disabled || !disableDndAction) {
 				const dragTargetIndex = monitor.getItem<FDnDItemDragObject>().index;
-				const hoverTargetIndex = props.index;
+				const hoverTargetIndex = index;
 
 				if (dragTargetIndex < hoverTargetIndex)
-					props.renderIndicatorData &&
-						props.renderIndicatorData(hoverTargetIndex, "bottom");
+					renderIndicatorData &&
+						renderIndicatorData(hoverTargetIndex, "bottom");
 				else if (dragTargetIndex > hoverTargetIndex)
-					props.renderIndicatorData &&
-						props.renderIndicatorData(hoverTargetIndex, "top");
-				else
-					props.renderIndicatorData && props.renderIndicatorData(-1, undefined);
+					renderIndicatorData && renderIndicatorData(hoverTargetIndex, "top");
+				else renderIndicatorData && renderIndicatorData(-1, undefined);
 			} else return;
 		},
 	},
@@ -199,8 +195,9 @@ export default DropTarget(
 				index: props.index,
 			}),
 			endDrag: (props: FDnDItemProps, monitor: DragSourceMonitor) => {
+				const { renderIndicatorData } = props;
 				if (!monitor.didDrop()) {
-					props.renderIndicatorData && props.renderIndicatorData(-1, undefined);
+					renderIndicatorData && renderIndicatorData(-1, undefined);
 				}
 			},
 		},

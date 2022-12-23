@@ -1,7 +1,7 @@
 import { style } from "typestyle";
 import { FReturnColor } from "..";
 
-export const FDivider_Container = (isVertical: boolean) =>
+export const dividerContainer = (isVertical: boolean) =>
 	style({
 		height: isVertical ? "100%" : "2px",
 		width: isVertical ? "2px" : "100%",

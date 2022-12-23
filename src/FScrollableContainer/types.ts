@@ -1,14 +1,10 @@
-import { CSSProperties, ReactNode } from "react";
+import { PropsWithChildren } from "react";
+import { PropsWithCustomStyle } from "../global.types";
 
-export interface FScrollableContainerProps {
-	/** If `true`, the container is changed to be scrolled horizontally,
-	 * and the horizontal scroll bar will be shown.
-	 */
-	horizontal?: boolean;
-	/** Content of the container. */
-	children: ReactNode;
-	/** Style of the container. */
-	style?: CSSProperties;
-	/** Class name of the container. */
-	className?: string;
-}
+export type FScrollableContainerProps = PropsWithCustomStyle &
+	PropsWithChildren<unknown> & {
+		/** If `true`, the container is changed to be scrolled horizontally,
+		 * and the horizontal scroll bar will be shown.
+		 */
+		horizontal?: boolean;
+	};

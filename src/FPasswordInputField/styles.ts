@@ -2,7 +2,7 @@ import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { style } from "typestyle";
 import { FReturnColor } from "..";
 
-export const FPasswordInputFieldContainer = (
+export const inputFieldContainer = (
 	isTriggered: boolean,
 	isFilled: boolean,
 	disabled: boolean
@@ -26,7 +26,7 @@ export const FPasswordInputFieldContainer = (
 		cursor: disabled ? "not-allowed" : "text",
 	});
 
-export const FPasswordInputFieldInputAreaDiv = (disabled: boolean) =>
+export const inputAreaDiv = (disabled: boolean) =>
 	style({
 		backgroundColor: "inherit",
 		border: "none",

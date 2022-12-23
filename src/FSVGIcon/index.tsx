@@ -1,5 +1,6 @@
 import React from "react";
-import { FSVGIconDiv } from "./styles";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
+import { iconDiv } from "./styles";
 import { FSVGIconProps } from "./types";
 
 /**
@@ -7,14 +8,16 @@ import { FSVGIconProps } from "./types";
  *
  * Props: `FSVGIconProps`.
  */
-export const FSVGIcon = ({ disabled = false, ...props }: FSVGIconProps) => {
+export const FSVGIcon = (props: FSVGIconProps) => {
+	const { disabled = false, style, className, onClick, children } = props;
+
 	return (
 		<div
-			style={props.style}
-			className={FSVGIconDiv(disabled) + " " + props.className}
-			onClick={() => (disabled ? undefined : props.onClick && props.onClick())}
+			style={style}
+			className={FJoinClassNames([iconDiv(disabled), className])}
+			onClick={() => (disabled ? undefined : onClick && onClick())}
 		>
-			{props.children}
+			{children}
 		</div>
 	);
 };

@@ -10,12 +10,8 @@ import { FScrollBarStyleProps } from "./types";
  *
  *  */
 export const FScrollBarStyle = (props?: FScrollBarStyleProps) => {
-	const greyColor = FReturnColor({
-		color: "Grey",
-	});
-	const darkColor = FReturnColor({
-		color: "Dark",
-	});
+	const greyColor = FReturnColor({ color: "Grey" });
+	const darkColor = FReturnColor({ color: "Dark" });
 
 	return style({
 		$nest: {

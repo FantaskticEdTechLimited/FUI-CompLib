@@ -1,6 +1,6 @@
 import { style } from "typestyle";
 
-export const FSVGIconDiv = (disabled?: boolean) =>
+export const iconDiv = (disabled?: boolean) =>
 	style({
 		alignItems: "center",
 		cursor: disabled ? "not-allowed" : "pointer",

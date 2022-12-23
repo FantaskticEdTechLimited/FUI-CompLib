@@ -1,5 +1,6 @@
 import React from "react";
-import { FDivider_Container } from "./styles";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
+import { dividerContainer } from "./styles";
 import { FDividerProps } from "./types";
 
 /**
@@ -9,10 +10,12 @@ import { FDividerProps } from "./types";
  * Props: `FDividerProps`.
  */
 export const FDivider = (props: FDividerProps) => {
+	const { style, className, vertical } = props;
+
 	return (
 		<div
-			style={props.style}
-			className={FDivider_Container(props.vertical!) + " " + props.className}
+			style={style}
+			className={FJoinClassNames([dividerContainer(vertical!), className])}
 		/>
 	);
 };

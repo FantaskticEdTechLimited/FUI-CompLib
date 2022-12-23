@@ -2,11 +2,11 @@ import { FConfirmPopUpProps } from "./types";
 import { styles } from "./styles";
 import {
 	FBottomNavBar,
-	FBottomNavBarProps,
 	FPopUp,
 	FText,
 	FReturnColor,
 	FUseStateSafe,
+	FJoinClassNames,
 } from "..";
 import React from "react";
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
@@ -17,23 +17,24 @@ import { FFontTypes } from "@innoplus-studio/fui-fontlib";
  *
  * Props: `FConfirmPopUpProps`
  */
-export const FConfirmPopUp = ({
-	disableBottomBar = false,
-	disableCloseWhenClickOutside = false,
-	...props
-}: FConfirmPopUpProps) => {
+export const FConfirmPopUp = (props: FConfirmPopUpProps) => {
+	const {
+		disableBottomBar = false,
+		disableCloseWhenClickOutside = false,
+		headerStyle,
+		className,
+		headerClassName,
+		onClose,
+		title,
+		titleProps,
+		subtitle,
+		subtitleProps,
+		children,
+		bottomBarProps,
+		scrollBarProps,
+		...restProps
+	} = props;
 	const [isLoading, setIsLoading] = FUseStateSafe(false);
-	const FPopUpParams: Partial<FConfirmPopUpProps> = {
-		disableCloseWhenClickOutside: disableCloseWhenClickOutside,
-		overlayClassName: props.overlayClassName,
-		overlayStyle: props.overlayStyle,
-		style: props.style,
-		scrollBarProps: props.scrollBarProps,
-	};
-	const bottomBarProps: FBottomNavBarProps = {
-		actionButtonLabel: "Confirm",
-		...props.bottomBarProps,
-	};
 
 	const handleActionButtonClick = async () => {
 		setIsLoading(true);
@@ -49,38 +50,40 @@ export const FConfirmPopUp = ({
 
 	return (
 		<FPopUp
-			{...FPopUpParams}
-			onClose={disableCloseWhenClickOutside ? undefined : props.onClose}
-			className={styles.FConfirmPopUp_Container + " " + props.className}
+			onClose={disableCloseWhenClickOutside ? undefined : onClose}
+			className={FJoinClassNames([styles.popUpContainer, className])}
+			{...restProps}
 		>
 			<div
-				style={props.headerStyle}
-				className={styles.FConfirmPopUp_HeaderDiv + " " + props.headerClassName}
+				style={headerStyle}
+				className={FJoinClassNames([styles.headerDiv, headerClassName])}
 			>
 				<FText
 					font={FFontTypes.Title()}
 					maxRows={1}
 					overflowHidden
-					children={props.title}
-					{...props.titleProps}
+					children={title}
+					{...titleProps}
 				/>
-				{props.subtitle && (
+				{subtitle && (
 					<FText
 						font={FFontTypes.Text()}
-						color={() => FReturnColor({ color: "Grey" })}
+						color={FReturnColor({ color: "Grey" })}
 						maxRows={2}
 						overflowHidden
-						children={props.subtitle}
-						{...props.subtitleProps}
+						children={subtitle}
+						{...subtitleProps}
 					/>
 				)}
 			</div>
-			{props.children}
+			{children}
 			{!disableBottomBar && (
 				<FBottomNavBar
-					leadingButtonLabel={bottomBarProps.leadingButtonLabel}
+					leadingButtonLabel={bottomBarProps?.leadingButtonLabel}
 					actionButtonLabel={
-						isLoading ? "Loading" : bottomBarProps.actionButtonLabel
+						isLoading
+							? "Loading"
+							: bottomBarProps?.actionButtonLabel ?? "Confirm"
 					}
 					disableActionButton={isLoading}
 					onLeadingButtonClick={handleLeadingButtonClick}

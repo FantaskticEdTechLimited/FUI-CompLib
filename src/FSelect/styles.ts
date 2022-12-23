@@ -1,16 +1,17 @@
+import { RefObject } from "react";
 import { style, stylesheet } from "typestyle";
 import { FReturnColor } from "..";
 import { FSelectContainerStyleProps } from "./types";
 
 export const styles = stylesheet({
-	FSelectWrapper: {
+	selectWrapper: {
 		position: "relative",
 		display: "flex",
 		flexDirection: "column",
 	},
 });
 
-export const FSelectContainer = (
+export const selectContainer = (
 	props: FSelectContainerStyleProps<any>,
 	isHover?: boolean
 ) =>
@@ -39,7 +40,7 @@ export const FSelectContainer = (
 		padding: "12px",
 	});
 
-export const FSelectContentDiv = (showLabelOnly?: boolean) =>
+export const contentDiv = (showLabelOnly?: boolean) =>
 	style({
 		display: "flex",
 		flexDirection: "column",
@@ -47,8 +48,8 @@ export const FSelectContentDiv = (showLabelOnly?: boolean) =>
 		rowGap: showLabelOnly ? 0 : "4px",
 	});
 
-export const FSelectDropdownWrapper = (
-	ref: React.RefObject<HTMLDivElement>,
+export const selectDropdownWrapper = (
+	ref: RefObject<HTMLDivElement>,
 	isClicked: boolean
 ) =>
 	style({

@@ -1,7 +1,7 @@
 import { stylesheet } from "typestyle";
 
 export const styles = stylesheet({
-	FForm_Container: {
+	formContainer: {
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "flex-start",
@@ -11,7 +11,7 @@ export const styles = stylesheet({
 		width: "100%",
 		overflowY: "auto",
 	},
-	FForm_Content_Container: {
+	contentContainer: {
 		display: "flex",
 		flexDirection: "column",
 		justifyContent: "flex-start",

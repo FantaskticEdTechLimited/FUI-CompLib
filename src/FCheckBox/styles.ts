@@ -1,6 +1,6 @@
 import { style } from "typestyle";
 
-export const FCheckBoxDiv = (disabled?: boolean) =>
+export const checkBoxDiv = (disabled?: boolean) =>
 	style({
 		width: "24px",
 		height: "24px",

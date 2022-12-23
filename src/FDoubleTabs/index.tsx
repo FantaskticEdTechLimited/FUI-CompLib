@@ -1,10 +1,15 @@
 import { FDoubleTabsProps } from "./types";
-import * as styles from "./styles";
+import {
+	styles,
+	doubleTabsTabButtonContainer,
+	doubleTabsTabContainer,
+	doubleTabsWrapper,
+} from "./styles";
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { useEffect, useState } from "react";
 import React from "react";
 import { FButtonProps } from "../FButton/types";
-import { FButton, FReturnArray } from "..";
+import { FButton, FJoinClassNames, FReturnArray } from "..";
 
 /**
  * `<FDoubleTabs />` is a `<FTabs />` component with only **two** tabs.
@@ -12,92 +17,99 @@ import { FButton, FReturnArray } from "..";
  * Props: `FDoubleTabsProps`.
  */
 export const FDoubleTabs = (props: FDoubleTabsProps) => {
+	const {
+		disabled = false,
+		headerStyle,
+		tabContainerStyle,
+		wrapperStyle,
+		headerClassName,
+		wrapperClassName,
+		tabContainerClassName,
+		tabButtonProps: DoubleTabsTabButtonProps,
+		children,
+		actionComponents,
+		leadingComponents,
+	} = props;
+
 	const [tabIndex, setTabIndex] = useState<number>(0);
-	let defaultTabButtonProps: FButtonProps = {
-		type: "Primary",
-		label: "",
-		leadingComponents: () => [],
-		actionComponents: () => [],
-		disabled: props.disabled ?? false,
-		onClick: () => setTabIndex(0),
-		style: props.tabButtonProps?.style,
-		className: props.tabButtonProps?.className,
-	};
+
 	useEffect(() => {
-		if (FReturnArray(props.children).length !== 2)
-			console.log("Error: FDoubleTabs requires two tabs.");
-	}, [props.children]);
+		if (FReturnArray(children).length !== 2)
+			throw new Error("FDoubleTabs requires two tabs.");
+	}, [children]);
 
 	return (
 		<div
-			style={props.wrapperStyle}
-			className={
-				styles.FDoubleTabs_Wrapper(props.disabled!) +
-				" " +
-				props.wrapperClassName
-			}
+			style={wrapperStyle}
+			className={FJoinClassNames([
+				doubleTabsWrapper(disabled!),
+				wrapperClassName,
+			])}
 		>
-			{FReturnArray(props.children).length === 2 && (
+			{FReturnArray(children).length === 2 && (
 				<>
 					<div
-						style={props.headerStyle}
-						className={styles.FDoubleTabs_Header + " " + props.headerClassName}
+						style={headerStyle}
+						className={FJoinClassNames([
+							styles.doubleTabsHeader,
+							headerClassName,
+						])}
 					>
-						{props.leadingComponents}
+						{leadingComponents}
 						<div
-							style={props.tabContainerStyle}
-							className={
-								styles.FDoubleTabs_TabsContainer() +
-								" " +
-								props.tabContainerClassName
-							}
+							style={tabContainerStyle}
+							className={FJoinClassNames([
+								doubleTabsTabContainer(),
+								tabContainerClassName,
+							])}
 						>
-							{FReturnArray(props.children).map((tab, index) => {
+							{FReturnArray(children).map((tab, index) => {
+								const {
+									label,
+									tabButtonLeadingComponents,
+									tabButtonActionComponents,
+									style,
+									className,
+									...restProps
+								} = tab.props;
+
 								let isSelect = tabIndex === index ? true : false;
-								let tabButtonProps: FButtonProps = {
-									...defaultTabButtonProps,
-									type: isSelect ? "Primary" : "Text",
-									label:
-										tab.props.label ?? index === 0
-											? "Double Tab 1"
-											: "Double Tab 2",
+								let defaultTabButtonProps: FButtonProps = {
+									...restProps,
+									type: isSelect ? "primary" : "text",
+									label: label ?? index === 0 ? "Double Tab 1" : "Double Tab 2",
 									leadingComponents: () =>
-										tab.props.tabButtonLeadingComponents &&
-										tab.props.tabButtonLeadingComponents(isSelect),
+										tabButtonLeadingComponents &&
+										tabButtonLeadingComponents(isSelect),
 									actionComponents: () =>
-										tab.props.tabButtonActionComponents &&
-										tab.props.tabButtonActionComponents(isSelect),
-									disabled: props.disabled ?? tab.props.disabled,
+										tabButtonActionComponents &&
+										tabButtonActionComponents(isSelect),
+									disabled: disabled ?? disabled,
 									onClick: () => setTabIndex(index),
-									labelProps: () => ({ font: FFontTypes.Large_Text() }),
-									className: () =>
-										styles.FDoubleTabs_TabButton_Container(isSelect),
-									...tab.props.tabButtonProps,
+									labelProps: { font: FFontTypes.Large_Text() },
+									className: doubleTabsTabButtonContainer(isSelect),
 								};
 
 								return (
 									<FButton
 										key={index}
-										{...tabButtonProps}
-										{...props.tabButtonProps}
-										{...tab.props.tabButtonProps}
+										{...DoubleTabsTabButtonProps}
+										{...defaultTabButtonProps}
 									/>
 								);
 							})}
 						</div>
-						{props.actionComponents}
+						{actionComponents}
 					</div>
-					{FReturnArray(props.children).map((panel, index) => {
-						const panelProps = panel.props;
-						if (panelProps.isRenderOnSelected) {
+					{FReturnArray(children).map((panel, index) => {
+						const { isRenderOnSelected, style, className, children } =
+							panel.props;
+
+						if (isRenderOnSelected) {
 							if (index === tabIndex)
 								return (
-									<div
-										key={index}
-										style={panelProps.style}
-										className={panelProps.className}
-									>
-										{panelProps.children}
+									<div key={index} style={style} className={className}>
+										{children}
 									</div>
 								);
 							else return;
@@ -110,11 +122,11 @@ export const FDoubleTabs = (props: FDoubleTabsProps) => {
 										height: "100%",
 										width: "100%",
 										display: index === tabIndex ? "block" : "none",
-										...panelProps.style,
+										...style,
 									}}
-									className={panelProps.className}
+									className={className}
 								>
-									{panelProps.children}
+									{children}
 								</div>
 							);
 						}

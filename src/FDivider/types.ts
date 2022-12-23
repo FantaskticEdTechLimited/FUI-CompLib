@@ -1,7 +1,5 @@
-import { CSSProperties } from "react";
+import { PropsWithCustomStyle } from "../global.types";
 
-export interface FDividerProps {
+export type FDividerProps = PropsWithCustomStyle & {
 	vertical?: boolean;
-	style?: CSSProperties;
-	className?: string;
-}
+};

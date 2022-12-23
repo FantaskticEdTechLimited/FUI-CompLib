@@ -1,22 +1,23 @@
-import { CSSProperties, ReactNode } from "react";
+import { PropsWithChildren } from "react";
 import { FIconProps } from "@innoplus-studio/fui-iconlib";
 import {
 	FComponentsType,
 	FComponentType,
 	FOnClickFunction,
 	FRWDMode,
+	PropsWithCustomStyle,
 } from "../global.types";
 import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
 
 export type OverlayEnterSide = "left" | "right";
 
 export interface CustomIconButtonProps {
-	style?: CSSProperties;
+	style?: PropsWithCustomStyle["style"];
 	className?: string;
 	onClick?: FOnClickFunction;
 }
 
-export interface FRWDNavBarProps {
+export type FRWDNavBarProps = PropsWithChildren<unknown> & {
 	/**
 	 * responsive mode of the side bar
 	 */
@@ -25,10 +26,6 @@ export interface FRWDNavBarProps {
 	 * which side the overlay comes from
 	 */
 	overlayEnterSide: OverlayEnterSide;
-	/**
-	 * main content of the side / top bar
-	 */
-	children: ReactNode;
 	/**
 	 * visibility of the side / top bar
 	 */
@@ -44,19 +41,19 @@ export interface FRWDNavBarProps {
 	/**
 	 * css style of (hidden/normal) side bar container
 	 */
-	containerStyle?: CSSProperties;
+	containerStyle?: PropsWithCustomStyle["style"];
 	/**
 	 * classname of (hidden/normal) side bar container
 	 */
-	containerClassName?: string;
+	containerClassName?: PropsWithCustomStyle["className"];
 	/**
 	 * css style of side bar content div (children)
 	 */
-	contentDivStyle?: CSSProperties;
+	contentDivStyle?: PropsWithCustomStyle["style"];
 	/**
 	 * classname of side bar content div (children)
 	 */
-	contentDivClassName?: string;
+	contentDivClassName?: PropsWithCustomStyle["className"];
 	/**
 	 * menu button is clicked and then close side bar when tablet / mobile mode
 	 */
@@ -72,27 +69,27 @@ export interface FRWDNavBarProps {
 	/**
 	 * css style of the divider
 	 */
-	dividerStyle?: CSSProperties;
+	dividerStyle?: PropsWithCustomStyle["style"];
 	/**
 	 * classname of the divider
 	 */
-	dividerClassName?: string;
+	dividerClassName?: PropsWithCustomStyle["className"];
 	/**
 	 * css style of the overlay
 	 */
-	overlayStyle?: CSSProperties;
+	overlayStyle?: PropsWithCustomStyle["style"];
 	/**
 	 * classname of the overlay
 	 */
-	overlayClassName?: string;
+	overlayClassName?: PropsWithCustomStyle["className"];
 	/**
 	 * css style of top bar
 	 */
-	topBarStyle?: CSSProperties;
+	topBarStyle?: PropsWithCustomStyle["style"];
 	/**
 	 * classname of top bar
 	 */
-	topBarClassName?: string;
+	topBarClassName?: PropsWithCustomStyle["className"];
 	/**
 	 * leading components of top nav bar
 	 */
@@ -117,4 +114,4 @@ export interface FRWDNavBarProps {
 	 * properties of scroll bar
 	 */
 	scrollBarProps?: FScrollBarStyleProps;
-}
+};

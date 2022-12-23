@@ -1,15 +1,21 @@
 import React, { SVGProps } from "react";
 import { FPasswordInputFieldIconProps } from "./types";
-import { FPasswordInputFieldEyeIcon } from "./styles";
-import { FReturnColor } from "../..";
+import { eyeIcon } from "./styles";
+import { FJoinClassNames, FReturnColor } from "../..";
 
-export const EyeIcon = ({
-	disabled = false,
-	...props
-}: FPasswordInputFieldIconProps) => {
+export const EyeIcon = (props: FPasswordInputFieldIconProps) => {
+	const {
+		disabled = false,
+		style,
+		className,
+		strokeColor,
+		strokeWidth,
+		onClick,
+	} = props;
+
 	const pathProps: SVGProps<SVGPathElement> = {
-		stroke: props.strokeColor ?? FReturnColor({ color: "Black" }),
-		strokeWidth: props.strokeWidth ?? "2",
+		stroke: strokeColor ?? FReturnColor({ color: "Black" }),
+		strokeWidth: strokeWidth ?? "2",
 		strokeLinecap: "round",
 		strokeLinejoin: "round",
 	};
@@ -21,9 +27,9 @@ export const EyeIcon = ({
 			viewBox="0 0 24 24"
 			fill="none"
 			xmlns="http://www.w3.org/2000/svg"
-			style={props.style}
-			className={FPasswordInputFieldEyeIcon(disabled) + " " + props.className}
-			onClick={() => (disabled ? undefined : props.onClick && props.onClick())}
+			style={style}
+			className={FJoinClassNames([eyeIcon(disabled), className])}
+			onClick={() => (disabled ? undefined : onClick && onClick())}
 		>
 			<path
 				d="M1 12C1 12 5 4 12 4C19 4 23 12 23 12C23 12 19 20 12 20C5 20 1 12 1 12Z"

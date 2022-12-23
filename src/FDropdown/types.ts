@@ -1,7 +1,7 @@
-import { CSSProperties, ReactNode } from "react";
+import { ReactNode } from "react";
 import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
 import { FTextProps } from "../FText/types";
-import { FOnSubmitFunction } from "../global.types";
+import { FOnSubmitFunction, PropsWithCustomStyle } from "../global.types";
 
 export interface FDropdownOptionDivProps {
 	pressCount: number;
@@ -10,7 +10,7 @@ export interface FDropdownOptionDivProps {
 	props: FDropdownProps<any>;
 }
 
-export interface FDropdownProps<T> {
+export type FDropdownProps<T = unknown> = PropsWithCustomStyle & {
 	/** Options data. */
 	options: T[];
 	/** Select action event of the dropdown. */
@@ -31,18 +31,14 @@ export interface FDropdownProps<T> {
 	customOption?: (data: T, isSelected: boolean) => ReactNode;
 	/** Shows the listed option name **only**. */
 	renderOptionNameOnly?: (data: T) => string;
-	/** Class name of the dropdown container. */
-	className?: string;
-	/** Style of the dropdown container. */
-	style?: CSSProperties;
 	/** Class name of the option div. */
-	optionDivClassName?: string;
+	optionDivClassName?: PropsWithCustomStyle["className"];
 	/** Style of the option div. */
-	optionDivStyle?: CSSProperties;
+	optionDivStyle?: PropsWithCustomStyle["style"];
 	/** Properties of the option text. */
 	optionTextProps?: FTextProps;
 	/** Properties of the warning label. */
 	warningLabelProps?: FTextProps;
 	/** Properties of the scroll bar. */
 	scrollBarProps?: FScrollBarStyleProps;
-}
+};

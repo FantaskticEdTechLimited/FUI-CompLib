@@ -1,6 +1,6 @@
 import { style } from "typestyle";
 
-export const FRadioButtonDiv = (disabled?: boolean) =>
+export const radioButtonDiv = (disabled?: boolean) =>
 	style({
 		cursor: disabled ? "not-allowed" : "pointer",
 		height: "24px",

@@ -1,12 +1,12 @@
 import { stylesheet } from "typestyle";
 
 export const styles = stylesheet({
-	SearchIconDiv: {
+	searchIconDiv: {
 		height: "18px",
 		overflow: "visible",
 		width: "18px",
 	},
-	ClearIconDiv: {
+	clearIconDiv: {
 		cursor: "pointer",
 		height: "20px",
 		overflow: "visible",

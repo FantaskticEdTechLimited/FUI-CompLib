@@ -1,11 +1,7 @@
 import { style } from "typestyle";
 import { FReturnColor } from "..";
-import { FHeaderButtonProps } from "./types";
 
-export const FHeaderButtonContainer = (
-	props: FHeaderButtonProps,
-	isHover: boolean
-) =>
+export const buttonContainer = (disabled: boolean, isHover: boolean) =>
 	style({
 		display: "flex",
 		alignItems: "center",
@@ -16,6 +12,6 @@ export const FHeaderButtonContainer = (
 		borderRadius: "4px",
 		boxSizing: "border-box",
 		padding: "8px",
-		cursor: props.disabled ? "not-allowed" : "pointer",
-		opacity: props.disabled ? 0.4 : 1,
+		cursor: disabled ? "not-allowed" : "pointer",
+		opacity: disabled ? 0.4 : 1,
 	});

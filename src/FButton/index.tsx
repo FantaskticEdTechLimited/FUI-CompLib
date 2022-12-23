@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
 import { FButtonProps } from "./types";
 import { FText } from "../FText";
 import { FReturnColor } from "../utils/FReturnColor";
-import { FButtonContainer } from "./styles";
+import { buttonContainer } from "./styles";
+import { useHover } from "usehooks-ts";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
 
 /** `<FButton />` is a customized `Button` component.
  *
@@ -12,57 +14,58 @@ import { FButtonContainer } from "./styles";
  * Props: `FButtonProps`.
  *
  * */
-export const FButton = ({
-	label = "Label",
-	type = "Primary",
-	disabled = false,
-	...props
-}: FButtonProps) => {
-	const [isHover, setIsHover] = useState<boolean>(false);
-	const param: Partial<FButtonProps> = {
-		label: label,
-		type: type,
-		disabled: disabled,
-		...props,
-	};
+export const FButton = (props: FButtonProps) => {
+	const {
+		buttonRef,
+		disabled = false,
+		type = "primary",
+		label = "Label",
+		style,
+		className,
+		labelProps,
+		onClick,
+		actionComponents,
+		leadingComponents,
+		children,
+	} = props;
+	const hoverRef = useRef(null);
+	const isHover = useHover(hoverRef);
 	const mainThemeColor = FReturnColor({ color: "Main" });
 	const whiteColor = FReturnColor({ color: "White" });
 	const blackColor = FReturnColor({ color: "Black" });
 	const labelColor =
 		!disabled && isHover
-			? type === "Text"
+			? type === "text"
 				? mainThemeColor
 				: whiteColor
-			: type === "Primary"
+			: type === "primary"
 			? whiteColor
-			: type === "Outline" || type === "Secondary"
+			: type === "outline" || type === "secondary"
 			? mainThemeColor
 			: blackColor;
 
 	return (
 		<div
-			style={props.style && props.style(isHover)}
-			className={
-				FButtonContainer(param, isHover) +
-				" " +
-				(props.className && props.className(isHover))
-			}
-			onClick={() => (disabled ? undefined : props.onClick && props.onClick())}
-			onMouseEnter={() => setIsHover(true)}
-			onMouseLeave={() => setIsHover(false)}
+			ref={buttonRef ?? hoverRef}
+			style={style}
+			className={FJoinClassNames([
+				buttonContainer(type, disabled, isHover),
+				className,
+			])}
+			onClick={() => (disabled ? undefined : onClick && onClick())}
 		>
-			{props.leadingComponents && props.leadingComponents(isHover)}
-			{props.customChildren ? (
-				props.customChildren(isHover)
+			{leadingComponents}
+			{children ? (
+				children
 			) : (
 				<FText
 					font={FFontTypes.Text()}
-					color={() => labelColor}
+					color={labelColor}
 					children={label}
-					{...(props.labelProps && props.labelProps(isHover))}
+					{...labelProps}
 				/>
 			)}
-			{props.actionComponents && props.actionComponents(isHover)}
+			{actionComponents}
 		</div>
 	);
 };

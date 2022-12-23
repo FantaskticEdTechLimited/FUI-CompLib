@@ -1,9 +1,8 @@
-import { CSSProperties } from "react";
 import { FScrollBarStyleProps } from "../FScrollBarStyle/types";
 import { FTextProps } from "../FText/types";
-import { FOnSubmitFunction } from "../global.types";
+import { FOnSubmitFunction, PropsWithCustomStyle } from "../global.types";
 
-export interface FInputFieldProps {
+export type FInputFieldProps = PropsWithCustomStyle & {
 	/** Input value. */
 	value?: string;
 	/** If `true`, the inputfield is **NOT** allowed to use. */
@@ -23,22 +22,18 @@ export interface FInputFieldProps {
 	autoFocus?: boolean;
 	/** Returns the input value. */
 	onInput?: FOnSubmitFunction<string>;
-	/** Class name of the inputfield container. */
-	className?: string;
-	/** Style of the inputfield container. */
-	style?: CSSProperties;
 	/** Class name of the input area. */
-	inputAreaClassName?: string;
+	inputAreaClassName?: PropsWithCustomStyle["className"];
 	/** Style of the input area. */
-	inputAreaStyle?: CSSProperties;
+	inputAreaStyle?: PropsWithCustomStyle["style"];
 	/** Class name of the inputfield (**with `label`**). */
-	inputDivClassName?: string;
+	inputDivClassName?: PropsWithCustomStyle["className"];
 	/** Style of the inputfield (**with `label`**). */
-	inputDivStyle?: CSSProperties;
+	inputDivStyle?: PropsWithCustomStyle["style"];
 	/** Properties of the label. */
 	labelProps?: FTextProps;
 	/** Properties of the word count text. */
 	wordCountProps?: FTextProps;
 	/** Properties of the scrollbar. */
 	scrollBarProps?: FScrollBarStyleProps;
-}
+};

@@ -1,9 +1,8 @@
-import { CSSProperties } from "react";
-import { FBottomNavBarProps } from "..";
+import { FBottomNavBarProps, PropsWithCustomStyle } from "..";
 import { FPopUpProps } from "../FPopUp/types";
 import { FTextProps } from "../FText/types";
 
-export interface FConfirmPopUpProps extends FPopUpProps {
+export type FConfirmPopUpProps = FPopUpProps & {
 	/** Title in the header of the popup. */
 	title: string;
 	/** Subtitle in the header of the popup. */
@@ -20,7 +19,7 @@ export interface FConfirmPopUpProps extends FPopUpProps {
 	/** Properties of the subtitle. */
 	subtitleProps?: FTextProps;
 	/** Style of the header div of the popup. */
-	headerStyle?: CSSProperties;
+	headerStyle?: PropsWithCustomStyle["style"];
 	/** Class name of the header div of the popup. */
-	headerClassName?: string;
-}
+	headerClassName?: PropsWithCustomStyle["className"];
+};

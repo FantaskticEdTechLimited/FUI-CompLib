@@ -1,35 +1,39 @@
 import { style } from "typestyle";
 import { FReturnColor } from "..";
-import { FButtonProps } from "./types";
+import { FButtonTypes } from "./types";
 
-export const FButtonContainer = (props: FButtonProps, isHover: boolean) =>
+export const buttonContainer = (
+	type: FButtonTypes,
+	disabled: boolean,
+	isHover: boolean
+) =>
 	style({
 		alignItems: "center",
 		backgroundColor:
-			!props.disabled && isHover
-				? props.type === "Text"
+			!disabled && isHover
+				? type === "text"
 					? undefined
 					: FReturnColor({ color: "Main" })
-				: props.type === "Primary"
+				: type === "primary"
 				? FReturnColor({ color: "Main" })
-				: props.type === "Secondary"
+				: type === "secondary"
 				? FReturnColor({ color: "Sub" })
 				: FReturnColor({ color: "White" }),
 		borderRadius: "4px",
 		border:
-			props.type === "Outline"
+			type === "outline"
 				? "2px solid " + FReturnColor({ color: "Main" })
 				: "none",
-		cursor: props.disabled ? "not-allowed" : "pointer",
+		cursor: disabled ? "not-allowed" : "pointer",
 		display: "flex",
 		flexDirection: "row",
 		justifyContent: "center",
 		opacity:
-			!props.disabled && isHover
-				? props.type === "Primary"
+			!disabled && isHover
+				? type === "primary"
 					? 0.8
 					: 1
-				: props.disabled
+				: disabled
 				? 0.4
 				: 1,
 		padding: "12px 16px",

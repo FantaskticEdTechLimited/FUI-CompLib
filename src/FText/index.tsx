@@ -1,40 +1,34 @@
 import { FFontTypes } from "@innoplus-studio/fui-fontlib";
-import React, { useState } from "react";
+import React from "react";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
 import { FReturnColor } from "../utils/FReturnColor";
-import * as styles from "./styles";
+import { textContainer } from "./styles";
 import { FTextProps } from "./types";
 
 /** `<FText />` is a customized `Text` component.
  *
  * Props: `FTextProps`.
  */
-export const FText = ({
-	font = FFontTypes.Small_Title(),
-	overflowHidden = false,
-	children = "Text",
-	...props
-}: FTextProps) => {
-	const [isHover, setIsHover] = useState<boolean>(false);
-	const color = (isHover: boolean) =>
-		props.color ? props.color(isHover) : FReturnColor({ color: "Black" });
-	const param: Partial<FTextProps> = {
-		font: font,
-		color: color,
-		overflowHidden: overflowHidden,
-		...props,
-	};
+export const FText = (props: FTextProps) => {
+	const {
+		color = FReturnColor({ color: "Black" }),
+		font = FFontTypes.Small_Title(),
+		overflowHidden = false,
+		maxRows,
+		children = "Text",
+		style,
+		className,
+	} = props;
 
 	return (
 		<div
-			style={props.style && props.style(isHover)}
-			className={
-				styles.FTextContainer(param) +
-				" " +
-				(props.className && props.className(isHover))
-			}
-			onMouseEnter={() => setIsHover(true)}
-			onMouseLeave={() => setIsHover(false)}
-			children={children}
-		/>
+			style={style}
+			className={FJoinClassNames([
+				textContainer({ color, font, overflowHidden, maxRows }),
+				className,
+			])}
+		>
+			{children}
+		</div>
 	);
 };

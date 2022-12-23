@@ -8,13 +8,11 @@ import { FDoubleTabsPanelProps } from "./types";
  * Props: `FDoubleTabsPanelProps`.
  *
  *  */
-export const FDoubleTabsPanel = ({
-	isRenderOnSelected = true,
-	...props
-}: FDoubleTabsPanelProps) => {
+export const FDoubleTabsPanel = (props: FDoubleTabsPanelProps) => {
+	const { style, className, children } = props;
 	return (
-		<div style={props.style} className={props.className}>
-			{props.children}
+		<div style={style} className={className}>
+			{children}
 		</div>
 	);
 };

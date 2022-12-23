@@ -1,7 +1,7 @@
 import { style } from "typestyle";
 import { FReturnColor } from "../../../utils/FReturnColor";
 
-export const FTabsButton_Div = (isSelected: boolean, isHover?: boolean) =>
+export const buttonDiv = (isSelected: boolean, isHover?: boolean) =>
 	style({
 		display: "flex",
 		flexDirection: "row",

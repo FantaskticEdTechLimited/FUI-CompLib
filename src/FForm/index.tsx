@@ -1,7 +1,7 @@
 import React from "react";
 import { FBottomNavBar } from "../FBottomNavBar";
-import { FBottomNavBarProps } from "../FBottomNavBar/types";
 import { FScrollBarStyle } from "../FScrollBarStyle";
+import { FJoinClassNames } from "../utils/FJoinClassNames";
 import { FUseStateSafe } from "../utils/FUseStateSafe";
 import { styles } from "./styles";
 import { FFormProps } from "./types";
@@ -11,46 +11,52 @@ import { FFormProps } from "./types";
  * Props: `FFormProps`
  */
 export const FForm = (props: FFormProps) => {
+	const {
+		style,
+		contentContainerStyle,
+		className,
+		contentContainerClassName,
+		onClose,
+		onSubmit,
+		bottomBarProps,
+		children,
+	} = props;
+
 	const [isLoading, setIsLoading] = FUseStateSafe(false);
-	const bottomBarProps: FBottomNavBarProps = {
-		leadingButtonLabel: "Cancel",
-		actionButtonLabel: "Submit",
-		...props.bottomBarProps,
-	};
 
 	const handleActionButtonClick = async () => {
 		setIsLoading(true);
-		props.onSubmit && (await props.onSubmit());
+		onSubmit && (await onSubmit());
 		setIsLoading(false);
 	};
 
 	const handleLeadingButtonClick = async () => {
-		props.onClose && (await props.onClose());
+		onClose && (await onClose());
 	};
 
 	return (
 		<div
-			className={
-				styles.FForm_Container + " " + FScrollBarStyle() + " " + props.className
-			}
-			style={props.style}
+			className={FJoinClassNames([
+				styles.contentContainer,
+				FScrollBarStyle(),
+				className,
+			])}
+			style={style}
 		>
 			<div
-				style={props.contentContainerStyle}
-				className={
-					styles.FForm_Content_Container +
-					" " +
-					FScrollBarStyle() +
-					" " +
-					props.contentContainerClassName
-				}
+				style={contentContainerStyle}
+				className={FJoinClassNames([
+					styles.contentContainer,
+					FScrollBarStyle(),
+					contentContainerClassName,
+				])}
 			>
-				{props.children}
+				{children}
 			</div>
 			<FBottomNavBar
-				leadingButtonLabel={bottomBarProps.leadingButtonLabel}
+				leadingButtonLabel={bottomBarProps?.leadingButtonLabel ?? "Cancel"}
 				actionButtonLabel={
-					isLoading ? "Loading" : bottomBarProps.actionButtonLabel
+					isLoading ? "Loading" : bottomBarProps?.actionButtonLabel ?? "Submit"
 				}
 				disableActionButton={isLoading}
 				onLeadingButtonClick={handleLeadingButtonClick}

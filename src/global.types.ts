@@ -1,5 +1,5 @@
 import { FIconProps } from "@innoplus-studio/fui-iconlib";
-import { ReactElement, ReactNode } from "react";
+import { ClassAttributes, CSSProperties, ReactElement, ReactNode } from "react";
 import { FSVGIconProps } from "./FSVGIcon/types";
 
 export type Nullable<T> = T | null;
@@ -19,8 +19,6 @@ export type FOnDataCallbackFunction<T, C> = (
 
 export type FOnCallBackFuntion<C> = (callbackFunction: C) => Promise<void>;
 
-export type FOnHoverProperty<T> = (isHover?: boolean) => T;
-
 export type FComponentType =
 	| ReactElement<FIconProps | FSVGIconProps>
 	| ReactNode;
@@ -32,3 +30,17 @@ export enum FRWDMode {
 	TABLET = "TABLET",
 	MOBILE = "MOBILE",
 }
+
+/** This `ref` is for hover use. */
+export type PropsWithDivRef = {
+	ref?: ClassAttributes<HTMLDivElement>["ref"];
+};
+
+export type PropsWithCustomStyle = {
+	style?: CSSProperties;
+	className?: HTMLElement["className"];
+};
+
+export type PropsWithOnClickFunction = {
+	onClick?: FOnClickFunction;
+};

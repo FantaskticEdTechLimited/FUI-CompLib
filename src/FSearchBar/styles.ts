@@ -3,7 +3,7 @@ import { style } from "typestyle";
 import { FReturnColor } from "..";
 import { InputStateProps } from "./types";
 
-export const FSearchBar_Container = (state: InputStateProps) =>
+export const searchBarContainer = (state: InputStateProps) =>
 	style({
 		alignItems: "center",
 		backgroundColor: FReturnColor({ color: "White" }),
@@ -26,7 +26,7 @@ export const FSearchBar_Container = (state: InputStateProps) =>
 		width: "100%",
 	});
 
-export const FSearchBar_InputAreaDiv = () =>
+export const inputAreaDiv = () =>
 	style({
 		backgroundColor: "inherit",
 		border: "none",
